@@ -6,5 +6,9 @@
 
 int main(){
 run();
+int a=0;
+a++;
+int b;
+b++;
 }
 
