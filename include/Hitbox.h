@@ -4,10 +4,12 @@
 
 class Hitbox: public virtual DrawableObj{
     public:
-        Hitbox(Vector2 pos, Vector2 size);
+        // Constructor
+        Hitbox();
+        Hitbox(Vector2 pos, Vector2 size, Color color);
 
         // Logic
-        bool CheckCollision(Hitbox &another);
+        bool CheckCollision(const Hitbox &another) const;
         // Update
         void Draw() override;
 
@@ -16,12 +18,12 @@ class Hitbox: public virtual DrawableObj{
         void SetSize(Vector2 size);
         void SetColor(Color color);
         // Getter
-        Vector2 GetPosition();
-        Vector2 GetSize();
+        Vector2 GetPosition() const;
+        Vector2 GetSize() const;
         
-        Color getColor();
+        Color GetColor() const;
 
-        Rectangle GetRect();
+        Rectangle GetRect() const;
 
     private:
         Vector2 position;
