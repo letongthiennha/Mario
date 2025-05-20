@@ -32,7 +32,7 @@ void run(void){
     Camera camera = { 0 };
     Vector3 cubePosition = { 0 };
     const int screenWidth = 1600;
-    const int screenHeight = 720;
+    const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "raylib");
 
@@ -61,5 +61,6 @@ void run(void){
     //--------------------------------------------------------------------------------------
     CloseWindow();                  // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
-
+    
 }
+

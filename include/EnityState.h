@@ -1,0 +1,16 @@
+#pragma once
+
+enum EntityState
+{
+    ENTITY_STATE_IDLE,
+    ENTITY_STATE_MOVING,
+    ENTITY_STATE_JUMPING,
+    
+    ENTITY_STATE_DYING,
+
+
+    //Only Mario
+    MARIO_STATE_BIG,
+    MARIO_STATE_FIRE,
+    MARIO_STATE_INMORTAL
+};

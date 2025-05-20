@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Application.cpp.obj"
   "CMakeFiles/Mario.dir/src/Application.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/Entity.cpp.obj"
+  "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/Hitbox.cpp.obj"
+  "CMakeFiles/Mario.dir/src/Hitbox.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
+  "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/main.cpp.obj"
   "CMakeFiles/Mario.dir/src/main.cpp.obj.d"
   "Mario.exe"

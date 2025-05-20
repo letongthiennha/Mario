@@ -270,6 +270,78 @@ src/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.s
 .PHONY : src/Application.cpp.s
 
+src/Entity.obj: src/Entity.cpp.obj
+.PHONY : src/Entity.obj
+
+# target to build an object file
+src/Entity.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.obj
+.PHONY : src/Entity.cpp.obj
+
+src/Entity.i: src/Entity.cpp.i
+.PHONY : src/Entity.i
+
+# target to preprocess a source file
+src/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.i
+.PHONY : src/Entity.cpp.i
+
+src/Entity.s: src/Entity.cpp.s
+.PHONY : src/Entity.s
+
+# target to generate assembly for a file
+src/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.s
+.PHONY : src/Entity.cpp.s
+
+src/Hitbox.obj: src/Hitbox.cpp.obj
+.PHONY : src/Hitbox.obj
+
+# target to build an object file
+src/Hitbox.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.obj
+.PHONY : src/Hitbox.cpp.obj
+
+src/Hitbox.i: src/Hitbox.cpp.i
+.PHONY : src/Hitbox.i
+
+# target to preprocess a source file
+src/Hitbox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.i
+.PHONY : src/Hitbox.cpp.i
+
+src/Hitbox.s: src/Hitbox.cpp.s
+.PHONY : src/Hitbox.s
+
+# target to generate assembly for a file
+src/Hitbox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.s
+.PHONY : src/Hitbox.cpp.s
+
+src/ResourceManager.obj: src/ResourceManager.cpp.obj
+.PHONY : src/ResourceManager.obj
+
+# target to build an object file
+src/ResourceManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj
+.PHONY : src/ResourceManager.cpp.obj
+
+src/ResourceManager.i: src/ResourceManager.cpp.i
+.PHONY : src/ResourceManager.i
+
+# target to preprocess a source file
+src/ResourceManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ResourceManager.cpp.i
+.PHONY : src/ResourceManager.cpp.i
+
+src/ResourceManager.s: src/ResourceManager.cpp.s
+.PHONY : src/ResourceManager.s
+
+# target to generate assembly for a file
+src/ResourceManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ResourceManager.cpp.s
+.PHONY : src/ResourceManager.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -316,6 +388,15 @@ help:
 	@echo ... src/Application.obj
 	@echo ... src/Application.i
 	@echo ... src/Application.s
+	@echo ... src/Entity.obj
+	@echo ... src/Entity.i
+	@echo ... src/Entity.s
+	@echo ... src/Hitbox.obj
+	@echo ... src/Hitbox.i
+	@echo ... src/Hitbox.s
+	@echo ... src/ResourceManager.obj
+	@echo ... src/ResourceManager.i
+	@echo ... src/ResourceManager.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
