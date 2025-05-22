@@ -1,6 +1,6 @@
 CMakeFiles/Mario.dir/src/Application.cpp.obj: \
  D:\Project\Mario\src\Application.cpp \
- D:/Project/Mario/include/Application.hpp C:/raylib/raylib/src/raylib.h \
+ D:/Project/Mario/include/Application.h C:/raylib/raylib/src/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \

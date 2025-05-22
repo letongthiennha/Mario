@@ -294,6 +294,30 @@ src/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.s
 .PHONY : src/Entity.cpp.s
 
+src/GameClock.obj: src/GameClock.cpp.obj
+.PHONY : src/GameClock.obj
+
+# target to build an object file
+src/GameClock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameClock.cpp.obj
+.PHONY : src/GameClock.cpp.obj
+
+src/GameClock.i: src/GameClock.cpp.i
+.PHONY : src/GameClock.i
+
+# target to preprocess a source file
+src/GameClock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameClock.cpp.i
+.PHONY : src/GameClock.cpp.i
+
+src/GameClock.s: src/GameClock.cpp.s
+.PHONY : src/GameClock.s
+
+# target to generate assembly for a file
+src/GameClock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameClock.cpp.s
+.PHONY : src/GameClock.cpp.s
+
 src/Hitbox.obj: src/Hitbox.cpp.obj
 .PHONY : src/Hitbox.obj
 
@@ -317,6 +341,30 @@ src/Hitbox.s: src/Hitbox.cpp.s
 src/Hitbox.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.s
 .PHONY : src/Hitbox.cpp.s
+
+src/Mario.obj: src/Mario.cpp.obj
+.PHONY : src/Mario.obj
+
+# target to build an object file
+src/Mario.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mario.cpp.obj
+.PHONY : src/Mario.cpp.obj
+
+src/Mario.i: src/Mario.cpp.i
+.PHONY : src/Mario.i
+
+# target to preprocess a source file
+src/Mario.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mario.cpp.i
+.PHONY : src/Mario.cpp.i
+
+src/Mario.s: src/Mario.cpp.s
+.PHONY : src/Mario.s
+
+# target to generate assembly for a file
+src/Mario.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mario.cpp.s
+.PHONY : src/Mario.cpp.s
 
 src/ResourceManager.obj: src/ResourceManager.cpp.obj
 .PHONY : src/ResourceManager.obj
@@ -391,9 +439,15 @@ help:
 	@echo ... src/Entity.obj
 	@echo ... src/Entity.i
 	@echo ... src/Entity.s
+	@echo ... src/GameClock.obj
+	@echo ... src/GameClock.i
+	@echo ... src/GameClock.s
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
+	@echo ... src/Mario.obj
+	@echo ... src/Mario.i
+	@echo ... src/Mario.s
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s
