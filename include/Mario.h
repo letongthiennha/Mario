@@ -47,7 +47,7 @@ class Mario: public Entity{
         // Setter
         void setSprite(Texture2D sprite);
         void setLives(int lives);
-        void setIsDucking(bool isDucking);
+        void Duck();
         void setState(MarioState state);
         void setGravity(float gravity);
         void setFireballs(std::vector<Fireball *> fireballs);
@@ -67,6 +67,7 @@ class Mario: public Entity{
         void moveNoWhere();
         // Game loop
         void HandleInput();
+        void updateSprite();
         void update();
         void Draw() override;
 };
