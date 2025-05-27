@@ -6,10 +6,13 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Project/Mario/src/*.cpp")
 set(OLD_GLOB
   "D:/Project/Mario/src/Application.cpp"
   "D:/Project/Mario/src/Entity.cpp"
+  "D:/Project/Mario/src/Fireball.cpp"
   "D:/Project/Mario/src/GameClock.cpp"
   "D:/Project/Mario/src/Hitbox.cpp"
   "D:/Project/Mario/src/Mario.cpp"
   "D:/Project/Mario/src/ResourceManager.cpp"
+  "D:/Project/Mario/src/Tile.cpp"
+  "D:/Project/Mario/src/World.cpp"
   "D:/Project/Mario/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

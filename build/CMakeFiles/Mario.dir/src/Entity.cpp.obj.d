@@ -10,4 +10,5 @@ CMakeFiles/Mario.dir/src/Entity.cpp.obj: D:\Project\Mario\src\Entity.cpp \
  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
  D:/Project/Mario/include/Direction.h D:/Project/Mario/include/Hitbox.h \
  D:/Project/Mario/include/EnityState.h \
- D:/Project/Mario/include/CollisionInfo.h
+ D:/Project/Mario/include/CollisionInfo.h \
+ D:/Project/Mario/include/GameClock.h

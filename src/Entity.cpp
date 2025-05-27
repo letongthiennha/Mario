@@ -1,5 +1,5 @@
 #include "Entity.h"
-
+#include "GameClock.h"
 void Entity::setPosition(Vector2 pos)
 {
     this->pos = pos;
@@ -87,6 +87,7 @@ Direction Entity::getFacingDirection() const
 //Full constructor
 Entity::Entity(Vector2 pos, Vector2 size, Vector2 velocity, Color color, 
     float frameTime, int maxFrame, Direction facingDirection) :
+sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
@@ -97,13 +98,12 @@ frameTime(frameTime),
 frameAcum(0),
 currFrame(0),
 maxFrame(maxFrame),
-facingDirection(facingDirection) {
-
-// Initialize hitboxes with the same color
-NorthHb.SetColor(color);
-SouthHb.SetColor(color);
-WestHb.SetColor(color);
-EastHb.SetColor(color);
+facingDirection(facingDirection),
+NorthHb(Vector2{pos.x + size.x/2 - 5, pos.y}, Vector2{size.x, 5}, color),
+SouthHb(Vector2{pos.x + size.x/2 - 5, pos.y + size.y - 5}, Vector2{size.x, 5}, color),
+WestHb(Vector2{pos.x + size.x - 5, pos.y + size.y/2 - 5}, Vector2{5, size.y}, color),
+EastHb(Vector2{pos.x, pos.y + size.y/2 - 5}, Vector2{5, size.y}, color) {
+    rect = { pos.x, pos.y, size.x, size.y };
 }
 
 
@@ -121,40 +121,58 @@ Entity::Entity(Vector2 pos, Vector2 size, Color color) :
 // Constructor with animation parameters
 Entity::Entity(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame) :
     Entity(pos, size, Vector2{0, 0}, color, frameTime, maxFrame, DIRECTION_RIGHT) {
+
 }
 
+Entity::~Entity() {
+    sprite = nullptr;
+}
+void Entity::updateStateAndPhysic() {
+    // Update position based on velocity
+    pos.x += velocity.x * GameClock::GetUpdateDeltaTime();
+    pos.y += velocity.y * GameClock::GetUpdateDeltaTime();
 
+    // The rectangle is used on the other object
+    // The hitbox is used on the current object to check the direction of the collision
+    rect.width = size.x;
+    rect.height = size.y;
+    rect.x = pos.x;
+    rect.y = pos.y;
+    updateHitboxes();
+}
+Rectangle Entity::getRect() const {
+    return Rectangle{ pos.x, pos.y, size.x, size.y };
+}
 void Entity::updateHitboxes() {
     // Update hitbox positions based on entity position
     NorthHb.SetPosition(Vector2{
         pos.x + size.x/2 - NorthHb.GetSize().x/2,
         pos.y
     });
-    
     SouthHb.SetPosition(Vector2{
         pos.x + size.x/2 - SouthHb.GetSize().x/2,
-        pos.y + size.y - SouthHb.GetSize().y
+        pos.y + size.y - SouthHb.GetSize().y+1
     });
     
     WestHb.SetPosition(Vector2{
-        pos.x + size.x - WestHb.GetSize().x,
+       pos.x,
         pos.y + size.y/2 - WestHb.GetSize().y/2
     });
-    
+
     EastHb.SetPosition(Vector2{
-        pos.x,
+        pos.x + size.x - WestHb.GetSize().x,
         pos.y + size.y/2 - EastHb.GetSize().y/2
     });
 }
 
 CollisionInfo Entity::CheckCollisionType(const Entity& other) const{
-    if(NorthHb.CheckCollision(other.SouthHb))
+    if(NorthHb.CheckCollision(other.getRect()))
         return COLLISION_NORTH;
-    if(SouthHb.CheckCollision(other.NorthHb))
+    if(SouthHb.CheckCollision(other.getRect()))
         return COLLISION_SOUTH;
-    if(EastHb.CheckCollision(other.WestHb))
+    if(EastHb.CheckCollision(other.getRect()))
         return COLLISION_EAST;
-    if(WestHb.CheckCollision(other.EastHb))
+    if(WestHb.CheckCollision(other.getRect()))
         return COLLISION_WEST;
     return COLLISION_NONE;
 }

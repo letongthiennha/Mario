@@ -3,9 +3,9 @@
 
 Hitbox::Hitbox():
     position({0,0}),
-    size({0,0}),
-    Rect({0,0,0,0}),
-    color(WHITE)
+    size({5,5}),
+    Rect({0,0,5,5}),
+    color(BLANK)
 {
 }
 
@@ -16,15 +16,16 @@ Hitbox::Hitbox(Vector2 pos, Vector2 size, Color color)
     SetColor(color);
 }
 
-bool Hitbox::CheckCollision(const Hitbox &another) const
+bool Hitbox::CheckCollision(const Rectangle& Rect) const
 {
-    if(CheckCollisionRecs(this->GetRect(),another.GetRect()))
+    if(CheckCollisionRecs(this->GetRect(),Rect))
         return true;
     return false;
 }
 
 void Hitbox::Draw()
 {
+    DrawRectangleRec(Rect, color);
     return;
 }
 

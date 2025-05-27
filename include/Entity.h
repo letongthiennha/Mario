@@ -9,9 +9,11 @@ protected:
     //Properties
     Vector2 pos;
     Vector2 size;
+    Rectangle rect; //Used for collision detection
     float angle;
     EntityState state;
     Color color;
+    Texture2D *sprite;
 
     //Moving
     Vector2 velocity;
@@ -27,7 +29,8 @@ protected:
     float frameAcum;
     int currFrame;
     int maxFrame;
-
+    //Call right before the draw function
+    virtual void updateSprite()=0;
 
 
 public:
@@ -58,6 +61,7 @@ public:
     float getAngle() const;
     EntityState getState() const;
     Color getColor() const;
+    Rectangle getRect() const;
     //Moving
     Vector2 getVelocity() const;
     Direction getFacingDirection() const;
@@ -73,11 +77,16 @@ public:
            float frameTime, int maxFrame, Direction facingDirection);
     Entity(Vector2 pos, Vector2 size, Color color);
     Entity(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
-
+    virtual ~Entity() override;
+    ;
     //Update 
     virtual void updateHitboxes();
 
-    void Draw() override = 0;  
+    void Draw() override = 0;
+    //Call in an update loop
+    //Update the position and physic of the entity
+    virtual void updateStateAndPhysic();
+
     //Collision
     CollisionInfo CheckCollisionType(const Entity& other) const;
     

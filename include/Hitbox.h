@@ -9,7 +9,7 @@ class Hitbox: public virtual DrawableObj{
         Hitbox(Vector2 pos, Vector2 size, Color color);
 
         // Logic
-        bool CheckCollision(const Hitbox &another) const;
+        bool CheckCollision(const Rectangle &rect) const;
         // Update
         void Draw() override;
 
