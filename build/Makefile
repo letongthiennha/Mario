@@ -294,6 +294,30 @@ src/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.s
 .PHONY : src/Entity.cpp.s
 
+src/Fireball.obj: src/Fireball.cpp.obj
+.PHONY : src/Fireball.obj
+
+# target to build an object file
+src/Fireball.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Fireball.cpp.obj
+.PHONY : src/Fireball.cpp.obj
+
+src/Fireball.i: src/Fireball.cpp.i
+.PHONY : src/Fireball.i
+
+# target to preprocess a source file
+src/Fireball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Fireball.cpp.i
+.PHONY : src/Fireball.cpp.i
+
+src/Fireball.s: src/Fireball.cpp.s
+.PHONY : src/Fireball.s
+
+# target to generate assembly for a file
+src/Fireball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Fireball.cpp.s
+.PHONY : src/Fireball.cpp.s
+
 src/GameClock.obj: src/GameClock.cpp.obj
 .PHONY : src/GameClock.obj
 
@@ -390,6 +414,54 @@ src/ResourceManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ResourceManager.cpp.s
 .PHONY : src/ResourceManager.cpp.s
 
+src/Tile.obj: src/Tile.cpp.obj
+.PHONY : src/Tile.obj
+
+# target to build an object file
+src/Tile.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.obj
+.PHONY : src/Tile.cpp.obj
+
+src/Tile.i: src/Tile.cpp.i
+.PHONY : src/Tile.i
+
+# target to preprocess a source file
+src/Tile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.i
+.PHONY : src/Tile.cpp.i
+
+src/Tile.s: src/Tile.cpp.s
+.PHONY : src/Tile.s
+
+# target to generate assembly for a file
+src/Tile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.s
+.PHONY : src/Tile.cpp.s
+
+src/World.obj: src/World.cpp.obj
+.PHONY : src/World.obj
+
+# target to build an object file
+src/World.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.obj
+.PHONY : src/World.cpp.obj
+
+src/World.i: src/World.cpp.i
+.PHONY : src/World.i
+
+# target to preprocess a source file
+src/World.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.i
+.PHONY : src/World.cpp.i
+
+src/World.s: src/World.cpp.s
+.PHONY : src/World.s
+
+# target to generate assembly for a file
+src/World.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.s
+.PHONY : src/World.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -439,6 +511,9 @@ help:
 	@echo ... src/Entity.obj
 	@echo ... src/Entity.i
 	@echo ... src/Entity.s
+	@echo ... src/Fireball.obj
+	@echo ... src/Fireball.i
+	@echo ... src/Fireball.s
 	@echo ... src/GameClock.obj
 	@echo ... src/GameClock.i
 	@echo ... src/GameClock.s
@@ -451,6 +526,12 @@ help:
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s
+	@echo ... src/Tile.obj
+	@echo ... src/Tile.i
+	@echo ... src/Tile.s
+	@echo ... src/World.obj
+	@echo ... src/World.i
+	@echo ... src/World.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

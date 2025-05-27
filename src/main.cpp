@@ -5,30 +5,35 @@
 #include "ResourceManager.h"
 #include "Mario.h"
 #include "GameClock.h"
+#include "World.h"
+#include "Fireball.h"
+#include <iostream>
+#include "Tile.h"
 int main(){
     InitWindow(1600, 900, "Mario");
-    ResourceManager::loadResource();
-    GameClock::startClock();
-    Mario player;
+    // World gameWorld;
+    World::InitWorld();
+    World gw;
     SetTargetFPS(144);
 
+    bool isPaused = false;
     while(!WindowShouldClose()){
-        GameClock::updateTimeAcum += GetFrameTime();
-        //Update Loop
-        while (GameClock::updateTimeAcum >= GameClock::FIXED_TIME_STEP)
-        {
-            player.update();
-            GameClock::update();
-            if(GameClock::GetUpdateDeltaTime()==0)
-                GameClock::updateTimeAcum -= GameClock::FIXED_TIME_STEP;
-            GameClock::updateTimeAcum -= GameClock::GetUpdateDeltaTime();
+        if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
+        if(!isPaused){
+            GameClock::updateTimeAcum += GetFrameTime();
+            //Update Loop
+            while (GameClock::updateTimeAcum >= GameClock::GetUpdateDeltaTime())
+            {
+                gw.UpdateWorld();
+                GameClock::updateTimeAcum -= GameClock::GetUpdateDeltaTime();
+            }    
         }
-    ClearBackground(RAYWHITE);
-    BeginDrawing();
-    player.Draw();
-    EndDrawing();
+            ClearBackground(RAYWHITE);
+            BeginDrawing();
+            gw.DrawWorld();
+            EndDrawing();
     }
     ResourceManager::unloadResource();
     CloseWindow();
+    
 }
-

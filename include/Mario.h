@@ -3,71 +3,76 @@
 #include "MarioState.h"
 #include "Fireball.h"
 #include "ResourceManager.h"
-#include <vector>
+#include "Tile.h"
+#include <list>
 class Mario: public Entity{
     private:
     //Image
-        Texture2D sprite;
+        Texture2D *sprite;
         // Properties
         int lives;
         bool isDucking;
         MarioState form;
-        std::vector<Fireball*>fireballs;
+        std::list<Fireball*>fireballs;
 
     // Special effects
     // Invincibility when hit
         // The player is invincible for a short time after being hit
-        bool isInvincible;
-        float invincibleFrameTime;
-        float invincibleAcum;
-        int invincibleFrame;
-        int invincibleMaxFrame;
-    // Immortal when eating immortal star
-        // In this state it can kill any thing
-        bool isImmortal;
-        float immortalFrameTime;
-        float immortalAcum;
-        int immortalFrame;
-        int immortalMaxFrame;
+    //     bool isInvincible;
+    //     float invincibleFrameTime;
+    //     float invincibleAcum;
+    //     int invincibleFrame;
+    //     int invincibleMaxFrame;
+    // // Immortal when eating immortal star
+    //     // In this state it can kill any thing
+    //     bool isImmortal;
+    //     float immortalFrameTime;
+    //     float immortalAcum;
+    //     int immortalFrame;
+    //     int immortalMaxFrame;
     //Timing Event
         // Accelerating
         int normalSpeedX;
         int accelerationX;
         // Jumping
-        float gravity;
         float jumpInitSpeed;
+        void updateSprite() override;
 
     public:
         // Constructor
+        //Full constructor
+        Mario(Vector2 pos, int lives,
+              MarioState form);
         Mario();
-        Mario(Vector2 pos, Vector2 size, MarioState state, Color color, int lives,
-              MarioState state1);
         // Destructor
         ~Mario() override;
+
         // Setter
         void setSprite(Texture2D sprite);
         void setLives(int lives);
-        void Duck();
-        void setState(MarioState state);
-        void setGravity(float gravity);
-        void setFireballs(std::vector<Fireball *> fireballs);
+        void setState(EntityState state);
+        
         // Getter
-        Texture2D getSprite() const;
         int getLives() const;
         bool getIsDucking() const;
-        MarioState getState() const;
-        float getGravity() const;
-        std::vector<Fireball *> getFireballs() const;
+        std::list<Fireball*>* getFireballs() ;
         // Methods
         void jump();
-        void duck();
-        void fire();
         void moveLeft();
         void moveRight();
         void moveNoWhere();
+
+        void Duck();
+        void fire();
+
+        void changeToBig();
+        void changeToFire();
+        void changeToSmall();
+        //Handle Situation
+        void HandleTileCollision(const Tile& tile,CollisionInfo type);
         // Game loop
         void HandleInput();
-        void updateSprite();
-        void update();
+        void updateStateAndPhysic() override;
+        void updateHitboxes() override;
         void Draw() override;
 };

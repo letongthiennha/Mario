@@ -5,7 +5,6 @@
 Texture2D FlipTextureHorizontal(const Texture2D &texture);
 class ResourceManager{
     private:
-        static std::unordered_map < std::string, Texture2D>textures;
         static std::unordered_map<std::string, Sound> sounds;
         static std::unordered_map<std::string, Music> musics;
 
@@ -18,6 +17,8 @@ class ResourceManager{
         static void unloadMusics();
 
     public:
+    static std::unordered_map < std::string, Texture2D>textures;
+
     //Load and unload
         static void loadResource();
         static void unloadResource();
