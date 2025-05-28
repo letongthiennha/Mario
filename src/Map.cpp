@@ -21,7 +21,7 @@ Map::Map()
     : player()
 {
     currBackgroundStarX = 0.0f;
-    background= ResourceManager::getTexture("BACKGROUND_0");
+    background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
 }
 Map::~Map()
 {

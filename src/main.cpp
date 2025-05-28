@@ -20,12 +20,12 @@ int main(){
     while(!WindowShouldClose()){
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
         if(!isPaused){
-            GameClock::updateTimeAcum += GetFrameTime();
+            GameClock::getInstance().updateTimeAcum += GetFrameTime();
             //Update Loop
-            while (GameClock::updateTimeAcum >= GameClock::GetUpdateDeltaTime())
+            while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().FIXED_TIME_STEP)
             {
                 gw.UpdateWorld();
-                GameClock::updateTimeAcum -= GameClock::GetUpdateDeltaTime();
+                GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().FIXED_TIME_STEP;
             }    
         }
             ClearBackground(BLUE);
@@ -33,7 +33,7 @@ int main(){
             gw.DrawWorld();
             EndDrawing();
     }
-    ResourceManager::unloadResource();
+    ResourceManager::getInstance().unloadResource();
     CloseWindow();
     
 }

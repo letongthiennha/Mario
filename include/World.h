@@ -9,7 +9,7 @@ class World
 private:
     static  constexpr float GRAVITY=1800;
     float currBackgroundStarX=0.0f;
-    Texture2D background= ResourceManager::getTexture("BACKGROUND_0");
+    Texture2D background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
     Map map;
     Mario &player;
     std::vector<Tile *> &interactiveTiles;

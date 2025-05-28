@@ -1,9 +1,13 @@
 #include "ResourceManager.h"
-std::unordered_map<std::string, Texture2D> ResourceManager::textures;
-std::unordered_map<std::string, Sound> ResourceManager::sounds;
-std::unordered_map<std::string, Music> ResourceManager::musics;
+ResourceManager* ResourceManager::instance = nullptr;
 
-//Load
+ResourceManager::~ResourceManager()
+{
+    unloadResource();
+    instance = nullptr;
+}
+
+// Load
 void ResourceManager::loadTextures()
 {
     //SMALL MARIO
@@ -145,6 +149,15 @@ void ResourceManager::unloadSounds(){
 void ResourceManager::unloadMusics(){
     for(auto&pair :musics)
     UnloadMusicStream(pair.second);
+}
+
+ResourceManager &ResourceManager::getInstance()
+{
+    if (instance == nullptr) {
+        instance = new ResourceManager();
+        instance->loadResource();
+    }
+    return *instance;
 }
 
 void ResourceManager::unloadResource(){

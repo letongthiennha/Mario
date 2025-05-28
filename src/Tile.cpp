@@ -3,7 +3,7 @@
 Tile::Tile(Vector2 pos,int map,char key):Entity(pos,{32,32},WHITE)
 {
     std::string keyStr = "MAP_" + std::to_string(map) + "_TILE_" + key;
-    sprite = &ResourceManager::getTexture(keyStr);
+    sprite = &ResourceManager::getInstance().getTexture(keyStr);
 }
 
 void Tile::Draw(){

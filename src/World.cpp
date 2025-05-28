@@ -50,20 +50,20 @@ void World::DrawWorld()
 
         if(camera.target.x-GetScreenWidth()/2>=currBackgroundStarX)
         {
-            currBackgroundStarX = currBackgroundStarX+background.width;
+            currBackgroundStarX = currBackgroundStarX+background.width*1.3f;
         }
-        if(camera.target.x+GetScreenWidth()/2<=currBackgroundStarX+background.width)
+        if(camera.target.x+GetScreenWidth()/2<=currBackgroundStarX+background.width*1.3f)
         {
-            currBackgroundStarX = currBackgroundStarX-background.width;
+            currBackgroundStarX = currBackgroundStarX-background.width*1.3f;
         }
 
     
 
         
         BeginMode2D(camera);
-        DrawTextureEx(background, Vector2{currBackgroundStarX-background.width,0}, 0.0f, 1.0f, WHITE);
-        DrawTextureEx(background,Vector2{currBackgroundStarX,0},0.0f,1.0f,WHITE);
-        DrawTextureEx(background,Vector2{currBackgroundStarX+background.width,0},0.0f,1.0f,WHITE);
+        DrawTextureEx(background, Vector2{currBackgroundStarX-background.width*1.3f,-200}, 0.0f, 1.3f, WHITE);
+        DrawTextureEx(background,Vector2{currBackgroundStarX,-200},0.0f,1.3f,WHITE);
+        DrawTextureEx(background,Vector2{currBackgroundStarX+background.width*1.3f,-200},0.0f,1.3f,WHITE);
 
         map.Draw();
         EndMode2D();
@@ -75,5 +75,5 @@ const float World::GetGravity()
 void World::InitWorld()
 {
 
-        ResourceManager::loadResource();
+        ResourceManager::getInstance().loadResource();
 }

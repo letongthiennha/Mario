@@ -129,8 +129,8 @@ Entity::~Entity() {
 }
 void Entity::updateStateAndPhysic() {
     // Update position based on velocity
-    pos.x += velocity.x * GameClock::GetUpdateDeltaTime();
-    pos.y += velocity.y * GameClock::GetUpdateDeltaTime();
+    pos.x += velocity.x * GameClock::getInstance().FIXED_TIME_STEP;
+    pos.y += velocity.y * GameClock::getInstance().FIXED_TIME_STEP;
 
     // The rectangle is used on the other object
     // The hitbox is used on the current object to check the direction of the collision
