@@ -366,6 +366,30 @@ src/Hitbox.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.s
 .PHONY : src/Hitbox.cpp.s
 
+src/Map.obj: src/Map.cpp.obj
+.PHONY : src/Map.obj
+
+# target to build an object file
+src/Map.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Map.cpp.obj
+.PHONY : src/Map.cpp.obj
+
+src/Map.i: src/Map.cpp.i
+.PHONY : src/Map.i
+
+# target to preprocess a source file
+src/Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Map.cpp.i
+.PHONY : src/Map.cpp.i
+
+src/Map.s: src/Map.cpp.s
+.PHONY : src/Map.s
+
+# target to generate assembly for a file
+src/Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Map.cpp.s
+.PHONY : src/Map.cpp.s
+
 src/Mario.obj: src/Mario.cpp.obj
 .PHONY : src/Mario.obj
 
@@ -520,6 +544,9 @@ help:
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
+	@echo ... src/Map.obj
+	@echo ... src/Map.i
+	@echo ... src/Map.s
 	@echo ... src/Mario.obj
 	@echo ... src/Mario.i
 	@echo ... src/Mario.s

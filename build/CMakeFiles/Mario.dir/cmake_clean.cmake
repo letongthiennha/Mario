@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/GameClock.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Hitbox.cpp.obj"
   "CMakeFiles/Mario.dir/src/Hitbox.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/Map.cpp.obj"
+  "CMakeFiles/Mario.dir/src/Map.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Mario.cpp.obj"
   "CMakeFiles/Mario.dir/src/Mario.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"

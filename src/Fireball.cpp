@@ -17,13 +17,68 @@ Fireball::Fireball(Vector2 pos, Direction direction) : Entity(pos, Vector2{ 16, 
     this->sprite = &ResourceManager::getTexture("FIRE_BALL_0_LEFT");
         velocity.x = -FIREBALL_SPEEDX;
     }
+    // Initialize hitboxes
+    this->NorthHb.SetColor(RED);
+    this->NorthHb.SetSize(Vector2{size.x-8, 1});
+
+    this->SouthHb.SetColor(GREEN);
+    this->SouthHb.SetSize(Vector2{size.x-8, 1});
+    this->WestHb.SetColor(BLUE);
+    this->WestHb.SetSize(Vector2{1, size.y-8});
+    this->EastHb.SetColor(BLACK);
+    this->EastHb.SetSize(Vector2{1, size.y-8});
+    this->updateHitboxes();
+
 }
 
-void Fireball::HandleGroundCollision(float groundY)
+void Fireball::HandleTileCollision(const Tile&tile,const CollisionInfo& direction)
 {
-        pos.y = groundY - size.y; // Adjust position to be on top of the ground
-        state = ENTITY_STATE_JUMPING; // Change state to on ground
-        velocity.y = -500; // Reset vertical velocity
+    if(direction==COLLISION_NONE)
+        return;
+    switch (direction)
+    {
+    case COLLISION_SOUTH:
+    {
+        setPosition(Vector2{pos.x, tile.getPosition().y - size.y});
+        velocity.y = -500;
+        break;
+    }
+    case COLLISION_NORTH:
+    {
+        setPosition(Vector2{pos.x, tile.getPosition().y + tile.getSize().y});
+        velocity.y = 0;
+        break;
+    }
+    case COLLISION_EAST:
+        {
+        setPosition(Vector2{tile.getPosition().x-size.x, pos.y});
+        setVelocity(Vector2{-velocity.x, velocity.y}); // Reverse the x velocity
+
+        if(currFrame==0){
+            currFrame = 3;
+        }
+        else
+            currFrame--;
+        break;
+    }
+    case COLLISION_WEST:
+    {
+        setPosition(Vector2{tile.getPosition().x + size.x+tile.getSize().x, pos.y});
+        setVelocity(Vector2{-velocity.x, velocity.y}); // Reverse the x velocity
+
+        if(currFrame==0){
+            currFrame = 3;
+        }
+        else
+            currFrame--;
+
+
+        break;
+    }
+    
+    default:
+        break;
+    }
 }
 void Fireball::updateStateAndPhysic()
 {
@@ -45,13 +100,18 @@ void Fireball::updateStateAndPhysic()
     //Physics logic
         distanceLeft -= abs(velocity.x) * deltaTime;
 
+        if(velocity.x>0) 
+            facingDirection = DIRECTION_RIGHT;
+        else if(velocity.x<0)
+            facingDirection = DIRECTION_LEFT;
 
         
         // Update position based on velocity
         Entity::updateStateAndPhysic();
         velocity.y += World::GetGravity()*deltaTime;
     }
-void Fireball::updateSprite(){
+
+    void Fireball::updateSprite(){
     if (facingDirection == DIRECTION_RIGHT)
         switch (currFrame)
         {
@@ -97,4 +157,5 @@ void Fireball::Draw(){
     if (isOutOfDistance()) return; // Do not draw if out of distance
     updateSprite();
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
+
 }

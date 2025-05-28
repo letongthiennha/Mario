@@ -11,7 +11,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       form(form),
       normalSpeedX(500),
       accelerationX(600),
-      jumpInitSpeed(sqrt(500 * World::GetGravity() ))
+      jumpInitSpeed(sqrt(300 * World::GetGravity() ))
     //   invincibleFrameTime(0.1f),
     //   invincibleAcum(0.0f),
     //   invincibleFrame(0),
@@ -21,6 +21,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     //   immortalFrame(0),
     //   immortalMaxFrame(2)
 {
+    this->sprite = &ResourceManager::getTexture("SMALL_MARIO_0_RIGHT");
     if(form == MARIO_STATE_SMALL)
     {
         this->size = {32, 40};
@@ -33,10 +34,10 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     {
         this->size = {32, 56};
     }
-    NorthHb.SetSize({size.x/2, 5});
-    SouthHb.SetSize({size.x/2, 5});
-    WestHb.SetSize({5, size.y-5});
-    EastHb.SetSize({5, size.y-5});
+    NorthHb.SetSize({size.x/2, 1});
+    SouthHb.SetSize({size.x/2, 1});
+    WestHb.SetSize({1, size.y-5});
+    EastHb.SetSize({1, size.y-5});
     updateHitboxes();
     NorthHb.SetColor(RED);
     SouthHb.SetColor(GREEN);
@@ -491,10 +492,5 @@ void Mario::Draw(){
             fireball->Draw();
         }
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
-    // Draw hitboxes
 
-    NorthHb.Draw();
-    SouthHb.Draw();
-    WestHb.Draw();
-    EastHb.Draw();
 }

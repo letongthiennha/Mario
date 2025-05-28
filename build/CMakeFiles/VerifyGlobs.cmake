@@ -9,6 +9,7 @@ set(OLD_GLOB
   "D:/Project/Mario/src/Fireball.cpp"
   "D:/Project/Mario/src/GameClock.cpp"
   "D:/Project/Mario/src/Hitbox.cpp"
+  "D:/Project/Mario/src/Map.cpp"
   "D:/Project/Mario/src/Mario.cpp"
   "D:/Project/Mario/src/ResourceManager.cpp"
   "D:/Project/Mario/src/Tile.cpp"

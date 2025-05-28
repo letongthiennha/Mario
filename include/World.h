@@ -3,12 +3,16 @@
 #include "Tile.h"
 #include <vector>
 #include "Mario.h"
+#include"Map.h"
 class World
 {   
-    private:
-    static float GRAVITY;
-    std::vector<Tile*> interactiveTiles;
-    Mario player;
+private:
+    static  constexpr float GRAVITY=1800;
+    float currBackgroundStarX=0.0f;
+    Texture2D background= ResourceManager::getTexture("BACKGROUND_0");
+    Map map;
+    Mario &player;
+    std::vector<Tile *> &interactiveTiles;
     Camera2D camera;
 public:
     World();

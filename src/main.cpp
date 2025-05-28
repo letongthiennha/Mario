@@ -28,7 +28,7 @@ int main(){
                 GameClock::updateTimeAcum -= GameClock::GetUpdateDeltaTime();
             }    
         }
-            ClearBackground(RAYWHITE);
+            ClearBackground(BLUE);
             BeginDrawing();
             gw.DrawWorld();
             EndDrawing();

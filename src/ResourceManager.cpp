@@ -76,12 +76,46 @@ void ResourceManager::loadTextures()
     textures["FIRE_BALL_2_LEFT"] = FlipTextureHorizontal(textures["FIRE_BALL_2_RIGHT"]);
     textures["FIRE_BALL_3_LEFT"] = FlipTextureHorizontal(textures["FIRE_BALL_3_RIGHT"]);
     }
-    //TILE
+    //BACKGROUND
     {
-    textures["MAP1_GRASS_NORMAL"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_B.png");
-    textures["MAP1_GRASS_RIGHT_EDGE"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_E.png");
-    textures["MAP1_GRASS_LEFT_EDGE"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_F.png");
+    textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     }
+    //TILE
+    textures["MAP_0_TILE_A"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_A.png");
+    textures["MAP_0_TILE_B"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_B.png");
+    textures["MAP_0_TILE_C"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_C.png");
+    textures["MAP_0_TILE_D"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_D.png");
+    textures["MAP_0_TILE_E"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_E.png");
+    textures["MAP_0_TILE_F"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_F.png");
+    textures["MAP_0_TILE_G"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_G.png");
+    textures["MAP_0_TILE_H"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_H.png");
+    textures["MAP_0_TILE_I"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_I.png");
+    textures["MAP_0_TILE_J"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_J.png");
+    textures["MAP_0_TILE_K"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_K.png");
+    textures["MAP_0_TILE_L"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_L.png");
+    textures["MAP_0_TILE_M"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_M.png");
+    textures["MAP_0_TILE_N"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_N.png");
+    textures["MAP_0_TILE_O"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_O.png");
+    textures["MAP_0_TILE_P"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_P.png");
+    textures["MAP_0_TILE_Q"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_Q.png");
+    textures["MAP_0_TILE_R"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_R.png");
+    textures["MAP_0_TILE_S"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_S.png");
+    textures["MAP_0_TILE_T"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_T.png");
+    textures["MAP_0_TILE_U"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_U.png");
+    textures["MAP_0_TILE_V"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_V.png");
+    textures["MAP_0_TILE_W"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_W.png");
+    textures["MAP_0_TILE_X"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_X.png");
+    textures["MAP_0_TILE_Y"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_Y.png");
+    textures["MAP_0_TILE_Z"] = LoadTexture("resources/Entity/Tiles/Map 0/tile_Z.png");
+    {
+    textures["MAP_1_TILE_A"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_A.png");
+    textures["MAP_1_TILE_B"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_B.png");
+    textures["MAP_1_TILE_C"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_C.png");
+    textures["MAP_1_TILE_D"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_D.png");
+    textures["MAP_1_TILE_E"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_E.png");
+    textures["MAP_1_TILE_F"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_F.png");
+    }
+    
 }
 
 void ResourceManager::loadSounds(){

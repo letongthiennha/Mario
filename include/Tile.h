@@ -6,10 +6,9 @@
 class Tile : public Entity {
 private:
     void updateSprite() override{};
-    TileType type;
 
 public:
-    Tile(Vector2 pos, TileType type, std::string key);
+    Tile(Vector2 pos,int map,  char key);
     void Draw() override;
     
 };
