@@ -438,6 +438,30 @@ src/ResourceManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ResourceManager.cpp.s
 .PHONY : src/ResourceManager.cpp.s
 
+src/SoundControoler.obj: src/SoundControoler.cpp.obj
+.PHONY : src/SoundControoler.obj
+
+# target to build an object file
+src/SoundControoler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj
+.PHONY : src/SoundControoler.cpp.obj
+
+src/SoundControoler.i: src/SoundControoler.cpp.i
+.PHONY : src/SoundControoler.i
+
+# target to preprocess a source file
+src/SoundControoler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/SoundControoler.cpp.i
+.PHONY : src/SoundControoler.cpp.i
+
+src/SoundControoler.s: src/SoundControoler.cpp.s
+.PHONY : src/SoundControoler.s
+
+# target to generate assembly for a file
+src/SoundControoler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/SoundControoler.cpp.s
+.PHONY : src/SoundControoler.cpp.s
+
 src/Tile.obj: src/Tile.cpp.obj
 .PHONY : src/Tile.obj
 
@@ -553,6 +577,9 @@ help:
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s
+	@echo ... src/SoundControoler.obj
+	@echo ... src/SoundControoler.i
+	@echo ... src/SoundControoler.s
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s

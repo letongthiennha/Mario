@@ -1,0 +1,40 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "resources/Map/map0.json",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "resources/Entity/Tileset.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "resources/Map/map0.json": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 615.3333333333333,
+                "y": 537.9999999999999
+            }
+        }
+    },
+    "last.imagePath": "D:/Project/Mario/resources/Entity/Tiles",
+    "map.height": 30,
+    "map.lastUsedFormat": "json",
+    "map.width": 50,
+    "openFiles": [
+        "resources/Map/map0.json",
+        "resources/Entity/Tileset.tsx"
+    ],
+    "project": "Tile.tiled-project",
+    "recentFiles": [
+        "resources/Entity/Tileset.tsx",
+        "resources/Map/map0.json"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}

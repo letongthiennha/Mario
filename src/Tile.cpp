@@ -1,8 +1,8 @@
 #include "Tile.h"
 #include"ResourceManager.h"
-Tile::Tile(Vector2 pos,int map,char key):Entity(pos,{32,32},WHITE)
+Tile::Tile(Vector2 pos,int map,int key):Entity(pos,{32,32},WHITE)
 {
-    std::string keyStr = "MAP_" + std::to_string(map) + "_TILE_" + key;
+    std::string keyStr ="TILE_" + std::to_string(key);
     sprite = &ResourceManager::getInstance().getTexture(keyStr);
 }
 

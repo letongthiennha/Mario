@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Project/Mario/src/Map.cpp" "CMakeFiles/Mario.dir/src/Map.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Map.cpp.obj.d"
   "D:/Project/Mario/src/Mario.cpp" "CMakeFiles/Mario.dir/src/Mario.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Mario.cpp.obj.d"
   "D:/Project/Mario/src/ResourceManager.cpp" "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj.d"
+  "D:/Project/Mario/src/SoundControoler.cpp" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj.d"
   "D:/Project/Mario/src/Tile.cpp" "CMakeFiles/Mario.dir/src/Tile.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
   "D:/Project/Mario/src/World.cpp" "CMakeFiles/Mario.dir/src/World.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/World.cpp.obj.d"
   "D:/Project/Mario/src/main.cpp" "CMakeFiles/Mario.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/main.cpp.obj.d"

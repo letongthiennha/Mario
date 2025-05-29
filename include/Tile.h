@@ -8,7 +8,7 @@ private:
     void updateSprite() override{};
 
 public:
-    Tile(Vector2 pos,int map,  char key);
+    Tile(Vector2 pos,int map,  int key);
     void Draw() override;
     
 };

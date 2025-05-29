@@ -2,7 +2,7 @@
 #include "ResourceManager.h"
 #include "Map.h"
 
-World::World():player(map.getPlayer()), interactiveTiles(map.getInteractiveTiles()){
+World::World():player(), interactiveTiles(map.getInteractiveTiles()){
 
         map.LoadMap(0);
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
@@ -64,8 +64,8 @@ void World::DrawWorld()
         DrawTextureEx(background, Vector2{currBackgroundStarX-background.width*1.3f,-200}, 0.0f, 1.3f, WHITE);
         DrawTextureEx(background,Vector2{currBackgroundStarX,-200},0.0f,1.3f,WHITE);
         DrawTextureEx(background,Vector2{currBackgroundStarX+background.width*1.3f,-200},0.0f,1.3f,WHITE);
-
         map.Draw();
+        player.Draw();
         EndMode2D();
 }
 const float World::GetGravity()

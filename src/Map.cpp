@@ -1,8 +1,10 @@
 #include "Map.h"
-Mario &Map::getPlayer()
+#include "json.hpp"
+#include <iostream>
+#include <fstream>
+void Map::LoadFromJsonFile(const std::string& mapFileName)
 {
-    // TODO: insert return statement here
-    return player;
+	
 }
 
 std::vector<Tile *> &Map::getInteractiveTiles()
@@ -18,7 +20,7 @@ float Map::getMapWidth() const
 
 Map::Map()
 
-    : player()
+    
 {
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
@@ -36,51 +38,33 @@ Map::~Map()
 void Map::LoadMap(int mapNumber)
 {
     char* map = nullptr;
-    std::string mapFileName = "resources/Map/map" +std::to_string(mapNumber) + ".txt";
-    map=LoadFileText(mapFileName.c_str());
-    char*orignalMap = map;
-    std::vector<std::string> MapDraw;
+    std::string mapFileName = "resources/Map/Map" +std::to_string(mapNumber) + ".json";
+    std::ifstream file(mapFileName);
+	if (!file) {
+		std::cerr << "Could not open json file " << mapFileName << std::endl;
+		return;
+	}
+	nlohmann::json mapJson;
+	file >> mapJson;
 
-    while(*map != '\0'){
-        while(*map!='>')
-            map++;
-        map++;
-        map++;
-        while(*map!='<'){
-            std::string currLine;
-            while(*map!='\n'){
-                currLine += *map;
-                map++;
-            }
-            map++;
-            MapDraw.push_back(currLine);
-        }
-        map++;
-    }
-    UnloadFileText(orignalMap);
-    width = ((float)MapDraw[0].size()-2) * 32.0f;
-    map = nullptr;
-    for (int i = 0;i<MapDraw.size();i++)
-    {
-        for (int j = 0;j<MapDraw[i].size();j++)
-        {
-            char key = MapDraw[i][j];
-            if(key=='/')
-            {
-                interactiveTiles.push_back(new Tile(Vector2{(float)(j-1)*32, (float)(i-1)*32}, mapNumber, '/'));
-            }
-            else
-            if(key=='A')
-            {
-                nonInterativeTile.push_back(new Tile(Vector2{(float)(j-1)*32, (float)(i-1)*32}, mapNumber, key));
-            }
-            else if(key!=' ')
-            {
-                interactiveTiles.push_back(new Tile(Vector2{(float)(j-1)*32, (float)(i-1)*32}, mapNumber, key));
-            }
-        }
-    }
-}
+	int width = mapJson["width"];
+	int height = mapJson["height"];
+	this->width = (float) width * 32.0f;
+	int tilewidth = mapJson["tilewidth"];
+	std::vector<int> data = mapJson["layers"][0]["data"];
+
+	for (int y = 0; y < height; ++y) {
+		for (int x = 0; x < width; ++x) {
+			int tileId = data[y * width + x];
+			if (tileId == 0)
+                continue;
+            else if(tileId==1)
+				nonInterativeTile.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
+            else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
+			}
+		}
+	}
+
 
 void Map::Draw() 
 {
@@ -94,5 +78,4 @@ void Map::Draw()
         tile->Draw();
     }
 
-    player.Draw();
 }

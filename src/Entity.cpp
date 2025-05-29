@@ -10,10 +10,7 @@ void Entity::setSize(Vector2 size)
     this->size = size;
 }
 
-void Entity::setAngle(float angle)
-{
-    this->angle = angle;
-}
+
 
 void Entity::setState(EntityState state)
 {
@@ -62,10 +59,7 @@ Vector2 Entity::getSize() const
 {
     return this->size;
 }
-float Entity::getAngle() const
-{
-    return this->angle;
-}
+
 EntityState Entity::getState() const
 {
     return this->state;
@@ -91,7 +85,6 @@ sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
-angle(0),
 state(ENTITY_STATE_IDLE),
 color(color),
 frameTime(frameTime),

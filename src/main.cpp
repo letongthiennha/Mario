@@ -9,15 +9,20 @@
 #include "Fireball.h"
 #include <iostream>
 #include "Tile.h"
+#include "SoundControoler.h"
 int main(){
     InitWindow(1600, 900, "Mario");
+    InitAudioDevice();
     // World gameWorld;
     World::InitWorld();
     World gw;
     SetTargetFPS(144);
+    SoundController::getInstance().PlaySound("TEST");
+    PlayMusicStream(ResourceManager::getInstance().getMusics("Test"));
 
     bool isPaused = false;
     while(!WindowShouldClose()){
+        UpdateMusicStream(ResourceManager::getInstance().getMusics("Test"));
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
         if(!isPaused){
             GameClock::getInstance().updateTimeAcum += GetFrameTime();
@@ -35,5 +40,5 @@ int main(){
     }
     ResourceManager::getInstance().unloadResource();
     CloseWindow();
-    
+
 }

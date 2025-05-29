@@ -28,7 +28,7 @@ class ResourceManager{
         void unloadResource();
         // Texture
         // Access an element by typing getTexture[nameofanimation+index]
-        Texture2D &getTexture(std::string);
-        Sound &getSounds(std::string name);
-        Music &getMusics(std::string name);
+        Texture2D &getTexture(const std::string&);
+        Sound &getSounds(const std::string& name);
+        Music &getMusics(const std::string& name);
 };

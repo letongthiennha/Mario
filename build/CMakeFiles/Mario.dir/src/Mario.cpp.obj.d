@@ -190,4 +190,5 @@ CMakeFiles/Mario.dir/src/Mario.cpp.obj: D:\Project\Mario\src\Mario.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ D:/Project/Mario/include/SoundControoler.h

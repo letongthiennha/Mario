@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Mario.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
   "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj"
+  "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/World.cpp.obj"

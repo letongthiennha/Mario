@@ -10,7 +10,6 @@ protected:
     Vector2 pos;
     Vector2 size;
     Rectangle rect; //Used for collision detection
-    float angle;
     EntityState state;
     Color color;
     Texture2D *sprite;

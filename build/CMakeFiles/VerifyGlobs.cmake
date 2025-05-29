@@ -12,6 +12,7 @@ set(OLD_GLOB
   "D:/Project/Mario/src/Map.cpp"
   "D:/Project/Mario/src/Mario.cpp"
   "D:/Project/Mario/src/ResourceManager.cpp"
+  "D:/Project/Mario/src/SoundControoler.cpp"
   "D:/Project/Mario/src/Tile.cpp"
   "D:/Project/Mario/src/World.cpp"
   "D:/Project/Mario/src/main.cpp"

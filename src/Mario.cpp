@@ -3,6 +3,7 @@
 #include "World.h"
 #include <cmath>
 #include <iostream>
+#include "SoundControoler.h"
 //FUll constructor
 Mario::Mario(Vector2 pos, int lives, MarioState form)
     : Entity(pos, {32,40}, Vector2{0, 0}, WHITE, 0.1f, 2, DIRECTION_RIGHT),
@@ -67,6 +68,7 @@ void Mario::setState(EntityState state)
 void Mario::fire()
 {
     fireballs.push_back(new Fireball(pos, facingDirection));
+    SoundController::getInstance().PlaySound("MARIO_FIREBALL");
 }
 
 void Mario::changeToBig()
@@ -74,6 +76,8 @@ void Mario::changeToBig()
     form = MARIO_STATE_BIG;
     this->size = {32, 56};
     maxFrame = 2;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
+
 }
 
 void Mario::changeToFire()
@@ -81,6 +85,7 @@ void Mario::changeToFire()
     form = MARIO_STATE_FIRE;
     this->size = {32, 56};
     maxFrame = 2;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
 }
 
 void Mario::changeToSmall()
@@ -130,6 +135,8 @@ void Mario::jump()
 {
     state = ENTITY_STATE_JUMPING;
     velocity.y = -jumpInitSpeed;
+    SoundController::getInstance().PlaySound("MARIO_JUMP");
+
 }
 
 void Mario::Duck()
@@ -180,8 +187,10 @@ void Mario::HandleInput()
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
     else moveNoWhere();
     if(state==ENTITY_STATE_ON_GROUD){
-        if(IsKeyPressed(KEY_UP))
+        if(IsKeyPressed(KEY_UP)){
             jump();
+
+        }
         if(IsKeyDown(KEY_DOWN)&& form!=MARIO_STATE_SMALL){
             Duck();
         }
@@ -479,8 +488,8 @@ void Mario::updateHitboxes(){
 
     }
     else{
-    EastHb.SetSize({5, size.y-5});
-    WestHb.SetSize({5, size.y-5});
+    EastHb.SetSize({1, size.y-5});
+    WestHb.SetSize({1, size.y-5});
     Entity::updateHitboxes();
     }
 }
@@ -492,5 +501,8 @@ void Mario::Draw(){
             fireball->Draw();
         }
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
-
+    NorthHb.Draw();
+    SouthHb.Draw();
+    EastHb.Draw();
+    WestHb.Draw();
 }
