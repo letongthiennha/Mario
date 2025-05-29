@@ -1,5 +1,5 @@
-#include "World.h"
-#include "ResourceManager.h"
+#include "../include/World.h"
+#include "../include/ResourceManager.h"
 float World::GRAVITY = 0.0f;
 
 World::World() : player()

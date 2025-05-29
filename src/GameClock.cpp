@@ -1,4 +1,4 @@
-#include "GameClock.h"
+#include "../include/GameClock.h"
 double GameClock::updateTimeAcum = 0.0;
 
 

@@ -1,7 +1,7 @@
-#include "Fireball.h"
-#include "GameClock.h"
-#include "World.h"
-#include "ResourceManager.h"
+#include "../include/Fireball.h"
+#include "../include/GameClock.h"
+#include "../include/World.h"
+#include "../include/ResourceManager.h"
 const float Fireball::MAX_DISTANCE = 1000.0f;
 const float Fireball::FIREBALL_SPEEDX = 500.0f;
 Fireball::Fireball(Vector2 pos, Direction direction) : Entity(pos, Vector2{ 16, 16 }, WHITE), distanceLeft(MAX_DISTANCE)

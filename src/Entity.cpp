@@ -1,5 +1,5 @@
-#include "Entity.h"
-#include "GameClock.h"
+#include "../include/Entity.h"
+#include "../include/GameClock.h"
 void Entity::setPosition(Vector2 pos)
 {
     this->pos = pos;

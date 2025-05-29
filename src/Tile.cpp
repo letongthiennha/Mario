@@ -1,5 +1,5 @@
-#include "Tile.h"
-#include"ResourceManager.h"
+#include "../include/Tile.h"
+#include "../include/ResourceManager.h"
 Tile::Tile(Vector2 pos, TileType type,std::string key):Entity(pos,{32,32},WHITE)
 {
     this->type = type;

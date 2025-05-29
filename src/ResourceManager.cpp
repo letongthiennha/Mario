@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "../include/ResourceManager.h"
 std::unordered_map<std::string, Texture2D> ResourceManager::textures;
 std::unordered_map<std::string, Sound> ResourceManager::sounds;
 std::unordered_map<std::string, Music> ResourceManager::musics;

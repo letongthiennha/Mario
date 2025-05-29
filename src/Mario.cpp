@@ -1,6 +1,6 @@
-#include "Mario.h"
-#include "GameClock.h"
-#include "World.h"
+#include "../include/Mario.h"
+#include "../include/GameClock.h"
+#include "../include/World.h"
 #include <cmath>
 #include <iostream>
 //FUll constructor
@@ -490,7 +490,9 @@ void Mario::Draw(){
         {
             fireball->Draw();
         }
-    DrawTexture(*sprite, pos.x, pos.y, WHITE);
+    if (sprite != nullptr) {
+        DrawTexture(*sprite, pos.x, pos.y, WHITE);
+    }
     // Draw hitboxes
 
     NorthHb.Draw();

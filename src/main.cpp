@@ -1,14 +1,12 @@
-
-
 #include "raylib.h"
-#include "Application.h"
-#include "ResourceManager.h"
-#include "Mario.h"
-#include "GameClock.h"
-#include "World.h"
-#include "Fireball.h"
+#include "../include/Application.h"
+#include "../include/ResourceManager.h"
+#include "../include/Mario.h"
+#include "../include/GameClock.h"
+#include "../include/World.h"
+#include "../include/Fireball.h"
+#include "../include/Tile.h"
 #include <iostream>
-#include "Tile.h"
 int main(){
     InitWindow(1600, 900, "Mario");
     // World gameWorld;
