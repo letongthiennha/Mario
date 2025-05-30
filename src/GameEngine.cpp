@@ -1,4 +1,3 @@
-/* File: GameEngine.cpp */
 #include "../include/GameEngine.h"
 
 GameEngine::GameEngine(int width, int height) : screenWidth(width), screenHeight(height), isPaused(false), isGameOver(false), startDelay(1.0f) {
@@ -9,22 +8,17 @@ GameEngine::GameEngine(int width, int height) : screenWidth(width), screenHeight
     player = &world->getPlayer();
     spawnMonsters();
     // Initial collision check to settle Goombas on tiles
-    for (auto& monster : monsters) {
+    for (auto& monster : world->getMonsters()) {
         if (!monster->getIsActive()) continue;
         for (auto const& tile : world->getInteractiveTiles()) {
             CollisionInfo collision = monster->CheckCollisionType(*tile);
-            dynamic_cast<Goomba*>(monster)->handleCollision(*tile, collision);
+            monster->handleCollision(*tile, collision); // Virtual method call
         }
     }
     SetTargetFPS(144);
 }
 
 GameEngine::~GameEngine() {
-    for (auto& monster : monsters) {
-        delete monster;
-        monster = nullptr;
-    }
-    monsters.clear();
     delete world;
     ResourceManager::unloadResource();
     CloseWindow();
@@ -32,33 +26,44 @@ GameEngine::~GameEngine() {
 
 void GameEngine::spawnMonsters() {
     // Spawn Goombas exactly on tile tops (y=700 or y=500, adjusted for Goomba height 20)
-    monsters.push_back(new Goomba(Vector2{32, 700 - 20}));  // On tile at x=32, y=700
-    monsters.push_back(new Goomba(Vector2{96, 700 - 20}));  // On tile at x=96, y=700
-    monsters.push_back(new Goomba(Vector2{352, 700 - 20})); // On tile at x=352, y=700
-    monsters.push_back(new Goomba(Vector2{416, 500 - 20})); // On tile at x=416, y=500
+    world->addMonster(new Goomba(Vector2{32, 700 - 20}, 50.0f));  // On tile at x=32, y=700
+    world->addMonster(new Goomba(Vector2{96, 700 - 20}, 50.0f));  // On tile at x=96, y=700
+    world->addMonster(new Goomba(Vector2{352, 700 - 20}, 50.0f)); // On tile at x=352, y=700
+    world->addMonster(new Goomba(Vector2{416, 500 - 20}, 50.0f)); // On tile at x=416, y=500
 }
 
 void GameEngine::update() {
     if (IsKeyPressed(KEY_Q)) isPaused = !isPaused;
-    if (isPaused || isGameOver) return;
-    
+    if (isPaused) return;
+
+    if (isGameOver && IsKeyPressed(KEY_R)) {
+        // Restart: Reset game state
+        delete world;
+        World::InitWorld();
+        world = new World();
+        player = &world->getPlayer();
+        spawnMonsters();
+        for (auto& monster : world->getMonsters()) {
+            if (!monster->getIsActive()) continue;
+            for (auto const& tile : world->getInteractiveTiles()) {
+                CollisionInfo collision = monster->CheckCollisionType(*tile);
+                monster->handleCollision(*tile, collision); // Virtual method call
+            }
+        }
+        isGameOver = false;
+        startDelay = 1.0f;
+    }
+
+    if (isGameOver) return;
+
     GameClock::updateTimeAcum += GetFrameTime();
     startDelay -= GetFrameTime();
     while (GameClock::updateTimeAcum >= GameClock::GetUpdateDeltaTime()) {
         world->UpdateWorld();
-        
-        // Update monsters
-        for (auto& monster : monsters) {
+
+        // Check player-monster collisions
+        for (auto& monster : world->getMonsters()) {
             if (!monster->getIsActive()) continue;
-            monster->updateStateAndPhysic();
-            
-            // Check monster-tile collisions
-            for (auto const& tile : world->getInteractiveTiles()) {
-                CollisionInfo collision = monster->CheckCollisionType(*tile);
-                dynamic_cast<Goomba*>(monster)->handleCollision(*tile, collision);
-            }
-            
-            // Check player-monster collision after delay
             if (startDelay <= 0) {
                 CollisionInfo playerCollision = player->CheckCollisionType(*monster);
                 if (playerCollision == COLLISION_SOUTH) {
@@ -79,11 +84,8 @@ void GameEngine::draw() {
     ClearBackground(RAYWHITE);
     BeginDrawing();
     world->DrawWorld();
-    for (auto& monster : monsters) {
-        monster->Draw();
-    }
     if (isGameOver) {
-        DrawText("Game Over!", screenWidth / 2 - 100, screenHeight / 2, 40, RED);
+        DrawText("Game Over! Press R to Restart", screenWidth / 2 - 200, screenHeight / 2, 40, RED);
     }
     EndDrawing();
 }
