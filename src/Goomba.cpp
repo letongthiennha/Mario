@@ -1,4 +1,3 @@
-/* File: Goomba.cpp */
 #include "../include/Goomba.h"
 
 void Goomba::updateSprite() {
@@ -12,13 +11,17 @@ void Goomba::updateSprite() {
 
 Goomba::Goomba(Vector2 pos, float speed) 
     : Monster(pos, Vector2{30, 20}, BROWN, speed) {
-    velocity.x = -speed; // Move left by default, using passed speed
+    velocity.x = -speed; // Move left by default
     sprite = &ResourceManager::getTexture("GOOMBA_0_LEFT");
 }
 
 void Goomba::updateStateAndPhysic() {
     if (!isActive) return;
     Monster::updateStateAndPhysic();
+    if (pos.x < 0) {
+        pos.x = 0;
+        velocity.x = speed; // Reverse to move right
+    }
     updateSprite();
 }
 
@@ -32,11 +35,11 @@ void Goomba::handleCollision(const Tile& tile, CollisionInfo type) {
             break;
         case COLLISION_EAST:
             setPosition({tile.getPosition().x - size.x, pos.y});
-            velocity.x = -speed; // Reverse direction
+            velocity.x = -speed; // Move left
             break;
         case COLLISION_WEST:
             setPosition({tile.getPosition().x + tile.getSize().x, pos.y});
-            velocity.x = speed; // Reverse direction
+            velocity.x = speed;  // Move right
             break;
         default:
             break;
