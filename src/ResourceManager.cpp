@@ -82,6 +82,11 @@ void ResourceManager::loadTextures()
     textures["MAP1_GRASS_RIGHT_EDGE"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_E.png");
     textures["MAP1_GRASS_LEFT_EDGE"] = LoadTexture("resources/Entity/Tiles/Map 1/tile_F.png");
     }
+    //MONSTER
+    {
+    textures["GOOMBA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_0.png");
+    textures["GOOMBA_0_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_0_RIGHT"]);
+    }
 }
 
 void ResourceManager::loadSounds(){

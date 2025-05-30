@@ -500,3 +500,7 @@ void Mario::Draw(){
     WestHb.Draw();
     EastHb.Draw();
 }
+
+MarioState Mario::getForm() const {
+    return form;
+}

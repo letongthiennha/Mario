@@ -56,6 +56,7 @@ class Mario: public Entity{
         int getLives() const;
         bool getIsDucking() const;
         std::list<Fireball*>* getFireballs() ;
+        MarioState getForm() const; // Getter for form
         // Methods
         void jump();
         void moveLeft();
