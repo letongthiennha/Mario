@@ -1,6 +1,8 @@
-/* File: World.cpp */
 #include "../include/World.h"
 #include "../include/ResourceManager.h"
+#include "../include/Monster.h"
+#include "../include/Fireball.h"
+
 float World::GRAVITY = 0.0f;
 
 World::World() : player() {
@@ -9,7 +11,6 @@ World::World() : player() {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 700}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 300}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
-
     interactiveTiles.push_back(new Tile(Vector2{10 * 32, 700}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
     interactiveTiles.push_back(new Tile(Vector2{11 * 32, 500}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
     for (int i = 12; i < 25; i++) {
@@ -28,6 +29,19 @@ World::~World() {
         tile = nullptr;
     }
     interactiveTiles.clear();
+    for (auto& monster : monsters) {
+        delete monster;
+        monster = nullptr;
+    }
+    monsters.clear();
+}
+
+void World::addMonster(Monster* monster) {
+    monsters.push_back(monster);
+}
+
+std::vector<Monster*>& World::getMonsters() {
+    return monsters;
 }
 
 void World::UpdateWorld() {
@@ -51,6 +65,15 @@ void World::UpdateWorld() {
     }
 
     player.updateStateAndPhysic();
+
+    for (auto& monster : monsters) {
+        if (!monster->getIsActive()) continue;
+        monster->updateStateAndPhysic();
+        for (auto const& tile : interactiveTiles) {
+            CollisionInfo collision = monster->CheckCollisionType(*tile);
+            monster->handleCollision(*tile, collision); // Virtual method call
+        }
+    }
 }
 
 void World::DrawWorld() {       
@@ -60,6 +83,10 @@ void World::DrawWorld() {
     // Draw interactive tiles
     for (auto& tile : interactiveTiles) {
         tile->Draw();
+    }
+    // Draw monsters
+    for (auto& monster : monsters) {
+        monster->Draw();
     }
     EndMode2D();
 }
