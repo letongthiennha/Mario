@@ -1,18 +1,16 @@
-/* File: ../include/Goomba.h */
 #ifndef GOOMBA_H
 #define GOOMBA_H
 #include "Monster.h"
-#include "ResourceManager.h"
 #include "Tile.h"
+#include "ResourceManager.h"
 
 class Goomba : public Monster {
+public:
+    Goomba(Vector2 pos, float speed);
+    void updateStateAndPhysic();
+    void Draw();
+    void handleCollision(const Tile& tile, CollisionInfo type) override;
 private:
     void updateSprite();
-public:
-    Goomba(Vector2 pos, float speed = 200.0f);
-    void updateStateAndPhysic() override;
-    void handleCollision(const Tile& tile, CollisionInfo type);
-    void Draw() override;
 };
-
-#endif // GOOMBA_H
+#endif
