@@ -1,6 +1,5 @@
-/* File: Monster.cpp */
 #include "../include/Monster.h"
-
+#include "../include/World.h"
 Monster::Monster(Vector2 pos, Vector2 size, Color color, float speed) 
     : Entity(pos, size, color), speed(speed), isActive(true) {}
 
@@ -11,6 +10,9 @@ void Monster::updateStateAndPhysic() {
     pos.x += velocity.x * GameClock::GetUpdateDeltaTime();
     pos.y += velocity.y * GameClock::GetUpdateDeltaTime();
     velocity.y += World::GetGravity() * GameClock::GetUpdateDeltaTime();
+    if (velocity.y > 0 && state != ENTITY_STATE_ON_GROUD) {
+        state = ENTITY_STATE_FALLING;
+    }
     updateHitboxes();
 }
 

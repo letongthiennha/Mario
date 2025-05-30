@@ -14,6 +14,7 @@ public:
     
     virtual void updateStateAndPhysic();
     virtual void Draw();
+    virtual void handleCollision(const Tile& tile, CollisionInfo type) = 0; // Pure virtual
     
     bool getIsActive() const;
     void setIsActive(bool active);
