@@ -132,7 +132,9 @@ CMakeFiles/Mario.dir/src/Mario.cpp.obj: D:\Project\Mario\src\Mario.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
- D:/Project/Mario/include/Map.h C:/msys64/ucrt64/include/c++/14.2.0/cmath \
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/cmath \
  C:/msys64/ucrt64/include/math.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/specfun.h \
  C:/msys64/ucrt64/include/c++/14.2.0/limits \

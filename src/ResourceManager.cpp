@@ -137,13 +137,13 @@ void ResourceManager::unloadResource(){
     unloadMusics();
 }
 //Getters
-Texture2D& ResourceManager::getTexture( const std::string& name){
+Texture2D& ResourceManager::getTexture( const std::string& name) {
     return textures[name];
 }
-Sound &ResourceManager::getSounds(const std::string& name){
+Sound &ResourceManager::getSounds(const std::string& name) {
     return sounds[name];
 }
-Music &ResourceManager::getMusics(const std::string& name){
+Music &ResourceManager::getMusics(const std::string& name) {
     return musics[name];
 }
 

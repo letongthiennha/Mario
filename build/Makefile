@@ -270,6 +270,30 @@ src/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.s
 .PHONY : src/Application.cpp.s
 
+src/CollisionMediator.obj: src/CollisionMediator.cpp.obj
+.PHONY : src/CollisionMediator.obj
+
+# target to build an object file
+src/CollisionMediator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj
+.PHONY : src/CollisionMediator.cpp.obj
+
+src/CollisionMediator.i: src/CollisionMediator.cpp.i
+.PHONY : src/CollisionMediator.i
+
+# target to preprocess a source file
+src/CollisionMediator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CollisionMediator.cpp.i
+.PHONY : src/CollisionMediator.cpp.i
+
+src/CollisionMediator.s: src/CollisionMediator.cpp.s
+.PHONY : src/CollisionMediator.s
+
+# target to generate assembly for a file
+src/CollisionMediator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CollisionMediator.cpp.s
+.PHONY : src/CollisionMediator.cpp.s
+
 src/Entity.obj: src/Entity.cpp.obj
 .PHONY : src/Entity.obj
 
@@ -556,6 +580,9 @@ help:
 	@echo ... src/Application.obj
 	@echo ... src/Application.i
 	@echo ... src/Application.s
+	@echo ... src/CollisionMediator.obj
+	@echo ... src/CollisionMediator.i
+	@echo ... src/CollisionMediator.s
 	@echo ... src/Entity.obj
 	@echo ... src/Entity.i
 	@echo ... src/Entity.s

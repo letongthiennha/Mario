@@ -143,7 +143,6 @@ void Mario::Duck()
 {
     this->isDucking = true;
 }
-//Handle Situation
 
 
 std::list<Fireball *> *Mario::getFireballs()
@@ -151,33 +150,6 @@ std::list<Fireball *> *Mario::getFireballs()
     return &fireballs;
 }
 
-void Mario::HandleTileCollision(const Tile &tile, CollisionInfo type)
-{
-    if(type==COLLISION_NONE)
-        return;
-    switch (type)
-    {
-    case COLLISION_SOUTH:
-        setPosition({pos.x, tile.getPosition().y - size.y});
-        state = ENTITY_STATE_ON_GROUD;
-        velocity.y = 0;
-        break;
-    case COLLISION_NORTH:
-        setPosition({pos.x, tile.getPosition().y + tile.getSize().y});
-        velocity.y = 0;
-        break;
-    case COLLISION_EAST:
-        setPosition({tile.getPosition().x - size.x, pos.y});
-        velocity.x = 0;
-        break;
-    case COLLISION_WEST:
-        setPosition({tile.getPosition().x + tile.getSize().x, pos.y});
-        velocity.x = 0;
-        break;
-    default:
-        break;
-    }
-}
 
 void Mario::HandleInput()
 {
@@ -501,8 +473,8 @@ void Mario::Draw(){
             fireball->Draw();
         }
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
-    NorthHb.Draw();
-    SouthHb.Draw();
-    EastHb.Draw();
-    WestHb.Draw();
+    // NorthHb.Draw();
+    // SouthHb.Draw();
+    // EastHb.Draw();
+    // WestHb.Draw();
 }

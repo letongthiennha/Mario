@@ -31,55 +31,7 @@ Fireball::Fireball(Vector2 pos, Direction direction) : Entity(pos, Vector2{ 16, 
 
 }
 
-void Fireball::HandleTileCollision(const Tile&tile,const CollisionInfo& direction)
-{
-    if(direction==COLLISION_NONE)
-        return;
-    switch (direction)
-    {
-    case COLLISION_SOUTH:
-    {
-        setPosition(Vector2{pos.x, tile.getPosition().y - size.y});
-        velocity.y = -500;
-        break;
-    }
-    case COLLISION_NORTH:
-    {
-        setPosition(Vector2{pos.x, tile.getPosition().y + tile.getSize().y});
-        velocity.y = 0;
-        break;
-    }
-    case COLLISION_EAST:
-        {
-        setPosition(Vector2{tile.getPosition().x-size.x, pos.y});
-        setVelocity(Vector2{-velocity.x, velocity.y}); // Reverse the x velocity
 
-        if(currFrame==0){
-            currFrame = 3;
-        }
-        else
-            currFrame--;
-        break;
-    }
-    case COLLISION_WEST:
-    {
-        setPosition(Vector2{tile.getPosition().x + size.x+tile.getSize().x, pos.y});
-        setVelocity(Vector2{-velocity.x, velocity.y}); // Reverse the x velocity
-
-        if(currFrame==0){
-            currFrame = 3;
-        }
-        else
-            currFrame--;
-
-
-        break;
-    }
-    
-    default:
-        break;
-    }
-}
 void Fireball::updateStateAndPhysic()
 {
     if(isOutOfDistance()) return; // Do not update if out of distance

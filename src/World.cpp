@@ -21,13 +21,16 @@ void World::UpdateWorld()
         for(auto const & tile : interactiveTiles)
                 {
                         CollisionInfo playerCollision = player.CheckCollisionType(*tile);
-                        player.HandleTileCollision(*tile, playerCollision);
+                        if(playerCollision)
+                        collisionMediator.HandleCollision(&player, tile);
                         
                         for(auto& fireball : *player.getFireballs())
                         {
                                 CollisionInfo fireballCollision = fireball->CheckCollisionType(*tile);
-
-                                        fireball->HandleTileCollision(*tile, fireballCollision);
+                                if(fireballCollision)
+                                {
+                                        collisionMediator.HandleCollision(fireball, tile);
+                                }
 
                         }
                 };

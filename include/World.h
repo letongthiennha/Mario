@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mario.h"
 #include"Map.h"
+#include "CollisionMediator.h"
 class World
 {   
 private:
@@ -11,6 +12,7 @@ private:
     float currBackgroundStarX=0.0f;
     Texture2D background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
     Map map;
+    CollisionMediator collisionMediator;
     Mario player;
     std::vector<Tile *> &interactiveTiles;
     Camera2D camera;

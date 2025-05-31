@@ -77,6 +77,12 @@ Direction Entity::getFacingDirection() const
     return this->facingDirection;
 }
 
+int Entity::getCurrFrame() const
+{
+    return this->currFrame;
+}
+
+
 
 //Full constructor
 Entity::Entity(Vector2 pos, Vector2 size, Vector2 velocity, Color color, 

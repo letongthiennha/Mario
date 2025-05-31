@@ -132,4 +132,5 @@ CMakeFiles/Mario.dir/src/World.cpp.obj: D:\Project\Mario\src\World.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
- D:/Project/Mario/include/Map.h
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h

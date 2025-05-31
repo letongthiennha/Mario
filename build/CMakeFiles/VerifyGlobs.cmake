@@ -5,6 +5,7 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Project/Mario/src/*.cpp")
 set(OLD_GLOB
   "D:/Project/Mario/src/Application.cpp"
+  "D:/Project/Mario/src/CollisionMediator.cpp"
   "D:/Project/Mario/src/Entity.cpp"
   "D:/Project/Mario/src/Fireball.cpp"
   "D:/Project/Mario/src/GameClock.cpp"

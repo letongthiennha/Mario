@@ -8,7 +8,6 @@
 class Mario: public Entity{
     private:
     //Image
-        Texture2D *sprite;
         // Properties
         int lives;
         bool isDucking;
@@ -68,8 +67,7 @@ class Mario: public Entity{
         void changeToBig();
         void changeToFire();
         void changeToSmall();
-        //Handle Situation
-        void HandleTileCollision(const Tile& tile,CollisionInfo type);
+
         // Game loop
         void HandleInput();
         void updateStateAndPhysic() override;

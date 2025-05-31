@@ -135,6 +135,7 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
  D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/ostream \
  C:/msys64/ucrt64/include/c++/14.2.0/ios \

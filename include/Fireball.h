@@ -12,7 +12,6 @@ private:
 public:
     
     Fireball(Vector2 pos, Direction direction);
-    void HandleTileCollision(const Tile&tile,const CollisionInfo& direction);
     void updateStateAndPhysic() override;
     bool isOutOfDistance() const;
     void Draw() override;
