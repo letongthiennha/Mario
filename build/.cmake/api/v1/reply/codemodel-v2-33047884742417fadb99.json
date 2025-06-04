@@ -30,18 +30,14 @@
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-raylib_build-Debug-28ade9759fdab421d893.json",
+					"jsonFile" : "directory-raylib_build-Debug-228e9db2ffa84fa7b394.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.5"
+						"string" : "3.25"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 1,
-					"source" : "C:/raylib/raylib",
-					"targetIndexes" : 
-					[
-						3
-					]
+					"source" : "C:/raylib"
 				},
 				{
 					"build" : "raylib_build/raylib",
@@ -50,14 +46,14 @@
 						3
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-raylib_build.raylib-Debug-7764de1017b5042173dd.json",
+					"jsonFile" : "directory-raylib_build.raylib-Debug-5ce35550f4f6653a5d9a.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.5"
+						"string" : "3.25"
 					},
 					"parentIndex" : 1,
 					"projectIndex" : 1,
-					"source" : "C:/raylib/raylib/src",
+					"source" : "C:/raylib/src",
 					"targetIndexes" : 
 					[
 						2
@@ -69,29 +65,29 @@
 					[
 						4
 					],
-					"jsonFile" : "directory-raylib_build.raylib.external.glfw-Debug-9de875d6c241410060ca.json",
+					"jsonFile" : "directory-raylib_build.raylib.external.glfw-Debug-4e5bfe9749843f9635b3.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.4"
 					},
 					"parentIndex" : 2,
 					"projectIndex" : 2,
-					"source" : "C:/raylib/raylib/src/external/glfw"
+					"source" : "C:/raylib/src/external/glfw"
 				},
 				{
 					"build" : "raylib_build/raylib/external/glfw/src",
-					"jsonFile" : "directory-raylib_build.raylib.external.glfw.src-Debug-1f017d52832a121287e3.json",
+					"jsonFile" : "directory-raylib_build.raylib.external.glfw.src-Debug-5366b6b4a48f32fd8332.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.4"
 					},
 					"parentIndex" : 3,
 					"projectIndex" : 2,
-					"source" : "C:/raylib/raylib/src/external/glfw/src",
+					"source" : "C:/raylib/src/external/glfw/src",
 					"targetIndexes" : 
 					[
 						1,
-						4
+						3
 					]
 				}
 			],
@@ -127,8 +123,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						3
+						2
 					]
 				},
 				{
@@ -142,7 +137,7 @@
 					"targetIndexes" : 
 					[
 						1,
-						4
+						3
 					]
 				}
 			],
@@ -151,35 +146,28 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Mario::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Mario-Debug-b3223f0648634758e012.json",
+					"jsonFile" : "target-Mario-Debug-eafaf186c4ab78cbf8c6.json",
 					"name" : "Mario",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "glfw::@0007fcb0029cba81045f",
-					"jsonFile" : "target-glfw-Debug-b88370c53be3ef25636e.json",
+					"jsonFile" : "target-glfw-Debug-1932a29a105ecdee7580.json",
 					"name" : "glfw",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "raylib::@52310b9926f245239ea7",
-					"jsonFile" : "target-raylib-Debug-4766f16a9c2537f568e0.json",
+					"jsonFile" : "target-raylib-Debug-5565468f00b18e3edf98.json",
 					"name" : "raylib",
-					"projectIndex" : 1
-				},
-				{
-					"directoryIndex" : 1,
-					"id" : "uninstall::@18eff071ff3fd9fe1150",
-					"jsonFile" : "target-uninstall-Debug-2687bca93542a97f66f1.json",
-					"name" : "uninstall",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "update_mappings::@0007fcb0029cba81045f",
-					"jsonFile" : "target-update_mappings-Debug-6cb55fe4340cbd79cb90.json",
+					"jsonFile" : "target-update_mappings-Debug-e387592ccf36af134269.json",
 					"name" : "update_mappings",
 					"projectIndex" : 2
 				}
@@ -189,8 +177,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Project/Mario/build",
-		"source" : "D:/Project/Mario"
+		"build" : "D:/CS202 Mario Project/build",
+		"source" : "D:/CS202 Mario Project"
 	},
 	"version" : 
 	{

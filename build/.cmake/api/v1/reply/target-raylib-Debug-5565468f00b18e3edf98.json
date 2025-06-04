@@ -22,12 +22,12 @@
 		],
 		"files" : 
 		[
-			"C:/raylib/raylib/src/CMakeLists.txt",
-			"C:/raylib/raylib/cmake/InstallConfigurations.cmake",
-			"C:/raylib/raylib/cmake/CompileDefinitions.cmake",
-			"C:/raylib/raylib/cmake/LibraryConfigurations.cmake",
+			"C:/raylib/src/CMakeLists.txt",
+			"C:/raylib/cmake/InstallConfigurations.cmake",
+			"C:/raylib/cmake/CompileDefinitions.cmake",
+			"C:/raylib/cmake/LibraryConfigurations.cmake",
 			"CMakeLists.txt",
-			"C:/raylib/raylib/cmake/GlfwImport.cmake"
+			"C:/raylib/cmake/GlfwImport.cmake"
 		],
 		"nodes" : 
 		[
@@ -37,13 +37,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 57,
+				"line" : 58,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 116,
+				"line" : 117,
 				"parent" : 0
 			},
 			{
@@ -59,13 +59,13 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 93,
+				"line" : 94,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 98,
+				"line" : 99,
 				"parent" : 0
 			},
 			{
@@ -87,7 +87,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 49,
+				"line" : 50,
 				"parent" : 0
 			},
 			{
@@ -106,19 +106,19 @@
 			{
 				"command" : 6,
 				"file" : 4,
-				"line" : 15,
+				"line" : 18,
 				"parent" : 13
 			},
 			{
 				"command" : 7,
 				"file" : 0,
-				"line" : 101,
+				"line" : 102,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 43,
+				"line" : 44,
 				"parent" : 0
 			},
 			{
@@ -161,16 +161,16 @@
 			[
 				{
 					"backtrace" : 14,
-					"path" : "D:/Project/Mario/include"
+					"path" : "D:/CS202 Mario Project/include"
 				},
 				{
 					"backtrace" : 15,
-					"path" : "C:/raylib/raylib/src"
+					"path" : "C:/raylib/src"
 				},
 				{
 					"backtrace" : 18,
 					"isSystem" : true,
-					"path" : "C:/raylib/raylib/src/external/glfw/include"
+					"path" : "C:/raylib/src/external/glfw/include"
 				}
 			],
 			"language" : "C",
@@ -221,7 +221,7 @@
 	"paths" : 
 	{
 		"build" : "raylib_build/raylib",
-		"source" : "C:/raylib/raylib/src"
+		"source" : "C:/raylib/src"
 	},
 	"sourceGroups" : 
 	[
@@ -271,7 +271,8 @@
 			[
 				28,
 				29,
-				30
+				30,
+				31
 			]
 		}
 	],
@@ -280,43 +281,43 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/raudio.c",
+			"path" : "C:/raylib/src/raudio.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/rcore.c",
+			"path" : "C:/raylib/src/rcore.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/rmodels.c",
+			"path" : "C:/raylib/src/rmodels.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/rshapes.c",
+			"path" : "C:/raylib/src/rshapes.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/rtext.c",
+			"path" : "C:/raylib/src/rtext.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/rtextures.c",
+			"path" : "C:/raylib/src/rtextures.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C:/raylib/raylib/src/utils.c",
+			"path" : "C:/raylib/src/utils.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -447,17 +448,22 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "C:/raylib/raylib/src/raylib.h",
+			"path" : "C:/raylib/src/raylib.h",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "C:/raylib/raylib/src/rlgl.h",
+			"path" : "C:/raylib/src/rcamera.h",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "C:/raylib/raylib/src/raymath.h",
+			"path" : "C:/raylib/src/rlgl.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/raylib/src/raymath.h",
 			"sourceGroupIndex" : 2
 		}
 	],

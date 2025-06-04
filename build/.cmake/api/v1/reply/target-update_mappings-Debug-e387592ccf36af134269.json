@@ -8,7 +8,7 @@
 		],
 		"files" : 
 		[
-			"C:/raylib/raylib/src/external/glfw/src/CMakeLists.txt"
+			"C:/raylib/src/external/glfw/src/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -32,7 +32,7 @@
 	"paths" : 
 	{
 		"build" : "raylib_build/raylib/external/glfw/src",
-		"source" : "C:/raylib/raylib/src/external/glfw/src"
+		"source" : "C:/raylib/src/external/glfw/src"
 	},
 	"sourceGroups" : 
 	[
@@ -63,12 +63,12 @@
 	[
 		{
 			"backtrace" : 1,
-			"path" : "C:/raylib/raylib/src/external/glfw/src/mappings.h.in",
+			"path" : "C:/raylib/src/external/glfw/src/mappings.h.in",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "C:/raylib/raylib/src/external/glfw/CMake/GenerateMappings.cmake",
+			"path" : "C:/raylib/src/external/glfw/CMake/GenerateMappings.cmake",
 			"sourceGroupIndex" : 1
 		},
 		{

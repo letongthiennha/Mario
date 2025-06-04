@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Project\Mario
+CMAKE_SOURCE_DIR = "D:\CS202 Mario Project"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Project\Mario\build
+CMAKE_BINARY_DIR = "D:\CS202 Mario Project\build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,7 +77,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake D:/Project/Mario/build/CPackSourceConfig.cmake
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake "D:/CS202 Mario Project/build/CPackSourceConfig.cmake"
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -151,9 +151,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles D:\Project\Mario\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\CS202 Mario Project\build\CMakeFiles" "D:\CS202 Mario Project\build\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\CS202 Mario Project\build\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -177,7 +177,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P "D:\CS202 Mario Project\build\CMakeFiles\VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
@@ -193,19 +193,6 @@ Mario: cmake_check_build_system
 Mario/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/build
 .PHONY : Mario/fast
-
-#=============================================================================
-# Target rules for targets named uninstall
-
-# Build rule for target.
-uninstall: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 uninstall
-.PHONY : uninstall
-
-# fast build rule for target.
-uninstall/fast:
-	$(MAKE) $(MAKESILENT) -f raylib_build\CMakeFiles\uninstall.dir\build.make raylib_build/CMakeFiles/uninstall.dir/build
-.PHONY : uninstall/fast
 
 #=============================================================================
 # Target rules for targets named raylib
@@ -342,6 +329,54 @@ src/GameClock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameClock.cpp.s
 .PHONY : src/GameClock.cpp.s
 
+src/GameEngine.obj: src/GameEngine.cpp.obj
+.PHONY : src/GameEngine.obj
+
+# target to build an object file
+src/GameEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameEngine.cpp.obj
+.PHONY : src/GameEngine.cpp.obj
+
+src/GameEngine.i: src/GameEngine.cpp.i
+.PHONY : src/GameEngine.i
+
+# target to preprocess a source file
+src/GameEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameEngine.cpp.i
+.PHONY : src/GameEngine.cpp.i
+
+src/GameEngine.s: src/GameEngine.cpp.s
+.PHONY : src/GameEngine.s
+
+# target to generate assembly for a file
+src/GameEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameEngine.cpp.s
+.PHONY : src/GameEngine.cpp.s
+
+src/Goomba.obj: src/Goomba.cpp.obj
+.PHONY : src/Goomba.obj
+
+# target to build an object file
+src/Goomba.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Goomba.cpp.obj
+.PHONY : src/Goomba.cpp.obj
+
+src/Goomba.i: src/Goomba.cpp.i
+.PHONY : src/Goomba.i
+
+# target to preprocess a source file
+src/Goomba.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Goomba.cpp.i
+.PHONY : src/Goomba.cpp.i
+
+src/Goomba.s: src/Goomba.cpp.s
+.PHONY : src/Goomba.s
+
+# target to generate assembly for a file
+src/Goomba.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Goomba.cpp.s
+.PHONY : src/Goomba.cpp.s
+
 src/Hitbox.obj: src/Hitbox.cpp.obj
 .PHONY : src/Hitbox.obj
 
@@ -389,6 +424,30 @@ src/Mario.s: src/Mario.cpp.s
 src/Mario.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mario.cpp.s
 .PHONY : src/Mario.cpp.s
+
+src/Monster.obj: src/Monster.cpp.obj
+.PHONY : src/Monster.obj
+
+# target to build an object file
+src/Monster.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Monster.cpp.obj
+.PHONY : src/Monster.cpp.obj
+
+src/Monster.i: src/Monster.cpp.i
+.PHONY : src/Monster.i
+
+# target to preprocess a source file
+src/Monster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Monster.cpp.i
+.PHONY : src/Monster.cpp.i
+
+src/Monster.s: src/Monster.cpp.s
+.PHONY : src/Monster.s
+
+# target to generate assembly for a file
+src/Monster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Monster.cpp.s
+.PHONY : src/Monster.cpp.s
 
 src/ResourceManager.obj: src/ResourceManager.cpp.obj
 .PHONY : src/ResourceManager.obj
@@ -500,7 +559,6 @@ help:
 	@echo ... package
 	@echo ... package_source
 	@echo ... rebuild_cache
-	@echo ... uninstall
 	@echo ... update_mappings
 	@echo ... Mario
 	@echo ... glfw
@@ -517,12 +575,21 @@ help:
 	@echo ... src/GameClock.obj
 	@echo ... src/GameClock.i
 	@echo ... src/GameClock.s
+	@echo ... src/GameEngine.obj
+	@echo ... src/GameEngine.i
+	@echo ... src/GameEngine.s
+	@echo ... src/Goomba.obj
+	@echo ... src/Goomba.i
+	@echo ... src/Goomba.s
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
 	@echo ... src/Mario.obj
 	@echo ... src/Mario.i
 	@echo ... src/Mario.s
+	@echo ... src/Monster.obj
+	@echo ... src/Monster.i
+	@echo ... src/Monster.s
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s
@@ -546,7 +613,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P "D:\CS202 Mario Project\build\CMakeFiles\VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

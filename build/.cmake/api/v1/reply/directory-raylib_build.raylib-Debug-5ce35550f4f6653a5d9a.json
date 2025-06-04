@@ -8,8 +8,8 @@
 		],
 		"files" : 
 		[
-			"C:/raylib/raylib/cmake/InstallConfigurations.cmake",
-			"C:/raylib/raylib/src/CMakeLists.txt"
+			"C:/raylib/cmake/InstallConfigurations.cmake",
+			"C:/raylib/src/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -19,7 +19,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 116,
+				"line" : 117,
 				"parent" : 0
 			},
 			{
@@ -72,9 +72,10 @@
 			"destination" : "include",
 			"paths" : 
 			[
-				"C:/raylib/raylib/src/raylib.h",
-				"C:/raylib/raylib/src/rlgl.h",
-				"C:/raylib/raylib/src/raymath.h"
+				"C:/raylib/src/raylib.h",
+				"C:/raylib/src/rcamera.h",
+				"C:/raylib/src/rlgl.h",
+				"C:/raylib/src/raymath.h"
 			],
 			"type" : "file"
 		},
@@ -104,7 +105,7 @@
 			"destination" : "lib/cmake/raylib",
 			"paths" : 
 			[
-				"C:/raylib/raylib/src/../cmake/raylib-config.cmake"
+				"C:/raylib/src/../cmake/raylib-config.cmake"
 			],
 			"type" : "file"
 		}
@@ -112,6 +113,6 @@
 	"paths" : 
 	{
 		"build" : "raylib_build/raylib",
-		"source" : "C:/raylib/raylib/src"
+		"source" : "C:/raylib/src"
 	}
 }

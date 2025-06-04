@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/Project/Mario/build"
+			"value" : "d:/CS202 Mario Project/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -611,7 +611,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Project/Mario/build/CMakeFiles/pkgRedirects"
+			"value" : "D:/CS202 Mario Project/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -695,7 +695,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/Project/Mario"
+			"value" : "D:/CS202 Mario Project"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1775,7 +1775,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Project/Mario/build/raylib_build/raylib/external/glfw"
+			"value" : "D:/CS202 Mario Project/build/raylib_build/raylib/external/glfw"
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -1919,7 +1919,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/raylib/raylib/src/external/glfw"
+			"value" : "C:/raylib/src/external/glfw"
 		},
 		{
 			"name" : "GLFW_USE_HYBRID_HPG",
@@ -1939,7 +1939,7 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Include everything disabled by default (for CI usage"
+					"value" : "Include everything disabled by default (for CI usage)"
 				}
 			],
 			"type" : "BOOL",
@@ -1955,7 +1955,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Project/Mario/build"
+			"value" : "D:/CS202 Mario Project/build"
 		},
 		{
 			"name" : "Mario_IS_TOP_LEVEL",
@@ -1979,7 +1979,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Project/Mario"
+			"value" : "D:/CS202 Mario Project"
 		},
 		{
 			"name" : "OFF",
@@ -2067,7 +2067,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "OFF"
+			"value" : "ON"
 		},
 		{
 			"name" : "SUPPORT_FILEFORMAT_JPG",
@@ -2079,7 +2079,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "OFF"
+			"value" : "ON"
 		},
 		{
 			"name" : "SUPPORT_FILEFORMAT_PNG",
@@ -2167,7 +2167,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Project/Mario/build/raylib_build/raylib"
+			"value" : "D:/CS202 Mario Project/build/raylib_build/raylib"
 		},
 		{
 			"name" : "raylib_IS_TOP_LEVEL",
@@ -2182,18 +2182,6 @@
 			"value" : "OFF"
 		},
 		{
-			"name" : "raylib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;opengl32;glu32;winmm;glfw;"
-		},
-		{
 			"name" : "raylib_SOURCE_DIR",
 			"properties" : 
 			[
@@ -2203,7 +2191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/raylib/raylib/src"
+			"value" : "C:/raylib/src"
 		}
 	],
 	"kind" : "cache",

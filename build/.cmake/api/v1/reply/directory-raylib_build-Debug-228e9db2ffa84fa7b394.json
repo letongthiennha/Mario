@@ -9,6 +9,6 @@
 	"paths" : 
 	{
 		"build" : "raylib_build",
-		"source" : "C:/raylib/raylib"
+		"source" : "C:/raylib"
 	}
 }

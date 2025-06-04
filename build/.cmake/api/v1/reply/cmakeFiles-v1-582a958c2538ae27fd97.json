@@ -2,19 +2,22 @@
 	"globsDependent" : 
 	[
 		{
-			"expression" : "D:/Project/Mario/src/*.cpp",
+			"expression" : "D:/CS202 Mario Project/src/*.cpp",
 			"paths" : 
 			[
-				"D:/Project/Mario/src/Application.cpp",
-				"D:/Project/Mario/src/Entity.cpp",
-				"D:/Project/Mario/src/Fireball.cpp",
-				"D:/Project/Mario/src/GameClock.cpp",
-				"D:/Project/Mario/src/Hitbox.cpp",
-				"D:/Project/Mario/src/Mario.cpp",
-				"D:/Project/Mario/src/ResourceManager.cpp",
-				"D:/Project/Mario/src/Tile.cpp",
-				"D:/Project/Mario/src/World.cpp",
-				"D:/Project/Mario/src/main.cpp"
+				"D:/CS202 Mario Project/src/Application.cpp",
+				"D:/CS202 Mario Project/src/Entity.cpp",
+				"D:/CS202 Mario Project/src/Fireball.cpp",
+				"D:/CS202 Mario Project/src/GameClock.cpp",
+				"D:/CS202 Mario Project/src/GameEngine.cpp",
+				"D:/CS202 Mario Project/src/Goomba.cpp",
+				"D:/CS202 Mario Project/src/Hitbox.cpp",
+				"D:/CS202 Mario Project/src/Mario.cpp",
+				"D:/CS202 Mario Project/src/Monster.cpp",
+				"D:/CS202 Mario Project/src/ResourceManager.cpp",
+				"D:/CS202 Mario Project/src/Tile.cpp",
+				"D:/CS202 Mario Project/src/World.cpp",
+				"D:/CS202 Mario Project/src/main.cpp"
 			],
 			"recurse" : true
 		}
@@ -26,7 +29,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeSystem.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -40,11 +43,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeCCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeCXXCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -108,7 +111,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeRCCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -237,15 +240,15 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/CMakeLists.txt"
+			"path" : "C:/raylib/CMakeLists.txt"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/CompilerFlags.cmake"
+			"path" : "C:/raylib/cmake/CompilerFlags.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/AddIfFlagCompiles.cmake"
+			"path" : "C:/raylib/cmake/AddIfFlagCompiles.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -284,7 +287,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/CMakeOptions.txt"
+			"path" : "C:/raylib/CMakeOptions.txt"
 		},
 		{
 			"isCMake" : true,
@@ -293,19 +296,15 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/EnumOption.cmake"
+			"path" : "C:/raylib/cmake/EnumOption.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/ParseConfigHeader.cmake"
+			"path" : "C:/raylib/cmake/ParseConfigHeader.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/Uninstall.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "C:/raylib/raylib/src/CMakeLists.txt"
+			"path" : "C:/raylib/src/CMakeLists.txt"
 		},
 		{
 			"isCMake" : true,
@@ -314,15 +313,15 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/JoinPaths.cmake"
+			"path" : "C:/raylib/cmake/JoinPaths.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/GlfwImport.cmake"
+			"path" : "C:/raylib/cmake/GlfwImport.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/LibraryConfigurations.cmake"
+			"path" : "C:/raylib/cmake/LibraryConfigurations.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -341,31 +340,31 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/CompileDefinitions.cmake"
+			"path" : "C:/raylib/cmake/CompileDefinitions.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/InstallConfigurations.cmake"
+			"path" : "C:/raylib/cmake/InstallConfigurations.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/LibraryPathToLinkerFlags.cmake"
+			"path" : "C:/raylib/cmake/LibraryPathToLinkerFlags.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/raylib.pc.in"
+			"path" : "C:/raylib/raylib.pc.in"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/raylib-config-version.cmake"
+			"path" : "C:/raylib/cmake/raylib-config-version.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/PopulateConfigVariablesLocally.cmake"
+			"path" : "C:/raylib/cmake/PopulateConfigVariablesLocally.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/cmake/PackConfigurations.cmake"
+			"path" : "C:/raylib/cmake/PackConfigurations.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -387,7 +386,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/src/external/glfw/CMakeLists.txt"
+			"path" : "C:/raylib/src/external/glfw/CMakeLists.txt"
 		},
 		{
 			"isCMake" : true,
@@ -441,7 +440,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/src/external/glfw/CMake/glfw3Config.cmake.in"
+			"path" : "C:/raylib/src/external/glfw/CMake/glfw3Config.cmake.in"
 		},
 		{
 			"isCMake" : true,
@@ -450,7 +449,7 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/src/external/glfw/src/CMakeLists.txt"
+			"path" : "C:/raylib/src/external/glfw/src/CMakeLists.txt"
 		},
 		{
 			"isCMake" : true,
@@ -459,14 +458,14 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/raylib/raylib/src/external/glfw/CMake/glfw3.pc.in"
+			"path" : "C:/raylib/src/external/glfw/CMake/glfw3.pc.in"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "D:/Project/Mario/build",
-		"source" : "D:/Project/Mario"
+		"build" : "D:/CS202 Mario Project/build",
+		"source" : "D:/CS202 Mario Project"
 	},
 	"version" : 
 	{
