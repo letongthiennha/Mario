@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 project(Mario)
 
 
+set(CMAKE_C_COMPILER "C:/msys64/ucrt64/bin/gcc.exe")
+set(CMAKE_CXX_COMPILER "C:/msys64/ucrt64/bin/g++.exe")
+
 
 # Set C++ standard
 
@@ -24,7 +27,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
 # Path to Raylib 
 
-set(RAYLIB_DIR "C:/raylib/raylib")
+set(RAYLIB_DIR "C:/raylib")
 
 
 # Add Raylib
@@ -36,10 +39,6 @@ add_subdirectory(${RAYLIB_DIR} raylib_build)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
-
-
-
-
 
 
 # Link Raylib and required system libraries
