@@ -10,7 +10,7 @@ void Goomba::updateSprite() {
 }
 
 Goomba::Goomba(Vector2 pos, float speed) 
-    : Monster(pos, Vector2{30, 20}, BROWN, speed) {
+    : Monster(pos, Vector2{32, 32}, BROWN, speed) {
     velocity.x = -speed; // Move left by default
     sprite = &ResourceManager::getTexture("GOOMBA_0_LEFT");
 }
@@ -49,10 +49,14 @@ void Goomba::handleCollision(const Tile& tile, CollisionInfo type) {
 void Goomba::Draw() {
     if (!isActive) return;
     updateSprite();
-    if (sprite != nullptr) {
-        Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
-        Rectangle dest = {pos.x, pos.y, 30.0f, 20.0f};
-        Vector2 origin = {15.0f, 10.0f};
-        DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+    if (sprite == nullptr || sprite->id == 0) {
+        // Optionally print debug info
+        // std::cout << "Goomba sprite not loaded or invalid!" << std::endl;
+        return;
     }
+    // Use the actual size of the Goomba (size.x, size.y) for destination rectangle
+    Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
+    Rectangle dest = {pos.x, pos.y, size.x, size.y};
+    Vector2 origin = {0.0f, 0.0f}; // Draw from top-left corner
+    DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
 }

@@ -1,4 +1,5 @@
 #include "../include/ResourceManager.h"
+#include <iostream>
 std::unordered_map<std::string, Texture2D> ResourceManager::textures;
 std::unordered_map<std::string, Sound> ResourceManager::sounds;
 std::unordered_map<std::string, Music> ResourceManager::musics;
@@ -84,6 +85,7 @@ void ResourceManager::loadTextures()
     }
     //MONSTERS
     {
+    std::cout << "Loading: resources/Entity/Monsters/Goomba/Goomba_0.png" << std::endl;
     textures["GOOMBA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_0.png");
     textures["GOOMBA_0_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_0_RIGHT"]);
     }
