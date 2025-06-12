@@ -7,7 +7,6 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/_mingw_mac.h \
  C:/msys64/ucrt64/include/_mingw_secapi.h \
  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
- D:/Project/Mario/include/Application.h \
  D:/Project/Mario/include/ResourceManager.h \
  C:/msys64/ucrt64/include/c++/14.2.0/unordered_map \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
@@ -123,7 +122,6 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  D:/Project/Mario/include/CollisionInfo.h \
  D:/Project/Mario/include/MarioState.h \
  D:/Project/Mario/include/Fireball.h D:/Project/Mario/include/Tile.h \
- D:/Project/Mario/include/TileType.h \
  C:/msys64/ucrt64/include/c++/14.2.0/list \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \

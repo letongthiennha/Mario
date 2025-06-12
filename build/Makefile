@@ -246,30 +246,6 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\build.make raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
-src/Application.obj: src/Application.cpp.obj
-.PHONY : src/Application.obj
-
-# target to build an object file
-src/Application.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.obj
-.PHONY : src/Application.cpp.obj
-
-src/Application.i: src/Application.cpp.i
-.PHONY : src/Application.i
-
-# target to preprocess a source file
-src/Application.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.i
-.PHONY : src/Application.cpp.i
-
-src/Application.s: src/Application.cpp.s
-.PHONY : src/Application.s
-
-# target to generate assembly for a file
-src/Application.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.s
-.PHONY : src/Application.cpp.s
-
 src/CollisionMediator.obj: src/CollisionMediator.cpp.obj
 .PHONY : src/CollisionMediator.obj
 
@@ -577,9 +553,6 @@ help:
 	@echo ... Mario
 	@echo ... glfw
 	@echo ... raylib
-	@echo ... src/Application.obj
-	@echo ... src/Application.i
-	@echo ... src/Application.s
 	@echo ... src/CollisionMediator.obj
 	@echo ... src/CollisionMediator.i
 	@echo ... src/CollisionMediator.s

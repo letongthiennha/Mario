@@ -1,7 +1,6 @@
 
 
 #include "raylib.h"
-#include "Application.h"
 #include "ResourceManager.h"
 #include "Mario.h"
 #include "GameClock.h"
@@ -39,6 +38,24 @@ int main(){
             EndDrawing();
     }
     ResourceManager::getInstance().unloadResource();
-    CloseWindow();
+
+    // Load the image (not texture!)
+    // Image image = LoadImage("resources/luigi.png");
+
+    // // Set nearest-neighbor filter mode
+    // SetTextureFilter(LoadTextureFromImage(image), TEXTURE_FILTER_POINT);  // Optional for display
+
+    // // Scale by 4x using nearest neighbor
+    // ImageResizeNN(&image, image.width * 2, image.height * 2);
+
+    // // Save the upscaled image
+    // ExportImage(image, "resources/output.png");
+
+    // // Clean up
+    // UnloadImage(image);
+
+    // return 0;
+
+    // CloseWindow();
 
 }

@@ -120,8 +120,7 @@ CMakeFiles/Mario.dir/src/Map.cpp.obj: D:\Project\Mario\src\Map.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/cerrno \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
- D:/Project/Mario/include/TileType.h D:/Project/Mario/include/Mario.h \
- D:/Project/Mario/include/MarioState.h \
+ D:/Project/Mario/include/Mario.h D:/Project/Mario/include/MarioState.h \
  D:/Project/Mario/include/Fireball.h \
  C:/msys64/ucrt64/include/c++/14.2.0/list \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \

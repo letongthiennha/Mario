@@ -424,9 +424,9 @@ void Mario::updateStateAndPhysic(){
     if(velocity.y>0){
         state= ENTITY_STATE_FALLING;
     }
-    if(state==ENTITY_STATE_ON_GROUD){
-        velocity.y = 0;
-    }
+    // if(state==ENTITY_STATE_ON_GROUD){
+    //     velocity.y = 0;
+    // }
     velocity.y += World::GetGravity() * deltaTime;
     
     Entity::updateStateAndPhysic();

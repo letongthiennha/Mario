@@ -5,6 +5,9 @@
     },
     "activeFile": "resources/Map/map0.json",
     "expandedProjectPaths": [
+        ".",
+        "resources",
+        "resources/Map"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -17,8 +20,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 561,
-                "y": 583.5
+                "x": 843.5,
+                "y": 581.5
             }
         },
         "resources/Map/map1.json": {

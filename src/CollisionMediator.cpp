@@ -25,6 +25,8 @@ void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, Collis
 
         case COLLISION_EAST:
         {
+            if(mario->getFacingDirection()==DIRECTION_LEFT)
+                return;
             mario->setPosition(Vector2{tile->getPosition().x - mario->getSize().x, mario->getPosition().y});
             mario->setVelocity(Vector2{0, mario->getVelocity().y}); // Reverse the x velocity
             break;
@@ -32,6 +34,8 @@ void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, Collis
         
         case COLLISION_WEST:
         {
+            if(mario->getFacingDirection()==DIRECTION_RIGHT)
+                return;
             mario->setPosition(Vector2{tile->getPosition().x + tile->getSize().x, mario->getPosition().y});
             mario->setVelocity(Vector2{0, mario->getVelocity().y}); // Reverse the x velocity
             break;

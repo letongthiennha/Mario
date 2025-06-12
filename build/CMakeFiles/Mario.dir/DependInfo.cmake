@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/Project/Mario/src/Application.cpp" "CMakeFiles/Mario.dir/src/Application.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Application.cpp.obj.d"
   "D:/Project/Mario/src/CollisionMediator.cpp" "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj.d"
   "D:/Project/Mario/src/Entity.cpp" "CMakeFiles/Mario.dir/src/Entity.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
   "D:/Project/Mario/src/Fireball.cpp" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj.d"

@@ -1,7 +1,6 @@
 #pragma once
 #include "Entity.h"
 #include "ResourceManager.h"
-#include "TileType.h"
 #include <string>
 class Tile : public Entity {
 private:

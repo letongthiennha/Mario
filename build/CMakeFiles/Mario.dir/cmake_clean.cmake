@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Mario.dir/src/Application.cpp.obj"
-  "CMakeFiles/Mario.dir/src/Application.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj"
   "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Entity.cpp.obj"
