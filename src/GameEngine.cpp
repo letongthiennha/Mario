@@ -25,6 +25,14 @@ GameEngine::~GameEngine() {
 }
 
 void GameEngine::spawnMonsters() {
+    world->addMonster(new FlyingGoomba(Vector2{300, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{300, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{500, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{500, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{700, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{700, 400}, 50.0f));
+    world->addMonster(new FlyingGoomba(Vector2{900, 400}, 50.0f));
+
     // Spawn Goombas exactly on tile tops (y=700 or y=500, adjusted for Goomba height 20)
     world->addMonster(new Goomba(Vector2{32, 700 - 20}, 50.0f));  // On tile at x=32, y=700
     world->addMonster(new Goomba(Vector2{96, 700 - 20}, 50.0f));  // On tile at x=96, y=700
