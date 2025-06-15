@@ -3,6 +3,7 @@
 #include "World.h"
 #include "raylib.h"
 #include "Goomba.h"
+#include "FlyingGoomba.h"
 
 class GameEngine {
 public:
