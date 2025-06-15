@@ -3,6 +3,7 @@
 #include "World.h"
 #include <cmath>
 #include <iostream>
+#include "SoundControoler.h"
 //FUll constructor
 Mario::Mario(Vector2 pos, int lives, MarioState form)
     : Entity(pos, {32,40}, Vector2{0, 0}, WHITE, 0.1f, 2, DIRECTION_RIGHT),
@@ -11,7 +12,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       form(form),
       normalSpeedX(500),
       accelerationX(600),
-      jumpInitSpeed(sqrt(500 * World::GetGravity() ))
+      jumpInitSpeed(sqrt(300 * World::GetGravity() ))
     //   invincibleFrameTime(0.1f),
     //   invincibleAcum(0.0f),
     //   invincibleFrame(0),
@@ -21,6 +22,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     //   immortalFrame(0),
     //   immortalMaxFrame(2)
 {
+    this->sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_RIGHT");
     if(form == MARIO_STATE_SMALL)
     {
         this->size = {32, 40};
@@ -33,10 +35,10 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     {
         this->size = {32, 56};
     }
-    NorthHb.SetSize({size.x/2, 5});
-    SouthHb.SetSize({size.x/2, 5});
-    WestHb.SetSize({5, size.y-5});
-    EastHb.SetSize({5, size.y-5});
+    NorthHb.SetSize({size.x/2, 1});
+    SouthHb.SetSize({size.x/2, 1});
+    WestHb.SetSize({1, size.y-5});
+    EastHb.SetSize({1, size.y-5});
     updateHitboxes();
     NorthHb.SetColor(RED);
     SouthHb.SetColor(GREEN);
@@ -66,6 +68,7 @@ void Mario::setState(EntityState state)
 void Mario::fire()
 {
     fireballs.push_back(new Fireball(pos, facingDirection));
+    SoundController::getInstance().PlaySound("MARIO_FIREBALL");
 }
 
 void Mario::changeToBig()
@@ -73,6 +76,8 @@ void Mario::changeToBig()
     form = MARIO_STATE_BIG;
     this->size = {32, 56};
     maxFrame = 2;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
+
 }
 
 void Mario::changeToFire()
@@ -80,6 +85,7 @@ void Mario::changeToFire()
     form = MARIO_STATE_FIRE;
     this->size = {32, 56};
     maxFrame = 2;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
 }
 
 void Mario::changeToSmall()
@@ -96,10 +102,10 @@ void Mario::moveLeft()
         velocity.x = 0;
         frameAcum = 0;
         }
-        if(velocity.x+accelerationX * GameClock::GetUpdateDeltaTime()<=-normalSpeedX)
+        if(velocity.x+accelerationX * GameClock::getInstance().FIXED_TIME_STEP<=-normalSpeedX)
         velocity.x = -normalSpeedX;
     else
-        velocity.x -= accelerationX * GameClock::GetUpdateDeltaTime();
+        velocity.x -= accelerationX * GameClock::getInstance().FIXED_TIME_STEP;
 }
 
 void Mario::moveRight()
@@ -110,10 +116,10 @@ void Mario::moveRight()
         velocity.x = 0;
         frameAcum = 0;
     }
-        if(velocity.x+accelerationX * GameClock::GetUpdateDeltaTime()>=normalSpeedX)
+        if(velocity.x+accelerationX * GameClock::getInstance().FIXED_TIME_STEP>=normalSpeedX)
             velocity.x = normalSpeedX;
         else
-        velocity.x += accelerationX * GameClock::GetUpdateDeltaTime();
+        velocity.x += accelerationX * GameClock::getInstance().FIXED_TIME_STEP;
 }
 
 void Mario::moveNoWhere()
@@ -129,13 +135,14 @@ void Mario::jump()
 {
     state = ENTITY_STATE_JUMPING;
     velocity.y = -jumpInitSpeed;
+    SoundController::getInstance().PlaySound("MARIO_JUMP");
+
 }
 
 void Mario::Duck()
 {
     this->isDucking = true;
 }
-//Handle Situation
 
 
 std::list<Fireball *> *Mario::getFireballs()
@@ -143,44 +150,19 @@ std::list<Fireball *> *Mario::getFireballs()
     return &fireballs;
 }
 
-void Mario::HandleTileCollision(const Tile &tile, CollisionInfo type)
-{
-    if(type==COLLISION_NONE)
-        return;
-    switch (type)
-    {
-    case COLLISION_SOUTH:
-        setPosition({pos.x, tile.getPosition().y - size.y});
-        state = ENTITY_STATE_ON_GROUD;
-        velocity.y = 0;
-        break;
-    case COLLISION_NORTH:
-        setPosition({pos.x, tile.getPosition().y + tile.getSize().y});
-        velocity.y = 0;
-        break;
-    case COLLISION_EAST:
-        setPosition({tile.getPosition().x - size.x, pos.y});
-        velocity.x = 0;
-        break;
-    case COLLISION_WEST:
-        setPosition({tile.getPosition().x + tile.getSize().x, pos.y});
-        velocity.x = 0;
-        break;
-    default:
-        break;
-    }
-}
 
 void Mario::HandleInput()
 {
-    const float deltaTime = GameClock::GetUpdateDeltaTime();
+    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
 
     if (IsKeyDown(KEY_RIGHT)) moveRight();
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
     else moveNoWhere();
     if(state==ENTITY_STATE_ON_GROUD){
-        if(IsKeyPressed(KEY_UP))
+        if(IsKeyPressed(KEY_UP)){
             jump();
+
+        }
         if(IsKeyDown(KEY_DOWN)&& form!=MARIO_STATE_SMALL){
             Duck();
         }
@@ -213,25 +195,25 @@ void Mario::updateSprite(){
 
                     if(facingDirection==DIRECTION_RIGHT) {
                                 if(currFrame==0){
-                                sprite = &ResourceManager::getTexture("SMALL_MARIO_0_RIGHT");
+                                sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_RIGHT");
                                 }
                                 else if(currFrame==1) {
-                                sprite = &ResourceManager::getTexture("SMALL_MARIO_1_RIGHT");
+                                sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_1_RIGHT");
                                 }
                             }
                     else {
                         if(currFrame==0){
-                                sprite= &ResourceManager::getTexture("SMALL_MARIO_0_LEFT");
+                                sprite= &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_LEFT");
                                 }
                         else if(currFrame==1) {
-                                sprite = &ResourceManager::getTexture("SMALL_MARIO_1_LEFT");
+                                sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_1_LEFT");
                                 }
                         }
                 }
                     //Staying
                     if(velocity.x==0&&!isDucking){
-                                if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getTexture("SMALL_MARIO_0_RIGHT");
-                            else sprite = &ResourceManager::getTexture("SMALL_MARIO_0_LEFT");
+                                if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_RIGHT");
+                            else sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_LEFT");
                     }
                    
                 }
@@ -240,17 +222,17 @@ void Mario::updateSprite(){
                 if(state==ENTITY_STATE_JUMPING){    
                 //Image
                     if(facingDirection==DIRECTION_RIGHT)
-                        sprite = &ResourceManager::getTexture("SMALL_MARIO_JUMPING_0_RIGHT");
+                        sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_JUMPING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
-                        sprite = &ResourceManager::getTexture("SMALL_MARIO_JUMPING_0_LEFT");
+                        sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_JUMPING_0_LEFT");
                 }
                 //Falling
                 if(state==ENTITY_STATE_FALLING){
                     //Image
                     if(facingDirection==DIRECTION_RIGHT)
-                        sprite = &ResourceManager::getTexture("SMALL_MARIO_FALLING_0_RIGHT");
+                        sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
-                        sprite = &ResourceManager::getTexture("SMALL_MARIO_FALLING_0_LEFT");
+                        sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_LEFT");
                 }
                 break;
             }
@@ -263,37 +245,37 @@ void Mario::updateSprite(){
                 
                     if(facingDirection==DIRECTION_RIGHT) {
                                 if(currFrame==0){
-                                sprite = &ResourceManager::getTexture("SUPER_MARIO_0_RIGHT");
+                                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_0_RIGHT");
                                 }
                                 else if(currFrame==1) {
-                                sprite = &ResourceManager::getTexture("SUPER_MARIO_1_RIGHT");
+                                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_1_RIGHT");
                                 }
                                 else if(currFrame==2) {
-                                sprite = &ResourceManager::getTexture("SUPER_MARIO_2_RIGHT");
+                                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_2_RIGHT");
                                 }
                             }
                     else {
                         if(currFrame==0){
-                                sprite= &ResourceManager::getTexture("SUPER_MARIO_0_LEFT");
+                                sprite= &ResourceManager::getInstance().getTexture("SUPER_MARIO_0_LEFT");
                                 }
                         else if(currFrame==1) {
-                                sprite = &ResourceManager::getTexture("SUPER_MARIO_1_LEFT");
+                                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_1_LEFT");
                                 }
                         else if(currFrame==2) {
-                                sprite = &ResourceManager::getTexture("SUPER_MARIO_2_LEFT");
+                                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_2_LEFT");
                                 }
                         }
                 }
                     //Staying
                 if(velocity.x==0&&!isDucking){
-                            if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getTexture("SUPER_MARIO_0_RIGHT");
-                            else sprite = &ResourceManager::getTexture("SUPER_MARIO_0_LEFT");
+                            if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_0_RIGHT");
+                            else sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_0_LEFT");
                     }
                     //Ducking
                 if(isDucking){
                         velocity.x = 0;
-                        if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getTexture("SUPER_MARIO_DUCKING_0_RIGHT");
-                        else sprite = &ResourceManager::getTexture("SUPER_MARIO_DUCKING_0_LEFT");
+                        if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_DUCKING_0_RIGHT");
+                        else sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_DUCKING_0_LEFT");
                 }
             }
 
@@ -301,17 +283,17 @@ void Mario::updateSprite(){
             if(state==ENTITY_STATE_JUMPING){    
                 //Image
                     if(facingDirection==DIRECTION_RIGHT)
-                        sprite = &ResourceManager::getTexture("SUPER_MARIO_JUMPING_0_RIGHT");
+                        sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_JUMPING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
-                        sprite = &ResourceManager::getTexture("SUPER_MARIO_JUMPING_0_LEFT");
+                        sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_JUMPING_0_LEFT");
             }
                 //Falling
             if(state==ENTITY_STATE_FALLING){
                     //Image
                     if(facingDirection==DIRECTION_RIGHT)
-                        sprite = &ResourceManager::getTexture("SUPER_MARIO_FALLING_0_RIGHT");
+                        sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_FALLING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
-                        sprite = &ResourceManager::getTexture("SUPER_MARIO_FALLING_0_LEFT");
+                        sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_FALLING_0_LEFT");
             }
             break;
         }
@@ -323,37 +305,37 @@ void Mario::updateSprite(){
                             if(velocity.x!=0&&!isDucking){
                                 if(facingDirection==DIRECTION_RIGHT) {
                                             if(currFrame==0){
-                                            sprite = &ResourceManager::getTexture("FIRE_MARIO_0_RIGHT");
+                                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_0_RIGHT");
                                             }
                                             else if(currFrame==1) {
-                                            sprite = &ResourceManager::getTexture("FIRE_MARIO_1_RIGHT");
+                                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_1_RIGHT");
                                             }
                                             else if(currFrame==2) {
-                                            sprite = &ResourceManager::getTexture("FIRE_MARIO_2_RIGHT");
+                                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_2_RIGHT");
                                             }
                                         }
                                 else {
                                     if(currFrame==0){
-                                            sprite= &ResourceManager::getTexture("FIRE_MARIO_0_LEFT");
+                                            sprite= &ResourceManager::getInstance().getTexture("FIRE_MARIO_0_LEFT");
                                             }
                                     else if(currFrame==1) {
-                                            sprite = &ResourceManager::getTexture("FIRE_MARIO_1_LEFT");
+                                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_1_LEFT");
                                             }
                                     else if(currFrame==2) {
-                                            sprite = &ResourceManager::getTexture("FIRE_MARIO_2_LEFT");
+                                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_2_LEFT");
                                             }
                                     }
                             }
                                 //Staying
                             if(velocity.x==0&&!isDucking){
-                                        if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getTexture("FIRE_MARIO_0_RIGHT");
-                                        else sprite = &ResourceManager::getTexture("FIRE_MARIO_0_LEFT");
+                                        if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_0_RIGHT");
+                                        else sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_0_LEFT");
                                 }
                                 //Ducking
                             if(isDucking){
                                     velocity.x = 0;
-                                    if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getTexture("FIRE_MARIO_DUCKING_0_RIGHT");
-                                    else sprite = &ResourceManager::getTexture("FIRE_MARIO_DUCKING_0_LEFT");
+                                    if(facingDirection==DIRECTION_RIGHT) sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_DUCKING_0_RIGHT");
+                                    else sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_DUCKING_0_LEFT");
                             }
                         }
             
@@ -361,17 +343,17 @@ void Mario::updateSprite(){
                         if(state==ENTITY_STATE_JUMPING){    
                             //Image
                                 if(facingDirection==DIRECTION_RIGHT)
-                                    sprite = &ResourceManager::getTexture("FIRE_MARIO_JUMPING_0_RIGHT");
+                                    sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_JUMPING_0_RIGHT");
                                 if(facingDirection==DIRECTION_LEFT)
-                                    sprite = &ResourceManager::getTexture("FIRE_MARIO_JUMPING_0_LEFT");
+                                    sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_JUMPING_0_LEFT");
                         }
                             //Falling
                         if(state==ENTITY_STATE_FALLING){
                                 //Image
                                 if(facingDirection==DIRECTION_RIGHT)
-                                    sprite = &ResourceManager::getTexture("FIRE_MARIO_FALLING_0_RIGHT");
+                                    sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_FALLING_0_RIGHT");
                                 if(facingDirection==DIRECTION_LEFT)
-                                    sprite = &ResourceManager::getTexture("FIRE_MARIO_FALLING_0_LEFT");
+                                    sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_FALLING_0_LEFT");
                         }
                         break;
             
@@ -381,7 +363,7 @@ void Mario::updateSprite(){
 
 void Mario::updateStateAndPhysic(){
     HandleInput();
-    const float deltaTime = GameClock::GetUpdateDeltaTime();
+    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
     switch (form)
     {
     case MARIO_STATE_SMALL:
@@ -442,9 +424,9 @@ void Mario::updateStateAndPhysic(){
     if(velocity.y>0){
         state= ENTITY_STATE_FALLING;
     }
-    if(state==ENTITY_STATE_ON_GROUD){
-        velocity.y = 0;
-    }
+    // if(state==ENTITY_STATE_ON_GROUD){
+    //     velocity.y = 0;
+    // }
     velocity.y += World::GetGravity() * deltaTime;
     
     Entity::updateStateAndPhysic();
@@ -478,8 +460,8 @@ void Mario::updateHitboxes(){
 
     }
     else{
-    EastHb.SetSize({5, size.y-5});
-    WestHb.SetSize({5, size.y-5});
+    EastHb.SetSize({1, size.y-5});
+    WestHb.SetSize({1, size.y-5});
     Entity::updateHitboxes();
     }
 }
@@ -491,10 +473,8 @@ void Mario::Draw(){
             fireball->Draw();
         }
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
-    // Draw hitboxes
-
-    NorthHb.Draw();
-    SouthHb.Draw();
-    WestHb.Draw();
-    EastHb.Draw();
+    // NorthHb.Draw();
+    // SouthHb.Draw();
+    // EastHb.Draw();
+    // WestHb.Draw();
 }

@@ -11,9 +11,7 @@ CMakeFiles/Mario.dir/src/Fireball.cpp.obj: \
  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
  D:/Project/Mario/include/Direction.h D:/Project/Mario/include/Hitbox.h \
  D:/Project/Mario/include/EnityState.h \
- D:/Project/Mario/include/CollisionInfo.h \
- D:/Project/Mario/include/GameClock.h D:/Project/Mario/include/World.h \
- D:/Project/Mario/include/Tile.h \
+ D:/Project/Mario/include/CollisionInfo.h D:/Project/Mario/include/Tile.h \
  D:/Project/Mario/include/ResourceManager.h \
  C:/msys64/ucrt64/include/c++/14.2.0/unordered_map \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
@@ -122,7 +120,7 @@ CMakeFiles/Mario.dir/src/Fireball.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/cerrno \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
- D:/Project/Mario/include/TileType.h \
+ D:/Project/Mario/include/GameClock.h D:/Project/Mario/include/World.h \
  C:/msys64/ucrt64/include/c++/14.2.0/vector \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
@@ -132,4 +130,6 @@ CMakeFiles/Mario.dir/src/Fireball.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/list \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h

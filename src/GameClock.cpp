@@ -1,9 +1,14 @@
 #include "GameClock.h"
-double GameClock::updateTimeAcum = 0.0;
-
-
-const double GameClock::GetUpdateDeltaTime()
+GameClock *GameClock::instance = nullptr;
+GameClock &GameClock::getInstance()
 {
-    return FIXED_TIME_STEP;
+    if(instance == nullptr) {
+        instance = new GameClock();
+        instance->updateTimeAcum = 0.0;
+    }
+    return *instance;
 }
+
+
+
 

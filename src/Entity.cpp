@@ -10,10 +10,7 @@ void Entity::setSize(Vector2 size)
     this->size = size;
 }
 
-void Entity::setAngle(float angle)
-{
-    this->angle = angle;
-}
+
 
 void Entity::setState(EntityState state)
 {
@@ -62,10 +59,7 @@ Vector2 Entity::getSize() const
 {
     return this->size;
 }
-float Entity::getAngle() const
-{
-    return this->angle;
-}
+
 EntityState Entity::getState() const
 {
     return this->state;
@@ -83,6 +77,12 @@ Direction Entity::getFacingDirection() const
     return this->facingDirection;
 }
 
+int Entity::getCurrFrame() const
+{
+    return this->currFrame;
+}
+
+
 
 //Full constructor
 Entity::Entity(Vector2 pos, Vector2 size, Vector2 velocity, Color color, 
@@ -91,7 +91,6 @@ sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
-angle(0),
 state(ENTITY_STATE_IDLE),
 color(color),
 frameTime(frameTime),
@@ -129,8 +128,8 @@ Entity::~Entity() {
 }
 void Entity::updateStateAndPhysic() {
     // Update position based on velocity
-    pos.x += velocity.x * GameClock::GetUpdateDeltaTime();
-    pos.y += velocity.y * GameClock::GetUpdateDeltaTime();
+    pos.x += velocity.x * GameClock::getInstance().FIXED_TIME_STEP;
+    pos.y += velocity.y * GameClock::getInstance().FIXED_TIME_STEP;
 
     // The rectangle is used on the other object
     // The hitbox is used on the current object to check the direction of the collision

@@ -1,23 +1,10 @@
 #include "World.h"
 #include "ResourceManager.h"
-float World::GRAVITY = 0.0f;
+#include "Map.h"
 
-World::World() : player()
-{
-        interactiveTiles.push_back(new Tile(Vector2{0, 700},  TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
-        for(int i=1;i<10;i++)
-        {
-                interactiveTiles.push_back(new Tile(Vector2{(float)i*32, 700},  TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-                interactiveTiles.push_back(new Tile(Vector2{(float)i*32, 300},  TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-        }
+World::World():player(), interactiveTiles(map.getInteractiveTiles()){
 
-        interactiveTiles.push_back(new Tile(Vector2{10*32, 700},  TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
-        interactiveTiles.push_back(new Tile(Vector2{11*32, 500},  TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
-        for(int i=12;i<25;i++)
-        {
-                interactiveTiles.push_back(new Tile(Vector2{(float)i*32, 500},  TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-                interactiveTiles.push_back(new Tile(Vector2{(float)i*32+64, 700},  TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-        }
+        map.LoadMap(0);
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
         camera.target = player.getPosition();
         camera.rotation = 0.0f;
@@ -26,50 +13,63 @@ World::World() : player()
 }
 World::~World()
 {
-        for(auto& tile : interactiveTiles)
-        {
-                delete tile;
-                tile = nullptr;
-        }
-        interactiveTiles.clear();
+
 }
 void World::UpdateWorld()
 {
-        camera.target = player.getPosition();
 
         for(auto const & tile : interactiveTiles)
                 {
                         CollisionInfo playerCollision = player.CheckCollisionType(*tile);
-                        player.HandleTileCollision(*tile, playerCollision);
+                        if(playerCollision)
+                        collisionMediator.HandleCollision(&player, tile);
                         
                         for(auto& fireball : *player.getFireballs())
                         {
                                 CollisionInfo fireballCollision = fireball->CheckCollisionType(*tile);
-                                switch (fireballCollision)
+                                if(fireballCollision)
                                 {
-                                case COLLISION_SOUTH:{
-                                        fireball->HandleGroundCollision(tile->getPosition().y);
-                                        break;
+                                        collisionMediator.HandleCollision(fireball, tile);
                                 }
-                                default:
-                                        break;
-                                }
+
                         }
                 };
-
         player.updateStateAndPhysic();
 
 }
 void World::DrawWorld()
-{       
-        BeginMode2D(camera);
-        //Draw player
-        player.Draw();
-        //Draw interactive tiles
-        for(auto& tile : interactiveTiles)
+{
+
+        camera.target.y = GetScreenHeight()/2;
+        if(player.getPosition().x>GetScreenWidth()/2&&player.getPosition().x<map.getMapWidth()-GetScreenWidth()/2)
         {
-                tile->Draw();
+                camera.target.x = player.getPosition().x ;
         }
+        else if(player.getPosition().x<GetScreenWidth()/2)
+        {
+                camera.target.x = GetScreenWidth()/2;
+        }
+        else camera.target.x=map.getMapWidth()-GetScreenWidth()/2;
+
+        if(camera.target.x-GetScreenWidth()/2>=currBackgroundStarX)
+        {
+            currBackgroundStarX = currBackgroundStarX+background.width*1.3f;
+        }
+        if(camera.target.x+GetScreenWidth()/2<=currBackgroundStarX+background.width*1.3f)
+        {
+            currBackgroundStarX = currBackgroundStarX-background.width*1.3f;
+        }
+
+    
+
+        
+        BeginMode2D(camera);
+        
+        DrawTextureEx(background, Vector2{currBackgroundStarX-background.width*1.3f,-200}, 0.0f, 1.3f, WHITE);
+        DrawTextureEx(background,Vector2{currBackgroundStarX,-200},0.0f,1.3f,WHITE);
+        DrawTextureEx(background,Vector2{currBackgroundStarX+background.width*1.3f,-200},0.0f,1.3f,WHITE);
+        map.Draw();
+        player.Draw();
         EndMode2D();
 }
 const float World::GetGravity()
@@ -79,6 +79,5 @@ const float World::GetGravity()
 void World::InitWorld()
 {
 
-        ResourceManager::loadResource();
-        GRAVITY = 2*GetScreenHeight();
+        ResourceManager::getInstance().loadResource();
 }

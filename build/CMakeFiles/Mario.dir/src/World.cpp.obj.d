@@ -120,7 +120,6 @@ CMakeFiles/Mario.dir/src/World.cpp.obj: D:\Project\Mario\src\World.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/cerrno \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
- D:/Project/Mario/include/TileType.h \
  C:/msys64/ucrt64/include/c++/14.2.0/vector \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
@@ -131,4 +130,6 @@ CMakeFiles/Mario.dir/src/World.cpp.obj: D:\Project\Mario\src\World.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/list \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h

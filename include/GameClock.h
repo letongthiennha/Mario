@@ -4,9 +4,13 @@
 class GameClock
 {
 private:
-    static constexpr double FIXED_TIME_STEP=1/360.0;
+    static GameClock *instance ;
 
+    GameClock() = default;
+    ~GameClock() = default;
 public:
-    static double updateTimeAcum;
-    static const double GetUpdateDeltaTime();
+    static  GameClock &getInstance();
+    double updateTimeAcum;
+    const double FIXED_TIME_STEP=1/360.0;
+
 };

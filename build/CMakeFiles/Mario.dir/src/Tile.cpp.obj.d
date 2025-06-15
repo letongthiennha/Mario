@@ -118,5 +118,4 @@ CMakeFiles/Mario.dir/src/Tile.cpp.obj: D:\Project\Mario\src\Tile.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/cstdio \
  C:/msys64/ucrt64/include/c++/14.2.0/cerrno \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
- D:/Project/Mario/include/TileType.h
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc

@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-
+#include "Tile.h"
 class Fireball: public Entity{
 private:
     Texture2D *sprite;
@@ -12,7 +12,6 @@ private:
 public:
     
     Fireball(Vector2 pos, Direction direction);
-    void HandleGroundCollision(float groundY);
     void updateStateAndPhysic() override;
     bool isOutOfDistance() const;
     void Draw() override;
