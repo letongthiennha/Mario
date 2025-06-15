@@ -4,15 +4,20 @@
 # SOURCES at CMakeLists.txt:21 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/Project/Mario/src/*.cpp")
 set(OLD_GLOB
+  "D:/Project/Mario/src/Button.cpp"
   "D:/Project/Mario/src/CollisionMediator.cpp"
   "D:/Project/Mario/src/Entity.cpp"
   "D:/Project/Mario/src/Fireball.cpp"
   "D:/Project/Mario/src/GameClock.cpp"
+  "D:/Project/Mario/src/GameState.cpp"
   "D:/Project/Mario/src/Hitbox.cpp"
   "D:/Project/Mario/src/Map.cpp"
   "D:/Project/Mario/src/Mario.cpp"
+  "D:/Project/Mario/src/MenuState.cpp"
   "D:/Project/Mario/src/ResourceManager.cpp"
   "D:/Project/Mario/src/SoundControoler.cpp"
+  "D:/Project/Mario/src/State.cpp"
+  "D:/Project/Mario/src/StateManager.cpp"
   "D:/Project/Mario/src/Tile.cpp"
   "D:/Project/Mario/src/World.cpp"
   "D:/Project/Mario/src/main.cpp"

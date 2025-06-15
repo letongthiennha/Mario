@@ -246,6 +246,30 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\build.make raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+src/Button.obj: src/Button.cpp.obj
+.PHONY : src/Button.obj
+
+# target to build an object file
+src/Button.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Button.cpp.obj
+.PHONY : src/Button.cpp.obj
+
+src/Button.i: src/Button.cpp.i
+.PHONY : src/Button.i
+
+# target to preprocess a source file
+src/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Button.cpp.i
+.PHONY : src/Button.cpp.i
+
+src/Button.s: src/Button.cpp.s
+.PHONY : src/Button.s
+
+# target to generate assembly for a file
+src/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Button.cpp.s
+.PHONY : src/Button.cpp.s
+
 src/CollisionMediator.obj: src/CollisionMediator.cpp.obj
 .PHONY : src/CollisionMediator.obj
 
@@ -342,6 +366,30 @@ src/GameClock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameClock.cpp.s
 .PHONY : src/GameClock.cpp.s
 
+src/GameState.obj: src/GameState.cpp.obj
+.PHONY : src/GameState.obj
+
+# target to build an object file
+src/GameState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameState.cpp.obj
+.PHONY : src/GameState.cpp.obj
+
+src/GameState.i: src/GameState.cpp.i
+.PHONY : src/GameState.i
+
+# target to preprocess a source file
+src/GameState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameState.cpp.i
+.PHONY : src/GameState.cpp.i
+
+src/GameState.s: src/GameState.cpp.s
+.PHONY : src/GameState.s
+
+# target to generate assembly for a file
+src/GameState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameState.cpp.s
+.PHONY : src/GameState.cpp.s
+
 src/Hitbox.obj: src/Hitbox.cpp.obj
 .PHONY : src/Hitbox.obj
 
@@ -414,6 +462,30 @@ src/Mario.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mario.cpp.s
 .PHONY : src/Mario.cpp.s
 
+src/MenuState.obj: src/MenuState.cpp.obj
+.PHONY : src/MenuState.obj
+
+# target to build an object file
+src/MenuState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/MenuState.cpp.obj
+.PHONY : src/MenuState.cpp.obj
+
+src/MenuState.i: src/MenuState.cpp.i
+.PHONY : src/MenuState.i
+
+# target to preprocess a source file
+src/MenuState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/MenuState.cpp.i
+.PHONY : src/MenuState.cpp.i
+
+src/MenuState.s: src/MenuState.cpp.s
+.PHONY : src/MenuState.s
+
+# target to generate assembly for a file
+src/MenuState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/MenuState.cpp.s
+.PHONY : src/MenuState.cpp.s
+
 src/ResourceManager.obj: src/ResourceManager.cpp.obj
 .PHONY : src/ResourceManager.obj
 
@@ -461,6 +533,54 @@ src/SoundControoler.s: src/SoundControoler.cpp.s
 src/SoundControoler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/SoundControoler.cpp.s
 .PHONY : src/SoundControoler.cpp.s
+
+src/State.obj: src/State.cpp.obj
+.PHONY : src/State.obj
+
+# target to build an object file
+src/State.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/State.cpp.obj
+.PHONY : src/State.cpp.obj
+
+src/State.i: src/State.cpp.i
+.PHONY : src/State.i
+
+# target to preprocess a source file
+src/State.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/State.cpp.i
+.PHONY : src/State.cpp.i
+
+src/State.s: src/State.cpp.s
+.PHONY : src/State.s
+
+# target to generate assembly for a file
+src/State.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/State.cpp.s
+.PHONY : src/State.cpp.s
+
+src/StateManager.obj: src/StateManager.cpp.obj
+.PHONY : src/StateManager.obj
+
+# target to build an object file
+src/StateManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StateManager.cpp.obj
+.PHONY : src/StateManager.cpp.obj
+
+src/StateManager.i: src/StateManager.cpp.i
+.PHONY : src/StateManager.i
+
+# target to preprocess a source file
+src/StateManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StateManager.cpp.i
+.PHONY : src/StateManager.cpp.i
+
+src/StateManager.s: src/StateManager.cpp.s
+.PHONY : src/StateManager.s
+
+# target to generate assembly for a file
+src/StateManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StateManager.cpp.s
+.PHONY : src/StateManager.cpp.s
 
 src/Tile.obj: src/Tile.cpp.obj
 .PHONY : src/Tile.obj
@@ -553,6 +673,9 @@ help:
 	@echo ... Mario
 	@echo ... glfw
 	@echo ... raylib
+	@echo ... src/Button.obj
+	@echo ... src/Button.i
+	@echo ... src/Button.s
 	@echo ... src/CollisionMediator.obj
 	@echo ... src/CollisionMediator.i
 	@echo ... src/CollisionMediator.s
@@ -565,6 +688,9 @@ help:
 	@echo ... src/GameClock.obj
 	@echo ... src/GameClock.i
 	@echo ... src/GameClock.s
+	@echo ... src/GameState.obj
+	@echo ... src/GameState.i
+	@echo ... src/GameState.s
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
@@ -574,12 +700,21 @@ help:
 	@echo ... src/Mario.obj
 	@echo ... src/Mario.i
 	@echo ... src/Mario.s
+	@echo ... src/MenuState.obj
+	@echo ... src/MenuState.i
+	@echo ... src/MenuState.s
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s
 	@echo ... src/SoundControoler.obj
 	@echo ... src/SoundControoler.i
 	@echo ... src/SoundControoler.s
+	@echo ... src/State.obj
+	@echo ... src/State.i
+	@echo ... src/State.s
+	@echo ... src/StateManager.obj
+	@echo ... src/StateManager.i
+	@echo ... src/StateManager.s
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s

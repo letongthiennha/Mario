@@ -3,12 +3,12 @@
 #include<string>
 class SoundController {
     private:
-    static SoundController *instance;
 
     SoundController() = default;
-    ~SoundController() ;
+    ~SoundController() = default;
 
-
+    SoundController(const SoundController&) = delete;
+    SoundController& operator=(const SoundController&) = delete;
 public:
     static SoundController &getInstance();
     void PlaySound(const std::string&);

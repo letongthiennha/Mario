@@ -12,7 +12,7 @@ protected:
     Rectangle rect; //Used for collision detection
     EntityState state;
     Color color;
-    Texture2D *sprite;
+    const Texture2D *sprite;
 
     //Moving
     Vector2 velocity;

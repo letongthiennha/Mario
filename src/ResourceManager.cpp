@@ -1,10 +1,7 @@
 #include "ResourceManager.h"
-ResourceManager* ResourceManager::instance = nullptr;
 
-ResourceManager::~ResourceManager()
+void ResourceManager::loadFonts()
 {
-    unloadResource();
-    instance = nullptr;
 }
 
 // Load
@@ -90,6 +87,13 @@ void ResourceManager::loadTextures()
         std::string path= "resources/Entity/Tiles/tile_" + std::to_string(i) + ".png";
         textures[tileName] = LoadTexture(path.c_str());
     }
+    //BUTTON
+    textures["MENU_STATE_BACKGROUND"] = LoadTexture("resources/Background/menu_background.png");
+    textures["MENU_STATE_START_BUTTON"] = LoadTexture("resources/Button/MenuStartButton.png");
+    textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
+    textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
+    //GAMESTATE
+    textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
 }
 
 void ResourceManager::loadSounds(){
@@ -99,10 +103,11 @@ void ResourceManager::loadSounds(){
 }
 
 void ResourceManager::loadMusics(){
-    musics["Test"]= LoadMusicStream("resources/Music/test.mp3");
+    musics["Test"]= LoadMusicStream("resources/Music/music1.mp3");
 }
 
 void ResourceManager::loadResource(){
+    loadFonts();
     loadTextures();
     loadMusics();
     loadSounds();
@@ -111,6 +116,13 @@ void ResourceManager::loadResource(){
 void ResourceManager::unloadTexture(){
     for(auto&pair :textures)
         UnloadTexture(pair.second);
+}
+
+void ResourceManager::unloadFonts()
+{
+    // Fonts are not loaded in this example, but if they were, you would unload them here.
+    for(auto&pair :fonts)
+        UnloadFont(pair.second);
 }
 
 void ResourceManager::unloadSounds(){
@@ -125,14 +137,13 @@ void ResourceManager::unloadMusics(){
 
 ResourceManager &ResourceManager::getInstance()
 {
-    if (instance == nullptr) {
-        instance = new ResourceManager();
-    }
-    return *instance;
+    static ResourceManager instance;  // ← Automatic cleanup when program ends
+    return instance;
 }
 
 void ResourceManager::unloadResource(){
     unloadTexture();
+
     unloadSounds();
     unloadMusics();
 }
@@ -152,5 +163,6 @@ Texture2D FlipTextureHorizontal(const Texture2D &texture)
     Image img = LoadImageFromTexture(texture);
     ImageFlipHorizontal(&img);
     Texture2D flip = LoadTextureFromImage(img);
+    UnloadImage(img);  // Unload the image after creating the texture
     return flip;
 }

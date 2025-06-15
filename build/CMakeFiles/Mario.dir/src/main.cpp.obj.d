@@ -177,4 +177,7 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
- D:/Project/Mario/include/SoundControoler.h
+ D:/Project/Mario/include/SoundControoler.h \
+ D:/Project/Mario/include/Button.h D:/Project/Mario/include/UIObject.h \
+ D:/Project/Mario/include/MenuState.h D:/Project/Mario/include/State.h \
+ D:/Project/Mario/include/StateManager.h

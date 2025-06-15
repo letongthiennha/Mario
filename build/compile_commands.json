@@ -1,6 +1,12 @@
 [
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Button.cpp.obj -c D:\\Project\\Mario\\src\\Button.cpp",
+  "file": "D:/Project/Mario/src/Button.cpp",
+  "output": "CMakeFiles/Mario.dir/src/Button.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\CollisionMediator.cpp.obj -c D:\\Project\\Mario\\src\\CollisionMediator.cpp",
   "file": "D:/Project/Mario/src/CollisionMediator.cpp",
   "output": "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj"
@@ -25,6 +31,12 @@
 },
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\GameState.cpp.obj -c D:\\Project\\Mario\\src\\GameState.cpp",
+  "file": "D:/Project/Mario/src/GameState.cpp",
+  "output": "CMakeFiles/Mario.dir/src/GameState.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Hitbox.cpp.obj -c D:\\Project\\Mario\\src\\Hitbox.cpp",
   "file": "D:/Project/Mario/src/Hitbox.cpp",
   "output": "CMakeFiles/Mario.dir/src/Hitbox.cpp.obj"
@@ -43,6 +55,12 @@
 },
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\MenuState.cpp.obj -c D:\\Project\\Mario\\src\\MenuState.cpp",
+  "file": "D:/Project/Mario/src/MenuState.cpp",
+  "output": "CMakeFiles/Mario.dir/src/MenuState.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\ResourceManager.cpp.obj -c D:\\Project\\Mario\\src\\ResourceManager.cpp",
   "file": "D:/Project/Mario/src/ResourceManager.cpp",
   "output": "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
@@ -52,6 +70,18 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\SoundControoler.cpp.obj -c D:\\Project\\Mario\\src\\SoundControoler.cpp",
   "file": "D:/Project/Mario/src/SoundControoler.cpp",
   "output": "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\State.cpp.obj -c D:\\Project\\Mario\\src\\State.cpp",
+  "file": "D:/Project/Mario/src/State.cpp",
+  "output": "CMakeFiles/Mario.dir/src/State.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\StateManager.cpp.obj -c D:\\Project\\Mario\\src\\StateManager.cpp",
+  "file": "D:/Project/Mario/src/StateManager.cpp",
+  "output": "CMakeFiles/Mario.dir/src/StateManager.cpp.obj"
 },
 {
   "directory": "D:/Project/Mario/build",
