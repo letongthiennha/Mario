@@ -138,4 +138,5 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
  D:/CS202\ Mario\ Project/include/Goomba.h \
  D:/CS202\ Mario\ Project/include/Monster.h \
- D:/CS202\ Mario\ Project/include/GameClock.h
+ D:/CS202\ Mario\ Project/include/GameClock.h \
+ D:/CS202\ Mario\ Project/include/FlyingGoomba.h

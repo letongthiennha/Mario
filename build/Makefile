@@ -305,6 +305,30 @@ src/Fireball.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Fireball.cpp.s
 .PHONY : src/Fireball.cpp.s
 
+src/FlyingGoomba.obj: src/FlyingGoomba.cpp.obj
+.PHONY : src/FlyingGoomba.obj
+
+# target to build an object file
+src/FlyingGoomba.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FlyingGoomba.cpp.obj
+.PHONY : src/FlyingGoomba.cpp.obj
+
+src/FlyingGoomba.i: src/FlyingGoomba.cpp.i
+.PHONY : src/FlyingGoomba.i
+
+# target to preprocess a source file
+src/FlyingGoomba.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FlyingGoomba.cpp.i
+.PHONY : src/FlyingGoomba.cpp.i
+
+src/FlyingGoomba.s: src/FlyingGoomba.cpp.s
+.PHONY : src/FlyingGoomba.s
+
+# target to generate assembly for a file
+src/FlyingGoomba.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FlyingGoomba.cpp.s
+.PHONY : src/FlyingGoomba.cpp.s
+
 src/GameClock.obj: src/GameClock.cpp.obj
 .PHONY : src/GameClock.obj
 
@@ -572,6 +596,9 @@ help:
 	@echo ... src/Fireball.obj
 	@echo ... src/Fireball.i
 	@echo ... src/Fireball.s
+	@echo ... src/FlyingGoomba.obj
+	@echo ... src/FlyingGoomba.i
+	@echo ... src/FlyingGoomba.s
 	@echo ... src/GameClock.obj
 	@echo ... src/GameClock.i
 	@echo ... src/GameClock.s

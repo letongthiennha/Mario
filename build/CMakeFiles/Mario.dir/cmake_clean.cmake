@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
   "CMakeFiles/Mario.dir/src/Fireball.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/FlyingGoomba.cpp.obj"
+  "CMakeFiles/Mario.dir/src/FlyingGoomba.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/GameClock.cpp.obj"
   "CMakeFiles/Mario.dir/src/GameClock.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/GameEngine.cpp.obj"

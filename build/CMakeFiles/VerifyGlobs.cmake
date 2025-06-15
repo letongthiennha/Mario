@@ -7,6 +7,7 @@ set(OLD_GLOB
   "D:/CS202 Mario Project/src/Application.cpp"
   "D:/CS202 Mario Project/src/Entity.cpp"
   "D:/CS202 Mario Project/src/Fireball.cpp"
+  "D:/CS202 Mario Project/src/FlyingGoomba.cpp"
   "D:/CS202 Mario Project/src/GameClock.cpp"
   "D:/CS202 Mario Project/src/GameEngine.cpp"
   "D:/CS202 Mario Project/src/Goomba.cpp"
