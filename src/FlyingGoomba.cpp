@@ -27,11 +27,8 @@ void FlyingGoomba::updateStateAndPhysic() {
 
     float delta = GameClock::GetUpdateDeltaTime();
 
-    // ─────────────────────────────
-    // Hovering behavior
-    // ─────────────────────────────
+    // ─ Hovering behavior ─
     pos.y += hoverDirection * hoverSpeed * delta;
-
     if (pos.y > originalY + hoverRange) {
         pos.y = originalY + hoverRange;
         hoverDirection = -1;
@@ -40,29 +37,26 @@ void FlyingGoomba::updateStateAndPhysic() {
         hoverDirection = 1;
     }
 
-    // ─────────────────────────────
-    // Horizontal movement
-    // ─────────────────────────────
-    pos.x += velocity.x * delta;
+    // ─ Direction logic ─
+    if (GetRandomValue(0, 1000) < 2) {
+        velocity.x = (GetRandomValue(0, 1) == 0) ? -std::abs(speed) : std::abs(speed);
+    } else {
+        velocity.x = (velocity.x >= 0) ? std::abs(speed) : -std::abs(speed);
+    }
 
-    // ─────────────────────────────
-    // Animation (4-frame loop)
-    // ─────────────────────────────
+    velocity.y = 0.0f; // override gravity
+    Monster::updateStateAndPhysic(); // apply movement, update rects & hitboxes
+
+    // ─ Animation ─
     frameAcum += delta;
     frameTime = 0.15f;
     maxFrame = 3;
-
     if (frameAcum >= frameTime) {
-        currFrame = (currFrame + 1) % (maxFrame + 1); // Loop through 0–3
+        currFrame = (currFrame + 1) % (maxFrame + 1);
         frameAcum = 0.0f;
     }
 
-    // ─────────────────────────────
-    // Update collision bounds and sprite
-    // ─────────────────────────────
-    rect = { pos.x, pos.y, size.x, size.y };
     updateSprite();
-    updateHitboxes();
 }
 
 void FlyingGoomba::handleCollision(const Tile& tile, CollisionInfo type) {
