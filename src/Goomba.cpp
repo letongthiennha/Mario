@@ -15,9 +15,30 @@ Goomba::Goomba(Vector2 pos, float speed)
     sprite = &ResourceManager::getTexture("GOOMBA_0_LEFT");
 }
 
+//Helper function to check if a tile is below the Goomba
+bool Goomba::isTileBelowAhead(const std::vector<Tile*>& tiles) {
+    Vector2 aheadPos = pos;
+    aheadPos.x += (velocity.x > 0) ? size.x : -1; // Check ahead, just outside current box
+    aheadPos.y += size.y + 1; // One pixel below bottom
+
+    Rectangle checkRect = { aheadPos.x, aheadPos.y, 1, 1 };
+
+    for (auto tile : tiles) {
+        if (CheckCollisionRecs(checkRect, tile->getRect())) {
+            return true; // Ground exists ahead
+        }
+    }
+    return false; // Cliff ahead!
+}
+
+
 void Goomba::updateStateAndPhysic() {
     if (!isActive) return;
-    Monster::updateStateAndPhysic();
+    // Smart AI: Cliff detection
+    if (!isTileBelowAhead(World::getInstance()->getInteractiveTiles())) {
+        velocity.x = -velocity.x; // Turn around to avoid falling
+    }
+    Monster::updateStateAndPhysic();// Call base class to update position and velocity
     if (pos.x < 0) {
         pos.x = 0;
         velocity.x = speed; // Reverse to move right

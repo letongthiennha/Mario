@@ -10,7 +10,9 @@ public:
     void updateStateAndPhysic();
     void Draw();
     void handleCollision(const Tile& tile, CollisionInfo type) override;
+    bool isTileBelowAhead(const std::vector<Tile*>& tiles);
 private:
     void updateSprite();
 };
+
 #endif
