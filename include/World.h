@@ -20,6 +20,7 @@ public:
     std::vector<Tile*>& getInteractiveTiles();
     void addMonster(Monster* monster);
     std::vector<Monster*>& getMonsters();
+    static World* getInstance();
 private:
     Mario player;
     std::vector<Tile*> interactiveTiles;

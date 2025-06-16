@@ -5,18 +5,56 @@
 
 float World::GRAVITY = 0.0f;
 
+static World* instance = nullptr;
+
+World* World::getInstance() {
+    if (instance == nullptr) {
+        instance = new World();
+    }
+    return instance;
+}
+
 World::World() : player() {
-    interactiveTiles.push_back(new Tile(Vector2{0, 700}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
-    for (int i = 1; i < 10; i++) {
+    instance = this;
+
+    // Ground layer: make it longer
+    int groundStart = -20;
+    int groundEnd = 40; // Increased from 10 to 40 for a longer ground
+
+    interactiveTiles.push_back(new Tile(Vector2{(float)groundStart * 32, 700}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
+    for (int i = groundStart + 1; i < groundEnd; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 700}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+    }
+    interactiveTiles.push_back(new Tile(Vector2{(float)groundEnd * 32, 700}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
+
+    // Elevated platform 1: longer
+    int plat1Start = -10;
+    int plat1End = 20;
+    for (int i = plat1Start; i < plat1End; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 300}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
-    interactiveTiles.push_back(new Tile(Vector2{10 * 32, 700}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
-    interactiveTiles.push_back(new Tile(Vector2{11 * 32, 500}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
-    for (int i = 12; i < 25; i++) {
-        interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 500}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-        interactiveTiles.push_back(new Tile(Vector2{(float)i * 32 + 64, 700}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+
+    // Elevated platform 2: new, higher
+    int plat2Start = 22;
+    int plat2End = 30;
+    for (int i = plat2Start; i < plat2End; i++) {
+        interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 200}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
+
+    // Middle platform: longer
+    int midPlatStart = 11;
+    int midPlatEnd = 35;
+    interactiveTiles.push_back(new Tile(Vector2{(float)midPlatStart * 32, 500}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
+    for (int i = midPlatStart + 1; i < midPlatEnd; i++) {
+        interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 500}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+    }
+    interactiveTiles.push_back(new Tile(Vector2{(float)midPlatEnd * 32, 500}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
+
+    // Add a few floating tiles for variety
+    interactiveTiles.push_back(new Tile(Vector2{900, 400}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+    interactiveTiles.push_back(new Tile(Vector2{1200, 350}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+    interactiveTiles.push_back(new Tile(Vector2{1500, 250}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
+
     camera.offset = Vector2{(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
     camera.target = player.getPosition();
     camera.rotation = 0.0f;
