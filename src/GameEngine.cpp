@@ -25,13 +25,25 @@ GameEngine::~GameEngine() {
 }
 
 void GameEngine::spawnMonsters() {
-    world->addMonster(new FlyingGoomba(Vector2{300, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{300, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{500, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{500, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{700, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{700, 400}, 50.0f));
-    world->addMonster(new FlyingGoomba(Vector2{900, 400}, 50.0f));
+    // Avoid spawning FlyingGoombas near Mario's starting position (assume Mario starts at x=64, y=700)
+    // We'll skip any spawn within 100 pixels horizontally and 80 pixels vertically of (64, 700)
+    auto isNearMario = [](float x, float y) {
+        return (std::abs(x - 64) < 100) && (std::abs(y - 700) < 80);
+    };
+
+    struct SpawnInfo { float x, y; };
+    std::vector<SpawnInfo> flyingGoombaSpawns = {
+        // Higher in the sky and farther from Mario's start
+        {300, 80}, {500, 60}, {700, 50}, {900, 40},
+        // A few at tile level
+        {300, 350}, {500, 375}, {700, 325}
+    };
+
+    for (const auto& spawn : flyingGoombaSpawns) {
+        if (!isNearMario(spawn.x, spawn.y)) {
+            world->addMonster(new FlyingGoomba(Vector2{spawn.x, spawn.y}, 50.0f));
+        }
+    }
 
     // Spawn Goombas exactly on tile tops (y=700 or y=500, adjusted for Goomba height 20)
     world->addMonster(new Goomba(Vector2{32, 700 - 20}, 50.0f));  // On tile at x=32, y=700
@@ -93,7 +105,25 @@ void GameEngine::draw() {
     BeginDrawing();
     world->DrawWorld();
     if (isGameOver) {
-        DrawText("Game Over! Press R to Restart", screenWidth / 2 - 200, screenHeight / 2, 40, RED);
+        // Draw a semi-transparent rectangle as the "Game Over" tab
+        int rectWidth = 500;
+        int rectHeight = 120;
+        int rectX = (screenWidth - rectWidth) / 2;
+        int rectY = (screenHeight - rectHeight) / 2;
+        DrawRectangle(rectX, rectY, rectWidth, rectHeight, Fade(BLACK, 0.7f));
+        DrawRectangleLines(rectX, rectY, rectWidth, rectHeight, RED);
+
+        // Draw "Game Over!" text centered
+        const char* gameOverText = "Game Over!";
+        int fontSize = 48;
+        int textWidth = MeasureText(gameOverText, fontSize);
+        DrawText(gameOverText, screenWidth / 2 - textWidth / 2, rectY + 20, fontSize, RED);
+
+        // Draw "Press R to Restart" text centered below
+        const char* restartText = "Press R to Restart";
+        int restartFontSize = 28;
+        int restartTextWidth = MeasureText(restartText, restartFontSize);
+        DrawText(restartText, screenWidth / 2 - restartTextWidth / 2, rectY + 70, restartFontSize, WHITE);
     }
     EndDrawing();
 }
