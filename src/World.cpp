@@ -36,14 +36,14 @@ World::World() : player() {
 
     // Elevated platform 2: new, higher
     int plat2Start = 22;
-    int plat2End = 30;
+    int plat2End = 50;
     for (int i = plat2Start; i < plat2End; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 200}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
 
     // Middle platform: longer
     int midPlatStart = 11;
-    int midPlatEnd = 35;
+    int midPlatEnd = 60;
     interactiveTiles.push_back(new Tile(Vector2{(float)midPlatStart * 32, 500}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
     for (int i = midPlatStart + 1; i < midPlatEnd; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 500}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
