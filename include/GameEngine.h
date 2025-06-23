@@ -3,6 +3,9 @@
 #include "World.h"
 #include "raylib.h"
 #include "Goomba.h"
+#include "Monster.h"
+#include "BlueKoopaTroopa.h"
+#include "PiranhaPlant.h"
 #include "FlyingGoomba.h"
 
 class GameEngine {
