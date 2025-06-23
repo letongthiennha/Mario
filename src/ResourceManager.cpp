@@ -109,7 +109,7 @@ void ResourceManager::loadTextures() {
     // ────────────────────────────────
     // FLYING GOOMBA
     // ────────────────────────────────
-{
+    {
     std::cout << "Loading: FlyingGoomba textures..." << std::endl;
 
     textures["flyingGoomba0R"] = LoadTexture("resources/Entity/Monsters/FlyingGoomba/FlyingGoomba_0.png");
@@ -121,7 +121,23 @@ void ResourceManager::loadTextures() {
     textures["flyingGoomba1L"] = FlipTextureHorizontal(textures["flyingGoomba1R"]);
     textures["flyingGoomba2L"] = FlipTextureHorizontal(textures["flyingGoomba2R"]);
     textures["flyingGoomba3L"] = FlipTextureHorizontal(textures["flyingGoomba3R"]);
-}
+    }
+    // ────────────────────────────────
+    // BLUE KOOPA TROOPA
+    // ────────────────────────────────
+    {
+        std::cout << "Loading: BlueKoopaTroopa textures..." << std::endl;
+        textures["BLUE_KOOPA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/BlueKoopaTroopa/BlueKoopaTroopa_0.png");
+        textures["BLUE_KOOPA_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/BlueKoopaTroopa/BlueKoopaTroopa_1.png");
+        textures["BLUE_KOOPA_0_LEFT"] = FlipTextureHorizontal(textures["BLUE_KOOPA_0_RIGHT"]);
+        textures["BLUE_KOOPA_1_LEFT"] = FlipTextureHorizontal(textures["BLUE_KOOPA_1_RIGHT"]);
+    }
+    // PIRANHA PLANT
+    {
+        std::cout << "Loading: PiranhaPlant textures..." << std::endl;
+        textures["PIRANHA_0"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_0.png");
+        textures["PIRANHA_1"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_1.png");
+    }
 }
 
 void ResourceManager::loadSounds(){
