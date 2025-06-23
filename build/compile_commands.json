@@ -7,6 +7,12 @@
 },
 {
   "directory": "D:/CS202 Mario Project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\BlueKoopaTroopa.cpp.obj -c \"D:\\CS202 Mario Project\\src\\BlueKoopaTroopa.cpp\"",
+  "file": "D:/CS202 Mario Project/src/BlueKoopaTroopa.cpp",
+  "output": "CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.obj"
+},
+{
+  "directory": "D:/CS202 Mario Project/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Entity.cpp.obj -c \"D:\\CS202 Mario Project\\src\\Entity.cpp\"",
   "file": "D:/CS202 Mario Project/src/Entity.cpp",
   "output": "CMakeFiles/Mario.dir/src/Entity.cpp.obj"
@@ -58,6 +64,12 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Monster.cpp.obj -c \"D:\\CS202 Mario Project\\src\\Monster.cpp\"",
   "file": "D:/CS202 Mario Project/src/Monster.cpp",
   "output": "CMakeFiles/Mario.dir/src/Monster.cpp.obj"
+},
+{
+  "directory": "D:/CS202 Mario Project/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/Mario.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\PiranhaPlant.cpp.obj -c \"D:\\CS202 Mario Project\\src\\PiranhaPlant.cpp\"",
+  "file": "D:/CS202 Mario Project/src/PiranhaPlant.cpp",
+  "output": "CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.obj"
 },
 {
   "directory": "D:/CS202 Mario Project/build",

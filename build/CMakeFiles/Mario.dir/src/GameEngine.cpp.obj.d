@@ -139,4 +139,7 @@ CMakeFiles/Mario.dir/src/GameEngine.cpp.obj: \
  D:/CS202\ Mario\ Project/include/Goomba.h \
  D:/CS202\ Mario\ Project/include/Monster.h \
  D:/CS202\ Mario\ Project/include/GameClock.h \
+ D:/CS202\ Mario\ Project/include/BlueKoopaTroopa.h \
+ D:/CS202\ Mario\ Project/include/Monster.h \
+ D:/CS202\ Mario\ Project/include/PiranhaPlant.h \
  D:/CS202\ Mario\ Project/include/FlyingGoomba.h

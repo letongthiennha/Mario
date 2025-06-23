@@ -13,6 +13,150 @@ CMakeFiles/Mario.dir/src/Application.cpp.obj: D:/CS202\ Mario\ Project/src/Appli
   C:/raylib/src/raylib.h \
   D:/CS202\ Mario\ Project/include/Application.h
 
+CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.obj: D:/CS202\ Mario\ Project/src/BlueKoopaTroopa.cpp \
+  C:/msys64/ucrt64/include/_mingw.h \
+  C:/msys64/ucrt64/include/_mingw_mac.h \
+  C:/msys64/ucrt64/include/_mingw_off_t.h \
+  C:/msys64/ucrt64/include/_mingw_secapi.h \
+  C:/msys64/ucrt64/include/_mingw_stat64.h \
+  C:/msys64/ucrt64/include/_mingw_stdarg.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/backward/binders.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bit \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/allocated_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/cxxabi_forced.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/enable_special_members.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/erase_if.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hashtable.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hashtable_policy.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/invoke.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/iterator_concepts.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/list.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/localefwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/max_size_type.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/memory_resource.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/memoryfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/move.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/new_allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/range_access.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_base.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_cmp.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_util.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/refwrap.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_construct.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_funcs.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_types.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_list.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_uninitialized.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_vector.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator_args.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/utility.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/cctype \
+  C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/clocale \
+  C:/msys64/ucrt64/include/c++/13.2.0/compare \
+  C:/msys64/ucrt64/include/c++/13.2.0/concepts \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
+  C:/msys64/ucrt64/include/c++/13.2.0/cwchar \
+  C:/msys64/ucrt64/include/c++/13.2.0/debug/assertions.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/debug/debug.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/aligned_buffer.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
+  C:/msys64/ucrt64/include/c++/13.2.0/iosfwd \
+  C:/msys64/ucrt64/include/c++/13.2.0/list \
+  C:/msys64/ucrt64/include/c++/13.2.0/new \
+  C:/msys64/ucrt64/include/c++/13.2.0/numbers \
+  C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/string \
+  C:/msys64/ucrt64/include/c++/13.2.0/string_view \
+  C:/msys64/ucrt64/include/c++/13.2.0/tuple \
+  C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
+  C:/msys64/ucrt64/include/c++/13.2.0/unordered_map \
+  C:/msys64/ucrt64/include/c++/13.2.0/vector \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  C:/msys64/ucrt64/include/corecrt.h \
+  C:/msys64/ucrt64/include/corecrt_stdio_config.h \
+  C:/msys64/ucrt64/include/corecrt_wstdlib.h \
+  C:/msys64/ucrt64/include/crtdefs.h \
+  C:/msys64/ucrt64/include/ctype.h \
+  C:/msys64/ucrt64/include/errno.h \
+  C:/msys64/ucrt64/include/limits.h \
+  C:/msys64/ucrt64/include/locale.h \
+  C:/msys64/ucrt64/include/malloc.h \
+  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
+  C:/msys64/ucrt64/include/sec_api/stdio_s.h \
+  C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
+  C:/msys64/ucrt64/include/sec_api/wchar_s.h \
+  C:/msys64/ucrt64/include/stdarg.h \
+  C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdio.h \
+  C:/msys64/ucrt64/include/stdlib.h \
+  C:/msys64/ucrt64/include/swprintf.inl \
+  C:/msys64/ucrt64/include/vadefs.h \
+  C:/msys64/ucrt64/include/wchar.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
+  C:/raylib/src/raylib.h \
+  D:/CS202\ Mario\ Project/include/BlueKoopaTroopa.h \
+  D:/CS202\ Mario\ Project/include/CollisionInfo.h \
+  D:/CS202\ Mario\ Project/include/Direction.h \
+  D:/CS202\ Mario\ Project/include/DrawalbeObj.h \
+  D:/CS202\ Mario\ Project/include/EnityState.h \
+  D:/CS202\ Mario\ Project/include/Entity.h \
+  D:/CS202\ Mario\ Project/include/Fireball.h \
+  D:/CS202\ Mario\ Project/include/GameClock.h \
+  D:/CS202\ Mario\ Project/include/Hitbox.h \
+  D:/CS202\ Mario\ Project/include/Mario.h \
+  D:/CS202\ Mario\ Project/include/MarioState.h \
+  D:/CS202\ Mario\ Project/include/Monster.h \
+  D:/CS202\ Mario\ Project/include/ResourceManager.h \
+  D:/CS202\ Mario\ Project/include/Tile.h \
+  D:/CS202\ Mario\ Project/include/TileType.h \
+  D:/CS202\ Mario\ Project/include/World.h
+
 CMakeFiles/Mario.dir/src/Entity.cpp.obj: D:/CS202\ Mario\ Project/src/Entity.cpp \
   C:/msys64/ucrt64/include/_mingw.h \
   C:/msys64/ucrt64/include/_mingw_mac.h \
@@ -456,6 +600,7 @@ CMakeFiles/Mario.dir/src/GameEngine.cpp.obj: D:/CS202\ Mario\ Project/src/GameEn
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/raylib/src/raylib.h \
+  D:/CS202\ Mario\ Project/include/BlueKoopaTroopa.h \
   D:/CS202\ Mario\ Project/include/CollisionInfo.h \
   D:/CS202\ Mario\ Project/include/Direction.h \
   D:/CS202\ Mario\ Project/include/DrawalbeObj.h \
@@ -470,6 +615,7 @@ CMakeFiles/Mario.dir/src/GameEngine.cpp.obj: D:/CS202\ Mario\ Project/src/GameEn
   D:/CS202\ Mario\ Project/include/Mario.h \
   D:/CS202\ Mario\ Project/include/MarioState.h \
   D:/CS202\ Mario\ Project/include/Monster.h \
+  D:/CS202\ Mario\ Project/include/PiranhaPlant.h \
   D:/CS202\ Mario\ Project/include/ResourceManager.h \
   D:/CS202\ Mario\ Project/include/Tile.h \
   D:/CS202\ Mario\ Project/include/TileType.h \
@@ -977,6 +1123,150 @@ CMakeFiles/Mario.dir/src/Monster.cpp.obj: D:/CS202\ Mario\ Project/src/Monster.c
   D:/CS202\ Mario\ Project/include/Mario.h \
   D:/CS202\ Mario\ Project/include/MarioState.h \
   D:/CS202\ Mario\ Project/include/Monster.h \
+  D:/CS202\ Mario\ Project/include/ResourceManager.h \
+  D:/CS202\ Mario\ Project/include/Tile.h \
+  D:/CS202\ Mario\ Project/include/TileType.h \
+  D:/CS202\ Mario\ Project/include/World.h
+
+CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.obj: D:/CS202\ Mario\ Project/src/PiranhaPlant.cpp \
+  C:/msys64/ucrt64/include/_mingw.h \
+  C:/msys64/ucrt64/include/_mingw_mac.h \
+  C:/msys64/ucrt64/include/_mingw_off_t.h \
+  C:/msys64/ucrt64/include/_mingw_secapi.h \
+  C:/msys64/ucrt64/include/_mingw_stat64.h \
+  C:/msys64/ucrt64/include/_mingw_stdarg.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/backward/binders.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bit \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/allocated_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/cxxabi_forced.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/enable_special_members.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/erase_if.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hashtable.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/hashtable_policy.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/invoke.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/iterator_concepts.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/list.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/localefwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/max_size_type.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/memory_resource.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/memoryfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/move.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/new_allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/range_access.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_base.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_cmp.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_util.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/refwrap.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_construct.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_funcs.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_types.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_list.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_uninitialized.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_vector.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator_args.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/utility.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
+  C:/msys64/ucrt64/include/c++/13.2.0/cctype \
+  C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/clocale \
+  C:/msys64/ucrt64/include/c++/13.2.0/compare \
+  C:/msys64/ucrt64/include/c++/13.2.0/concepts \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
+  C:/msys64/ucrt64/include/c++/13.2.0/cwchar \
+  C:/msys64/ucrt64/include/c++/13.2.0/debug/assertions.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/debug/debug.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/aligned_buffer.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
+  C:/msys64/ucrt64/include/c++/13.2.0/iosfwd \
+  C:/msys64/ucrt64/include/c++/13.2.0/list \
+  C:/msys64/ucrt64/include/c++/13.2.0/new \
+  C:/msys64/ucrt64/include/c++/13.2.0/numbers \
+  C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/string \
+  C:/msys64/ucrt64/include/c++/13.2.0/string_view \
+  C:/msys64/ucrt64/include/c++/13.2.0/tuple \
+  C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
+  C:/msys64/ucrt64/include/c++/13.2.0/unordered_map \
+  C:/msys64/ucrt64/include/c++/13.2.0/vector \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  C:/msys64/ucrt64/include/corecrt.h \
+  C:/msys64/ucrt64/include/corecrt_stdio_config.h \
+  C:/msys64/ucrt64/include/corecrt_wstdlib.h \
+  C:/msys64/ucrt64/include/crtdefs.h \
+  C:/msys64/ucrt64/include/ctype.h \
+  C:/msys64/ucrt64/include/errno.h \
+  C:/msys64/ucrt64/include/limits.h \
+  C:/msys64/ucrt64/include/locale.h \
+  C:/msys64/ucrt64/include/malloc.h \
+  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
+  C:/msys64/ucrt64/include/sec_api/stdio_s.h \
+  C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
+  C:/msys64/ucrt64/include/sec_api/wchar_s.h \
+  C:/msys64/ucrt64/include/stdarg.h \
+  C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdio.h \
+  C:/msys64/ucrt64/include/stdlib.h \
+  C:/msys64/ucrt64/include/swprintf.inl \
+  C:/msys64/ucrt64/include/vadefs.h \
+  C:/msys64/ucrt64/include/wchar.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
+  C:/raylib/src/raylib.h \
+  D:/CS202\ Mario\ Project/include/CollisionInfo.h \
+  D:/CS202\ Mario\ Project/include/Direction.h \
+  D:/CS202\ Mario\ Project/include/DrawalbeObj.h \
+  D:/CS202\ Mario\ Project/include/EnityState.h \
+  D:/CS202\ Mario\ Project/include/Entity.h \
+  D:/CS202\ Mario\ Project/include/Fireball.h \
+  D:/CS202\ Mario\ Project/include/GameClock.h \
+  D:/CS202\ Mario\ Project/include/Hitbox.h \
+  D:/CS202\ Mario\ Project/include/Mario.h \
+  D:/CS202\ Mario\ Project/include/MarioState.h \
+  D:/CS202\ Mario\ Project/include/Monster.h \
+  D:/CS202\ Mario\ Project/include/PiranhaPlant.h \
   D:/CS202\ Mario\ Project/include/ResourceManager.h \
   D:/CS202\ Mario\ Project/include/Tile.h \
   D:/CS202\ Mario\ Project/include/TileType.h \
@@ -1545,6 +1835,7 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:/CS202\ Mario\ Project/src/main.cpp \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/raylib/src/raylib.h \
+  D:/CS202\ Mario\ Project/include/BlueKoopaTroopa.h \
   D:/CS202\ Mario\ Project/include/CollisionInfo.h \
   D:/CS202\ Mario\ Project/include/Direction.h \
   D:/CS202\ Mario\ Project/include/DrawalbeObj.h \
@@ -1559,6 +1850,7 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:/CS202\ Mario\ Project/src/main.cpp \
   D:/CS202\ Mario\ Project/include/Mario.h \
   D:/CS202\ Mario\ Project/include/MarioState.h \
   D:/CS202\ Mario\ Project/include/Monster.h \
+  D:/CS202\ Mario\ Project/include/PiranhaPlant.h \
   D:/CS202\ Mario\ Project/include/ResourceManager.h \
   D:/CS202\ Mario\ Project/include/Tile.h \
   D:/CS202\ Mario\ Project/include/TileType.h \
@@ -1587,6 +1879,8 @@ C:/msys64/ucrt64/include/vadefs.h:
 
 C:/msys64/ucrt64/include/_mingw_mac.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_construct.h:
+
 C:/msys64/ucrt64/include/stdarg.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/iterator_concepts.h:
@@ -1603,49 +1897,7 @@ C:/raylib/src/raylib.h:
 
 D:/CS202\ Mario\ Project/include/Application.h:
 
-C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/new:
-
-D:/CS202\ Mario\ Project/src/Entity.cpp:
-
-C:/msys64/ucrt64/include/c++/13.2.0/cwchar:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h:
-
-D:/CS202\ Mario\ Project/include/GameClock.h:
-
-D:/CS202\ Mario\ Project/include/CollisionInfo.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/tr1/modified_bessel_func.tcc:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h:
-
-D:/CS202\ Mario\ Project/include/Direction.h:
-
-D:/CS202\ Mario\ Project/include/DrawalbeObj.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/stdexcept:
-
-D:/CS202\ Mario\ Project/include/EnityState.h:
-
-D:/CS202\ Mario\ Project/src/Tile.cpp:
-
-D:/CS202\ Mario\ Project/include/Entity.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/locale_facets.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/enable_special_members.h:
-
-D:/CS202\ Mario\ Project/include/Hitbox.h:
-
-D:/CS202\ Mario\ Project/src/Fireball.cpp:
+D:/CS202\ Mario\ Project/src/BlueKoopaTroopa.cpp:
 
 C:/msys64/ucrt64/include/c++/13.2.0/string_view:
 
@@ -1671,6 +1923,12 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/allocated_ptr.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/allocator.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/ios:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_list.h:
+
 C:/msys64/ucrt64/include/c++/13.2.0/bits/list.tcc:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.h:
@@ -1687,9 +1945,27 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/cwchar:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/tr1/modified_bessel_func.tcc:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h:
+
 C:/msys64/ucrt64/include/c++/13.2.0/bits/cxxabi_forced.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/hashtable_policy.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/locale_facets.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/enable_special_members.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/erase_if.h:
 
@@ -1705,17 +1981,21 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/invoke.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h:
+
 C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/cctype:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/localefwd.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator.h:
+
 C:/msys64/ucrt64/include/c++/13.2.0/cmath:
 
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h:
-
 C:/msys64/ucrt64/include/c++/13.2.0/bits/memory_resource.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/error_constants.h:
 
@@ -1724,6 +2004,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/new_allocator.h:
 C:/msys64/ucrt64/include/c++/13.2.0/tr1/ell_integral.tcc:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h:
 
@@ -1737,29 +2019,19 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_util.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/refwrap.h:
 
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_function.h:
-
 C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h:
 
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_construct.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator.h:
+C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_function.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_funcs.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_iterator_base_types.h:
 
-C:/msys64/ucrt64/include/c++/13.2.0/ios:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_list.h:
-
 C:/msys64/ucrt64/include/c++/13.2.0/exception:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_pair.h:
+
+D:/CS202\ Mario\ Project/include/PiranhaPlant.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_uninitialized.h:
 
@@ -1818,6 +2090,10 @@ C:/msys64/ucrt64/include/c++/13.2.0/initializer_list:
 C:/msys64/ucrt64/include/c++/13.2.0/iosfwd:
 
 C:/msys64/ucrt64/include/c++/13.2.0/list:
+
+D:/CS202\ Mario\ Project/src/Entity.cpp:
+
+C:/msys64/ucrt64/include/c++/13.2.0/new:
 
 C:/msys64/ucrt64/include/c++/13.2.0/numbers:
 
@@ -1879,11 +2155,33 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h:
 
+D:/CS202\ Mario\ Project/include/BlueKoopaTroopa.h:
+
+D:/CS202\ Mario\ Project/include/CollisionInfo.h:
+
+D:/CS202\ Mario\ Project/include/Direction.h:
+
+D:/CS202\ Mario\ Project/include/DrawalbeObj.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/stdexcept:
+
+D:/CS202\ Mario\ Project/include/EnityState.h:
+
+D:/CS202\ Mario\ Project/src/Tile.cpp:
+
+D:/CS202\ Mario\ Project/include/Entity.h:
+
 D:/CS202\ Mario\ Project/include/Fireball.h:
+
+D:/CS202\ Mario\ Project/include/GameClock.h:
+
+D:/CS202\ Mario\ Project/include/Hitbox.h:
 
 D:/CS202\ Mario\ Project/src/Mario.cpp:
 
 D:/CS202\ Mario\ Project/include/MarioState.h:
+
+D:/CS202\ Mario\ Project/include/Monster.h:
 
 D:/CS202\ Mario\ Project/include/Tile.h:
 
@@ -1895,9 +2193,9 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf.tcc:
 
 D:/CS202\ Mario\ Project/include/World.h:
 
-D:/CS202\ Mario\ Project/include/FlyingGoomba.h:
+D:/CS202\ Mario\ Project/src/Fireball.cpp:
 
-D:/CS202\ Mario\ Project/include/Monster.h:
+D:/CS202\ Mario\ Project/include/FlyingGoomba.h:
 
 D:/CS202\ Mario\ Project/src/GameClock.cpp:
 
@@ -1964,6 +2262,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/tr1/riemann_zeta.tcc:
 C:/msys64/ucrt64/include/c++/13.2.0/tr1/special_function_util.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/typeinfo:
+
+D:/CS202\ Mario\ Project/src/PiranhaPlant.cpp:
 
 C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
 

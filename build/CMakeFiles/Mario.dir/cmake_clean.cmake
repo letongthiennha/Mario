@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Application.cpp.obj"
   "CMakeFiles/Mario.dir/src/Application.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.obj"
+  "CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Entity.cpp.obj"
   "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
@@ -19,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Mario.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Monster.cpp.obj"
   "CMakeFiles/Mario.dir/src/Monster.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.obj"
+  "CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
   "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj"

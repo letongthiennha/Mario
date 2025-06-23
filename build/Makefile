@@ -257,6 +257,30 @@ src/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Application.cpp.s
 .PHONY : src/Application.cpp.s
 
+src/BlueKoopaTroopa.obj: src/BlueKoopaTroopa.cpp.obj
+.PHONY : src/BlueKoopaTroopa.obj
+
+# target to build an object file
+src/BlueKoopaTroopa.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.obj
+.PHONY : src/BlueKoopaTroopa.cpp.obj
+
+src/BlueKoopaTroopa.i: src/BlueKoopaTroopa.cpp.i
+.PHONY : src/BlueKoopaTroopa.i
+
+# target to preprocess a source file
+src/BlueKoopaTroopa.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.i
+.PHONY : src/BlueKoopaTroopa.cpp.i
+
+src/BlueKoopaTroopa.s: src/BlueKoopaTroopa.cpp.s
+.PHONY : src/BlueKoopaTroopa.s
+
+# target to generate assembly for a file
+src/BlueKoopaTroopa.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/BlueKoopaTroopa.cpp.s
+.PHONY : src/BlueKoopaTroopa.cpp.s
+
 src/Entity.obj: src/Entity.cpp.obj
 .PHONY : src/Entity.obj
 
@@ -473,6 +497,30 @@ src/Monster.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Monster.cpp.s
 .PHONY : src/Monster.cpp.s
 
+src/PiranhaPlant.obj: src/PiranhaPlant.cpp.obj
+.PHONY : src/PiranhaPlant.obj
+
+# target to build an object file
+src/PiranhaPlant.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.obj
+.PHONY : src/PiranhaPlant.cpp.obj
+
+src/PiranhaPlant.i: src/PiranhaPlant.cpp.i
+.PHONY : src/PiranhaPlant.i
+
+# target to preprocess a source file
+src/PiranhaPlant.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.i
+.PHONY : src/PiranhaPlant.cpp.i
+
+src/PiranhaPlant.s: src/PiranhaPlant.cpp.s
+.PHONY : src/PiranhaPlant.s
+
+# target to generate assembly for a file
+src/PiranhaPlant.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PiranhaPlant.cpp.s
+.PHONY : src/PiranhaPlant.cpp.s
+
 src/ResourceManager.obj: src/ResourceManager.cpp.obj
 .PHONY : src/ResourceManager.obj
 
@@ -590,6 +638,9 @@ help:
 	@echo ... src/Application.obj
 	@echo ... src/Application.i
 	@echo ... src/Application.s
+	@echo ... src/BlueKoopaTroopa.obj
+	@echo ... src/BlueKoopaTroopa.i
+	@echo ... src/BlueKoopaTroopa.s
 	@echo ... src/Entity.obj
 	@echo ... src/Entity.i
 	@echo ... src/Entity.s
@@ -617,6 +668,9 @@ help:
 	@echo ... src/Monster.obj
 	@echo ... src/Monster.i
 	@echo ... src/Monster.s
+	@echo ... src/PiranhaPlant.obj
+	@echo ... src/PiranhaPlant.i
+	@echo ... src/PiranhaPlant.s
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s

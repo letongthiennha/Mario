@@ -5,6 +5,7 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/CS202 Mario Project/src/*.cpp")
 set(OLD_GLOB
   "D:/CS202 Mario Project/src/Application.cpp"
+  "D:/CS202 Mario Project/src/BlueKoopaTroopa.cpp"
   "D:/CS202 Mario Project/src/Entity.cpp"
   "D:/CS202 Mario Project/src/Fireball.cpp"
   "D:/CS202 Mario Project/src/FlyingGoomba.cpp"
@@ -14,6 +15,7 @@ set(OLD_GLOB
   "D:/CS202 Mario Project/src/Hitbox.cpp"
   "D:/CS202 Mario Project/src/Mario.cpp"
   "D:/CS202 Mario Project/src/Monster.cpp"
+  "D:/CS202 Mario Project/src/PiranhaPlant.cpp"
   "D:/CS202 Mario Project/src/ResourceManager.cpp"
   "D:/CS202 Mario Project/src/Tile.cpp"
   "D:/CS202 Mario Project/src/World.cpp"
