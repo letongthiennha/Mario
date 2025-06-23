@@ -50,6 +50,10 @@ void GameEngine::spawnMonsters() {
     world->addMonster(new Goomba(Vector2{96, 700 - 20}, 50.0f));  // On tile at x=96, y=700
     world->addMonster(new Goomba(Vector2{352, 700 - 20}, 50.0f)); // On tile at x=352, y=700
     world->addMonster(new Goomba(Vector2{416, 500 - 20}, 50.0f)); // On tile at x=416, y=500
+    world->addMonster(new PiranhaPlant(Vector2{400, 700}, 0.0f));
+    world->addMonster(new PiranhaPlant(Vector2{1200, 500}, 0.0f));
+    world->addMonster(new BlueKoopaTroopa(Vector2{200, 700 - 48}, 60.0f));
+    world->addMonster(new BlueKoopaTroopa(Vector2{600, 700 - 48}, 60.0f));
 }
 
 void GameEngine::update() {
