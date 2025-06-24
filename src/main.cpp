@@ -30,12 +30,12 @@ int main(){
         if(!isPaused){
             GameClock::getInstance().updateTimeAcum += GetFrameTime();
             //Update Loop
-            while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().FIXED_TIME_STEP)
+            while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().DeltaTime)
             {   
 
                 // gw.UpdateWorld();
                 stateManager.update();
-                GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().FIXED_TIME_STEP;
+                GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }
             ClearBackground(BLUE);

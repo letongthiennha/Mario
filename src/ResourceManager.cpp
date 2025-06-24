@@ -143,10 +143,10 @@ ResourceManager &ResourceManager::getInstance()
 
 void ResourceManager::unloadResource(){
     unloadTexture();
-
     unloadSounds();
     unloadMusics();
 }
+
 //Getters
 Texture2D& ResourceManager::getTexture( const std::string& name) {
     return textures[name];

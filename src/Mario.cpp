@@ -102,10 +102,10 @@ void Mario::moveLeft()
         velocity.x = 0;
         frameAcum = 0;
         }
-        if(velocity.x+accelerationX * GameClock::getInstance().FIXED_TIME_STEP<=-normalSpeedX)
+        if(velocity.x+accelerationX * GameClock::getInstance().DeltaTime<=-normalSpeedX)
         velocity.x = -normalSpeedX;
     else
-        velocity.x -= accelerationX * GameClock::getInstance().FIXED_TIME_STEP;
+        velocity.x -= accelerationX * GameClock::getInstance().DeltaTime;
 }
 
 void Mario::moveRight()
@@ -116,10 +116,10 @@ void Mario::moveRight()
         velocity.x = 0;
         frameAcum = 0;
     }
-        if(velocity.x+accelerationX * GameClock::getInstance().FIXED_TIME_STEP>=normalSpeedX)
+        if(velocity.x+accelerationX * GameClock::getInstance().DeltaTime>=normalSpeedX)
             velocity.x = normalSpeedX;
         else
-        velocity.x += accelerationX * GameClock::getInstance().FIXED_TIME_STEP;
+        velocity.x += accelerationX * GameClock::getInstance().DeltaTime;
 }
 
 void Mario::moveNoWhere()
@@ -153,7 +153,7 @@ std::list<Fireball *> *Mario::getFireballs()
 
 void Mario::HandleInput()
 {
-    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
+    const float deltaTime = GameClock::getInstance().DeltaTime;
 
     if (IsKeyDown(KEY_RIGHT)) moveRight();
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
@@ -363,7 +363,7 @@ void Mario::updateSprite(){
 
 void Mario::updateStateAndPhysic(){
     HandleInput();
-    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
+    const float deltaTime = GameClock::getInstance().DeltaTime;
     switch (form)
     {
     case MARIO_STATE_SMALL:

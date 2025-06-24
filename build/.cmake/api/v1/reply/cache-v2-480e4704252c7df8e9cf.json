@@ -1946,42 +1946,6 @@
 			"value" : "OFF"
 		},
 		{
-			"name" : "Mari_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/Project/Mario/build"
-		},
-		{
-			"name" : "Mari_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "Mari_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/Project/Mario"
-		},
-		{
 			"name" : "Mario_BINARY_DIR",
 			"properties" : 
 			[

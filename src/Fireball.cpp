@@ -37,7 +37,7 @@ void Fireball::updateStateAndPhysic()
     if(isOutOfDistance()) return; // Do not update if out of distance
     updateHitboxes();
 
-    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
+    const float deltaTime = GameClock::getInstance().DeltaTime;
 
     //Image logic
         frameAcum += deltaTime;

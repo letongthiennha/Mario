@@ -83,7 +83,7 @@ public:
     virtual void Draw() override = 0;
 
     //Call in an update loop
-    //Update the position and physic of the entity happen in FIXED_TIME_STEP
+    //Update the position and physic of the entity happen in DeltaTime
     virtual void updateStateAndPhysic();
 
     //Update 

@@ -15,6 +15,7 @@
 		[
 			"add_executable",
 			"target_link_libraries",
+			"target_compile_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -30,19 +31,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 36,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 47,
+				"line" : 51,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 52,
+				"line" : 56,
 				"parent" : 0
 			},
 			{
@@ -57,7 +58,13 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 15,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 17,
 				"parent" : 0
 			}
 		]
@@ -68,7 +75,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++20"
+					"fragment" : " -static-libgcc -static-libstdc++ -g -std=gnu++20"
 				}
 			],
 			"defines" : 
@@ -80,12 +87,16 @@
 				{
 					"backtrace" : 2,
 					"define" : "PLATFORM_DESKTOP"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "RAYLIB_STATIC"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 6,
+					"backtrace" : 7,
 					"path" : "D:/Project/Mario/include"
 				},
 				{
@@ -145,7 +156,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-static-libgcc -static-libstdc++ -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-static",
 				"role" : "flags"
 			},
 			{

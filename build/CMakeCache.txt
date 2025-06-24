@@ -362,15 +362,6 @@ GLFW_USE_HYBRID_HPG:BOOL=OFF
 INCLUDE_EVERYTHING:BOOL=OFF
 
 //Value Computed by CMake
-Mari_BINARY_DIR:STATIC=D:/Project/Mario/build
-
-//Value Computed by CMake
-Mari_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Mari_SOURCE_DIR:STATIC=D:/Project/Mario
-
-//Value Computed by CMake
 Mario_BINARY_DIR:STATIC=D:/Project/Mario/build
 
 //Value Computed by CMake

@@ -2,11 +2,11 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 GameState::GameState(StateManager *manager): State(manager),
-    menuButton(Vector2{50, 50}, Vector2{50, 50}, "", &ResourceManager::getInstance().getTexture("GAME_STATE_MENU_BUTTON"), WHITE, LIGHTGRAY, DARKGRAY)
+    menuButton(Vector2{50, 50}, Vector2{50, 50})
 {
-    menuButton.setTextSize(10);
-    menuButton.OffBackground();
-    menuButton.fitTexture();
+    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("GAME_STATE_MENU_BUTTON"))
+        .DisableBackground()
+        .fitTexture();
     // gameWorld.InitWorld();
 }
 
