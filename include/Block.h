@@ -14,8 +14,8 @@ class Block : public Entity {
         Block(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, int earnPoints);
         ~Block() override;
 
-        void updateHitboxes() override;
-        void Draw() override;
+        void updateStateAndPhysic() override = 0;
+        void Draw() override = 0;
         virtual void doHit(Mario& mario, Map &map);
         void resetHit();
 };

@@ -21,6 +21,8 @@ Block::Block(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFra
 
 Block::~Block() = default;
 
+
+
 void Block::doHit(Mario& mario, Map &map) {
 }
 
