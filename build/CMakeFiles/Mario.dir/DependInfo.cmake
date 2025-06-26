@@ -23,6 +23,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/ADMIN/My-Mario/Mario/src/SoundControoler.cpp" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/State.cpp" "CMakeFiles/Mario.dir/src/State.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/State.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/StateManager.cpp" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj.d"
+  "C:/Users/ADMIN/My-Mario/Mario/src/StoneBlock.cpp" "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Tile.cpp" "CMakeFiles/Mario.dir/src/Tile.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/World.cpp" "CMakeFiles/Mario.dir/src/World.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/World.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/main.cpp" "CMakeFiles/Mario.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/main.cpp.obj.d"

@@ -29,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/State.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/StateManager.cpp.obj"
   "CMakeFiles/Mario.dir/src/StateManager.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj"
+  "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/World.cpp.obj"

@@ -606,6 +606,30 @@ src/StateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StateManager.cpp.s
 .PHONY : src/StateManager.cpp.s
 
+src/StoneBlock.obj: src/StoneBlock.cpp.obj
+.PHONY : src/StoneBlock.obj
+
+# target to build an object file
+src/StoneBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj
+.PHONY : src/StoneBlock.cpp.obj
+
+src/StoneBlock.i: src/StoneBlock.cpp.i
+.PHONY : src/StoneBlock.i
+
+# target to preprocess a source file
+src/StoneBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StoneBlock.cpp.i
+.PHONY : src/StoneBlock.cpp.i
+
+src/StoneBlock.s: src/StoneBlock.cpp.s
+.PHONY : src/StoneBlock.s
+
+# target to generate assembly for a file
+src/StoneBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StoneBlock.cpp.s
+.PHONY : src/StoneBlock.cpp.s
+
 src/Tile.obj: src/Tile.cpp.obj
 .PHONY : src/Tile.obj
 
@@ -742,6 +766,9 @@ help:
 	@echo ... src/StateManager.obj
 	@echo ... src/StateManager.i
 	@echo ... src/StateManager.s
+	@echo ... src/StoneBlock.obj
+	@echo ... src/StoneBlock.i
+	@echo ... src/StoneBlock.s
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s

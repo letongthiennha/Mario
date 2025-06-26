@@ -19,6 +19,7 @@ set(OLD_GLOB
   "C:/Users/ADMIN/My-Mario/Mario/src/SoundControoler.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/State.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/StateManager.cpp"
+  "C:/Users/ADMIN/My-Mario/Mario/src/StoneBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Tile.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/World.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/main.cpp"
