@@ -1,7 +1,9 @@
 CMakeFiles/Mario.dir/src/StateManager.cpp.obj: \
- D:\Project\Mario\src\StateManager.cpp \
- D:/Project/Mario/include/StateManager.h D:/Project/Mario/include/State.h \
- D:/Project/Mario/include/MenuState.h D:/Project/Mario/include/Button.h \
+ C:\Users\ADMIN\My-Mario\Mario\src\StateManager.cpp \
+ C:/Users/ADMIN/My-Mario/Mario/include/StateManager.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/State.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/MenuState.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/Button.h \
  C:/msys64/ucrt64/include/c++/14.2.0/string \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -109,5 +111,5 @@ CMakeFiles/Mario.dir/src/StateManager.cpp.obj: \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \
- D:/Project/Mario/include/UIObject.h \
- D:/Project/Mario/include/DrawalbeObj.h
+ C:/Users/ADMIN/My-Mario/Mario/include/UIObject.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/DrawalbeObj.h

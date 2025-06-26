@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Project\Mario
+CMAKE_SOURCE_DIR = C:\Users\ADMIN\My-Mario\Mario
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Project\Mario\build
+CMAKE_BINARY_DIR = C:\Users\ADMIN\My-Mario\Mario\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = D:\Project\Mario\build
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /d D:\Project\Mario\build && "C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && "C:\Program Files\CMake\bin\cpack.exe" --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -77,7 +77,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /d D:\Project\Mario\build && "C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake D:/Project/Mario/build/CPackSourceConfig.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && "C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/ADMIN/My-Mario/Mario/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -151,14 +151,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d D:\Project\Mario\build && $(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles D:\Project\Mario\build\raylib_build\\CMakeFiles\progress.marks
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles 0
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles C:\Users\ADMIN\My-Mario\Mario\build\raylib_build\\CMakeFiles\progress.marks
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/clean
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/clean
 .PHONY : clean
 
 # The main clean target
@@ -167,23 +167,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/preinstall
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/preinstall
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d D:\Project\Mario\build && $(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
-	cd /d D:\Project\Mario\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(CMAKE_COMMAND) -P C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 raylib_build/CMakeFiles/uninstall.dir/rule:
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/CMakeFiles/uninstall.dir/rule
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 raylib_build/CMakeFiles/uninstall.dir/rule
 .PHONY : raylib_build/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ uninstall: raylib_build/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /d D:\Project\Mario\build && $(MAKE) $(MAKESILENT) -f raylib_build\CMakeFiles\uninstall.dir\build.make raylib_build/CMakeFiles/uninstall.dir/build
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(MAKE) $(MAKESILENT) -f raylib_build\CMakeFiles\uninstall.dir\build.make raylib_build/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -221,7 +221,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d D:\Project\Mario\build && $(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
-	cd /d D:\Project\Mario\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(CMAKE_COMMAND) -P C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

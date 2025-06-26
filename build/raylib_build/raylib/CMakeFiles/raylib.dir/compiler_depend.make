@@ -333,6 +333,7 @@ raylib_build/raylib/CMakeFiles/raylib.dir/rcore.c.obj: C:/raylib/raylib/src/rcor
   C:/msys64/ucrt64/include/pshpack2.h \
   C:/msys64/ucrt64/include/pshpack4.h \
   C:/msys64/ucrt64/include/pshpack8.h \
+  C:/msys64/ucrt64/include/pthread_compat.h \
   C:/msys64/ucrt64/include/pthread_time.h \
   C:/msys64/ucrt64/include/sal.h \
   C:/msys64/ucrt64/include/sdkddkver.h \
@@ -1303,6 +1304,8 @@ C:/raylib/raylib/src/raylib.h:
 C:/raylib/raylib/src/utils.h:
 
 C:/raylib/raylib/src/rcore.c:
+
+C:/msys64/ucrt64/include/pthread_compat.h:
 
 C:/msys64/ucrt64/include/pthread_time.h:
 

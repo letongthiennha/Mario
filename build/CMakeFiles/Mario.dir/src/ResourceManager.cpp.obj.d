@@ -1,6 +1,7 @@
 CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj: \
- D:\Project\Mario\src\ResourceManager.cpp \
- D:/Project/Mario/include/ResourceManager.h C:/raylib/raylib/src/raylib.h \
+ C:\Users\ADMIN\My-Mario\Mario\src\ResourceManager.cpp \
+ C:/Users/ADMIN/My-Mario/Mario/include/ResourceManager.h \
+ C:/raylib/raylib/src/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \

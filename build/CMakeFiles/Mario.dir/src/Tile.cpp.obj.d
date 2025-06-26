@@ -1,6 +1,9 @@
-CMakeFiles/Mario.dir/src/Tile.cpp.obj: D:\Project\Mario\src\Tile.cpp \
- D:/Project/Mario/include/Tile.h D:/Project/Mario/include/Entity.h \
- D:/Project/Mario/include/DrawalbeObj.h C:/raylib/raylib/src/raylib.h \
+CMakeFiles/Mario.dir/src/Tile.cpp.obj: \
+ C:\Users\ADMIN\My-Mario\Mario\src\Tile.cpp \
+ C:/Users/ADMIN/My-Mario/Mario/include/Tile.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/Entity.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/DrawalbeObj.h \
+ C:/raylib/raylib/src/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \
@@ -8,10 +11,11 @@ CMakeFiles/Mario.dir/src/Tile.cpp.obj: D:\Project\Mario\src\Tile.cpp \
  C:/msys64/ucrt64/include/_mingw_mac.h \
  C:/msys64/ucrt64/include/_mingw_secapi.h \
  C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
- D:/Project/Mario/include/Direction.h D:/Project/Mario/include/Hitbox.h \
- D:/Project/Mario/include/EnityState.h \
- D:/Project/Mario/include/CollisionInfo.h \
- D:/Project/Mario/include/ResourceManager.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/Direction.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/Hitbox.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/EnityState.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/CollisionInfo.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/ResourceManager.h \
  C:/msys64/ucrt64/include/c++/14.2.0/unordered_map \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \

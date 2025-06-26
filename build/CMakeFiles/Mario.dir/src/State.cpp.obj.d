@@ -1,2 +1,4 @@
-CMakeFiles/Mario.dir/src/State.cpp.obj: D:\Project\Mario\src\State.cpp \
- D:/Project/Mario/include/State.h D:/Project/Mario/include/StateManager.h
+CMakeFiles/Mario.dir/src/State.cpp.obj: \
+ C:\Users\ADMIN\My-Mario\Mario\src\State.cpp \
+ C:/Users/ADMIN/My-Mario/Mario/include/State.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/StateManager.h

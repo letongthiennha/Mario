@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Project\Mario
+CMAKE_SOURCE_DIR = C:\Users\ADMIN\My-Mario\Mario
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Project\Mario\build
+CMAKE_BINARY_DIR = C:\Users\ADMIN\My-Mario\Mario\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,7 +77,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake D:/Project/Mario/build/CPackSourceConfig.cmake
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/ADMIN/My-Mario/Mario/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -151,9 +151,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles D:\Project\Mario\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles C:\Users\ADMIN\My-Mario\Mario\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Project\Mario\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -177,7 +177,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles\VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
@@ -245,6 +245,30 @@ update_mappings: cmake_check_build_system
 update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\build.make raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
+
+src/Block.obj: src/Block.cpp.obj
+.PHONY : src/Block.obj
+
+# target to build an object file
+src/Block.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Block.cpp.obj
+.PHONY : src/Block.cpp.obj
+
+src/Block.i: src/Block.cpp.i
+.PHONY : src/Block.i
+
+# target to preprocess a source file
+src/Block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Block.cpp.i
+.PHONY : src/Block.cpp.i
+
+src/Block.s: src/Block.cpp.s
+.PHONY : src/Block.s
+
+# target to generate assembly for a file
+src/Block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Block.cpp.s
+.PHONY : src/Block.cpp.s
 
 src/Button.obj: src/Button.cpp.obj
 .PHONY : src/Button.obj
@@ -673,6 +697,9 @@ help:
 	@echo ... Mario
 	@echo ... glfw
 	@echo ... raylib
+	@echo ... src/Block.obj
+	@echo ... src/Block.i
+	@echo ... src/Block.s
 	@echo ... src/Button.obj
 	@echo ... src/Button.i
 	@echo ... src/Button.s
@@ -735,7 +762,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P D:\Project\Mario\build\CMakeFiles\VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles\VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

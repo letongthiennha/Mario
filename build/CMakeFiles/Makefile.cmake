@@ -59,6 +59,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/WriteBasicConfigVersionFile.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Templates/CPackConfig.cmake.in"
+  "C:/Users/ADMIN/My-Mario/Mario/CMakeLists.txt"
+  "CMakeFiles/4.0.2/CMakeCCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeSystem.cmake"
+  "CMakeFiles/VerifyGlobs.cmake"
+  "CMakeFiles/cmake.verify_globs"
   "C:/raylib/raylib/CMakeLists.txt"
   "C:/raylib/raylib/CMakeOptions.txt"
   "C:/raylib/raylib/cmake/AddIfFlagCompiles.cmake"
@@ -81,13 +88,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/raylib/raylib/src/external/glfw/CMake/glfw3Config.cmake.in"
   "C:/raylib/raylib/src/external/glfw/CMakeLists.txt"
   "C:/raylib/raylib/src/external/glfw/src/CMakeLists.txt"
-  "D:/Project/Mario/CMakeLists.txt"
-  "CMakeFiles/4.0.1/CMakeCCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeCXXCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeRCCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeSystem.cmake"
-  "CMakeFiles/VerifyGlobs.cmake"
-  "CMakeFiles/cmake.verify_globs"
   )
 
 # The corresponding makefile is:

@@ -1,8 +1,8 @@
-if(NOT EXISTS "D:/Project/Mario/build/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: D:/Project/Mario/build/install_manifest.txt")
+if(NOT EXISTS "C:/Users/ADMIN/My-Mario/Mario/build/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: C:/Users/ADMIN/My-Mario/Mario/build/install_manifest.txt")
 endif()
 
-file(READ "D:/Project/Mario/build/install_manifest.txt" files)
+file(READ "C:/Users/ADMIN/My-Mario/Mario/build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 foreach(file ${files})
   message(STATUS "Uninstalling $ENV{DESTDIR}${file}")

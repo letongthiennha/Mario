@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Project\Mario
+CMAKE_SOURCE_DIR = C:\Users\ADMIN\My-Mario\Mario
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Project\Mario\build
+CMAKE_BINARY_DIR = C:\Users\ADMIN\My-Mario\Mario\build
 
 # Utility rule file for update_mappings.
 
@@ -66,7 +66,7 @@ include raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/com
 include raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/progress.make
 
 raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=D:\Project\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
 	cd /d C:\raylib\raylib\src\external\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -P C:/raylib/raylib/src/external/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h
 
 raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/codegen:
@@ -81,10 +81,10 @@ raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build: upda
 .PHONY : raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 
 raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/clean:
-	cd /d D:\Project\Mario\build\raylib_build\raylib\external\glfw\src && $(CMAKE_COMMAND) -P CMakeFiles\update_mappings.dir\cmake_clean.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build\raylib_build\raylib\external\glfw\src && $(CMAKE_COMMAND) -P CMakeFiles\update_mappings.dir\cmake_clean.cmake
 .PHONY : raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/clean
 
 raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Project\Mario C:\raylib\raylib\src\external\glfw\src D:\Project\Mario\build D:\Project\Mario\build\raylib_build\raylib\external\glfw\src D:\Project\Mario\build\raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ADMIN\My-Mario\Mario C:\raylib\raylib\src\external\glfw\src C:\Users\ADMIN\My-Mario\Mario\build C:\Users\ADMIN\My-Mario\Mario\build\raylib_build\raylib\external\glfw\src C:\Users\ADMIN\My-Mario\Mario\build\raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/depend
 

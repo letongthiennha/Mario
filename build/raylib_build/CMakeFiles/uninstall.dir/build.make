@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Project\Mario
+CMAKE_SOURCE_DIR = C:\Users\ADMIN\My-Mario\Mario
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Project\Mario\build
+CMAKE_BINARY_DIR = C:\Users\ADMIN\My-Mario\Mario\build
 
 # Utility rule file for uninstall.
 
@@ -66,7 +66,7 @@ include raylib_build/CMakeFiles/uninstall.dir/compiler_depend.make
 include raylib_build/CMakeFiles/uninstall.dir/progress.make
 
 raylib_build/CMakeFiles/uninstall:
-	cd /d D:\Project\Mario\build\raylib_build && "C:\Program Files\CMake\bin\cmake.exe" -P D:/Project/Mario/build/raylib_build/cmake_uninstall.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build\raylib_build && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/ADMIN/My-Mario/Mario/build/raylib_build/cmake_uninstall.cmake
 
 raylib_build/CMakeFiles/uninstall.dir/codegen:
 .PHONY : raylib_build/CMakeFiles/uninstall.dir/codegen
@@ -80,10 +80,10 @@ raylib_build/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : raylib_build/CMakeFiles/uninstall.dir/build
 
 raylib_build/CMakeFiles/uninstall.dir/clean:
-	cd /d D:\Project\Mario\build\raylib_build && $(CMAKE_COMMAND) -P CMakeFiles\uninstall.dir\cmake_clean.cmake
+	cd /d C:\Users\ADMIN\My-Mario\Mario\build\raylib_build && $(CMAKE_COMMAND) -P CMakeFiles\uninstall.dir\cmake_clean.cmake
 .PHONY : raylib_build/CMakeFiles/uninstall.dir/clean
 
 raylib_build/CMakeFiles/uninstall.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Project\Mario C:\raylib\raylib D:\Project\Mario\build D:\Project\Mario\build\raylib_build D:\Project\Mario\build\raylib_build\CMakeFiles\uninstall.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ADMIN\My-Mario\Mario C:\raylib\raylib C:\Users\ADMIN\My-Mario\Mario\build C:\Users\ADMIN\My-Mario\Mario\build\raylib_build C:\Users\ADMIN\My-Mario\Mario\build\raylib_build\CMakeFiles\uninstall.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : raylib_build/CMakeFiles/uninstall.dir/depend
 

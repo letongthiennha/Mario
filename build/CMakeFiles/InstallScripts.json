@@ -1,11 +1,11 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/Project/Mario/build/cmake_install.cmake",
-		"D:/Project/Mario/build/raylib_build/cmake_install.cmake",
-		"D:/Project/Mario/build/raylib_build/raylib/cmake_install.cmake",
-		"D:/Project/Mario/build/raylib_build/raylib/external/glfw/cmake_install.cmake",
-		"D:/Project/Mario/build/raylib_build/raylib/external/glfw/src/cmake_install.cmake"
+		"C:/Users/ADMIN/My-Mario/Mario/build/cmake_install.cmake",
+		"C:/Users/ADMIN/My-Mario/Mario/build/raylib_build/cmake_install.cmake",
+		"C:/Users/ADMIN/My-Mario/Mario/build/raylib_build/raylib/cmake_install.cmake",
+		"C:/Users/ADMIN/My-Mario/Mario/build/raylib_build/raylib/external/glfw/cmake_install.cmake",
+		"C:/Users/ADMIN/My-Mario/Mario/build/raylib_build/raylib/external/glfw/src/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

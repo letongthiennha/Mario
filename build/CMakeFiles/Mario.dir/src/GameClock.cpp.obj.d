@@ -1,5 +1,6 @@
 CMakeFiles/Mario.dir/src/GameClock.cpp.obj: \
- D:\Project\Mario\src\GameClock.cpp D:/Project/Mario/include/GameClock.h \
+ C:\Users\ADMIN\My-Mario\Mario\src\GameClock.cpp \
+ C:/Users/ADMIN/My-Mario/Mario/include/GameClock.h \
  C:/raylib/raylib/src/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
