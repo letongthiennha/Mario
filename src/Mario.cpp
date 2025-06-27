@@ -1,6 +1,6 @@
 #include "Mario.h"
 #include "GameClock.h"
-#include "World.h"
+#include "Level.h"
 #include <cmath>
 #include <iostream>
 #include "SoundControoler.h"
@@ -12,7 +12,9 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       form(form),
       normalSpeedX(500),
       accelerationX(600),
-      jumpInitSpeed(sqrt(300 * World::GetGravity() ))
+      jumpInitSpeed(sqrt(300 * Level::GRAVITY )),
+        coin(0)
+
     //   invincibleFrameTime(0.1f),
     //   invincibleAcum(0.0f),
     //   invincibleFrame(0),
@@ -58,9 +60,32 @@ Mario::~Mario(){
     Entity::~Entity();
 }
 
+void Mario::addLives(int lives)
+{
+    this->lives += lives;
+    if (this->lives < 0) this->lives = 0; // Prevent negative lives
+}
+
 void Mario::setState(EntityState state)
 {
     this->state = state;
+}
+
+void Mario::addCoin(int coin)
+{
+    this->coin += coin;
+    this->notify(GAME_EVENT::COIN_CHANGE, this->coin);
+    if (this->coin < 0) this->coin = 0; // Prevent negative coins
+}
+
+int Mario::getLives() const
+{
+    return lives;
+}
+
+int Mario::getCoin() const
+{
+    return coin;
 }
 
 // Action
@@ -180,6 +205,9 @@ void Mario::HandleInput()
         if (IsKeyPressed(KEY_Z)){
             fire();
         }
+    }
+    if(IsKeyPressed(KEY_M)){
+        addCoin(1);
     }
 }
 
@@ -427,7 +455,7 @@ void Mario::updateStateAndPhysic(){
     // if(state==ENTITY_STATE_ON_GROUD){
     //     velocity.y = 0;
     // }
-    velocity.y += World::GetGravity() * deltaTime;
+    velocity.y += Level::GRAVITY * deltaTime;
     
     Entity::updateStateAndPhysic();
 

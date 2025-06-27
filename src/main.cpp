@@ -4,7 +4,7 @@
 #include "ResourceManager.h"
 #include "Mario.h"
 #include "GameClock.h"
-#include "World.h"
+#include "Level.h"
 #include "Fireball.h"
 #include <iostream>
 #include "Tile.h"
@@ -15,17 +15,14 @@
 int main(){
     InitWindow(1600, 900, "Mario");
     InitAudioDevice();
-    // World gameWorld;
-    // World::InitWorld();
-    // World gw;
+
     SetTargetFPS(144);
-    // SoundController::getInstance().PlaySound("TEST");
-    // PlayMusicStream(ResourceManager::getInstance().getMusics("Test"));
+    PlayMusicStream(ResourceManager::getInstance().getMusics("Test"));
     bool isPaused = false;
     StateManager stateManager;
     ResourceManager::getInstance().loadResource();
     while(!WindowShouldClose()){
-        // UpdateMusicStream(ResourceManager::getInstance().getMusics("Test"));
+        UpdateMusicStream(ResourceManager::getInstance().getMusics("Test"));
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
         if(!isPaused){
             GameClock::getInstance().updateTimeAcum += GetFrameTime();
@@ -38,9 +35,10 @@ int main(){
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }
-            ClearBackground(BLUE);
+        // Draw Loop
+
             BeginDrawing();
-            // gw.DrawWorld();
+            // ClearBackground(RAYWHITE);
             stateManager.draw();
             EndDrawing();
     }
@@ -48,5 +46,6 @@ int main(){
     ResourceManager::getInstance().unloadResource();
     // Close audio device
     CloseAudioDevice();
+    
     CloseWindow();
 }

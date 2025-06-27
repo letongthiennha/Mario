@@ -390,6 +390,30 @@ src/GameState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/GameState.cpp.s
 .PHONY : src/GameState.cpp.s
 
+src/HUD.obj: src/HUD.cpp.obj
+.PHONY : src/HUD.obj
+
+# target to build an object file
+src/HUD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/HUD.cpp.obj
+.PHONY : src/HUD.cpp.obj
+
+src/HUD.i: src/HUD.cpp.i
+.PHONY : src/HUD.i
+
+# target to preprocess a source file
+src/HUD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/HUD.cpp.i
+.PHONY : src/HUD.cpp.i
+
+src/HUD.s: src/HUD.cpp.s
+.PHONY : src/HUD.s
+
+# target to generate assembly for a file
+src/HUD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/HUD.cpp.s
+.PHONY : src/HUD.cpp.s
+
 src/Hitbox.obj: src/Hitbox.cpp.obj
 .PHONY : src/Hitbox.obj
 
@@ -413,6 +437,30 @@ src/Hitbox.s: src/Hitbox.cpp.s
 src/Hitbox.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.s
 .PHONY : src/Hitbox.cpp.s
+
+src/Level.obj: src/Level.cpp.obj
+.PHONY : src/Level.obj
+
+# target to build an object file
+src/Level.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Level.cpp.obj
+.PHONY : src/Level.cpp.obj
+
+src/Level.i: src/Level.cpp.i
+.PHONY : src/Level.i
+
+# target to preprocess a source file
+src/Level.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Level.cpp.i
+.PHONY : src/Level.cpp.i
+
+src/Level.s: src/Level.cpp.s
+.PHONY : src/Level.s
+
+# target to generate assembly for a file
+src/Level.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Level.cpp.s
+.PHONY : src/Level.cpp.s
 
 src/Map.obj: src/Map.cpp.obj
 .PHONY : src/Map.obj
@@ -582,6 +630,30 @@ src/StateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/StateManager.cpp.s
 .PHONY : src/StateManager.cpp.s
 
+src/Subject.obj: src/Subject.cpp.obj
+.PHONY : src/Subject.obj
+
+# target to build an object file
+src/Subject.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Subject.cpp.obj
+.PHONY : src/Subject.cpp.obj
+
+src/Subject.i: src/Subject.cpp.i
+.PHONY : src/Subject.i
+
+# target to preprocess a source file
+src/Subject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Subject.cpp.i
+.PHONY : src/Subject.cpp.i
+
+src/Subject.s: src/Subject.cpp.s
+.PHONY : src/Subject.s
+
+# target to generate assembly for a file
+src/Subject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Subject.cpp.s
+.PHONY : src/Subject.cpp.s
+
 src/Tile.obj: src/Tile.cpp.obj
 .PHONY : src/Tile.obj
 
@@ -605,30 +677,6 @@ src/Tile.s: src/Tile.cpp.s
 src/Tile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.s
 .PHONY : src/Tile.cpp.s
-
-src/World.obj: src/World.cpp.obj
-.PHONY : src/World.obj
-
-# target to build an object file
-src/World.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.obj
-.PHONY : src/World.cpp.obj
-
-src/World.i: src/World.cpp.i
-.PHONY : src/World.i
-
-# target to preprocess a source file
-src/World.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.i
-.PHONY : src/World.cpp.i
-
-src/World.s: src/World.cpp.s
-.PHONY : src/World.s
-
-# target to generate assembly for a file
-src/World.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.s
-.PHONY : src/World.cpp.s
 
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
@@ -691,9 +739,15 @@ help:
 	@echo ... src/GameState.obj
 	@echo ... src/GameState.i
 	@echo ... src/GameState.s
+	@echo ... src/HUD.obj
+	@echo ... src/HUD.i
+	@echo ... src/HUD.s
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
+	@echo ... src/Level.obj
+	@echo ... src/Level.i
+	@echo ... src/Level.s
 	@echo ... src/Map.obj
 	@echo ... src/Map.i
 	@echo ... src/Map.s
@@ -715,12 +769,12 @@ help:
 	@echo ... src/StateManager.obj
 	@echo ... src/StateManager.i
 	@echo ... src/StateManager.s
+	@echo ... src/Subject.obj
+	@echo ... src/Subject.i
+	@echo ... src/Subject.s
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s
-	@echo ... src/World.obj
-	@echo ... src/World.i
-	@echo ... src/World.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

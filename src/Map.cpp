@@ -18,14 +18,13 @@ float Map::getMapWidth() const
     return width;
 }
 
-Map::Map()
-
-    
+Map::Map(int mapNumber)
 {
     currBackgroundStarX = 0.0f;
-    background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
+    background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
+    LoadMap(mapNumber);
 }
-Map::~Map()
+    Map::~Map()
 {
     for(auto& tile : interactiveTiles)
     {

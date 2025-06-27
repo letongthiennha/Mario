@@ -2,6 +2,7 @@
 
 void ResourceManager::loadFonts()
 {
+    fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
 }
 
 // Load
@@ -94,6 +95,8 @@ void ResourceManager::loadTextures()
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
+    //HUD
+    textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
 }
 
 void ResourceManager::loadSounds(){
@@ -142,6 +145,7 @@ ResourceManager &ResourceManager::getInstance()
 }
 
 void ResourceManager::unloadResource(){
+    unloadFonts();
     unloadTexture();
     unloadSounds();
     unloadMusics();
@@ -156,6 +160,11 @@ Sound &ResourceManager::getSounds(const std::string& name) {
 }
 Music &ResourceManager::getMusics(const std::string& name) {
     return musics[name];
+}
+
+Font &ResourceManager::getFonts(const std::string &name)
+{
+    return fonts[name];
 }
 
 Texture2D FlipTextureHorizontal(const Texture2D &texture)

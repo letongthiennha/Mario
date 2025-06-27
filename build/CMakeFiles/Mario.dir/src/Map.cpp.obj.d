@@ -121,16 +121,16 @@ CMakeFiles/Mario.dir/src/Map.cpp.obj: D:\Project\Mario\src\Map.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.tcc \
  D:/Project/Mario/include/Mario.h D:/Project/Mario/include/MarioState.h \
- D:/Project/Mario/include/Fireball.h \
- C:/msys64/ucrt64/include/c++/14.2.0/list \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
+ D:/Project/Mario/include/Fireball.h D:/Project/Mario/include/Subject.h \
  C:/msys64/ucrt64/include/c++/14.2.0/vector \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/list \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
  D:/Project/Mario/include/json.hpp \
  C:/msys64/ucrt64/include/c++/14.2.0/algorithm \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_algo.h \

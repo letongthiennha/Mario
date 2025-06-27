@@ -4,8 +4,10 @@
 #include "Fireball.h"
 #include "ResourceManager.h"
 #include "Tile.h" 
+#include "Subject.h"
 #include <list>
-class Mario: public Entity{
+class Subject;
+class Mario: public Entity, public Subject {
     private:
     //Image
         // Properties
@@ -13,23 +15,23 @@ class Mario: public Entity{
         bool isDucking;
         MarioState form;
         std::list<Fireball*>fireballs;
-
-    // Special effects
-    // Invincibility when hit
+        int coin;
+        // Special effects
+        // Invincibility when hit
         // The player is invincible for a short time after being hit
-    //     bool isInvincible;
-    //     float invincibleFrameTime;
-    //     float invincibleAcum;
-    //     int invincibleFrame;
-    //     int invincibleMaxFrame;
-    // // Immortal when eating immortal star
-    //     // In this state it can kill any thing
-    //     bool isImmortal;
-    //     float immortalFrameTime;
-    //     float immortalAcum;
-    //     int immortalFrame;
-    //     int immortalMaxFrame;
-    //Timing Event
+        //     bool isInvincible;
+        //     float invincibleFrameTime;
+        //     float invincibleAcum;
+        //     int invincibleFrame;
+        //     int invincibleMaxFrame;
+        // // Immortal when eating immortal star
+        //     // In this state it can kill any thing
+        //     bool isImmortal;
+        //     float immortalFrameTime;
+        //     float immortalAcum;
+        //     int immortalFrame;
+        //     int immortalMaxFrame;
+        // Timing Event
         // Accelerating
         int normalSpeedX;
         int accelerationX;
@@ -37,6 +39,13 @@ class Mario: public Entity{
         float jumpInitSpeed;
         void updateSprite() override;
 
+        void jump();
+        void moveLeft();
+        void moveRight();
+        void moveNoWhere();
+
+        void Duck();
+        void fire();
     public:
         // Constructor
         //Full constructor
@@ -47,22 +56,15 @@ class Mario: public Entity{
         ~Mario() override;
 
         // Setter
-        void setSprite(Texture2D sprite);
-        void setLives(int lives);
+        void addLives(int lives);
         void setState(EntityState state);
-        
+        void addCoin(int coin);
         // Getter
         int getLives() const;
-        bool getIsDucking() const;
+        int getCoin() const;
         std::list<Fireball*>* getFireballs() ;
         // Methods
-        void jump();
-        void moveLeft();
-        void moveRight();
-        void moveNoWhere();
 
-        void Duck();
-        void fire();
 
         void changeToBig();
         void changeToFire();

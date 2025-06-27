@@ -1,23 +1,55 @@
-#include "World.h"
+#include "Level.h"
 #include "ResourceManager.h"
 #include "Map.h"
 
-World::World():player(), interactiveTiles(map.getInteractiveTiles()){
-
-        map.LoadMap(0);
+Level::Level(int mapNumber,GameState* gamestate):gameState(gamestate),player(),map(mapNumber), interactiveTiles(map.getInteractiveTiles()){
+        switch(mapNumber) {
+            case 0:
+                background = ResourceManager::getInstance().getTexture("BACKGROUND_0");
+                // backgroundColor = ResourceManager::getInstance().getColor("LEVEL_0_BACKGROUND_COLOR");
+                backgroundColor = Color{0,96,184,255}; // Default color for level 0
+                break;
+            case 1:
+                background = ResourceManager::getInstance().getTexture("LEVEL_1_BACKGROUND");
+                backgroundColor = BLUE;
+                break;
+        //     case 2:
+        //         background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
+        //         backgroundColor = ResourceManager::getInstance().getColor("LEVEL_2_BACKGROUND_COLOR");
+        //         break;
+        //     case 3:
+        //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");
+        //         backgroundColor = ResourceManager::getInstance().getColor("LEVEL_3_BACKGROUND_COLOR");
+        //         break;
+            default:
+                // background = ResourceManager::getInstance().getTexture("DEFAULT_BACKGROUND");
+                backgroundColor = WHITE;
+        }
+        player.addObserver(&gameState->getHUD());
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
         camera.target = player.getPosition();
         camera.rotation = 0.0f;
         camera.zoom = 1.0f;
 
 }
-World::~World()
+Level::~Level()
 {
 
 }
-void World::UpdateWorld()
+
+bool Level::IsCompleted()
+{
+    return this->isCompleted;
+}
+
+void Level::UpdateLevel()
 {
 
+        if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
+        {
+                isCompleted = true;
+                return;
+        } 
         for(auto const & tile : interactiveTiles)
                 {
                         CollisionInfo playerCollision = player.CheckCollisionType(*tile);
@@ -37,9 +69,9 @@ void World::UpdateWorld()
         player.updateStateAndPhysic();
 
 }
-void World::DrawWorld()
+void Level::DrawLevel()
 {
-
+        ClearBackground(backgroundColor);
         camera.target.y = GetScreenHeight()/2;
         if(player.getPosition().x>GetScreenWidth()/2&&player.getPosition().x<map.getMapWidth()-GetScreenWidth()/2)
         {
@@ -72,11 +104,8 @@ void World::DrawWorld()
         player.Draw();
         EndMode2D();
 }
-const float World::GetGravity()
-{
-        return GRAVITY;
-}
-void World::InitWorld()
+
+void Level::InitWorld()
 {
 
         ResourceManager::getInstance().loadResource();

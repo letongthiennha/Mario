@@ -135,7 +135,9 @@
 				13,
 				14,
 				15,
-				16
+				16,
+				17,
+				18
 			]
 		}
 	],
@@ -161,6 +163,10 @@
 			},
 			{
 				"fragment" : "-static",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-mwindows",
 				"role" : "flags"
 			},
 			{
@@ -229,7 +235,9 @@
 				13,
 				14,
 				15,
-				16
+				16,
+				17,
+				18
 			]
 		}
 	],
@@ -274,7 +282,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/HUD.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/Hitbox.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Level.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -322,13 +342,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/Tile.cpp",
+			"path" : "src/Subject.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/World.cpp",
+			"path" : "src/Tile.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -10,7 +10,9 @@ set(OLD_GLOB
   "D:/Project/Mario/src/Fireball.cpp"
   "D:/Project/Mario/src/GameClock.cpp"
   "D:/Project/Mario/src/GameState.cpp"
+  "D:/Project/Mario/src/HUD.cpp"
   "D:/Project/Mario/src/Hitbox.cpp"
+  "D:/Project/Mario/src/Level.cpp"
   "D:/Project/Mario/src/Map.cpp"
   "D:/Project/Mario/src/Mario.cpp"
   "D:/Project/Mario/src/MenuState.cpp"
@@ -18,8 +20,8 @@ set(OLD_GLOB
   "D:/Project/Mario/src/SoundControoler.cpp"
   "D:/Project/Mario/src/State.cpp"
   "D:/Project/Mario/src/StateManager.cpp"
+  "D:/Project/Mario/src/Subject.cpp"
   "D:/Project/Mario/src/Tile.cpp"
-  "D:/Project/Mario/src/World.cpp"
   "D:/Project/Mario/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

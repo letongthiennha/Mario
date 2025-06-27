@@ -13,12 +13,11 @@ private:
     std::vector<Tile*> interactiveTiles;
     std::vector<Tile*> nonInterativeTile;
     void LoadFromJsonFile(const std::string& filename);
+    void LoadMap(int mapNumber);    
 public:
     std::vector<Tile *> &getInteractiveTiles();
     float getMapWidth() const;
-    Map();
+    Map(int mapNumber);  
     ~Map();
-    void nextMap();
-    void LoadMap(int mapNumber);
     void Draw() override;
 };

@@ -9,7 +9,7 @@ protected:
     //Properties
     Vector2 pos;
     Vector2 size;
-    Rectangle rect; //Used for collision detection
+    Rectangle rect; //Used for collision detection(HURTBOX)
     EntityState state;
     Color color;
     const Texture2D *sprite;
@@ -28,6 +28,7 @@ protected:
     float frameAcum;
     int currFrame;
     int maxFrame;
+    
     //Call right before the draw function
     virtual void updateSprite()=0;
 
