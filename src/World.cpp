@@ -10,6 +10,7 @@ World::World():player(), interactiveTiles(map.getInteractiveTiles()){
         camera.rotation = 0.0f;
         camera.zoom = 1.0f;
 
+        loadCoins();
 }
 World::~World()
 {
@@ -70,7 +71,14 @@ void World::DrawWorld()
         DrawTextureEx(background,Vector2{currBackgroundStarX+background.width*1.3f,-200},0.0f,1.3f,WHITE);
         map.Draw();
         player.Draw();
+
+        //Draw coins
+        for (auto& coin : coins) {
+            coin.Draw();
+        }
+
         EndMode2D();
+
 }
 const float World::GetGravity()
 {
@@ -80,4 +88,10 @@ void World::InitWorld()
 {
 
         ResourceManager::getInstance().loadResource();
+}
+
+void World::loadCoins() {
+    coins.clear();
+    coins.emplace_back(Vector2{ 100, 200 }, Vector2{ 32, 32 }, WHITE, 0.1f, 4);
+    // ... add more coins ...
 }

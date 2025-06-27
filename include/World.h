@@ -3,7 +3,8 @@
 #include "Tile.h"
 #include <vector>
 #include "Mario.h"
-#include"Map.h"     
+#include"Map.h"    
+#include "Coin.h"
 #include "CollisionMediator.h"
 
 class World
@@ -17,6 +18,7 @@ private:
     Mario player;
     std::vector<Tile *> &interactiveTiles;
     Camera2D camera;
+    std::vector<Coin> coins;
 public:
     World();
     ~World();
@@ -25,4 +27,5 @@ public:
     static const float GetGravity();
     static void InitWorld();
 
+    void loadCoins();
 };

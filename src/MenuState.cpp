@@ -31,6 +31,7 @@ void MenuState::update()
     if (startButton.isClicked()) {
 
         stateManager->setState(new GameState(stateManager));  // Switch to GameState
+        return;
     }
     // Update other buttons similarly
     optionsButton.update();

@@ -94,6 +94,12 @@ void ResourceManager::loadTextures()
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
+
+    //COIN
+	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin/Coin_0.png");
+	textures["COIN_1"] = LoadTexture("resources/Entity/Items/Coin/Coin_1.png");
+	textures["COIN_2"] = LoadTexture("resources/Entity/Items/Coin/Coin_2.png");
+	textures["COIN_3"] = LoadTexture("resources/Entity/Items/Coin/Coin_3.png");
 }
 
 void ResourceManager::loadSounds(){
