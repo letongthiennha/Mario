@@ -89,14 +89,15 @@ void CollisionMediator::HandleFireballWithTile(Fireball *&fireball, Tile *&tile,
     }
 }
 
-void CollisionMediator::HandleMarioWithCoin(Mario*& mario, Coin*& coin)
+void CollisionMediator::HandleMarioWithCoin(Mario*& mario, Coin*& coin, CollisionInfo AtoB)
 {
+    if (AtoB == COLLISION_NONE)
+		return;
     if (coin->getState() != ItemState::IDLE)
         return;
 
     if (CheckCollisionRecs(mario->getRect(), coin->getRect())) {
         coin->collect();
-        // Optionally: mario->addScore(), play sound, etc.
     }
 }
 
@@ -132,6 +133,7 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     {
         Mario* mario = isAmario ? isAmario : isBmario;
         Coin* coin = isAcoin ? isAcoin : isBcoin;
-        HandleMarioWithCoin(mario, coin);
+        CollisionInfo AtoB = mario->CheckCollisionType(*coin);
+        HandleMarioWithCoin(mario, coin, AtoB);
 	}
 }

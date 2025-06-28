@@ -10,7 +10,7 @@ class CollisionMediator {
     private:
     void HandleMarioWithTile(Mario*& mario, Tile* &tile, CollisionInfo AtoB);
     void HandleFireballWithTile(Fireball*& fireball, Tile*& tile, CollisionInfo AtoB);
-    void HandleMarioWithCoin(Mario*& mario, Coin*& coin);
+    void HandleMarioWithCoin(Mario*& mario, Coin*& coin, CollisionInfo AtoB);
     public:
     void HandleCollision(Entity* entityA, Entity* entityB);
 

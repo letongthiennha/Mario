@@ -18,7 +18,7 @@ private:
     Mario player;
     std::vector<Tile *> &interactiveTiles;
     Camera2D camera;
-    std::vector<Item*> items;
+    std::vector<Item*> &items;
 public:
     World();
     ~World();

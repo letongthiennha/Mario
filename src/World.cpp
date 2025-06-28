@@ -2,7 +2,7 @@
 #include "ResourceManager.h"
 #include "Map.h"
 
-World::World():player(), interactiveTiles(map.getInteractiveTiles()){
+World::World():player(), interactiveTiles(map.getInteractiveTiles()), items(map.getItems()){
 
         map.LoadMap(0);
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
@@ -10,7 +10,7 @@ World::World():player(), interactiveTiles(map.getInteractiveTiles()){
         camera.rotation = 0.0f;
         camera.zoom = 1.0f;
 
-        loadCoins();
+		//loadCoins();
 }
 World::~World()
 {

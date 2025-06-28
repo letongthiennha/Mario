@@ -13,6 +13,10 @@ std::vector<Tile *> &Map::getInteractiveTiles()
     return interactiveTiles;
 }
 
+std::vector<Item*>& Map::getItems() {
+    return items;
+}
+
 float Map::getMapWidth() const
 {
     return width;
@@ -33,6 +37,11 @@ Map::~Map()
             tile = nullptr;
     }
     interactiveTiles.clear();
+    for (auto& item : items) {
+        delete item;
+        item = nullptr;
+    }
+    items.clear();
 }
 
 void Map::LoadMap(int mapNumber)
@@ -63,6 +72,17 @@ void Map::LoadMap(int mapNumber)
             else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
 			}
 		}
+
+    for (const auto& layer : mapJson["layers"]) {
+        if (layer["type"] == "objectgroup" && layer["name"] == "Coin") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // Create a Coin at (x, y)
+                items.emplace_back(new Coin({ x, y }, { 32, 32 }, WHITE, 0.1f, 4));
+            }
+        }
+    }
 	}
 
 
@@ -76,6 +96,9 @@ void Map::Draw()
     for (const auto& tile : nonInterativeTile)
     {
         tile->Draw();
+    }
+    for (const auto& item : items) {
+        item->Draw();
     }
 
 }

@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "Tile.h"
 #include "Mario.h"
+#include "Coin.h"
 #include <vector>
 class Map: public DrawableObj {
 private:
@@ -12,9 +13,11 @@ private:
     Texture2D background;
     std::vector<Tile*> interactiveTiles;
     std::vector<Tile*> nonInterativeTile;
+    std::vector<Item*> items;
     void LoadFromJsonFile(const std::string& filename);
 public:
     std::vector<Tile *> &getInteractiveTiles();
+	std::vector<Item*>& getItems();
     float getMapWidth() const;
     Map();
     ~Map();

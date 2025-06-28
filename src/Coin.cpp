@@ -18,8 +18,8 @@ void Coin::updateSprite() {
     }
     else if (state == ItemState::BEING_HIT) {
         frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
-        if (frameAcum >= frameTime) {
-            frameAcum -= frameTime;
+        if (frameAcum >= disappearTimer) {
+            frameAcum -= disappearTimer;
             currFrame++;
             if (currFrame < maxFrame) {
                 sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_" + std::to_string(currFrame));
