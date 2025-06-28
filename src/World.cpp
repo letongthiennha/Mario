@@ -35,6 +35,16 @@ void World::UpdateWorld()
 
                         }
                 };
+
+        for (auto const & item : items)
+                {
+                        CollisionInfo playerCollision = player.CheckCollisionType(*item);
+                        if(playerCollision)
+                        {
+                                collisionMediator.HandleCollision(&player, item);
+                        }
+		}
+
         player.updateStateAndPhysic();
 
 }
@@ -73,8 +83,8 @@ void World::DrawWorld()
         player.Draw();
 
         //Draw coins
-        for (auto& coin : coins) {
-            coin.Draw();
+        for (auto& item : items) {
+            item->Draw();
         }
 
         EndMode2D();
@@ -91,7 +101,11 @@ void World::InitWorld()
 }
 
 void World::loadCoins() {
-    coins.clear();
-    coins.emplace_back(Vector2{ 100, 200 }, Vector2{ 32, 32 }, WHITE, 0.1f, 4);
-    // ... add more coins ...
+    items.clear();
+    for (Tile* tile : map.getInteractiveTiles()) {
+        // Place a coin above each block (adjust offset as needed)
+        Vector2 coinPos = tile->getPosition();
+        coinPos.y -= 32; // Place coin one tile above the block
+        items.emplace_back(new Coin(coinPos, Vector2{ 32, 32 }, WHITE, 0.1f, 4));
+    }
 }

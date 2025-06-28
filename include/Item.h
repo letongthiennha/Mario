@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "ItemState.h"
 
 class Item : public Entity {
 public:
@@ -10,6 +11,9 @@ public:
 
     virtual void collect();
 
+    void setState(ItemState newState);
+
 protected:
-    bool collected;
+    ItemState state;
+    float disappearTimer = 0.0f;
 };

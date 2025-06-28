@@ -3,12 +3,14 @@
 #include "Mario.h"
 #include "CollisionInfo.h"
 #include "Tile.h"
+#include "Coin.h"
 class HUD;
 
 class CollisionMediator {
     private:
     void HandleMarioWithTile(Mario*& mario, Tile* &tile, CollisionInfo AtoB);
     void HandleFireballWithTile(Fireball*& fireball, Tile*& tile, CollisionInfo AtoB);
+    void HandleMarioWithCoin(Mario*& mario, Coin*& coin);
     public:
     void HandleCollision(Entity* entityA, Entity* entityB);
 

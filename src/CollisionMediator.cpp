@@ -88,6 +88,18 @@ void CollisionMediator::HandleFireballWithTile(Fireball *&fireball, Tile *&tile,
     }
     }
 }
+
+void CollisionMediator::HandleMarioWithCoin(Mario*& mario, Coin*& coin)
+{
+    if (coin->getState() != ItemState::IDLE)
+        return;
+
+    if (CheckCollisionRecs(mario->getRect(), coin->getRect())) {
+        coin->collect();
+        // Optionally: mario->addScore(), play sound, etc.
+    }
+}
+
 void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
 
 {
@@ -98,6 +110,8 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     Fireball* isBfireball = dynamic_cast<Fireball*>(entityB);
     Tile* isAtile = dynamic_cast<Tile*>(entityA);
     Tile* isBtile = dynamic_cast<Tile*>(entityB);
+	Coin* isAcoin = dynamic_cast<Coin*>(entityA);
+	Coin* isBcoin = dynamic_cast<Coin*>(entityB);
     if (isAmario && isBtile|| isBmario&& isAtile)
     {
         CollisionInfo AtoB = isAmario ? isAmario->CheckCollisionType(*isBtile) : isBmario->CheckCollisionType(*isAtile);
@@ -114,5 +128,10 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         else
             HandleFireballWithTile(isBfireball, isAtile, AtoB);
     }
-
+    else if(isAmario && isBcoin || isBmario && isAcoin)
+    {
+        Mario* mario = isAmario ? isAmario : isBmario;
+        Coin* coin = isAcoin ? isAcoin : isBcoin;
+        HandleMarioWithCoin(mario, coin);
+	}
 }
