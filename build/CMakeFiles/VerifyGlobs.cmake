@@ -6,6 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/ADMIN/My-Mario/Mario
 set(OLD_GLOB
   "C:/Users/ADMIN/My-Mario/Mario/src/Block.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Button.cpp"
+  "C:/Users/ADMIN/My-Mario/Mario/src/CloudBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/CollisionMediator.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Entity.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp"
@@ -21,6 +22,7 @@ set(OLD_GLOB
   "C:/Users/ADMIN/My-Mario/Mario/src/StateManager.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/StoneBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Tile.cpp"
+  "C:/Users/ADMIN/My-Mario/Mario/src/WoodBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/World.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/main.cpp"
   )

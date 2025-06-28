@@ -101,11 +101,26 @@ CMakeFiles/Mario.dir/src/Button.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mario.dir/src/Button.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ADMIN\My-Mario\Mario\src\Button.cpp -o CMakeFiles\Mario.dir\src\Button.cpp.s
 
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj: CMakeFiles/Mario.dir/flags.make
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/CloudBlock.cpp
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj -MF CMakeFiles\Mario.dir\src\CloudBlock.cpp.obj.d -o CMakeFiles\Mario.dir\src\CloudBlock.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\CloudBlock.cpp
+
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mario.dir/src/CloudBlock.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ADMIN\My-Mario\Mario\src\CloudBlock.cpp > CMakeFiles\Mario.dir\src\CloudBlock.cpp.i
+
+CMakeFiles/Mario.dir/src/CloudBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mario.dir/src/CloudBlock.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ADMIN\My-Mario\Mario\src\CloudBlock.cpp -o CMakeFiles\Mario.dir\src\CloudBlock.cpp.s
+
 CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/CollisionMediator.cpp
 CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj -MF CMakeFiles\Mario.dir\src\CollisionMediator.cpp.obj.d -o CMakeFiles\Mario.dir\src\CollisionMediator.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\CollisionMediator.cpp
 
 CMakeFiles/Mario.dir/src/CollisionMediator.cpp.i: cmake_force
@@ -120,7 +135,7 @@ CMakeFiles/Mario.dir/src/Entity.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Entity.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Entity.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Entity.cpp
 CMakeFiles/Mario.dir/src/Entity.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Mario.dir/src/Entity.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Mario.dir/src/Entity.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Entity.cpp.obj -MF CMakeFiles\Mario.dir\src\Entity.cpp.obj.d -o CMakeFiles\Mario.dir\src\Entity.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Entity.cpp
 
 CMakeFiles/Mario.dir/src/Entity.cpp.i: cmake_force
@@ -135,7 +150,7 @@ CMakeFiles/Mario.dir/src/Fireball.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Fireball.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Fireball.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp
 CMakeFiles/Mario.dir/src/Fireball.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Fireball.cpp.obj -MF CMakeFiles\Mario.dir\src\Fireball.cpp.obj.d -o CMakeFiles\Mario.dir\src\Fireball.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Fireball.cpp
 
 CMakeFiles/Mario.dir/src/Fireball.cpp.i: cmake_force
@@ -150,7 +165,7 @@ CMakeFiles/Mario.dir/src/GameClock.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/GameClock.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/GameClock.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/GameClock.cpp
 CMakeFiles/Mario.dir/src/GameClock.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Mario.dir/src/GameClock.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Mario.dir/src/GameClock.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/GameClock.cpp.obj -MF CMakeFiles\Mario.dir\src\GameClock.cpp.obj.d -o CMakeFiles\Mario.dir\src\GameClock.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\GameClock.cpp
 
 CMakeFiles/Mario.dir/src/GameClock.cpp.i: cmake_force
@@ -165,7 +180,7 @@ CMakeFiles/Mario.dir/src/GameState.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/GameState.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/GameState.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/GameState.cpp
 CMakeFiles/Mario.dir/src/GameState.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Mario.dir/src/GameState.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Mario.dir/src/GameState.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/GameState.cpp.obj -MF CMakeFiles\Mario.dir\src\GameState.cpp.obj.d -o CMakeFiles\Mario.dir\src\GameState.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\GameState.cpp
 
 CMakeFiles/Mario.dir/src/GameState.cpp.i: cmake_force
@@ -180,7 +195,7 @@ CMakeFiles/Mario.dir/src/Hitbox.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Hitbox.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Hitbox.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Hitbox.cpp
 CMakeFiles/Mario.dir/src/Hitbox.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Mario.dir/src/Hitbox.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Mario.dir/src/Hitbox.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Hitbox.cpp.obj -MF CMakeFiles\Mario.dir\src\Hitbox.cpp.obj.d -o CMakeFiles\Mario.dir\src\Hitbox.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Hitbox.cpp
 
 CMakeFiles/Mario.dir/src/Hitbox.cpp.i: cmake_force
@@ -195,7 +210,7 @@ CMakeFiles/Mario.dir/src/Map.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Map.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Map.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Map.cpp
 CMakeFiles/Mario.dir/src/Map.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Mario.dir/src/Map.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Mario.dir/src/Map.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Map.cpp.obj -MF CMakeFiles\Mario.dir\src\Map.cpp.obj.d -o CMakeFiles\Mario.dir\src\Map.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Map.cpp
 
 CMakeFiles/Mario.dir/src/Map.cpp.i: cmake_force
@@ -210,7 +225,7 @@ CMakeFiles/Mario.dir/src/Mario.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Mario.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Mario.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Mario.cpp
 CMakeFiles/Mario.dir/src/Mario.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Mario.dir/src/Mario.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Mario.dir/src/Mario.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Mario.cpp.obj -MF CMakeFiles\Mario.dir\src\Mario.cpp.obj.d -o CMakeFiles\Mario.dir\src\Mario.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Mario.cpp
 
 CMakeFiles/Mario.dir/src/Mario.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/Mario.dir/src/MenuState.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/MenuState.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/MenuState.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/MenuState.cpp
 CMakeFiles/Mario.dir/src/MenuState.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Mario.dir/src/MenuState.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Mario.dir/src/MenuState.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/MenuState.cpp.obj -MF CMakeFiles\Mario.dir\src\MenuState.cpp.obj.d -o CMakeFiles\Mario.dir\src\MenuState.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\MenuState.cpp
 
 CMakeFiles/Mario.dir/src/MenuState.cpp.i: cmake_force
@@ -240,7 +255,7 @@ CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj: CMakeFiles/Mario.dir/flags.mak
 CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/ResourceManager.cpp
 CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj -MF CMakeFiles\Mario.dir\src\ResourceManager.cpp.obj.d -o CMakeFiles\Mario.dir\src\ResourceManager.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\ResourceManager.cpp
 
 CMakeFiles/Mario.dir/src/ResourceManager.cpp.i: cmake_force
@@ -255,7 +270,7 @@ CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj: CMakeFiles/Mario.dir/flags.mak
 CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/SoundControoler.cpp
 CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj -MF CMakeFiles\Mario.dir\src\SoundControoler.cpp.obj.d -o CMakeFiles\Mario.dir\src\SoundControoler.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\SoundControoler.cpp
 
 CMakeFiles/Mario.dir/src/SoundControoler.cpp.i: cmake_force
@@ -270,7 +285,7 @@ CMakeFiles/Mario.dir/src/State.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/State.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/State.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/State.cpp
 CMakeFiles/Mario.dir/src/State.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Mario.dir/src/State.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Mario.dir/src/State.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/State.cpp.obj -MF CMakeFiles\Mario.dir\src\State.cpp.obj.d -o CMakeFiles\Mario.dir\src\State.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\State.cpp
 
 CMakeFiles/Mario.dir/src/State.cpp.i: cmake_force
@@ -285,7 +300,7 @@ CMakeFiles/Mario.dir/src/StateManager.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/StateManager.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/StateManager.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/StateManager.cpp
 CMakeFiles/Mario.dir/src/StateManager.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Mario.dir/src/StateManager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Mario.dir/src/StateManager.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/StateManager.cpp.obj -MF CMakeFiles\Mario.dir\src\StateManager.cpp.obj.d -o CMakeFiles\Mario.dir\src\StateManager.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\StateManager.cpp
 
 CMakeFiles/Mario.dir/src/StateManager.cpp.i: cmake_force
@@ -300,7 +315,7 @@ CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/StoneBlock.cpp
 CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj -MF CMakeFiles\Mario.dir\src\StoneBlock.cpp.obj.d -o CMakeFiles\Mario.dir\src\StoneBlock.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\StoneBlock.cpp
 
 CMakeFiles/Mario.dir/src/StoneBlock.cpp.i: cmake_force
@@ -315,7 +330,7 @@ CMakeFiles/Mario.dir/src/Tile.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/Tile.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/Tile.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/Tile.cpp
 CMakeFiles/Mario.dir/src/Tile.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Mario.dir/src/Tile.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Mario.dir/src/Tile.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/Tile.cpp.obj -MF CMakeFiles\Mario.dir\src\Tile.cpp.obj.d -o CMakeFiles\Mario.dir\src\Tile.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\Tile.cpp
 
 CMakeFiles/Mario.dir/src/Tile.cpp.i: cmake_force
@@ -326,11 +341,26 @@ CMakeFiles/Mario.dir/src/Tile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mario.dir/src/Tile.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ADMIN\My-Mario\Mario\src\Tile.cpp -o CMakeFiles\Mario.dir\src\Tile.cpp.s
 
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj: CMakeFiles/Mario.dir/flags.make
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/WoodBlock.cpp
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj -MF CMakeFiles\Mario.dir\src\WoodBlock.cpp.obj.d -o CMakeFiles\Mario.dir\src\WoodBlock.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\WoodBlock.cpp
+
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Mario.dir/src/WoodBlock.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ADMIN\My-Mario\Mario\src\WoodBlock.cpp > CMakeFiles\Mario.dir\src\WoodBlock.cpp.i
+
+CMakeFiles/Mario.dir/src/WoodBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Mario.dir/src/WoodBlock.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ADMIN\My-Mario\Mario\src\WoodBlock.cpp -o CMakeFiles\Mario.dir\src\WoodBlock.cpp.s
+
 CMakeFiles/Mario.dir/src/World.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/World.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/World.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/World.cpp
 CMakeFiles/Mario.dir/src/World.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Mario.dir/src/World.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Mario.dir/src/World.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/World.cpp.obj -MF CMakeFiles\Mario.dir\src\World.cpp.obj.d -o CMakeFiles\Mario.dir\src\World.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\World.cpp
 
 CMakeFiles/Mario.dir/src/World.cpp.i: cmake_force
@@ -345,7 +375,7 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: CMakeFiles/Mario.dir/flags.make
 CMakeFiles/Mario.dir/src/main.cpp.obj: CMakeFiles/Mario.dir/includes_CXX.rsp
 CMakeFiles/Mario.dir/src/main.cpp.obj: C:/Users/ADMIN/My-Mario/Mario/src/main.cpp
 CMakeFiles/Mario.dir/src/main.cpp.obj: CMakeFiles/Mario.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Mario.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Mario.dir/src/main.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Mario.dir/src/main.cpp.obj -MF CMakeFiles\Mario.dir\src\main.cpp.obj.d -o CMakeFiles\Mario.dir\src\main.cpp.obj -c C:\Users\ADMIN\My-Mario\Mario\src\main.cpp
 
 CMakeFiles/Mario.dir/src/main.cpp.i: cmake_force
@@ -360,6 +390,7 @@ CMakeFiles/Mario.dir/src/main.cpp.s: cmake_force
 Mario_OBJECTS = \
 "CMakeFiles/Mario.dir/src/Block.cpp.obj" \
 "CMakeFiles/Mario.dir/src/Button.cpp.obj" \
+"CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj" \
 "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj" \
 "CMakeFiles/Mario.dir/src/Entity.cpp.obj" \
 "CMakeFiles/Mario.dir/src/Fireball.cpp.obj" \
@@ -375,6 +406,7 @@ Mario_OBJECTS = \
 "CMakeFiles/Mario.dir/src/StateManager.cpp.obj" \
 "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj" \
 "CMakeFiles/Mario.dir/src/Tile.cpp.obj" \
+"CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj" \
 "CMakeFiles/Mario.dir/src/World.cpp.obj" \
 "CMakeFiles/Mario.dir/src/main.cpp.obj"
 
@@ -383,6 +415,7 @@ Mario_EXTERNAL_OBJECTS =
 
 Mario.exe: CMakeFiles/Mario.dir/src/Block.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/Button.cpp.obj
+Mario.exe: CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/Entity.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/Fireball.cpp.obj
@@ -398,6 +431,7 @@ Mario.exe: CMakeFiles/Mario.dir/src/State.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/StateManager.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/Tile.cpp.obj
+Mario.exe: CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/World.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/src/main.cpp.obj
 Mario.exe: CMakeFiles/Mario.dir/build.make
@@ -405,7 +439,7 @@ Mario.exe: raylib_build/raylib/libraylib.a
 Mario.exe: CMakeFiles/Mario.dir/linkLibs.rsp
 Mario.exe: CMakeFiles/Mario.dir/objects1.rsp
 Mario.exe: CMakeFiles/Mario.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable Mario.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\ADMIN\My-Mario\Mario\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable Mario.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Mario.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

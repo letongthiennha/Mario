@@ -294,6 +294,30 @@ src/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Button.cpp.s
 .PHONY : src/Button.cpp.s
 
+src/CloudBlock.obj: src/CloudBlock.cpp.obj
+.PHONY : src/CloudBlock.obj
+
+# target to build an object file
+src/CloudBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj
+.PHONY : src/CloudBlock.cpp.obj
+
+src/CloudBlock.i: src/CloudBlock.cpp.i
+.PHONY : src/CloudBlock.i
+
+# target to preprocess a source file
+src/CloudBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CloudBlock.cpp.i
+.PHONY : src/CloudBlock.cpp.i
+
+src/CloudBlock.s: src/CloudBlock.cpp.s
+.PHONY : src/CloudBlock.s
+
+# target to generate assembly for a file
+src/CloudBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/CloudBlock.cpp.s
+.PHONY : src/CloudBlock.cpp.s
+
 src/CollisionMediator.obj: src/CollisionMediator.cpp.obj
 .PHONY : src/CollisionMediator.obj
 
@@ -654,6 +678,30 @@ src/Tile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.s
 .PHONY : src/Tile.cpp.s
 
+src/WoodBlock.obj: src/WoodBlock.cpp.obj
+.PHONY : src/WoodBlock.obj
+
+# target to build an object file
+src/WoodBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj
+.PHONY : src/WoodBlock.cpp.obj
+
+src/WoodBlock.i: src/WoodBlock.cpp.i
+.PHONY : src/WoodBlock.i
+
+# target to preprocess a source file
+src/WoodBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/WoodBlock.cpp.i
+.PHONY : src/WoodBlock.cpp.i
+
+src/WoodBlock.s: src/WoodBlock.cpp.s
+.PHONY : src/WoodBlock.s
+
+# target to generate assembly for a file
+src/WoodBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/WoodBlock.cpp.s
+.PHONY : src/WoodBlock.cpp.s
+
 src/World.obj: src/World.cpp.obj
 .PHONY : src/World.obj
 
@@ -727,6 +775,9 @@ help:
 	@echo ... src/Button.obj
 	@echo ... src/Button.i
 	@echo ... src/Button.s
+	@echo ... src/CloudBlock.obj
+	@echo ... src/CloudBlock.i
+	@echo ... src/CloudBlock.s
 	@echo ... src/CollisionMediator.obj
 	@echo ... src/CollisionMediator.i
 	@echo ... src/CollisionMediator.s
@@ -772,6 +823,9 @@ help:
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s
+	@echo ... src/WoodBlock.obj
+	@echo ... src/WoodBlock.i
+	@echo ... src/WoodBlock.s
 	@echo ... src/World.obj
 	@echo ... src/World.i
 	@echo ... src/World.s

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/ADMIN/My-Mario/Mario/src/Block.cpp" "CMakeFiles/Mario.dir/src/Block.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Block.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Button.cpp" "CMakeFiles/Mario.dir/src/Button.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Button.cpp.obj.d"
+  "C:/Users/ADMIN/My-Mario/Mario/src/CloudBlock.cpp" "CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/CloudBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/CollisionMediator.cpp" "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/CollisionMediator.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Entity.cpp" "CMakeFiles/Mario.dir/src/Entity.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj.d"
@@ -25,6 +26,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/ADMIN/My-Mario/Mario/src/StateManager.cpp" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/StoneBlock.cpp" "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/StoneBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Tile.cpp" "CMakeFiles/Mario.dir/src/Tile.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
+  "C:/Users/ADMIN/My-Mario/Mario/src/WoodBlock.cpp" "CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/WoodBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/World.cpp" "CMakeFiles/Mario.dir/src/World.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/World.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/main.cpp" "CMakeFiles/Mario.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/main.cpp.obj.d"
   )
