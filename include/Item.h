@@ -10,6 +10,7 @@ public:
     virtual void Draw() override = 0;
 
     virtual void collect();
+	virtual void playSound() = 0;
 
     void setState(ItemState newState);
 

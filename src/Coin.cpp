@@ -16,6 +16,19 @@ void Coin::updateSprite() {
             sprite = &ResourceManager::getInstance().getTexture("COIN_" + std::to_string(currFrame));
         }
     }
+    else if (state == ItemState::BEING_HIT) {
+        frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+        if (frameAcum >= frameTime) {
+            frameAcum -= frameTime;
+            currFrame++;
+            if (currFrame < maxFrame) {
+                sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_" + std::to_string(currFrame));
+            }
+            else {
+                state = ItemState::COLLECTED;
+            }
+        }
+    }
 }
 
 void Coin::Draw() {
@@ -23,4 +36,17 @@ void Coin::Draw() {
 	if(state==ItemState::IDLE&& sprite) {
 		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
 	}
+    else if (state == ItemState::BEING_HIT && sprite) {
+		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+    }
 }
+
+void Coin::playSound(){
+    SoundController::getInstance().PlaySound("COIN_COLLECTION");
+}
+
+void Coin::collect() {
+    Item::collect();
+	sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_0");
+}
+

@@ -6,6 +6,10 @@ Item::Item(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame
 void Item::collect() {
     if (state == ItemState::IDLE) {
         state = ItemState::BEING_HIT;
+        currFrame = 0;
+        frameAcum = 0;
+        frameTime = 0.05f;
+        playSound();
     }
 }
 
