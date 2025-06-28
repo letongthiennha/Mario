@@ -12,15 +12,16 @@ private:
     int currentLevelID;
     // void Exit() override;
     void nextLevel();
-    std::string summarry="END OF LEVEL";
     HUD gameHUD;
+    int score;
 
 public:
     GameState(StateManager *manager);
     ~GameState();
     HUD& getHUD() { return gameHUD; }
     // void Enter() override;
-    void onLevelEnd();
+    void updateOnlevelEnd();
+    void drawLevelEndSummary();
     void update() override;
     void draw() override;
 };

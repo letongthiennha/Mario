@@ -97,6 +97,8 @@ void ResourceManager::loadTextures()
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
     //HUD
     textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
+    textures["LEVEL_END_CONGRATULATIONS"] = LoadTexture("resources/UI/Congratulations.png");
+    textures["LEVEL_END_ENTER"]= LoadTexture("resources/UI/PressEnter.png");
 }
 
 void ResourceManager::loadSounds(){
