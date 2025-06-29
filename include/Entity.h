@@ -31,8 +31,6 @@ protected:
     //Call right before the draw function
     virtual void updateSprite()=0;
 
-    //Point
-    int earnPoints = 0; // Points earned when the entity is destroyed
 
 
 public:

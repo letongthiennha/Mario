@@ -81,6 +81,13 @@ void ResourceManager::loadTextures()
     {
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     }
+    //BLOCK
+    {
+    textures["Stone_Block"] = LoadTexture("resources/Entity/Blocks/Stone_0.png");
+    textures["Cloud_Block"] = LoadTexture("resources/Entity/Blocks/Cloud_0.png");
+    textures["Wood_Block"] = LoadTexture("resources/Entity/Blocks/Wood_0.png");
+    textures["Glass_Block"] = LoadTexture("resources/Entity/Blocks/Glass_0.png");
+    }
     //TILE
     for (int i = 0;i<104;i++){
         std::string tileName = "TILE_" + std::to_string(i);

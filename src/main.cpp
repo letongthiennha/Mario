@@ -1,4 +1,4 @@
-
+// #include "WoodBlock.h"
 
 #include "raylib.h"
 #include "ResourceManager.h"
@@ -24,6 +24,7 @@ int main(){
     bool isPaused = false;
     StateManager stateManager;
     ResourceManager::getInstance().loadResource();
+    // WoodBlock testBlock({200, 600}, {32, 32}, RED);
     while(!WindowShouldClose()){
         // UpdateMusicStream(ResourceManager::getInstance().getMusics("Test"));
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
@@ -42,6 +43,7 @@ int main(){
             BeginDrawing();
             // gw.DrawWorld();
             stateManager.draw();
+            // testBlock.Draw();
             EndDrawing();
     }
     // Unload resources

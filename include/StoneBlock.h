@@ -11,5 +11,6 @@ class StoneBlock : public Block {
         ~StoneBlock() override;
 
         void updateStateAndPhysic() override;
+        void updateSprite() override;
         void Draw() override;
 };

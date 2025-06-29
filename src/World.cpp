@@ -4,7 +4,7 @@
 
 World::World():player(), interactiveTiles(map.getInteractiveTiles()){
 
-        map.LoadMap(0);
+        map.LoadMap(1);
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
         camera.target = player.getPosition();
         camera.rotation = 0.0f;
