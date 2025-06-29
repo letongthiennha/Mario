@@ -18,7 +18,7 @@ int main(){
     // World gameWorld;
     // World::InitWorld();
     // World gw;
-    SetTargetFPS(144);
+    SetTargetFPS(60);
     // SoundController::getInstance().PlaySound("TEST");
     // PlayMusicStream(ResourceManager::getInstance().getMusics("Test"));
     bool isPaused = false;

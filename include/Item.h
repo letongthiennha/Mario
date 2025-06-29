@@ -10,11 +10,22 @@ public:
     virtual void Draw() override = 0;
 
     virtual void collect();
-	virtual void playSound() = 0;
+	virtual void playSoundCollision() = 0;
+    virtual void playSoundPopUp();
 
     void setState(ItemState newState);
+    void startPopUp(float distance, float speed);
+    virtual void popUp();
+    void setOnGround(bool onGround);
+	ItemState getState() const;
 
 protected:
     ItemState state;
     float disappearTimer = 0.0f;
+    bool poppingUp = false;
+    float popUpDistance = 0.0f;
+    float popUpMaxDistance = 40.0f;
+    float popUpSpeed = 120.0f;
+    bool onGround = false;
+    Vector2 initialPos;
 };

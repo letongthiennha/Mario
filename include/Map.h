@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "Mario.h"
 #include "Coin.h"
+#include "Mushroom.h"
 #include <vector>
 class Map: public DrawableObj {
 private:

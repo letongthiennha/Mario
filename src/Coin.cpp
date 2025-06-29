@@ -5,6 +5,11 @@
 
 Coin::Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame): Item(pos, size, color, frameTime, maxFrame){
 	sprite = &ResourceManager::getInstance().getTexture("COIN_0");
+
+    NorthHb.SetSize({ size.x / 2, 2 });
+    SouthHb.SetSize({ size.x / 2, 2 });
+    WestHb.SetSize({ 2, size.y - 4 });
+    EastHb.SetSize({ 2, size.y - 4 });
 }
 
 void Coin::updateSprite() {
@@ -37,11 +42,11 @@ void Coin::Draw() {
 		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
 	}
     else if (state == ItemState::BEING_HIT && sprite) {
-		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { initialPos.x, initialPos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
     }
 }
 
-void Coin::playSound(){
+void Coin::playSoundCollision(){
     SoundController::getInstance().PlaySound("COIN_COLLECTION");
 }
 
@@ -49,4 +54,5 @@ void Coin::collect() {
     Item::collect();
 	sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_0");
 }
+
 

@@ -45,6 +45,31 @@ void World::UpdateWorld()
                         }
 		}
 
+        for (auto const& item : items) {
+			// Check collision with each interactive tile
+            if (dynamic_cast<Coin*>(item) != nullptr) {
+                continue;
+            }
+            
+            item->setOnGround(false);
+
+			// Skip coins, as they are handled separately
+            for (auto const& tile : interactiveTiles) {
+                CollisionInfo itemCollision = item->CheckCollisionType(*tile);
+
+                if (itemCollision == COLLISION_SOUTH) {
+                    item->setOnGround(true);
+                    collisionMediator.HandleCollision(item, tile);
+                    break;
+                }
+                collisionMediator.HandleCollision(item, tile);
+            }
+        }
+
+        for (auto const& item : items) {
+            item->updateStateAndPhysic();
+        }
+
         player.updateStateAndPhysic();
 
 }

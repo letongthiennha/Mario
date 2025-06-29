@@ -1,0 +1,63 @@
+#include "Mushroom.h"
+#include "ResourceManager.h"
+#include "World.h"
+
+Mushroom::Mushroom(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
+	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection){
+	sprite = &ResourceManager::getInstance().getTexture("MUSHROOM");
+	float speed = 100.0f;
+	if (initialDirection == DIRECTION_LEFT)
+		setVelocity(Vector2(-speed, 0));
+	else
+		setVelocity(Vector2(speed, 0));
+	NorthHb.SetSize({ size.x / 2, 2 });
+	SouthHb.SetSize({ size.x / 2, 2 });
+	WestHb.SetSize({ 2, size.y - 4 });
+	EastHb.SetSize({ 2, size.y - 4 });
+}
+
+void Mushroom::playSoundCollision() {
+	SoundController::getInstance().PlaySound("POWER_UP");
+}
+
+void Mushroom::updateSprite() {
+	if (state == ItemState::IDLE) {
+		sprite = &ResourceManager::getInstance().getTexture("MUSHROOM");
+	}
+	else if (state == ItemState::BEING_HIT) {
+		setVelocity({ 0, 0 });
+		frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+		if (frameAcum >= disappearTimer) {
+			frameAcum -= disappearTimer;
+			currFrame++;
+			if (currFrame < maxFrame) {
+				sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_" + std::to_string(currFrame));
+			}
+			else {
+				state = ItemState::COLLECTED;
+			}
+		}
+	}
+}
+
+void Mushroom::Draw() {
+	updateSprite();
+	if(state==ItemState::COLLECTED)
+		return;
+	DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+}
+
+void Mushroom::collect() {
+	Item::collect();
+	sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_0");
+}
+
+void Mushroom::updateStateAndPhysic() {
+	Entity::updateStateAndPhysic();
+	if (!onGround) {
+		velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
+	}
+	else velocity.y = 0.0f;
+}
+
+

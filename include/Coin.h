@@ -8,7 +8,7 @@ public:
     Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
 
 
-    void playSound() override;
+    void playSoundCollision() override;
     void updateSprite() override;
     void Draw() override;
     void collect() override;

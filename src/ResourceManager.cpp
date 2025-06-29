@@ -96,10 +96,12 @@ void ResourceManager::loadTextures()
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
 
     //ITEMS
-	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin/Coin_0.png");
-	textures["COIN_1"] = LoadTexture("resources/Entity/Items/Coin/Coin_1.png");
-	textures["COIN_2"] = LoadTexture("resources/Entity/Items/Coin/Coin_2.png");
-	textures["COIN_3"] = LoadTexture("resources/Entity/Items/Coin/Coin_3.png");
+	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin_0.png");
+	textures["COIN_1"] = LoadTexture("resources/Entity/Items/Coin_1.png");
+	textures["COIN_2"] = LoadTexture("resources/Entity/Items/Coin_2.png");
+	textures["COIN_3"] = LoadTexture("resources/Entity/Items/Coin_3.png");
+
+	textures["MUSHROOM"] = LoadTexture("resources/Entity/Items/Mushroom.png");
 
     //EFFECTS
 	textures["STAR_DUST_0"] = LoadTexture("resources/Effects/StarDust_0.png");
@@ -115,6 +117,10 @@ void ResourceManager::loadSounds(){
 
 	// COIN COLLECTION SFX
 	sounds["COIN_COLLECTION"] = LoadSound("resources/SFX/smw_coin.wav");
+
+    // POWER UP SFX
+	sounds["POWER_UP_APPEARS"] = LoadSound("resources/SFX/smw_power-up_appears.wav");
+	sounds["POWER_UP"] = LoadSound("resources/SFX/smw_power-up.wav");
 }
 
 void ResourceManager::loadMusics(){
