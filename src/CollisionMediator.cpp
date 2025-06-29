@@ -89,18 +89,6 @@ void CollisionMediator::HandleFireballWithTile(Fireball *&fireball, Tile *&tile,
     }
 }
 
-void CollisionMediator::HandleMarioWithCoin(Mario*& mario, Coin*& coin, CollisionInfo AtoB)
-{
-    if (AtoB == COLLISION_NONE)
-		return;
-    if (coin->getState() != ItemState::IDLE)
-        return;
-
-    if (CheckCollisionRecs(mario->getRect(), coin->getRect())) {
-        coin->collect();
-    }
-}
-
 void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
 
 {
@@ -111,10 +99,6 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     Fireball* isBfireball = dynamic_cast<Fireball*>(entityB);
     Tile* isAtile = dynamic_cast<Tile*>(entityA);
     Tile* isBtile = dynamic_cast<Tile*>(entityB);
-	Coin* isAcoin = dynamic_cast<Coin*>(entityA);
-	Coin* isBcoin = dynamic_cast<Coin*>(entityB);
-    Mushroom* isAmushroom = dynamic_cast<Mushroom*>(entityA);
-    Mushroom* isBmushroom = dynamic_cast<Mushroom*>(entityB);
     Item* isAitem = dynamic_cast<Item*>(entityA);
     Item* isBitem = dynamic_cast<Item*>(entityB);
     if (isAmario && isBtile|| isBmario&& isAtile)
@@ -133,20 +117,13 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         else
             HandleFireballWithTile(isBfireball, isAtile, AtoB);
     }
-    else if(isAmario && isBcoin || isBmario && isAcoin)
+    else if(isAmario && isBitem || isBmario && isAitem)
     {
         Mario* mario = isAmario ? isAmario : isBmario;
-        Coin* coin = isAcoin ? isAcoin : isBcoin;
-        CollisionInfo AtoB = mario->CheckCollisionType(*coin);
-        HandleMarioWithCoin(mario, coin, AtoB);
+        Item* item = isAitem ? isAitem : isBitem;
+        CollisionInfo AtoB = mario->CheckCollisionType(*item);
+        HandleMarioWithItem(mario, item, AtoB);
 	}
-    else if (isAmario && isBmushroom || isBmario && isAmushroom)
-    {
-        Mario* mario = isAmario ? isAmario : isBmario;
-        Mushroom* mushroom = isAmushroom ? isAmushroom : isBmushroom;
-        CollisionInfo AtoB = mario->CheckCollisionType(*mushroom);
-        HandleMarioWithMushroom(mario, mushroom, AtoB);
-    }
     else if (isAitem && isBtile || isBitem && isAtile)
     {
         Item* item = isAitem ? isAitem : isBitem;
@@ -156,16 +133,29 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     }
 }
 
-void CollisionMediator::HandleMarioWithMushroom(Mario*& mario, Mushroom*& mushroom, CollisionInfo AtoB)
-{
+void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
     if (AtoB == COLLISION_NONE)
         return;
-    if (mushroom->getState() != ItemState::IDLE)
+    if (item->getState() != ItemState::IDLE)
         return;
 
-    if (CheckCollisionRecs(mario->getRect(), mushroom->getRect())) {
-        mushroom->collect();
-        mario->changeToBig();
+    if (CheckCollisionRecs(mario->getRect(), item->getRect())) {
+        if (auto* coin = dynamic_cast<Coin*>(item)) {
+            coin->collect();
+        }
+        else if (auto* upMushroom = dynamic_cast<UpMushroom*>(item)) {
+            upMushroom->collect();
+            // Increase Mario's life by 1
+        }
+        else if (auto* mushroom = dynamic_cast<Mushroom*>(item)) {
+            mushroom->collect();
+            mario->changeToBig();
+        }
+        else if(auto* fireFlower= dynamic_cast<FireFlower*>(item)) {
+            fireFlower->collect();
+            mario->changeToFire();
+        }
+        // .... other items
     }
 }
 

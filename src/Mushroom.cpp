@@ -49,10 +49,10 @@ void Mushroom::Draw() {
 	if(state==ItemState::COLLECTED)
 		return;
 	DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
-	SouthHb.Draw();
+	/*SouthHb.Draw();
 	NorthHb.Draw();
 	EastHb.Draw();
-	WestHb.Draw();
+	WestHb.Draw();*/
 }
 
 void Mushroom::collect() {

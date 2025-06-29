@@ -33,7 +33,7 @@ add_subdirectory(${RAYLIB_DIR} raylib_build)
 
 # Create executable
 
-add_executable(${PROJECT_NAME} ${SOURCES} "include/Coin.h" "include/ItemState.h"   "src/Mushroom.cpp" "include/Mushroom.h" "include/1UpMushroom.h" "src/1UpMushroom.cpp")
+add_executable(${PROJECT_NAME} ${SOURCES} "include/Coin.h" "include/ItemState.h"   "src/Mushroom.cpp" "include/Mushroom.h" "include/1UpMushroom.h" "src/1UpMushroom.cpp" "src/FireFlower.cpp" "include/FireFlower.h")
 
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
 

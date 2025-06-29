@@ -90,8 +90,24 @@ void Map::LoadMap(int mapNumber)
                 items.emplace_back(new Mushroom({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, DIRECTION_RIGHT));
             }
         }
+        if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(new UpMushroom({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(new FireFlower({ x, y }, { 32, 32 }, WHITE, 0.1f, 2));
+            }
+        }
     }
-	}
+}
 
 
 void Map::Draw() 

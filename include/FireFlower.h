@@ -1,9 +1,9 @@
 #pragma once
 #include "Item.h"
 
-class UpMushroom : public Item {
+class FireFlower : public Item {
 public:
-	UpMushroom(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection);
+	FireFlower(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
 
 	void playSoundCollision() override;
 	void updateSprite() override;
@@ -11,7 +11,4 @@ public:
 	void collect() override;
 	void update();
 	void updateStateAndPhysic() override;
-private:
-	float initialSpeedX;
-	Direction initialDirection;
 };

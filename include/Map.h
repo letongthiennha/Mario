@@ -4,6 +4,8 @@
 #include "Mario.h"
 #include "Coin.h"
 #include "Mushroom.h"
+#include "1UpMushroom.h"
+#include "FireFlower.h"
 #include <vector>
 class Map: public DrawableObj {
 private:

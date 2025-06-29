@@ -5,6 +5,8 @@
 #include "Tile.h"
 #include "Coin.h"
 #include "Mushroom.h"
+#include "1UpMushroom.h"
+#include "FireFlower.h"
 class HUD;
 
 class CollisionMediator {
@@ -14,6 +16,8 @@ class CollisionMediator {
     void HandleMarioWithCoin(Mario*& mario, Coin*& coin, CollisionInfo AtoB);
 	void HandleMarioWithMushroom(Mario*& mario, Mushroom*& mushroom, CollisionInfo AtoB);
 	void HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB);
+    void HandleMarioWith1UpMushroom(Mario*& mario, UpMushroom*& mushroom, CollisionInfo AtoB);
+    void HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB);
 
     public:
     void HandleCollision(Entity* entityA, Entity* entityB);
