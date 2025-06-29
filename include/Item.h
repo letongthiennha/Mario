@@ -26,6 +26,6 @@ protected:
     float popUpDistance = 0.0f;
     float popUpMaxDistance = 40.0f;
     float popUpSpeed = 120.0f;
-    bool onGround = false;
+    bool onGround = true;
     Vector2 initialPos;
 };

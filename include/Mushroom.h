@@ -12,5 +12,6 @@ public:
 	void update();
 	void updateStateAndPhysic() override;
 private:
+	float initialSpeedX;
 	Direction initialDirection;
 };

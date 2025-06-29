@@ -5,13 +5,17 @@
 Mushroom::Mushroom(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
 	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection){
 	sprite = &ResourceManager::getInstance().getTexture("MUSHROOM");
-	float speed = 100.0f;
-	if (initialDirection == DIRECTION_LEFT)
+	float speed = 150.0f;
+	if (initialDirection == DIRECTION_LEFT) {
 		setVelocity(Vector2(-speed, 0));
-	else
+		initialSpeedX = -speed;
+	}
+	else {
 		setVelocity(Vector2(speed, 0));
+		initialSpeedX = speed;
+	}
 	NorthHb.SetSize({ size.x / 2, 2 });
-	SouthHb.SetSize({ size.x / 2, 2 });
+	SouthHb.SetSize({ size.x/2 , 2 });
 	WestHb.SetSize({ 2, size.y - 4 });
 	EastHb.SetSize({ 2, size.y - 4 });
 }
@@ -45,6 +49,10 @@ void Mushroom::Draw() {
 	if(state==ItemState::COLLECTED)
 		return;
 	DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+	SouthHb.Draw();
+	NorthHb.Draw();
+	EastHb.Draw();
+	WestHb.Draw();
 }
 
 void Mushroom::collect() {
@@ -57,7 +65,6 @@ void Mushroom::updateStateAndPhysic() {
 	if (!onGround) {
 		velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
 	}
-	else velocity.y = 0.0f;
 }
 
 

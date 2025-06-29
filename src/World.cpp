@@ -50,19 +50,16 @@ void World::UpdateWorld()
             if (dynamic_cast<Coin*>(item) != nullptr) {
                 continue;
             }
-            
+
             item->setOnGround(false);
 
 			// Skip coins, as they are handled separately
             for (auto const& tile : interactiveTiles) {
                 CollisionInfo itemCollision = item->CheckCollisionType(*tile);
 
-                if (itemCollision == COLLISION_SOUTH) {
-                    item->setOnGround(true);
+                if (itemCollision) {
                     collisionMediator.HandleCollision(item, tile);
-                    break;
-                }
-                collisionMediator.HandleCollision(item, tile);
+				}
             }
         }
 

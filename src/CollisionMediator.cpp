@@ -182,18 +182,28 @@ void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionIn
     case COLLISION_SOUTH:
         position.y = tile->getPosition().y - item->getSize().y;
         velocity.y = 0;
+        item->setOnGround(true);
         break;
     case COLLISION_NORTH:
         position.y = tile->getPosition().y + tile->getSize().y;
         velocity.y = 0;
         break;
     case COLLISION_EAST:
+        position.x = tile->getPosition().x - item->getSize().x;
+        velocity.x = -velocity.x; // Reverse direction
+		break;
     case COLLISION_WEST:
+		position.x = tile->getPosition().x + tile->getSize().x;
         velocity.x = -velocity.x; // Reverse direction
         break;
     default:
         break;
     }
+
+    if (AtoB != COLLISION_SOUTH) {
+        item->setOnGround(false);
+    }
+
     item->setPosition(position);
     item->setVelocity(velocity);
 }
