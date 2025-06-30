@@ -11,6 +11,7 @@ set(OLD_GLOB
   "C:/Users/ADMIN/My-Mario/Mario/src/Entity.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/ExclamationBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/EyesClosedBlock.cpp"
+  "C:/Users/ADMIN/My-Mario/Mario/src/EyesOpenedBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/GameClock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/GameState.cpp"

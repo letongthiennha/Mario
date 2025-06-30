@@ -414,6 +414,30 @@ src/EyesClosedBlock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.s
 .PHONY : src/EyesClosedBlock.cpp.s
 
+src/EyesOpenedBlock.obj: src/EyesOpenedBlock.cpp.obj
+.PHONY : src/EyesOpenedBlock.obj
+
+# target to build an object file
+src/EyesOpenedBlock.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.obj
+.PHONY : src/EyesOpenedBlock.cpp.obj
+
+src/EyesOpenedBlock.i: src/EyesOpenedBlock.cpp.i
+.PHONY : src/EyesOpenedBlock.i
+
+# target to preprocess a source file
+src/EyesOpenedBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.i
+.PHONY : src/EyesOpenedBlock.cpp.i
+
+src/EyesOpenedBlock.s: src/EyesOpenedBlock.cpp.s
+.PHONY : src/EyesOpenedBlock.s
+
+# target to generate assembly for a file
+src/EyesOpenedBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.s
+.PHONY : src/EyesOpenedBlock.cpp.s
+
 src/Fireball.obj: src/Fireball.cpp.obj
 .PHONY : src/Fireball.obj
 
@@ -862,6 +886,9 @@ help:
 	@echo ... src/EyesClosedBlock.obj
 	@echo ... src/EyesClosedBlock.i
 	@echo ... src/EyesClosedBlock.s
+	@echo ... src/EyesOpenedBlock.obj
+	@echo ... src/EyesOpenedBlock.i
+	@echo ... src/EyesOpenedBlock.s
 	@echo ... src/Fireball.obj
 	@echo ... src/Fireball.i
 	@echo ... src/Fireball.s

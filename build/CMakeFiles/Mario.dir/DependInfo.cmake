@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/ADMIN/My-Mario/Mario/src/Entity.cpp" "CMakeFiles/Mario.dir/src/Entity.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Entity.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/ExclamationBlock.cpp" "CMakeFiles/Mario.dir/src/ExclamationBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/ExclamationBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/EyesClosedBlock.cpp" "CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.obj.d"
+  "C:/Users/ADMIN/My-Mario/Mario/src/EyesOpenedBlock.cpp" "CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Fireball.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/GameClock.cpp" "CMakeFiles/Mario.dir/src/GameClock.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/GameClock.cpp.obj.d"
   "C:/Users/ADMIN/My-Mario/Mario/src/GameState.cpp" "CMakeFiles/Mario.dir/src/GameState.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/GameState.cpp.obj.d"

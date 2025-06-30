@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/ExclamationBlock.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.obj"
   "CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.obj.d"
+  "CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.obj"
+  "CMakeFiles/Mario.dir/src/EyesOpenedBlock.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
   "CMakeFiles/Mario.dir/src/Fireball.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/GameClock.cpp.obj"
