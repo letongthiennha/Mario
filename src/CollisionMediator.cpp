@@ -159,6 +159,10 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
             star->collect();
 			// change to invincible state
         }
+        else if (auto* upMoon = dynamic_cast<UpMoon*>(item)) {
+            upMoon->collect();
+			// Increase Mario's life by 3
+        }
         // .... other items
     }
 }

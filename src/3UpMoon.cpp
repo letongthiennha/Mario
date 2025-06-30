@@ -1,13 +1,13 @@
-#include "1UpMushroom.h"
+#include "3UpMoon.h"
 #include "ResourceManager.h"
 #include "SoundControoler.h"
 #include "GameClock.h"
 #include "World.h"
 
-UpMushroom::UpMushroom(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
+UpMoon::UpMoon(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
 	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection) {
-	sprite = &ResourceManager::getInstance().getTexture("UP_MUSHROOM");
-	floatingScore.loadSprite("1_UP");
+	sprite = &ResourceManager::getInstance().getTexture("UP_MOON");
+	floatingScore.loadSprite("3_UP");
 	float speed = 150.0f;
 	if (initialDirection == DIRECTION_LEFT) {
 		setVelocity(Vector2(-speed, 0));
@@ -23,13 +23,13 @@ UpMushroom::UpMushroom(Vector2 pos, Vector2 size, Color color, float frameTime, 
 	EastHb.SetSize({ 2, size.y - 4 });
 }
 
-void UpMushroom::playSoundCollision() {
+void UpMoon::playSoundCollision() {
 	SoundController::getInstance().PlaySound("POWER_UP");
 }
 
-void UpMushroom::updateSprite() {
+void UpMoon::updateSprite() {
 	if (state == ItemState::IDLE) {
-		sprite = &ResourceManager::getInstance().getTexture("UP_MUSHROOM");
+		sprite = &ResourceManager::getInstance().getTexture("UP_MOON");
 	}
 	else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
@@ -48,7 +48,7 @@ void UpMushroom::updateSprite() {
 	}
 }
 
-void UpMushroom::Draw() {
+void UpMoon::Draw() {
 	updateSprite();
 	if (state == ItemState::COLLECTED)
 		return;
@@ -62,12 +62,12 @@ void UpMushroom::Draw() {
 	WestHb.Draw();*/
 }
 
-void UpMushroom::collect() {
+void UpMoon::collect() {
 	Item::collect();
 	sprite = &ResourceManager::getInstance().getTexture("STAR_DUST_0");
 }
 
-void UpMushroom::updateStateAndPhysic() {
+void UpMoon::updateStateAndPhysic() {
 	Entity::updateStateAndPhysic();
 	if (!onGround) {
 		velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;

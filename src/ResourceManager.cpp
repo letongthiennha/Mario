@@ -103,6 +103,7 @@ void ResourceManager::loadTextures()
 
 	textures["MUSHROOM"] = LoadTexture("resources/Entity/Items/Mushroom.png");
 	textures["UP_MUSHROOM"] = LoadTexture("resources/Entity/Items/1UpMushroom.png");
+	textures["UP_MOON"] = LoadTexture("resources/Entity/Items/3UpMoon.png");
     
 	textures["FIRE_FLOWER_0"] = LoadTexture("resources/Entity/Items/FireFlower_0.png");
 	textures["FIRE_FLOWER_1"] = LoadTexture("resources/Entity/Items/FireFlower_1.png");
@@ -118,6 +119,7 @@ void ResourceManager::loadTextures()
 	textures["200_POINTS"] = LoadTexture("resources/Effects/guiHundredsPoints_200.png");
     textures["1000_POINTS"] = LoadTexture("resources/Effects/guiThousandsPoints_1000.png");
     textures["1_UP"] = LoadTexture("resources/Effects/gui1Up.png");
+    textures["3_UP"] = LoadTexture("resources/Effects/gui3Up.png");
 }
 
 void ResourceManager::loadSounds(){
