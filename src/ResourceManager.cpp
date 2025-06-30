@@ -107,6 +107,8 @@ void ResourceManager::loadTextures()
 	textures["FIRE_FLOWER_0"] = LoadTexture("resources/Entity/Items/FireFlower_0.png");
 	textures["FIRE_FLOWER_1"] = LoadTexture("resources/Entity/Items/FireFlower_1.png");
 
+	textures["STAR"] = LoadTexture("resources/Entity/Items/Star.png");
+
     //EFFECTS
 	textures["STAR_DUST_0"] = LoadTexture("resources/Effects/StarDust_0.png");
 	textures["STAR_DUST_1"] = LoadTexture("resources/Effects/StarDust_1.png");

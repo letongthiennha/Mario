@@ -7,6 +7,7 @@
 #include "Mushroom.h"
 #include "1UpMushroom.h"
 #include "FireFlower.h"
+#include "Star.h"
 class HUD;
 
 class CollisionMediator {

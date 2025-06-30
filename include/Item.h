@@ -19,6 +19,7 @@ public:
     virtual void popUp();
     void setOnGround(bool onGround);
 	ItemState getState() const;
+    bool isOnGround() const;
 
 protected:
     ItemState state;

@@ -6,6 +6,7 @@
 #include "Mushroom.h"
 #include "1UpMushroom.h"
 #include "FireFlower.h"
+#include "Star.h"
 #include <vector>
 class Map: public DrawableObj {
 private:

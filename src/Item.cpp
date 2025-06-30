@@ -51,4 +51,8 @@ ItemState Item::getState() const{
     return state;
 }
 
+bool Item::isOnGround() const {
+	return onGround;
+}
+
 

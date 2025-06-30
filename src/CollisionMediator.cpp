@@ -155,6 +155,10 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
             fireFlower->collect();
             mario->changeToFire();
         }
+        else if(auto* star= dynamic_cast<Star*>(item)) {
+            star->collect();
+			// change to invincible state
+        }
         // .... other items
     }
 }
@@ -171,7 +175,9 @@ void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionIn
     {
     case COLLISION_SOUTH:
         position.y = tile->getPosition().y - item->getSize().y;
-        velocity.y = 0;
+        if (dynamic_cast<Star*>(item) == nullptr) {
+            velocity.y = 0;
+        }
         item->setOnGround(true);
         break;
     case COLLISION_NORTH:
