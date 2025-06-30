@@ -1,6 +1,6 @@
 CMakeFiles/Mario.dir/src/main.cpp.obj: \
  C:\Users\ADMIN\My-Mario\Mario\src\main.cpp \
- C:/Users/ADMIN/My-Mario/Mario/include/WoodBlock.h \
+ C:/Users/ADMIN/My-Mario/Mario/include/EyesClosedBlock.h \
  C:/raylib/raylib/src/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \

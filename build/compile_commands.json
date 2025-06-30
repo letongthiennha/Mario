@@ -31,6 +31,18 @@
 },
 {
   "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\ExclamationBlock.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\ExclamationBlock.cpp",
+  "file": "C:/Users/ADMIN/My-Mario/Mario/src/ExclamationBlock.cpp",
+  "output": "CMakeFiles/Mario.dir/src/ExclamationBlock.cpp.obj"
+},
+{
+  "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\EyesClosedBlock.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\EyesClosedBlock.cpp",
+  "file": "C:/Users/ADMIN/My-Mario/Mario/src/EyesClosedBlock.cpp",
+  "output": "CMakeFiles/Mario.dir/src/EyesClosedBlock.cpp.obj"
+},
+{
+  "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Fireball.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\Fireball.cpp",
   "file": "C:/Users/ADMIN/My-Mario/Mario/src/Fireball.cpp",
   "output": "CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
@@ -46,6 +58,12 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\GameState.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\GameState.cpp",
   "file": "C:/Users/ADMIN/My-Mario/Mario/src/GameState.cpp",
   "output": "CMakeFiles/Mario.dir/src/GameState.cpp.obj"
+},
+{
+  "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\GlassBlock.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\GlassBlock.cpp",
+  "file": "C:/Users/ADMIN/My-Mario/Mario/src/GlassBlock.cpp",
+  "output": "CMakeFiles/Mario.dir/src/GlassBlock.cpp.obj"
 },
 {
   "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
