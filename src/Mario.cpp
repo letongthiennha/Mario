@@ -13,7 +13,9 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       normalSpeedX(500),
       accelerationX(600),
       jumpInitSpeed(sqrt(300 * Level::GRAVITY )),
-        coin(0)
+    coin(0), 
+    isInvincible(false), invincibleFrameTime(0.03f), invincibleFrameAcum(0.0f), invincibleFrame(0), invincibleTime(3.0f)
+    
 
     //   invincibleFrameTime(0.1f),
     //   invincibleAcum(0.0f),
@@ -96,32 +98,74 @@ void Mario::fire()
     SoundController::getInstance().PlaySound("MARIO_FIREBALL");
 }
 
-void Mario::changeToBig()
+void Mario::ChangeFromSmallToBig()
 {
     form = MARIO_STATE_BIG;
+    frameAcum = 0;
+    frameTime = 0.1f;
+    currFrame = 0;
     this->size = {32, 56};
     maxFrame = 2;
-    SoundController::getInstance().PlaySound("MARIO_POWERUP");
-
 }
 
-void Mario::changeToFire()
+void Mario::ChangeFromBigToFire()
 {
     form = MARIO_STATE_FIRE;
+    frameAcum = 0;
+    frameTime = 0.1f;
+    currFrame = 0;
+
     this->size = {32, 56};
     maxFrame = 2;
-    SoundController::getInstance().PlaySound("MARIO_POWERUP");
 }
 
-void Mario::changeToSmall()
+void Mario::ChangeFromFireToBig()
+{
+    form = MARIO_STATE_BIG;
+    frameAcum = 0;
+    frameTime = 0.1f;
+    currFrame = 0;
+
+   setSize( {32, 56});
+    maxFrame = 2;
+}
+
+void Mario::ChangeFromBigToSmall()
 {
     form = MARIO_STATE_SMALL;
-    this->size = {32, 40};
+    currFrame = 0;
+    frameTime = 0.1f;
+    frameAcum = 0;
+    setSize({32, 40});
     maxFrame = 1;
+    if(state==ENTITY_STATE_ON_GROUD) setPosition({pos.x, pos.y + 16}); // Adjust position when changing to small
+    startInvincible();
+}
+
+void Mario::ChangeFromSmallToFire()
+{
+    form = MARIO_STATE_FIRE;
+    currFrame = 0;
+    frameTime = 0.1f;
+    frameAcum = 0;
+    setSize({32, 56});
+    maxFrame = 2;
+
+}
+
+void Mario::startInvincible()
+{
+    isInvincible = true;
+    invincibleFrameAcum = 0.0f;
+    invincibleFrame = 0;
 }
 
 void Mario::moveLeft()
 {
+    if (form!= MARIO_STATE_SMALL && form != MARIO_STATE_BIG && form != MARIO_STATE_FIRE)
+    {
+        return; // Cannot move left if not in small, big, or fire state
+    }
     if(facingDirection==DIRECTION_RIGHT){
         facingDirection = DIRECTION_LEFT;
         velocity.x = 0;
@@ -135,6 +179,10 @@ void Mario::moveLeft()
 
 void Mario::moveRight()
 {
+    if (form!= MARIO_STATE_SMALL && form != MARIO_STATE_BIG && form != MARIO_STATE_FIRE)
+    {
+        return; // Cannot move right if not in small, big, or fire state
+    }
     if (facingDirection == DIRECTION_LEFT)
     {
         facingDirection = DIRECTION_RIGHT;
@@ -158,6 +206,11 @@ void Mario::moveNoWhere()
 
 void Mario::jump()
 {
+    if (state != ENTITY_STATE_ON_GROUD) return; // Cannot jump if not on the ground
+    if (form != MARIO_STATE_SMALL && form != MARIO_STATE_BIG && form != MARIO_STATE_FIRE)
+    {
+        return; // Cannot jump if not in small, big, or fire state
+    }
     state = ENTITY_STATE_JUMPING;
     velocity.y = -jumpInitSpeed;
     SoundController::getInstance().PlaySound("MARIO_JUMP");
@@ -175,6 +228,67 @@ std::list<Fireball *> *Mario::getFireballs()
     return &fireballs;
 }
 
+void Mario::startTransformingSmallToBig()
+{
+    form = MARIO_STATE_TRANSFORMING_SMALL_TO_BIG;
+    setSize({32, 56});
+    frameTime = 0.075f;
+    maxFrame = 11;
+    currFrame = 0;
+    frameAcum = 0;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
+    if(state==ENTITY_STATE_FALLING) 
+    setVelocity({velocity.x, 0}); // Adjust position when changing to small
+}
+
+void Mario::startTransformingBigToSmall()
+{
+    form = MARIO_STATE_TRANSFORMING_BIG_TO_SMALL;
+    frameTime = 0.06f;
+    maxFrame = 11;
+    currFrame = 0;
+    frameAcum = 0;
+    SoundController::getInstance().PlaySound("MARIO_BEING_HIT");
+    if(state==ENTITY_STATE_FALLING) 
+    setVelocity({velocity.x, 0}); // Adjust position when changing to small
+}
+
+void Mario::startTransformingBigToFire()
+{
+    form = MARIO_STATE_TRANSFORMING_BIG_TO_FIRE;
+    frameTime = 0.075f;
+    maxFrame = 11;
+    currFrame = 0;
+    frameAcum = 0;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
+    if(state==ENTITY_STATE_FALLING) 
+    setVelocity({velocity.x, 0}); 
+}
+
+void Mario::startTransformingFireToBig()
+{
+    form = MARIO_STATE_TRANSFORMING_FIRE_TO_BIG;
+    frameTime = 0.075f;
+    maxFrame = 11;
+    currFrame = 0;
+    frameAcum = 0;
+    SoundController::getInstance().PlaySound("MARIO_BEING_HIT");
+    if(state==ENTITY_STATE_FALLING) 
+    setVelocity({velocity.x, 0});
+}
+
+void Mario::startTransformingSmallToFire()
+{
+    form = MARIO_STATE_TRANSFORMING_SMALL_TO_FIRE;
+    frameTime = 0.075f;
+    setSize({32, 56});
+    maxFrame = 11;
+    currFrame = 0;
+    frameAcum = 0;
+    SoundController::getInstance().PlaySound("MARIO_POWERUP");
+    if(state==ENTITY_STATE_FALLING) 
+    setVelocity({velocity.x, 0}); // Adjust position when changing to small
+}
 
 void Mario::HandleInput()
 {
@@ -195,19 +309,22 @@ void Mario::HandleInput()
             isDucking = false;
         }
     }
-    if(IsKeyPressed(KEY_SPACE)){
-        changeToBig();
+    if(IsKeyPressed(KEY_KP_1)){
+        startTransformingSmallToBig();
     }
-    if(IsKeyPressed(KEY_F)){
-        changeToFire();
+    if(IsKeyPressed(KEY_KP_2)){
+        startTransformingBigToFire();
     }
     if (form==MARIO_STATE_FIRE){
         if (IsKeyPressed(KEY_Z)){
             fire();
         }
     }
-    if(IsKeyPressed(KEY_M)){
-        addCoin(1);
+    if(IsKeyPressed(KEY_KP_3)){
+        startTransformingSmallToFire();
+    }
+    if(IsKeyPressed(KEY_SPACE)){
+        reactOnBeingHit();
     }
 }
 
@@ -261,6 +378,14 @@ void Mario::updateSprite(){
                         sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
                         sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_LEFT");
+                }
+                // Invincibility
+                if(isInvincible){
+                    if(!invincibleFrame)
+                        return;
+                    if(invincibleFrame==1){
+                        sprite = nullptr;// Hide sprite for invincibility frame
+                    }
                 }
                 break;
             }
@@ -386,6 +511,61 @@ void Mario::updateSprite(){
                         break;
             
         }
+        case MARIO_STATE_TRANSFORMING_SMALL_TO_BIG:
+        {
+            const std::string prefix= "MARIO_TRANSFORM_SMALL_TO_BIG_"+ std::to_string(TRANSFORM_SMALL_TO_BIG_ORDER[currFrame]) + "_";
+            if(facingDirection==DIRECTION_RIGHT){
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"RIGHT");
+            }
+            else{
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"LEFT");
+            }
+            break;
+        }
+        case MARIO_STATE_TRANSFORMING_BIG_TO_SMALL:
+        {
+            const std::string prefix= "MARIO_TRANSFORM_SMALL_TO_BIG_"+ std::to_string(TRANSFORM_BIG_TO_SMALL_ORDER[currFrame]) + "_";
+            if(facingDirection==DIRECTION_RIGHT){
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"RIGHT");
+            }
+            else{
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"LEFT");
+            }
+            break;
+        }
+        case MARIO_STATE_TRANSFORMING_BIG_TO_FIRE:
+        {
+            const std::string prefix= "MARIO_TRANSFORM_BIG_TO_FIRE_"+ std::to_string(TRANSFORM_BIG_TO_FIRE_ORDER[currFrame]) + "_";
+            if(facingDirection==DIRECTION_RIGHT){
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"RIGHT");
+            }
+            else{
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"LEFT");
+            }
+            break;
+        }
+        case MARIO_STATE_TRANSFORMING_FIRE_TO_BIG:
+        {
+            const std::string prefix= "MARIO_TRANSFORM_FIRE_TO_BIG_"+ std::to_string(TRANSFORM_FIRE_TO_BIG_ORDER[currFrame]) + "_";
+            if(facingDirection==DIRECTION_RIGHT){
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"RIGHT");
+            }
+            else{
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"LEFT");
+            }
+            break;
+        }
+        case MARIO_STATE_TRANSFORMING_SMALL_TO_FIRE:
+        {
+            const std::string prefix= "MARIO_TRANSFORM_SMALL_TO_FIRE_"+ std::to_string(TRANSFORM_SMALL_TO_BIG_ORDER[currFrame]) + "_";
+            if(facingDirection==DIRECTION_RIGHT){
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"RIGHT");
+            }
+            else{
+                sprite = &ResourceManager::getInstance().getTexture(prefix+"LEFT");
+            }
+            break;
+        }      
     }
 }
 
@@ -408,6 +588,22 @@ void Mario::updateStateAndPhysic(){
                 }
             }
         }
+            if(isInvincible){
+                invincibleFrameAcum += deltaTime;
+                invincibleAcum += deltaTime;
+                if(invincibleFrameAcum / invincibleFrameTime>1){
+                    invincibleFrame++;
+                    if(invincibleFrame > 1) invincibleFrame = 0;
+                    invincibleFrameAcum -= invincibleFrameTime;
+                    }
+
+                if(invincibleAcum>invincibleTime){
+                    isInvincible = false;
+                    invincibleAcum = 0.0f;
+                    invincibleFrameAcum = 0.0f;
+                    invincibleFrame = 0;
+                }
+            }
         break;
     }
     case MARIO_STATE_BIG:
@@ -442,23 +638,90 @@ void Mario::updateStateAndPhysic(){
         }
         break;
     }
-    }
+    case MARIO_STATE_TRANSFORMING_SMALL_TO_BIG:
+        {
+            frameAcum += deltaTime;
+            if(frameAcum>frameTime){
+                currFrame++;
+                if(currFrame>maxFrame) currFrame =0;
+                frameAcum -= frameTime;
+            }
+            if(currFrame==maxFrame){
+                ChangeFromSmallToBig();
+            }
+        
+        break;  
+        }  
+    case MARIO_STATE_TRANSFORMING_BIG_TO_SMALL:
+        {
 
+            frameAcum += deltaTime;
+            if(frameAcum>frameTime){
+                currFrame++;
+                if(currFrame>maxFrame) currFrame =0;
+                frameAcum -= frameTime;
+            }
+            if(currFrame==maxFrame){
+                ChangeFromBigToSmall();
+            }
+        break;
+    }
+    case MARIO_STATE_TRANSFORMING_BIG_TO_FIRE:
+        {
+            frameAcum += deltaTime;
+            if(frameAcum>frameTime){
+                currFrame++;
+                frameAcum -= frameTime;
+            }
+            if(currFrame==maxFrame){
+                ChangeFromBigToFire();
+            }
+        break;
+    }
+    case MARIO_STATE_TRANSFORMING_FIRE_TO_BIG:
+        {
+            frameAcum += deltaTime;
+            if(frameAcum>frameTime){
+                currFrame++;
+                frameAcum -= frameTime;
+            }
+            if(currFrame==maxFrame){
+                ChangeFromFireToBig();
+            }
+        break;
+    }
+    case MARIO_STATE_TRANSFORMING_SMALL_TO_FIRE:
+        {
+            frameAcum += deltaTime;
+            if(frameAcum>frameTime){
+                currFrame++;
+                frameAcum -= frameTime;
+            }
+            if(currFrame==maxFrame){
+                ChangeFromSmallToFire();
+            }
+        break;
+    }
+}
    
     //Velocity pixel/second
     //Gravity pixel/second^2
 
-
-    if(velocity.y>0){
-        state= ENTITY_STATE_FALLING;
+    if(form!= MARIO_STATE_TRANSFORMING_SMALL_TO_BIG&&
+        form!= MARIO_STATE_TRANSFORMING_BIG_TO_SMALL&&
+        form!= MARIO_STATE_TRANSFORMING_BIG_TO_FIRE&&
+        form!= MARIO_STATE_TRANSFORMING_FIRE_TO_BIG&&
+        form!= MARIO_STATE_TRANSFORMING_SMALL_TO_FIRE){
+        if(velocity.y>0){
+            state= ENTITY_STATE_FALLING;
+        }
+        // if(state==ENTITY_STATE_ON_GROUD){
+        //     velocity.y = 0;
+        // }
+        velocity.y += Level::GRAVITY * deltaTime;
+        
+        Entity::updateStateAndPhysic();
     }
-    // if(state==ENTITY_STATE_ON_GROUD){
-    //     velocity.y = 0;
-    // }
-    velocity.y += Level::GRAVITY * deltaTime;
-    
-    Entity::updateStateAndPhysic();
-
     // Update fireballs
     for (auto i = fireballs.begin(); i != fireballs.end();)
     {
@@ -494,12 +757,27 @@ void Mario::updateHitboxes(){
     }
 }
 
+void Mario::reactOnBeingHit()
+{
+    if(form == MARIO_STATE_SMALL){
+        addLives(-1);
+
+    }
+    if(form == MARIO_STATE_BIG){
+        startTransformingBigToSmall();
+    }
+    if(form == MARIO_STATE_FIRE){
+        startTransformingFireToBig();
+    }
+}
+
 void Mario::Draw(){
     updateSprite();
     for(auto& fireball:fireballs)
         {
             fireball->Draw();
         }
+    if(sprite)
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
     // NorthHb.Draw();
     // SouthHb.Draw();
