@@ -7,6 +7,7 @@
 UpMushroom::UpMushroom(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
 	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection) {
 	sprite = &ResourceManager::getInstance().getTexture("UP_MUSHROOM");
+	floatingScore.loadSprite("1_UP");
 	float speed = 150.0f;
 	if (initialDirection == DIRECTION_LEFT) {
 		setVelocity(Vector2(-speed, 0));
@@ -31,6 +32,7 @@ void UpMushroom::updateSprite() {
 		sprite = &ResourceManager::getInstance().getTexture("UP_MUSHROOM");
 	}
 	else if (state == ItemState::BEING_HIT) {
+		floatingScore.Update();
 		setVelocity({ 0, 0 });
 		frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
 		if (frameAcum >= disappearTimer) {
@@ -51,6 +53,9 @@ void UpMushroom::Draw() {
 	if (state == ItemState::COLLECTED)
 		return;
 	DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+	if(state== ItemState::BEING_HIT) {
+		floatingScore.Draw();
+	}
 	/*SouthHb.Draw();
 	NorthHb.Draw();
 	EastHb.Draw();

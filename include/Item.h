@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "FloatingScore.h"
 #include "ItemState.h"
 
 class Item : public Entity {
@@ -28,4 +29,6 @@ protected:
     float popUpSpeed = 120.0f;
     bool onGround = true;
     Vector2 initialPos;
+	FloatingScore floatingScore;
+    bool FloatingScoreActive = false;
 };

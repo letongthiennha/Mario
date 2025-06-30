@@ -11,6 +11,7 @@ void Item::collect() {
         currFrame = 0;
         frameAcum = 0;
         playSoundCollision();
+        floatingScore.setPosition(pos);
     }
 }
 

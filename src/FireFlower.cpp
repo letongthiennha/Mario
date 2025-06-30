@@ -8,6 +8,7 @@
 
 FireFlower::FireFlower(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame) : Item(pos, size, color, frameTime, maxFrame) {
     sprite = &ResourceManager::getInstance().getTexture("FIRE_FLOWER_0");
+    floatingScore.loadSprite("1000_POINTS");
 
     NorthHb.SetSize({ size.x / 2, 2 });
     SouthHb.SetSize({ size.x / 2, 2 });
@@ -25,6 +26,7 @@ void FireFlower::updateSprite() {
         }
     }
     else if (state == ItemState::BEING_HIT) {
+        floatingScore.Update();
         frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
         if (frameAcum >= disappearTimer) {
             frameAcum -= disappearTimer;
@@ -46,6 +48,7 @@ void FireFlower::Draw() {
     }
     else if (state == ItemState::BEING_HIT && sprite) {
         DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { initialPos.x, initialPos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+        floatingScore.Draw();
     }
 }
 

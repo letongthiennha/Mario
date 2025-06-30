@@ -112,6 +112,10 @@ void ResourceManager::loadTextures()
 	textures["STAR_DUST_1"] = LoadTexture("resources/Effects/StarDust_1.png");
 	textures["STAR_DUST_2"] = LoadTexture("resources/Effects/StarDust_2.png");
 	textures["STAR_DUST_3"] = LoadTexture("resources/Effects/StarDust_3.png");
+
+	textures["200_POINTS"] = LoadTexture("resources/Effects/guiHundredsPoints_200.png");
+    textures["1000_POINTS"] = LoadTexture("resources/Effects/guiThousandsPoints_1000.png");
+    textures["1_UP"] = LoadTexture("resources/Effects/gui1Up.png");
 }
 
 void ResourceManager::loadSounds(){
