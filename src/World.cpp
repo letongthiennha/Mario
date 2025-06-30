@@ -64,7 +64,10 @@ void World::UpdateWorld()
         }
 
         for (auto const& item : items) {
-            item->updateStateAndPhysic();
+            if(item->getState()!=ItemState::UNACTIVE&&item->getState()!=ItemState::POP_UP) 
+                item->updateStateAndPhysic();
+            if (item->getState() == ItemState::POP_UP)
+                item->Activate();
         }
 
         player.updateStateAndPhysic();

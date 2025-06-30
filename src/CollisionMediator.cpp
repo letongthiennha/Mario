@@ -136,10 +136,15 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
 void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
     if (AtoB == COLLISION_NONE)
         return;
-    if (item->getState() != ItemState::IDLE)
+
+    if (AtoB == COLLISION_NORTH && item->getState() == ItemState::UNACTIVE) {
+		item->setState(ItemState::POP_UP);
+    }
+
+    if (item&&item->getState() != ItemState::IDLE)
         return;
 
-    if (CheckCollisionRecs(mario->getRect(), item->getRect())) {
+    if (item&&CheckCollisionRecs(mario->getRect(), item->getRect())) {
         if (auto* coin = dynamic_cast<Coin*>(item)) {
             coin->collect();
         }
@@ -170,6 +175,9 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
 void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB)
 {
     if (AtoB == COLLISION_NONE)
+        return;
+
+    if (item->getState() == ItemState::POP_UP||item->getState() == ItemState::UNACTIVE)
         return;
 
     Vector2 velocity = item->getVelocity();

@@ -79,7 +79,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // Create a Coin at (x, y)
-                items.emplace_back(new Coin({ x, y }, { 32, 32 }, WHITE, 0.1f, 4));
+                items.emplace_back(new Coin({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, IDLE));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {

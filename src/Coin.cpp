@@ -13,6 +13,17 @@ Coin::Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame
     EastHb.SetSize({ 2, size.y - 4 });
 }
 
+Coin::Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, ItemState s):
+    Item(pos, size, color, frameTime, maxFrame, s) {
+        sprite = &ResourceManager::getInstance().getTexture("COIN_0");
+        floatingScore.loadSprite("200_POINTS");
+
+        NorthHb.SetSize({ size.x / 2, 2 });
+        SouthHb.SetSize({ size.x / 2, 2 });
+        WestHb.SetSize({ 2, size.y - 4 });
+        EastHb.SetSize({ 2, size.y - 4 });
+}
+
 void Coin::updateSprite() {
     if (state == ItemState::IDLE) {
         frameAcum += GameClock::getInstance().FIXED_TIME_STEP;

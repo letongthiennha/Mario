@@ -6,7 +6,7 @@
 class Coin : public Item {
 public:
     Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
-
+    Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, ItemState s);
 
     void playSoundCollision() override;
     void updateSprite() override;
