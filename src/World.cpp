@@ -64,7 +64,7 @@ void World::UpdateWorld()
         }
 
         for (auto const& item : items) {
-            if(item->getState()!=ItemState::UNACTIVE&&item->getState()!=ItemState::POP_UP) 
+            if(item->getState()==ItemState::IDLE)
                 item->updateStateAndPhysic();
             if (item->getState() == ItemState::POP_UP)
                 item->Activate();

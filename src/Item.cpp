@@ -4,7 +4,7 @@
 #include "SoundControoler.h"
 
 Item::Item(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame):
-	Entity(pos, size, color, frameTime, maxFrame), state(UNACTIVE), disappearTimer(0.05f), initialPos(pos){ }
+	Entity(pos, size, color, frameTime, maxFrame), state(IDLE), disappearTimer(0.05f), initialPos(pos){ }
 
 Item::Item(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, ItemState s):
     Entity(pos, size, color, frameTime, maxFrame), state(s), disappearTimer(0.05f), initialPos(pos) {

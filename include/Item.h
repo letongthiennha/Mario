@@ -26,7 +26,7 @@ protected:
     float disappearTimer = 0.0f;
     bool poppingUp = false;
     const float popUpDistance = 32.0f;
-    const float popUpSpeed = 0.5f;
+    const float popUpSpeed = 0.2f;
     float popUpOffset = 0.0f;
     bool onGround = true;
     Vector2 initialPos;

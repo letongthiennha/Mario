@@ -11,6 +11,7 @@ public:
 	void collect() override;
 	void update();
 	void updateStateAndPhysic() override;
+	void setDirection(Direction direction);
 private:
 	float initialSpeedX;
 	Direction initialDirection;

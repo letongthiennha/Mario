@@ -72,4 +72,7 @@ void Mushroom::updateStateAndPhysic() {
 	}
 }
 
+void Mushroom::setDirection(Direction direction) {
+	initialDirection = direction;
+}
 
