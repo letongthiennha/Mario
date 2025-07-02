@@ -5,23 +5,35 @@
 #include "HUD.h"
 #include <memory>
 class Level;
+//GameState to manage levels and its transitions, with HUD and Buttons
+// enum class GAME_STATE_EVENT {
+//     GAME_STATE_EVENT_TRANSITION_TO_NEXT_LEVEL,
+//     GAME_STATE_EVENT_RESETING_LEVEL,
+
+// };
 class GameState : public State {
 private:
-    std::unique_ptr<Level> currentLevel;
+    HUD gameHUD;
     Button menuButton;
+
+
+    std::unique_ptr<Level> currentLevel;
+    std::unique_ptr<PlayerData> playerMemento;
+
     int currentLevelID;
+
     // void Exit() override;
     void nextLevel();
-    HUD gameHUD;
-    int score;
 
 public:
     GameState(StateManager *manager);
     ~GameState();
+
     HUD& getHUD() { return gameHUD; }
-    // void Enter() override;
-    void updateOnlevelEnd();
+
+    void resetLevelWhenMarioDead();
     void drawLevelEndSummary();
+
     void update() override;
     void draw() override;
 };

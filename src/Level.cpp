@@ -1,8 +1,13 @@
 #include "Level.h"
 #include "ResourceManager.h"
 #include "Map.h"
-
-Level::Level(int mapNumber,GameState* gamestate):gameState(gamestate),player(),map(mapNumber), interactiveTiles(map.getInteractiveTiles()){
+#include "LevelState.h"
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):gameState(gamestate),
+player(startPositionforPlayer,playerData),
+map(mapNumber), 
+interactiveTiles(map.getInteractiveTiles()),
+state(LevelState::LEVEL_STATE_PLAYING)
+{
         switch(mapNumber) {
             case 0:
                 background = ResourceManager::getInstance().getTexture("BACKGROUND_0");
@@ -31,23 +36,43 @@ Level::Level(int mapNumber,GameState* gamestate):gameState(gamestate),player(),m
         camera.rotation = 0.0f;
         camera.zoom = 1.0f;
 
+
+}
+
+
+LevelState Level::getState() const
+{
+    return state;
+}
+bool Level::needReset() const
+{
+    return state == LevelState::LEVEL_STATE_NEED_RESET;
 }
 Level::~Level()
 {
+}
 
+std::unique_ptr<PlayerData> Level::getPlayerData()
+{
+    return player.createMemento();
 }
 
 bool Level::IsCompleted()
 {
-    return this->isCompleted;
+    return this->state==LevelState::LEVEL_STATE_COMPLETED;
 }
 
 void Level::UpdateLevel()
 {
+        if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
+        {
+                state = LevelState::LEVEL_STATE_NEED_RESET;
+                return;
+        }
 
         if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
         {
-                isCompleted = true;
+                state= LevelState::LEVEL_STATE_COMPLETED;
                 return;
         } 
         for(auto const & tile : interactiveTiles)
@@ -105,8 +130,3 @@ void Level::DrawLevel()
         EndMode2D();
 }
 
-void Level::InitWorld()
-{
-
-        ResourceManager::getInstance().loadResource();
-}

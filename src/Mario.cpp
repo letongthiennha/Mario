@@ -50,6 +50,12 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     EastHb.SetColor(BLACK);
 }
 
+Mario::Mario(Vector2 pos,const PlayerData &playerData): Mario(pos, playerData.lives)
+{   
+    score= playerData.score;
+    coin = playerData.coins;
+}
+
 Mario::Mario() : Mario(Vector2{0, 0}, 3, MARIO_STATE_SMALL) {};
 
 Mario::~Mario(){
@@ -65,7 +71,6 @@ Mario::~Mario(){
 void Mario::addLives(int lives)
 {
     this->lives += lives;
-    if (this->lives < 0) this->lives = 0; // Prevent negative lives
 }
 
 void Mario::setState(EntityState state)
@@ -253,6 +258,13 @@ void Mario::startTransformingBigToSmall()
     setVelocity({velocity.x, 0}); // Adjust position when changing to small
 }
 
+void Mario::startWatingForReset()
+{
+    state = ENTITY_STATE_TO_BE_REMOVED;
+    velocity = {0, 0}; // Stop movement
+    
+}
+
 void Mario::startTransformingBigToFire()
 {
     form = MARIO_STATE_TRANSFORMING_BIG_TO_FIRE;
@@ -290,10 +302,26 @@ void Mario::startTransformingSmallToFire()
     setVelocity({velocity.x, 0}); // Adjust position when changing to small
 }
 
+void Mario::die()
+{
+    state= ENTITY_STATE_DYING;
+    velocity = {0, -1000};
+    addLives(-1);
+    addCoin(-coin); // Reset coins on death
+    score = 0; // Reset score on death
+    createMemento();
+    SoundController::getInstance().PlayMusic("MARIO_DIE");
+}
+
 void Mario::HandleInput()
 {
     const float deltaTime = GameClock::getInstance().DeltaTime;
-
+    if(state==ENTITY_STATE_TO_BE_REMOVED){
+        if(IsKeyPressed(KEY_ENTER)){
+            startWatingForReset(); // Wait for reset if Mario falls below a certain point
+        }
+        return; // Skip further updates when marked for removal
+    }
     if (IsKeyDown(KEY_RIGHT)) moveRight();
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
     else moveNoWhere();
@@ -326,10 +354,24 @@ void Mario::HandleInput()
     if(IsKeyPressed(KEY_SPACE)){
         reactOnBeingHit();
     }
+    if(IsKeyPressed(KEY_N)) {
+        die();
+    }  
+    if(IsKeyDown(KEY_M)) {
+        DrawText(std::to_string(lives).c_str(), 10, 10, 20, RED);
+        DrawText(std::to_string(coin).c_str(), 10, 30,
+        20, YELLOW);
+        DrawText(std::to_string(score).c_str(), 10, 50,20, BLUE);
+    }
+
 }
 
 void Mario::updateSprite(){
     const float deltaTime = GetFrameTime();
+    if(state==ENTITY_STATE_TO_BE_REMOVED){
+        sprite = nullptr; // Hide sprite when marked for removal
+        return;
+    }
     switch (form){
         case MARIO_STATE_SMALL:
             {
@@ -378,6 +420,9 @@ void Mario::updateSprite(){
                         sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_RIGHT");
                     if(facingDirection==DIRECTION_LEFT)
                         sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_FALLING_0_LEFT");
+                }
+                if(state==ENTITY_STATE_DYING){
+                    sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
                 }
                 // Invincibility
                 if(isInvincible){
@@ -448,6 +493,9 @@ void Mario::updateSprite(){
                     if(facingDirection==DIRECTION_LEFT)
                         sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_FALLING_0_LEFT");
             }
+            if(state==ENTITY_STATE_DYING){
+                sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
+            }
             break;
         }
         case MARIO_STATE_FIRE:
@@ -508,8 +556,11 @@ void Mario::updateSprite(){
                                 if(facingDirection==DIRECTION_LEFT)
                                     sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_FALLING_0_LEFT");
                         }
+                        if(state==ENTITY_STATE_DYING){
+                            sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
+                        }
                         break;
-            
+
         }
         case MARIO_STATE_TRANSFORMING_SMALL_TO_BIG:
         {
@@ -572,6 +623,20 @@ void Mario::updateSprite(){
 void Mario::updateStateAndPhysic(){
     HandleInput();
     const float deltaTime = GameClock::getInstance().DeltaTime;
+    if(state==ENTITY_STATE_TO_BE_REMOVED){
+        velocity = {0, 0}; // Stop movement
+        return; // Skip further updates when marked for removal
+    }
+    if(state==ENTITY_STATE_DYING){
+        if(pos.y>=1000){
+            startWatingForReset(); // Wait for reset if Mario falls below a certain point
+            return;
+        }
+        velocity.y+= (Level::GRAVITY+100) * deltaTime;
+        pos.y += velocity.y * deltaTime;
+
+        return; // Skip further updates when dying
+    }
     switch (form)
     {
     case MARIO_STATE_SMALL:
@@ -604,7 +669,8 @@ void Mario::updateStateAndPhysic(){
                     invincibleFrame = 0;
                 }
             }
-        break;
+
+            break;
     }
     case MARIO_STATE_BIG:
         {if(state==ENTITY_STATE_ON_GROUD){
@@ -760,8 +826,8 @@ void Mario::updateHitboxes(){
 void Mario::reactOnBeingHit()
 {
     if(form == MARIO_STATE_SMALL){
-        addLives(-1);
-
+        die(); // If Mario is small, he dies
+        return;
     }
     if(form == MARIO_STATE_BIG){
         startTransformingBigToSmall();
@@ -784,3 +850,10 @@ void Mario::Draw(){
     // EastHb.Draw();
     // WestHb.Draw();
 }
+
+std::unique_ptr<PlayerData> Mario::createMemento() const
+{
+    return std::unique_ptr<PlayerData>(std::make_unique<PlayerData>(lives,coin,score));
+}
+
+

@@ -2,6 +2,8 @@
 
 void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)
 {
+    if(mario->getState()==ENTITY_STATE_DYING)
+        return;
     if (AtoB == COLLISION_NONE)
         return;
 

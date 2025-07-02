@@ -7,8 +7,10 @@
 #include"Map.h"     
 #include "CollisionMediator.h"
 #include "GameState.h"
+#include "LevelState.h"
 class GameState;
 //Physical level of the game, contains the gameplay
+
 class Level
 {   
 private:
@@ -16,19 +18,25 @@ private:
     Texture2D background;
     Color backgroundColor;
     Map map;
-    CollisionMediator collisionMediator;
+
     Mario player;
+    Vector2 startPositionforPlayer;
+
     std::vector<Tile *> &interactiveTiles;
-    Camera2D camera;
+    CollisionMediator collisionMediator;
+
+    Camera2D camera;    
     GameState *gameState;
-    bool isCompleted = false;
+    LevelState state;
+
 public:
-    Level(int mapNumber,GameState* gameState);
+    Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData);
+    LevelState getState() const;
+    bool needReset() const;
     ~Level();
-    bool IsCompleted();
+    std::unique_ptr<PlayerData> getPlayerData();
+    bool IsCompleted() ;
     void UpdateLevel();
     void DrawLevel();
     static  constexpr float GRAVITY=1800;
-    static void InitWorld();
-
 };

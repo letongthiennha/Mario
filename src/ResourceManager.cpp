@@ -22,6 +22,8 @@ void ResourceManager::loadTextures()
     textures["SMALL_MARIO_JUMPING_0_LEFT"] = FlipTextureHorizontal(textures["SMALL_MARIO_JUMPING_0_RIGHT"]);
 
     textures["SMALL_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/SmallMarioVictory_0.png");
+
+    textures["SMALL_MARIO_DYING"]= LoadTexture("resources/Entity/Mario/SmallMarioDying_0.png");
     };
     //Transform small to big
     {

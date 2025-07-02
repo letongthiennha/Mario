@@ -8,4 +8,5 @@ enum EntityState
     ENTITY_STATE_FALLING,
     
     ENTITY_STATE_DYING,
-};
+    ENTITY_STATE_TO_BE_REMOVED
+};  

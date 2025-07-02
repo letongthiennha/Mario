@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Project/Mario/src/Map.cpp" "CMakeFiles/Mario.dir/src/Map.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Map.cpp.obj.d"
   "D:/Project/Mario/src/Mario.cpp" "CMakeFiles/Mario.dir/src/Mario.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Mario.cpp.obj.d"
   "D:/Project/Mario/src/MenuState.cpp" "CMakeFiles/Mario.dir/src/MenuState.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/MenuState.cpp.obj.d"
+  "D:/Project/Mario/src/PlayerData.cpp" "CMakeFiles/Mario.dir/src/PlayerData.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/PlayerData.cpp.obj.d"
   "D:/Project/Mario/src/ResourceManager.cpp" "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj.d"
   "D:/Project/Mario/src/SoundControoler.cpp" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj.d"
   "D:/Project/Mario/src/State.cpp" "CMakeFiles/Mario.dir/src/State.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/State.cpp.obj.d"

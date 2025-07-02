@@ -132,13 +132,7 @@ CMakeFiles/Mario.dir/src/StateManager.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
  D:/Project/Mario/include/Mario.h D:/Project/Mario/include/MarioState.h \
  D:/Project/Mario/include/Fireball.h D:/Project/Mario/include/Subject.h \
- C:/msys64/ucrt64/include/c++/14.2.0/list \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
- D:/Project/Mario/include/Map.h \
- D:/Project/Mario/include/CollisionMediator.h \
- D:/Project/Mario/include/HUD.h D:/Project/Mario/include/Observer.h \
+ D:/Project/Mario/include/PlayerData.h \
  C:/msys64/ucrt64/include/c++/14.2.0/memory \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
@@ -188,6 +182,7 @@ CMakeFiles/Mario.dir/src/StateManager.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
@@ -199,4 +194,11 @@ CMakeFiles/Mario.dir/src/StateManager.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ranges_uninitialized.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ranges_algobase.h \
  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
- C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h
+ C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/list \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h \
+ D:/Project/Mario/include/LevelState.h D:/Project/Mario/include/HUD.h \
+ D:/Project/Mario/include/Observer.h

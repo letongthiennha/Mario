@@ -534,6 +534,30 @@ src/MenuState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/MenuState.cpp.s
 .PHONY : src/MenuState.cpp.s
 
+src/PlayerData.obj: src/PlayerData.cpp.obj
+.PHONY : src/PlayerData.obj
+
+# target to build an object file
+src/PlayerData.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PlayerData.cpp.obj
+.PHONY : src/PlayerData.cpp.obj
+
+src/PlayerData.i: src/PlayerData.cpp.i
+.PHONY : src/PlayerData.i
+
+# target to preprocess a source file
+src/PlayerData.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PlayerData.cpp.i
+.PHONY : src/PlayerData.cpp.i
+
+src/PlayerData.s: src/PlayerData.cpp.s
+.PHONY : src/PlayerData.s
+
+# target to generate assembly for a file
+src/PlayerData.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/PlayerData.cpp.s
+.PHONY : src/PlayerData.cpp.s
+
 src/ResourceManager.obj: src/ResourceManager.cpp.obj
 .PHONY : src/ResourceManager.obj
 
@@ -757,6 +781,9 @@ help:
 	@echo ... src/MenuState.obj
 	@echo ... src/MenuState.i
 	@echo ... src/MenuState.s
+	@echo ... src/PlayerData.obj
+	@echo ... src/PlayerData.i
+	@echo ... src/PlayerData.s
 	@echo ... src/ResourceManager.obj
 	@echo ... src/ResourceManager.i
 	@echo ... src/ResourceManager.s

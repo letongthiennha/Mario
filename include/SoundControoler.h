@@ -13,4 +13,7 @@ public:
     static SoundController &getInstance();
     void PlaySound(const std::string&);
     void StopSound(const std::string&);
+    void PlayMusic(const std::string&);
+    void StopMusic(const std::string&);
+    void PauseMusic(const std::string&);
 };
