@@ -83,6 +83,7 @@ class Mario: public Entity, public Subject {
             void addLives(int lives);
             void setState(EntityState state);
             void addCoin(int coin);
+            void addScore(int score);
             // Getter
             int getLives() const;
             int getCoin() const;
@@ -93,6 +94,7 @@ class Mario: public Entity, public Subject {
             void startTransformingBigToFire();
             void startTransformingSmallToFire();
             void die();
+            void startVictoryDance(); 
 
             void reactOnBeingHit();
             // Game loop

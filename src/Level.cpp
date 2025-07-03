@@ -11,12 +11,11 @@ state(LevelState::LEVEL_STATE_PLAYING)
         switch(mapNumber) {
             case 0:
                 background = ResourceManager::getInstance().getTexture("BACKGROUND_0");
-                // backgroundColor = ResourceManager::getInstance().getColor("LEVEL_0_BACKGROUND_COLOR");
                 backgroundColor = Color{0,96,184,255}; // Default color for level 0
                 break;
             case 1:
-                background = ResourceManager::getInstance().getTexture("LEVEL_1_BACKGROUND");
-                backgroundColor = BLUE;
+                background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_1");
+                backgroundColor = {0,96,184,255};
                 break;
         //     case 2:
         //         background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
@@ -31,6 +30,10 @@ state(LevelState::LEVEL_STATE_PLAYING)
                 backgroundColor = WHITE;
         }
         player.addObserver(&gameState->getHUD());
+        player.addCoin(0);
+        player.addLives(0);
+        player.addScore(0);
+
         camera.offset = Vector2{(float)GetScreenWidth()/2,(float) GetScreenHeight()/2};
         camera.target = player.getPosition();
         camera.rotation = 0.0f;
@@ -66,13 +69,21 @@ void Level::UpdateLevel()
 {
         if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
         {
-                state = LevelState::LEVEL_STATE_NEED_RESET;
+                if(player.getLives() >= 0) // If player has lives left, reset the level
+                {
+                        state = LevelState::LEVEL_STATE_NEED_RESET;
+                }
+                else // If player has no lives left, game over
+                {
+                        state = LevelState::LEVEL_STATE_GAME_OVER;
+                }
                 return;
         }
 
         if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
         {
                 state= LevelState::LEVEL_STATE_COMPLETED;
+                player.startVictoryDance();
                 return;
         } 
         for(auto const & tile : interactiveTiles)

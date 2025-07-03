@@ -3,6 +3,7 @@
 void ResourceManager::loadFonts()
 {
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
+    fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
 }
 
 // Load
@@ -85,7 +86,7 @@ void ResourceManager::loadTextures()
 
     textures["FIRE_MARIO_DUCKING_0_RIGHT"] = LoadTexture("resources/Entity/Mario/FireMario_Ducking_0.png");
     textures["FIRE_MARIO_DUCKING_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_MARIO_DUCKING_0_RIGHT"]);
-    textures["FIRE_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/FireMarioVictory_0.png");
+    textures["FIRE_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/FireMarioVictory.png");
     };
     //Transform big to fire
     {
@@ -115,6 +116,8 @@ void ResourceManager::loadTextures()
     //BACKGROUND
     {
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
+    textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
+
     }
     //TILE
     for (int i = 0;i<104;i++){
@@ -133,7 +136,9 @@ void ResourceManager::loadTextures()
     textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
     textures["LEVEL_END_CONGRATULATIONS"] = LoadTexture("resources/UI/Congratulations.png");
     textures["LEVEL_END_ENTER"]= LoadTexture("resources/UI/PressEnter.png");
-}
+    textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
+    textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
+}   
 
 void ResourceManager::loadSounds(){
     sounds["MARIO_JUMP"] = LoadSound("resources/SFX/smw_jump.wav");

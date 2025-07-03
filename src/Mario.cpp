@@ -71,6 +71,7 @@ Mario::~Mario(){
 void Mario::addLives(int lives)
 {
     this->lives += lives;
+    this->notify(GAME_EVENT::LIVES_CHANGE, this->lives);
 }
 
 void Mario::setState(EntityState state)
@@ -80,9 +81,18 @@ void Mario::setState(EntityState state)
 
 void Mario::addCoin(int coin)
 {
+    if (coin < 0) coin = 0; // Prevent negative coins
+
     this->coin += coin;
     this->notify(GAME_EVENT::COIN_CHANGE, this->coin);
-    if (this->coin < 0) this->coin = 0; // Prevent negative coins
+}
+
+void Mario::addScore(int score)
+{
+
+    this->score += score;
+    this->notify(GAME_EVENT::SCORE_CHANGE, this->score);
+
 }
 
 int Mario::getLives() const
@@ -309,8 +319,18 @@ void Mario::die()
     addLives(-1);
     addCoin(-coin); // Reset coins on death
     score = 0; // Reset score on death
-    createMemento();
     SoundController::getInstance().PlayMusic("MARIO_DIE");
+}
+
+void Mario::startVictoryDance()
+{
+    state = ENTITY_STATE_VICTORY_DANCE;
+    velocity = {0, 0}; // Stop movement
+    maxFrame = 0; // Number of frames in the victory dance animation
+    frameTime = 0.0f; // Set frame time for the victory dance
+    currFrame = 0; // Start from the first frame
+    frameAcum = 0; // Reset frame accumulation
+    SoundController::getInstance().PlaySound("MARIO_VICTORY");
 }
 
 void Mario::HandleInput()
@@ -337,33 +357,42 @@ void Mario::HandleInput()
             isDucking = false;
         }
     }
-    if(IsKeyPressed(KEY_KP_1)){
-        startTransformingSmallToBig();
-    }
-    if(IsKeyPressed(KEY_KP_2)){
-        startTransformingBigToFire();
-    }
+
     if (form==MARIO_STATE_FIRE){
         if (IsKeyPressed(KEY_Z)){
             fire();
         }
     }
-    if(IsKeyPressed(KEY_KP_3)){
-        startTransformingSmallToFire();
-    }
+
     if(IsKeyPressed(KEY_SPACE)){
         reactOnBeingHit();
     }
-    if(IsKeyPressed(KEY_N)) {
-        die();
-    }  
+
     if(IsKeyDown(KEY_M)) {
         DrawText(std::to_string(lives).c_str(), 10, 10, 20, RED);
         DrawText(std::to_string(coin).c_str(), 10, 30,
         20, YELLOW);
         DrawText(std::to_string(score).c_str(), 10, 50,20, BLUE);
     }
-
+    if(IsKeyPressed(KEY_KP_1)){
+        startTransformingSmallToBig();
+    }
+    if(IsKeyPressed(KEY_KP_2)){
+        startTransformingBigToFire();
+    }
+    if(IsKeyPressed(KEY_KP_3)){
+        startTransformingSmallToFire();
+    }
+    if(IsKeyPressed(KEY_KP_4)){
+        addCoin(1);
+    }
+    if(IsKeyPressed(KEY_KP_5)){
+        addScore(100);
+    }
+    if(IsKeyPressed(KEY_KP_6)){
+        addLives(1);
+    }
+    
 }
 
 void Mario::updateSprite(){
@@ -423,6 +452,9 @@ void Mario::updateSprite(){
                 }
                 if(state==ENTITY_STATE_DYING){
                     sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
+                }
+                if(state==ENTITY_STATE_VICTORY_DANCE){
+                    sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_VICTORY");
                 }
                 // Invincibility
                 if(isInvincible){
@@ -496,6 +528,9 @@ void Mario::updateSprite(){
             if(state==ENTITY_STATE_DYING){
                 sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
             }
+            if(state==ENTITY_STATE_VICTORY_DANCE){
+                sprite = &ResourceManager::getInstance().getTexture("SUPER_MARIO_VICTORY");
+            }
             break;
         }
         case MARIO_STATE_FIRE:
@@ -558,6 +593,9 @@ void Mario::updateSprite(){
                         }
                         if(state==ENTITY_STATE_DYING){
                             sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_DYING");
+                        }
+                        if(state==ENTITY_STATE_VICTORY_DANCE){
+                            sprite = &ResourceManager::getInstance().getTexture("FIRE_MARIO_VICTORY");
                         }
                         break;
 
@@ -626,6 +664,9 @@ void Mario::updateStateAndPhysic(){
     if(state==ENTITY_STATE_TO_BE_REMOVED){
         velocity = {0, 0}; // Stop movement
         return; // Skip further updates when marked for removal
+    }
+    if(state==ENTITY_STATE_VICTORY_DANCE){
+        return; // Skip further updates during victory dance
     }
     if(state==ENTITY_STATE_DYING){
         if(pos.y>=1000){

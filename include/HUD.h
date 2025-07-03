@@ -7,11 +7,16 @@ class HUD:public UIObject , public Observer {
 private:
     int coins;
     int score;
-
+    int lives;
+    
     Vector2 coinsPosition;
     Vector2 coinsSize;
+    Texture2D *coinTexture;
+
     Vector2 scorePosition;
     Vector2 scoreSize;
+    Texture2D *MarioHUD;
+
     Color textColor;
     Color backgroundColor;
     Font* font;

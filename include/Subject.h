@@ -4,7 +4,7 @@ class Observer;
 enum class GAME_EVENT {
     COIN_CHANGE,
     LIVES_CHANGE,
-    SCORE_CHANGE,
+    SCORE_CHANGE
 };
 class Subject {
 public:
