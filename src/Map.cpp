@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "json.hpp"
+#include "ItemFactory.h"
 #include <iostream>
 #include <fstream>
 void Map::LoadFromJsonFile(const std::string& mapFileName)
@@ -79,7 +80,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // Create a Coin at (x, y)
-                items.emplace_back(new Coin({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, IDLE));
+                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, {32, 32}, WHITE, 0.1f, 4, IDLE));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {
@@ -87,7 +88,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(new Mushroom({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
@@ -95,7 +96,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(new UpMushroom({ x, y }, { 32, 32 }, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
@@ -103,7 +104,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(new FireFlower({ x, y }, { 32, 32 }, WHITE, 0.1f, 2));
+                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, {32, 32}, WHITE, 0.1f, 2));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Star") {
@@ -111,7 +112,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(new Star({ x, y }, { 32, 32 }, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("Star", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "UpMoon") {
@@ -119,7 +120,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(new UpMoon({ x, y }, { 32, 32 }, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
             }
         }
     }
