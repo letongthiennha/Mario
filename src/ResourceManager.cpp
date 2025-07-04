@@ -1,7 +1,8 @@
 #include "ResourceManager.h"
-
 void ResourceManager::loadFonts()
 {
+    fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
+    fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
 }
 
 // Load
@@ -21,7 +22,28 @@ void ResourceManager::loadTextures()
     textures["SMALL_MARIO_JUMPING_0_LEFT"] = FlipTextureHorizontal(textures["SMALL_MARIO_JUMPING_0_RIGHT"]);
 
     textures["SMALL_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/SmallMarioVictory_0.png");
+
+    textures["SMALL_MARIO_DYING"]= LoadTexture("resources/Entity/Mario/SmallMarioDying_0.png");
     };
+    //Transform small to big
+    {
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_0_RIGHT"] = LoadTexture("resources/Entity/Mario/TransitioningMario_0.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_0_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_BIG_0_RIGHT"]);
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_1_RIGHT"] = LoadTexture("resources/Entity/Mario/TransitioningMario_1.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_1_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_BIG_1_RIGHT"]);
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_2_RIGHT"] = LoadTexture("resources/Entity/Mario/TransitioningMario_2.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_BIG_2_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_BIG_2_RIGHT"]);
+    }
+    //Transform small to fire
+    {
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_0_RIGHT"] = LoadTexture("resources/Entity/Mario/TransitioningMario_0.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_0_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_FIRE_0_RIGHT"]);
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_1_RIGHT"] = LoadTexture("resources/Entity/Mario/TrasitioningFireMario.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_1_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_FIRE_1_RIGHT"]);
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_2_RIGHT"] = LoadTexture("resources/Entity/Mario/TrasitioningFireMario_2.png");
+    textures["MARIO_TRANSFORM_SMALL_TO_FIRE_2_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_SMALL_TO_FIRE_2_RIGHT"]);
+
+    }
     //BIG MARIO
     {
     textures["SUPER_MARIO_0_RIGHT"] = LoadTexture("resources/Entity/Mario/SuperMario_0.png");
@@ -63,9 +85,22 @@ void ResourceManager::loadTextures()
 
     textures["FIRE_MARIO_DUCKING_0_RIGHT"] = LoadTexture("resources/Entity/Mario/FireMario_Ducking_0.png");
     textures["FIRE_MARIO_DUCKING_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_MARIO_DUCKING_0_RIGHT"]);
-    textures["FIRE_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/FireMarioVictory_0.png");
+    textures["FIRE_MARIO_VICTORY"] = LoadTexture("resources/Entity/Mario/FireMarioVictory.png");
     };
-
+    //Transform big to fire
+    {
+    textures["MARIO_TRANSFORM_BIG_TO_FIRE_0_RIGHT"] = textures["SUPER_MARIO_0_RIGHT"];
+    textures["MARIO_TRANSFORM_BIG_TO_FIRE_0_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_BIG_TO_FIRE_0_RIGHT"]);
+    textures["MARIO_TRANSFORM_BIG_TO_FIRE_1_RIGHT"] = LoadTexture("resources/Entity/Mario/TrasitioningFireMario_2.png");
+    textures["MARIO_TRANSFORM_BIG_TO_FIRE_1_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_BIG_TO_FIRE_1_RIGHT"]);
+    }
+    //Transform fire to big
+    {
+    textures["MARIO_TRANSFORM_FIRE_TO_BIG_0_RIGHT"] = LoadTexture("resources/Entity/Mario/TrasitioningFireMario_2.png");
+    textures["MARIO_TRANSFORM_FIRE_TO_BIG_0_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_FIRE_TO_BIG_0_RIGHT"]);
+    textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_RIGHT"] = textures["SUPER_MARIO_0_RIGHT"];
+    textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_RIGHT"]);
+    }
     //FIRE BALL
     {
     textures["FIRE_BALL_0_RIGHT"] = LoadTexture("resources/Entity/Fireball/Fireball_0.png");
@@ -80,6 +115,8 @@ void ResourceManager::loadTextures()
     //BACKGROUND
     {
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
+    textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
+
     }
     //TILE
     for (int i = 0;i<104;i++){
@@ -94,16 +131,33 @@ void ResourceManager::loadTextures()
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
-}
+    //HUD
+    textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
+    textures["LEVEL_END_CONGRATULATIONS"] = LoadTexture("resources/UI/Congratulations.png");
+    textures["LEVEL_END_ENTER"]= LoadTexture("resources/UI/PressEnter.png");
+    textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
+    textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
+}   
 
 void ResourceManager::loadSounds(){
     sounds["MARIO_JUMP"] = LoadSound("resources/SFX/smw_jump.wav");
     sounds["MARIO_FIREBALL"] = LoadSound("resources/SFX/smw_fireball.wav");
-    sounds["MARIO_POWERUP"] = LoadSound("resources/SFX/smw_power-up_appears.wav");
+    // Transform sounds
+    {
+    sounds["MARIO_POWERUP"] = LoadSound("resources/SFX/smw_power-up.wav");
+    sounds["MARIO_BEING_HIT"] = LoadSound("resources/SFX/smw_pipe.wav");
+    }
+    sounds["MARIO_DIE"] = LoadSound("resources/SFX/playerDown.mp3");
 }
 
 void ResourceManager::loadMusics(){
-    musics["Test"]= LoadMusicStream("resources/Music/music1.mp3");
+    musics["GAME_OVER"] = LoadMusicStream("resources/Music/gameOver.mp3");
+
+    musics["TITLE_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/title.mp3");
+    musics["VICTORY_MUSIC"] = LoadMusicStream("resources/Music/courseClear.mp3");
+    musics["LEVEL_1_MUSIC"]= LoadMusicStream("resources/Music/music1.mp3");
+    musics["LEVEL_2_MUSIC"]= LoadMusicStream("resources/Music/music2.mp3");
+    musics["LEVEL_3_MUSIC"]= LoadMusicStream("resources/Music/music3.mp3");
 }
 
 void ResourceManager::loadResource(){
@@ -142,20 +196,30 @@ ResourceManager &ResourceManager::getInstance()
 }
 
 void ResourceManager::unloadResource(){
+    unloadFonts();
     unloadTexture();
-
     unloadSounds();
     unloadMusics();
 }
+
 //Getters
 Texture2D& ResourceManager::getTexture( const std::string& name) {
+
     return textures[name];
 }
 Sound &ResourceManager::getSounds(const std::string& name) {
+
     return sounds[name];
 }
 Music &ResourceManager::getMusics(const std::string& name) {
+
     return musics[name];
+}
+
+Font &ResourceManager::getFonts(const std::string &name)
+{
+
+    return fonts[name];
 }
 
 Texture2D FlipTextureHorizontal(const Texture2D &texture)

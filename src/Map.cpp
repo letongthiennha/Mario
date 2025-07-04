@@ -18,14 +18,18 @@ float Map::getMapWidth() const
     return width;
 }
 
-Map::Map()
+Vector2 Map::getStartPositionForMario() const
+{
+    return startPositionForMario;
+}
 
-    
+Map::Map(int mapNumber)
 {
     currBackgroundStarX = 0.0f;
-    background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
+    background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
+    LoadMap(mapNumber);
 }
-Map::~Map()
+    Map::~Map()
 {
     for(auto& tile : interactiveTiles)
     {
@@ -52,6 +56,24 @@ void Map::LoadMap(int mapNumber)
 	this->width = (float) width * 32.0f;
 	int tilewidth = mapJson["tilewidth"];
 	std::vector<int> data = mapJson["layers"][0]["data"];
+
+    int startPosX = 0; // Default value in case it's not found
+    int startPosY = 0; // Default value in case it's not found
+        for (const auto& prop : mapJson["properties"]) {
+            // Check if the name is "startPosX"
+            if (prop["name"] == "startPosX") {
+                // Get the value
+                    startPosX = prop["value"];
+            }
+            // Check if the name is "startPosY"
+            if (prop["name"] == "startPosY")
+            {
+                // Get the value
+                    startPosY = prop["value"];
+            }
+        }
+
+    startPositionForMario = Vector2{(float)startPosX, (float)startPosY};
 
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {

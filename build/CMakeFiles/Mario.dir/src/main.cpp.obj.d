@@ -122,19 +122,20 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  D:/Project/Mario/include/CollisionInfo.h \
  D:/Project/Mario/include/MarioState.h \
  D:/Project/Mario/include/Fireball.h D:/Project/Mario/include/Tile.h \
- C:/msys64/ucrt64/include/c++/14.2.0/list \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
- D:/Project/Mario/include/GameClock.h D:/Project/Mario/include/World.h \
+ D:/Project/Mario/include/Subject.h \
  C:/msys64/ucrt64/include/c++/14.2.0/vector \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
- D:/Project/Mario/include/Map.h \
- D:/Project/Mario/include/CollisionMediator.h \
- C:/msys64/ucrt64/include/c++/14.2.0/iostream \
+ D:/Project/Mario/include/PlayerData.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/memory \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h \
  C:/msys64/ucrt64/include/c++/14.2.0/ostream \
  C:/msys64/ucrt64/include/c++/14.2.0/ios \
  C:/msys64/ucrt64/include/c++/14.2.0/exception \
@@ -175,9 +176,34 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/locale_facets.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_wait.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/cstdint \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/std_mutex.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/ranges_uninitialized.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/ranges_algobase.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/list \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
+ D:/Project/Mario/include/GameClock.h D:/Project/Mario/include/Level.h \
+ D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/CollisionMediator.h \
+ D:/Project/Mario/include/GameState.h \
+ D:/Project/Mario/include/StateManager.h D:/Project/Mario/include/State.h \
+ D:/Project/Mario/include/Button.h D:/Project/Mario/include/UIObject.h \
+ D:/Project/Mario/include/HUD.h D:/Project/Mario/include/Observer.h \
+ D:/Project/Mario/include/LevelState.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
  D:/Project/Mario/include/SoundControoler.h \
- D:/Project/Mario/include/Button.h D:/Project/Mario/include/UIObject.h \
- D:/Project/Mario/include/MenuState.h D:/Project/Mario/include/State.h \
- D:/Project/Mario/include/StateManager.h
+ D:/Project/Mario/include/MenuState.h

@@ -1,6 +1,6 @@
 #include "Fireball.h"
 #include "GameClock.h"
-#include "World.h"
+#include "Level.h"
 #include "ResourceManager.h"
 const float Fireball::MAX_DISTANCE = 1000.0f;
 const float Fireball::FIREBALL_SPEEDX = 500.0f;
@@ -37,7 +37,7 @@ void Fireball::updateStateAndPhysic()
     if(isOutOfDistance()) return; // Do not update if out of distance
     updateHitboxes();
 
-    const float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
+    const float deltaTime = GameClock::getInstance().DeltaTime;
 
     //Image logic
         frameAcum += deltaTime;
@@ -60,7 +60,7 @@ void Fireball::updateStateAndPhysic()
         
         // Update position based on velocity
         Entity::updateStateAndPhysic();
-        velocity.y += World::GetGravity()*deltaTime;
+        velocity.y += Level::GRAVITY*deltaTime;
     }
 
     void Fireball::updateSprite(){

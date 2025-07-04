@@ -91,7 +91,7 @@ sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
-state(ENTITY_STATE_IDLE),
+state(ENTITY_STATE_ON_GROUD),
 color(color),
 frameTime(frameTime),
 frameAcum(0),
@@ -128,8 +128,8 @@ Entity::~Entity() {
 }
 void Entity::updateStateAndPhysic() {
     // Update position based on velocity
-    pos.x += velocity.x * GameClock::getInstance().FIXED_TIME_STEP;
-    pos.y += velocity.y * GameClock::getInstance().FIXED_TIME_STEP;
+    pos.x += velocity.x * GameClock::getInstance().DeltaTime;
+    pos.y += velocity.y * GameClock::getInstance().DeltaTime;
 
     // The rectangle is used on the other object
     // The hitbox is used on the current object to check the direction of the collision
