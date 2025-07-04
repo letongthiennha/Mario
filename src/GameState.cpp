@@ -14,7 +14,7 @@ void GameState::nextLevel()
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Create a new level with the updated player data
 }
-GameState::GameState(StateManager *manager) :currentLevelID(0), State(manager),
+GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
                                                 transitionState(TransitionState::TRANSITION_NONE)
@@ -30,7 +30,7 @@ GameState::GameState(StateManager *manager) :currentLevelID(0), State(manager),
 
 void GameState::resetLevelWhenMarioDead()
 {
-    playerMemento = currentLevel->getPlayerData(); // Get the player data from the current level
+    playerMemento = std::make_unique<PlayerData>(playerMemento->getLives() - 1, 0,0); // Decrease lives by 1
     currentLevel = std::make_unique<Level>(currentLevelID, this, *playerMemento.get()); // Reset the level with the current player data
 }
 
@@ -55,7 +55,7 @@ void GameState::drawLevelEndSummary()
                        Vector2{(float)GetScreenWidth() / 2 - MeasureTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"),(summarry).c_str(),40,2).x / 2, (float)GetScreenHeight() / 2 - 150}, 40, 2, WHITE);
 
     // Display the player's score
-                        std::string score = "Score: " + std::to_string(playerMemento->getScore());
+                        std::string score = "Score: " + std::to_string(currentLevel->getPlayerData()->getScore() );
     DrawTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"), score.c_str(),
             Vector2{(float)GetScreenWidth() / 2 - MeasureTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"),(score).c_str(),60,2).x / 2, (float)GetScreenHeight() / 2 }, 60, 2, WHITE);
       
@@ -64,6 +64,13 @@ void GameState::drawLevelEndSummary()
                        NPatchInfo{Rectangle{0, 0, (float)(*LevelEndEnter).width,
                                            (float)(*LevelEndEnter).height}, 0, 0, 0, 0},
                        Rectangle{(float)GetScreenWidth() / 2 -700, (float)GetScreenHeight() / 2+100 , 1400, 400}, Vector2{0, 0}, 0.0f, WHITE);
+      DrawTextureNPatch(ResourceManager::getInstance().getTexture("HUD_COINS"),
+                       NPatchInfo{Rectangle{0, 0, (float)ResourceManager::getInstance().getTexture("HUD_COINS").width,
+                                           (float)ResourceManager::getInstance().getTexture("HUD_COINS").height}, 0, 0, 0, 0},
+                       Rectangle{(float)GetScreenWidth() / 2 - 200, (float)GetScreenHeight() / 2 + 100, 70, 70}, Vector2{0, 0}, 0.0f, WHITE);
+        std::string coins = "X " + std::to_string(currentLevel->getPlayerData()->getCoins());
+        DrawTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"), coins.c_str(),
+                         Vector2{(float)GetScreenWidth() / 2+50 - MeasureTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"),(coins).c_str(),70,2).x / 2, (float)GetScreenHeight() / 2 + 105}, 70, 2, WHITE);
 }
 
 void GameState::resetwhenGameOver()

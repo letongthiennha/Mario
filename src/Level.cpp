@@ -119,6 +119,14 @@ void Level::UpdateLevel()
                     }
                 }
             }
+                if(player.getPosition().x<0)
+                {
+                        player.setPosition({0, player.getPosition().y}); // Prevent player from going off the left side of the screen
+                }
+                else if(player.getPosition().x>map.getMapWidth()-player.getSize().x)
+                {
+                        player.setPosition({map.getMapWidth()-player.getSize().x, player.getPosition().y}); // Prevent player from going off the right side of the screen
+                }
         }
         
 
@@ -131,7 +139,7 @@ void Level::UpdateLevel()
 
         if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
         {
-                if(player.getLives() >= 0) // If player has lives left, reset the level
+                if(player.getLives() > 0) // If player has lives left, reset the level
                 {
                         state = LevelState::LEVEL_STATE_NEED_RESET;
                 }
@@ -142,6 +150,14 @@ void Level::UpdateLevel()
                 return;
         }
 
+        if(player.getPosition().x<=0) // If player is past the left edge of the screen, reset the level
+        {
+                player.setPosition(Vector2{0,player.getPosition().y});
+        }
+        else if(player.getPosition().x>=map.getMapWidth()-player.getSize().x) // If player is past the right edge of the screen, reset the level
+        {
+                player.setPosition(Vector2{map.getMapWidth()-player.getSize().x,player.getPosition().y});
+        }
         if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
         {
                 state= LevelState::LEVEL_STATE_COMPLETED;
