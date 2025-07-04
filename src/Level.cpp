@@ -3,7 +3,7 @@
 #include "Map.h"
 #include "LevelState.h"
 #include "SoundControoler.h"
-Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),gameState(gamestate),
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),items(map.getItems()),gameState(gamestate),
 player(map.getStartPositionForMario(),playerData),
 interactiveTiles(map.getInteractiveTiles()),
 state(LevelState::LEVEL_STATE_PLAYING)
@@ -94,6 +94,40 @@ void Level::UpdateLevel()
                 };
         
         }
+        for (auto const & item : items)
+                {
+                        CollisionInfo playerCollision = player.CheckCollisionType(*item);
+                        if(playerCollision)
+                        {
+                                collisionMediator.HandleCollision(&player, item);
+                        }
+		}
+
+        for (auto const& item : items) {
+			// Check collision with each interactive tile
+            if (dynamic_cast<Coin*>(item) != nullptr) {
+                continue;
+            }
+
+            item->setOnGround(false);
+
+			// Skip coins, as they are handled separately
+            for (auto const& tile : interactiveTiles) {
+                CollisionInfo itemCollision = item->CheckCollisionType(*tile);
+
+                if (itemCollision) {
+                    collisionMediator.HandleCollision(item, tile);
+				}
+            }
+        }
+
+        for (auto const& item : items) {
+            if(item->getState()==ItemState::IDLE)
+                item->updateStateAndPhysic();
+            if (item->getState() == ItemState::POP_UP)
+                item->Activate();
+        }
+
         if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
         {
                 if(player.getLives() >= 0) // If player has lives left, reset the level
@@ -154,3 +188,12 @@ void Level::DrawLevel()
         EndMode2D();
 }
 
+void Level::loadCoins() {
+        items.clear();
+        for (Tile* tile : map.getInteractiveTiles()) {
+            // Place a coin above each block (adjust offset as needed)
+            Vector2 coinPos = tile->getPosition();
+            coinPos.y -= 32; // Place coin one tile above the block
+            items.emplace_back(new Coin(coinPos, Vector2{ 32, 32 }, WHITE, 0.1f, 4));
+        }
+    }
