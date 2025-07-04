@@ -918,30 +918,6 @@ src/Tile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Tile.cpp.s
 .PHONY : src/Tile.cpp.s
 
-src/World.obj: src/World.cpp.obj
-.PHONY : src/World.obj
-
-# target to build an object file
-src/World.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.obj
-.PHONY : src/World.cpp.obj
-
-src/World.i: src/World.cpp.i
-.PHONY : src/World.i
-
-# target to preprocess a source file
-src/World.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.i
-.PHONY : src/World.cpp.i
-
-src/World.s: src/World.cpp.s
-.PHONY : src/World.s
-
-# target to generate assembly for a file
-src/World.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/World.cpp.s
-.PHONY : src/World.cpp.s
-
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -1069,9 +1045,6 @@ help:
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s
-	@echo ... src/World.obj
-	@echo ... src/World.i
-	@echo ... src/World.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

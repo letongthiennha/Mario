@@ -32,7 +32,6 @@ set(OLD_GLOB
   "D:/Project/Mario/src/StateManager.cpp"
   "D:/Project/Mario/src/Subject.cpp"
   "D:/Project/Mario/src/Tile.cpp"
-  "D:/Project/Mario/src/World.cpp"
   "D:/Project/Mario/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

@@ -5,7 +5,7 @@ FloatingScore::FloatingScore() : position({ 0, 0 }), timer(0.0f), duration(0.1f)
 }
 
 void FloatingScore::Update() {
-	float deltaTime = GameClock::getInstance().FIXED_TIME_STEP;
+	float deltaTime =GameClock::getInstance().DeltaTime;
 	timer += deltaTime;
 	if (timer < duration) position.y -= 30.f * deltaTime;
 }

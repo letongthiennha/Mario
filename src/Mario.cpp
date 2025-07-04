@@ -79,6 +79,11 @@ void Mario::setState(EntityState state)
     this->state = state;
 }
 
+MarioState Mario::getForm() const
+{
+    return form;
+}
+
 void Mario::addCoin(int coin)
 {
     if (coin < 0) coin = 0; // Prevent negative coins

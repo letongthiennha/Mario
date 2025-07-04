@@ -1,6 +1,6 @@
 #include "Star.h"
 #include "ResourceManager.h"
-#include "World.h"
+#include "Level.h"
 
 Star::Star(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
 	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection) {
@@ -8,11 +8,11 @@ Star::Star(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame
 	floatingScore.loadSprite("1000_POINTS");
 	float speed = 150.0f;
 	if (initialDirection == DIRECTION_LEFT) {
-		setVelocity(Vector2(-speed, 0));
+		setVelocity(Vector2{-speed, 0});
 		initialSpeedX = -speed;
 	}
 	else {
-		setVelocity(Vector2(speed, 0));
+		setVelocity(Vector2{speed, 0});
 		initialSpeedX = speed;
 	}
 	NorthHb.SetSize({ size.x / 2, 2 });
@@ -32,7 +32,7 @@ void Star::updateSprite() {
 	else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
 		setVelocity({ 0, 0 });
-		frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+		frameAcum +=GameClock::getInstance().DeltaTime;
 		if (frameAcum >= disappearTimer) {
 			frameAcum -= disappearTimer;
 			currFrame++;
@@ -75,17 +75,17 @@ void Star::updateStateAndPhysic() {
 	}
 	
 	if(isJumping){
-		jumpTimer += GameClock::getInstance().FIXED_TIME_STEP;
+		jumpTimer +=GameClock::getInstance().DeltaTime;
 		if (jumpTimer >= jumpDuration) {
 			isJumping = false;
 		}
 		else {
-			velocity.y -= World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
+			velocity.y -= Level::GRAVITY *GameClock::getInstance().DeltaTime;
 		}
 	}
 
 	if (!onGround && !isJumping) {
-		velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
+		velocity.y += Level::GRAVITY *GameClock::getInstance().DeltaTime;
 	}
 }
 

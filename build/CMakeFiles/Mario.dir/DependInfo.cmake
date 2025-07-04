@@ -36,7 +36,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Project/Mario/src/StateManager.cpp" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/StateManager.cpp.obj.d"
   "D:/Project/Mario/src/Subject.cpp" "CMakeFiles/Mario.dir/src/Subject.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Subject.cpp.obj.d"
   "D:/Project/Mario/src/Tile.cpp" "CMakeFiles/Mario.dir/src/Tile.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
-  "D:/Project/Mario/src/World.cpp" "CMakeFiles/Mario.dir/src/World.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/World.cpp.obj.d"
   "D:/Project/Mario/src/main.cpp" "CMakeFiles/Mario.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Mario.dir/src/main.cpp.obj.d"
   )
 

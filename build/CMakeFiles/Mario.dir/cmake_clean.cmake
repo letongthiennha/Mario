@@ -55,8 +55,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Mario.dir/src/Subject.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj"
   "CMakeFiles/Mario.dir/src/Tile.cpp.obj.d"
-  "CMakeFiles/Mario.dir/src/World.cpp.obj"
-  "CMakeFiles/Mario.dir/src/World.cpp.obj.d"
   "CMakeFiles/Mario.dir/src/main.cpp.obj"
   "CMakeFiles/Mario.dir/src/main.cpp.obj.d"
   "Mario.exe"

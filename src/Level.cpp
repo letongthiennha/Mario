@@ -93,8 +93,7 @@ void Level::UpdateLevel()
                         }
                 };
         
-        }
-        for (auto const & item : items)
+                for (auto const & item : items)
                 {
                         CollisionInfo playerCollision = player.CheckCollisionType(*item);
                         if(playerCollision)
@@ -103,23 +102,25 @@ void Level::UpdateLevel()
                         }
 		}
 
-        for (auto const& item : items) {
-			// Check collision with each interactive tile
-            if (dynamic_cast<Coin*>(item) != nullptr) {
-                continue;
-            }
+            for (auto const& item : items) {
+                // Check collision with each interactive tile
+                if (dynamic_cast<Coin*>(item) != nullptr) {
+                    continue;
+                }
 
-            item->setOnGround(false);
+                item->setOnGround(false);
 
-			// Skip coins, as they are handled separately
-            for (auto const& tile : interactiveTiles) {
-                CollisionInfo itemCollision = item->CheckCollisionType(*tile);
+                // Skip coins, as they are handled separately
+                for (auto const& tile : interactiveTiles) {
+                    CollisionInfo itemCollision = item->CheckCollisionType(*tile);
 
-                if (itemCollision) {
-                    collisionMediator.HandleCollision(item, tile);
-				}
+                    if (itemCollision) {
+                        collisionMediator.HandleCollision(item, tile);
+                    }
+                }
             }
         }
+        
 
         for (auto const& item : items) {
             if(item->getState()==ItemState::IDLE)

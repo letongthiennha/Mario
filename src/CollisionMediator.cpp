@@ -149,18 +149,28 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
     if (item&&CheckCollisionRecs(mario->getRect(), item->getRect())) {
         if (auto* coin = dynamic_cast<Coin*>(item)) {
             coin->collect();
+            mario->addCoin(1);
+            mario->addScore(200); // Add score for collecting a coin
         }
         else if (auto* upMushroom = dynamic_cast<UpMushroom*>(item)) {
             upMushroom->collect();
             // Increase Mario's life by 1
+            mario->addLives(1);
+            mario ->addScore(1000); // Add score for collecting a 1-Up mushroom
         }
         else if (auto* mushroom = dynamic_cast<Mushroom*>(item)) {
             mushroom->collect();
-            mario->changeToBig();
+            if(mario->getForm() == MARIO_STATE_SMALL)
+            mario->startTransformingSmallToBig();
+             mario->addScore(1000); // If Mario is already big or fire, just add score
         }
         else if(auto* fireFlower= dynamic_cast<FireFlower*>(item)) {
             fireFlower->collect();
-            mario->changeToFire();
+            if(mario->getForm() == MARIO_STATE_BIG)
+            mario->startTransformingBigToFire();
+            else if(mario->getForm() == MARIO_STATE_SMALL)
+            mario->startTransformingSmallToFire();
+             mario->addScore(1000); // If Mario is already fire, just add score
         }
         else if(auto* star= dynamic_cast<Star*>(item)) {
             star->collect();
