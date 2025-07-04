@@ -137,6 +137,32 @@ void ResourceManager::loadTextures()
     textures["LEVEL_END_ENTER"]= LoadTexture("resources/UI/PressEnter.png");
     textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
     textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
+
+    //ITEMS
+	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin_0.png");
+	textures["COIN_1"] = LoadTexture("resources/Entity/Items/Coin_1.png");
+	textures["COIN_2"] = LoadTexture("resources/Entity/Items/Coin_2.png");
+	textures["COIN_3"] = LoadTexture("resources/Entity/Items/Coin_3.png");
+
+	textures["MUSHROOM"] = LoadTexture("resources/Entity/Items/Mushroom.png");
+	textures["UP_MUSHROOM"] = LoadTexture("resources/Entity/Items/1UpMushroom.png");
+	textures["UP_MOON"] = LoadTexture("resources/Entity/Items/3UpMoon.png");
+    
+	textures["FIRE_FLOWER_0"] = LoadTexture("resources/Entity/Items/FireFlower_0.png");
+	textures["FIRE_FLOWER_1"] = LoadTexture("resources/Entity/Items/FireFlower_1.png");
+
+	textures["STAR"] = LoadTexture("resources/Entity/Items/Star.png");
+
+    //EFFECTS
+	textures["STAR_DUST_0"] = LoadTexture("resources/Effects/StarDust_0.png");
+	textures["STAR_DUST_1"] = LoadTexture("resources/Effects/StarDust_1.png");
+	textures["STAR_DUST_2"] = LoadTexture("resources/Effects/StarDust_2.png");
+	textures["STAR_DUST_3"] = LoadTexture("resources/Effects/StarDust_3.png");
+
+	textures["200_POINTS"] = LoadTexture("resources/Effects/guiHundredsPoints_200.png");
+    textures["1000_POINTS"] = LoadTexture("resources/Effects/guiThousandsPoints_1000.png");
+    textures["1_UP"] = LoadTexture("resources/Effects/gui1Up.png");
+    textures["3_UP"] = LoadTexture("resources/Effects/gui3Up.png");
 }   
 
 void ResourceManager::loadSounds(){
@@ -148,6 +174,13 @@ void ResourceManager::loadSounds(){
     sounds["MARIO_BEING_HIT"] = LoadSound("resources/SFX/smw_pipe.wav");
     }
     sounds["MARIO_DIE"] = LoadSound("resources/SFX/playerDown.mp3");
+
+	// COIN COLLECTION SFX
+	sounds["COIN_COLLECTION"] = LoadSound("resources/SFX/smw_coin.wav");
+
+    // POWER UP SFX
+	sounds["POWER_UP_APPEARS"] = LoadSound("resources/SFX/smw_power-up_appears.wav");
+	sounds["POWER_UP"] = LoadSound("resources/SFX/smw_power-up.wav");
 }
 
 void ResourceManager::loadMusics(){

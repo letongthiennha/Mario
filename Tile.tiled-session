@@ -8,7 +8,12 @@
         ".",
         "resources/Entity",
         "resources/Map",
+<<<<<<< HEAD
         "resources"
+=======
+        "resources",
+        "."
+>>>>>>> origin/MergeTestWithKhai
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -29,16 +34,26 @@
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
+<<<<<<< HEAD
                 "x": 2842,
                 "y": 359
+=======
+                "x": 1599.4865211810015,
+                "y": 479.24689773213527
+>>>>>>> origin/MergeTestWithKhai
             }
         },
         "resources/Map/Map2.json": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
+<<<<<<< HEAD
                 "x": 821.6666666666666,
                 "y": 479.99999999999994
+=======
+                "x": 480.3333333333333,
+                "y": 319.99999999999994
+>>>>>>> origin/MergeTestWithKhai
             }
         },
         "resources/Map/Map3.json": {
@@ -57,8 +72,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1162,
-                "y": 500.66666666666663
+                "x": 507.9999999999999,
+                "y": 501.99999999999994
             }
         },
         "resources/Map/map1.json": {
@@ -73,8 +88,13 @@
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
+<<<<<<< HEAD
                 "x": 865,
                 "y": 480
+=======
+                "x": 479,
+                "y": 320
+>>>>>>> origin/MergeTestWithKhai
             }
         }
     },

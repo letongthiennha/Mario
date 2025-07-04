@@ -1,9 +1,27 @@
 [
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\1UpMushroom.cpp.obj -c D:\\Project\\Mario\\src\\1UpMushroom.cpp",
+  "file": "D:/Project/Mario/src/1UpMushroom.cpp",
+  "output": "CMakeFiles/Mario.dir/src/1UpMushroom.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\3UpMoon.cpp.obj -c D:\\Project\\Mario\\src\\3UpMoon.cpp",
+  "file": "D:/Project/Mario/src/3UpMoon.cpp",
+  "output": "CMakeFiles/Mario.dir/src/3UpMoon.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Button.cpp.obj -c D:\\Project\\Mario\\src\\Button.cpp",
   "file": "D:/Project/Mario/src/Button.cpp",
   "output": "CMakeFiles/Mario.dir/src/Button.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Coin.cpp.obj -c D:\\Project\\Mario\\src\\Coin.cpp",
+  "file": "D:/Project/Mario/src/Coin.cpp",
+  "output": "CMakeFiles/Mario.dir/src/Coin.cpp.obj"
 },
 {
   "directory": "D:/Project/Mario/build",
@@ -19,9 +37,21 @@
 },
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\FireFlower.cpp.obj -c D:\\Project\\Mario\\src\\FireFlower.cpp",
+  "file": "D:/Project/Mario/src/FireFlower.cpp",
+  "output": "CMakeFiles/Mario.dir/src/FireFlower.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Fireball.cpp.obj -c D:\\Project\\Mario\\src\\Fireball.cpp",
   "file": "D:/Project/Mario/src/Fireball.cpp",
   "output": "CMakeFiles/Mario.dir/src/Fireball.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\FloatingScore.cpp.obj -c D:\\Project\\Mario\\src\\FloatingScore.cpp",
+  "file": "D:/Project/Mario/src/FloatingScore.cpp",
+  "output": "CMakeFiles/Mario.dir/src/FloatingScore.cpp.obj"
 },
 {
   "directory": "D:/Project/Mario/build",
@@ -49,6 +79,18 @@
 },
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Item.cpp.obj -c D:\\Project\\Mario\\src\\Item.cpp",
+  "file": "D:/Project/Mario/src/Item.cpp",
+  "output": "CMakeFiles/Mario.dir/src/Item.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\ItemFactory.cpp.obj -c D:\\Project\\Mario\\src\\ItemFactory.cpp",
+  "file": "D:/Project/Mario/src/ItemFactory.cpp",
+  "output": "CMakeFiles/Mario.dir/src/ItemFactory.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Level.cpp.obj -c D:\\Project\\Mario\\src\\Level.cpp",
   "file": "D:/Project/Mario/src/Level.cpp",
   "output": "CMakeFiles/Mario.dir/src/Level.cpp.obj"
@@ -73,6 +115,12 @@
 },
 {
   "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Mushroom.cpp.obj -c D:\\Project\\Mario\\src\\Mushroom.cpp",
+  "file": "D:/Project/Mario/src/Mushroom.cpp",
+  "output": "CMakeFiles/Mario.dir/src/Mushroom.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\PlayerData.cpp.obj -c D:\\Project\\Mario\\src\\PlayerData.cpp",
   "file": "D:/Project/Mario/src/PlayerData.cpp",
   "output": "CMakeFiles/Mario.dir/src/PlayerData.cpp.obj"
@@ -88,6 +136,12 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\SoundControoler.cpp.obj -c D:\\Project\\Mario\\src\\SoundControoler.cpp",
   "file": "D:/Project/Mario/src/SoundControoler.cpp",
   "output": "CMakeFiles/Mario.dir/src/SoundControoler.cpp.obj"
+},
+{
+  "directory": "D:/Project/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\Star.cpp.obj -c D:\\Project\\Mario\\src\\Star.cpp",
+  "file": "D:/Project/Mario/src/Star.cpp",
+  "output": "CMakeFiles/Mario.dir/src/Star.cpp.obj"
 },
 {
   "directory": "D:/Project/Mario/build",

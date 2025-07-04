@@ -90,6 +90,7 @@ void CollisionMediator::HandleFireballWithTile(Fireball *&fireball, Tile *&tile,
     }
     }
 }
+
 void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
 
 {
@@ -100,6 +101,8 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     Fireball* isBfireball = dynamic_cast<Fireball*>(entityB);
     Tile* isAtile = dynamic_cast<Tile*>(entityA);
     Tile* isBtile = dynamic_cast<Tile*>(entityB);
+    Item* isAitem = dynamic_cast<Item*>(entityA);
+    Item* isBitem = dynamic_cast<Item*>(entityB);
     if (isAmario && isBtile|| isBmario&& isAtile)
     {
         CollisionInfo AtoB = isAmario ? isAmario->CheckCollisionType(*isBtile) : isBmario->CheckCollisionType(*isAtile);
@@ -116,5 +119,111 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         else
             HandleFireballWithTile(isBfireball, isAtile, AtoB);
     }
+    else if(isAmario && isBitem || isBmario && isAitem)
+    {
+        Mario* mario = isAmario ? isAmario : isBmario;
+        Item* item = isAitem ? isAitem : isBitem;
+        CollisionInfo AtoB = mario->CheckCollisionType(*item);
+        HandleMarioWithItem(mario, item, AtoB);
+	}
+    else if (isAitem && isBtile || isBitem && isAtile)
+    {
+        Item* item = isAitem ? isAitem : isBitem;
+        Tile* tile = isAtile ? isAtile : isBtile;
+        CollisionInfo AtoB = item->CheckCollisionType(*tile);
+        HandleItemWithTile(item, tile, AtoB);
+    }
+}
 
+void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
+    if (AtoB == COLLISION_NONE)
+        return;
+
+    if (AtoB == COLLISION_NORTH && item->getState() == ItemState::UNACTIVE) {
+		item->setState(ItemState::POP_UP);
+    }
+
+    if (item&&item->getState() != ItemState::IDLE)
+        return;
+
+    if (item&&CheckCollisionRecs(mario->getRect(), item->getRect())) {
+        if (auto* coin = dynamic_cast<Coin*>(item)) {
+            coin->collect();
+            mario->addCoin(1);
+            mario->addScore(200); // Add score for collecting a coin
+        }
+        else if (auto* upMushroom = dynamic_cast<UpMushroom*>(item)) {
+            upMushroom->collect();
+            // Increase Mario's life by 1
+            mario->addLives(1);
+            mario ->addScore(1000); // Add score for collecting a 1-Up mushroom
+        }
+        else if (auto* mushroom = dynamic_cast<Mushroom*>(item)) {
+            mushroom->collect();
+            if(mario->getForm() == MARIO_STATE_SMALL)
+            mario->startTransformingSmallToBig();
+             mario->addScore(1000); // If Mario is already big or fire, just add score
+        }
+        else if(auto* fireFlower= dynamic_cast<FireFlower*>(item)) {
+            fireFlower->collect();
+            if(mario->getForm() == MARIO_STATE_BIG)
+            mario->startTransformingBigToFire();
+            else if(mario->getForm() == MARIO_STATE_SMALL)
+            mario->startTransformingSmallToFire();
+             mario->addScore(1000); // If Mario is already fire, just add score
+        }
+        else if(auto* star= dynamic_cast<Star*>(item)) {
+            star->collect();
+			// change to invincible state
+        }
+        else if (auto* upMoon = dynamic_cast<UpMoon*>(item)) {
+            upMoon->collect();
+			// Increase Mario's life by 3
+        }
+        // .... other items
+    }
+}
+
+void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB)
+{
+    if (AtoB == COLLISION_NONE)
+        return;
+
+    if (item->getState() == ItemState::POP_UP||item->getState() == ItemState::UNACTIVE)
+        return;
+
+    Vector2 velocity = item->getVelocity();
+    Vector2 position = item->getPosition();
+
+    switch (AtoB)
+    {
+    case COLLISION_SOUTH:
+        position.y = tile->getPosition().y - item->getSize().y;
+        if (dynamic_cast<Star*>(item) == nullptr) {
+            velocity.y = 0;
+        }
+        item->setOnGround(true);
+        break;
+    case COLLISION_NORTH:
+        position.y = tile->getPosition().y + tile->getSize().y;
+        velocity.y = 0;
+        break;
+    case COLLISION_EAST:
+        position.x = tile->getPosition().x - item->getSize().x;
+        velocity.x = -velocity.x; // Reverse direction
+		break;
+    case COLLISION_WEST:
+		position.x = tile->getPosition().x + tile->getSize().x;
+        velocity.x = -velocity.x; // Reverse direction
+        break;
+    default:
+        break;
+    }
+
+    if (AtoB != COLLISION_SOUTH) {
+        item->setOnGround(false);
+    }
+
+    item->setPosition(position);
+    item->setVelocity(velocity);
 }

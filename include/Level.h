@@ -22,6 +22,8 @@ private:
     Mario player;
 
     std::vector<Tile *> &interactiveTiles;
+    std::vector<Item*> &items;
+
     CollisionMediator collisionMediator;
 
     Camera2D camera;    
@@ -38,4 +40,7 @@ public:
     void UpdateLevel();
     void DrawLevel();
     static  constexpr float GRAVITY=1800;
+
+    void loadCoins();
+
 };

@@ -195,7 +195,14 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
  D:/Project/Mario/include/GameClock.h D:/Project/Mario/include/Level.h \
- D:/Project/Mario/include/Map.h \
+ D:/Project/Mario/include/Map.h D:/Project/Mario/include/Coin.h \
+ D:/Project/Mario/include/Item.h D:/Project/Mario/include/FloatingScore.h \
+ D:/Project/Mario/include/ItemState.h \
+ D:/Project/Mario/include/SoundControoler.h \
+ D:/Project/Mario/include/Mushroom.h \
+ D:/Project/Mario/include/1UpMushroom.h \
+ D:/Project/Mario/include/FireFlower.h D:/Project/Mario/include/Star.h \
+ D:/Project/Mario/include/3UpMoon.h \
  D:/Project/Mario/include/CollisionMediator.h \
  D:/Project/Mario/include/GameState.h \
  D:/Project/Mario/include/StateManager.h D:/Project/Mario/include/State.h \
@@ -205,5 +212,4 @@ CMakeFiles/Mario.dir/src/main.cpp.obj: D:\Project\Mario\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
- D:/Project/Mario/include/SoundControoler.h \
  D:/Project/Mario/include/MenuState.h
