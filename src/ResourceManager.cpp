@@ -1,5 +1,4 @@
 #include "ResourceManager.h"
-
 void ResourceManager::loadFonts()
 {
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
@@ -148,10 +147,17 @@ void ResourceManager::loadSounds(){
     sounds["MARIO_POWERUP"] = LoadSound("resources/SFX/smw_power-up.wav");
     sounds["MARIO_BEING_HIT"] = LoadSound("resources/SFX/smw_pipe.wav");
     }
+    sounds["MARIO_DIE"] = LoadSound("resources/SFX/playerDown.mp3");
 }
 
 void ResourceManager::loadMusics(){
-    musics["Test"]= LoadMusicStream("resources/Music/music1.mp3");
+    musics["GAME_OVER"] = LoadMusicStream("resources/Music/gameOver.mp3");
+
+    musics["TITLE_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/title.mp3");
+    musics["VICTORY_MUSIC"] = LoadMusicStream("resources/Music/courseClear.mp3");
+    musics["LEVEL_1_MUSIC"]= LoadMusicStream("resources/Music/music1.mp3");
+    musics["LEVEL_2_MUSIC"]= LoadMusicStream("resources/Music/music2.mp3");
+    musics["LEVEL_3_MUSIC"]= LoadMusicStream("resources/Music/music3.mp3");
 }
 
 void ResourceManager::loadResource(){
@@ -198,17 +204,21 @@ void ResourceManager::unloadResource(){
 
 //Getters
 Texture2D& ResourceManager::getTexture( const std::string& name) {
+
     return textures[name];
 }
 Sound &ResourceManager::getSounds(const std::string& name) {
+
     return sounds[name];
 }
 Music &ResourceManager::getMusics(const std::string& name) {
+
     return musics[name];
 }
 
 Font &ResourceManager::getFonts(const std::string &name)
 {
+
     return fonts[name];
 }
 

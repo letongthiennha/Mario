@@ -46,6 +46,17 @@
  "nextlayerid":2,
  "nextobjectid":1,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"startPosX",
+         "type":"int",
+         "value":0
+        }, 
+        {
+         "name":"startPosY",
+         "type":"int",
+         "value":770
+        }],
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
  "tileheight":32,

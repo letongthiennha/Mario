@@ -1,6 +1,7 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "GameState.h"
+#include "SoundControoler.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
@@ -23,6 +24,8 @@ MenuState::MenuState(StateManager*manager): State(manager),
             .setText("Credits")
             .setTextSize(50)
             .setTextActiveColor(RED);
+        SoundController::getInstance().StopAllSounds();  // Stop all sounds when entering the menu state
+        SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
 }
 
 MenuState::~MenuState()

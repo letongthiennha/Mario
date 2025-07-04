@@ -20,7 +20,6 @@ private:
     Map map;
 
     Mario player;
-    Vector2 startPositionforPlayer;
 
     std::vector<Tile *> &interactiveTiles;
     CollisionMediator collisionMediator;

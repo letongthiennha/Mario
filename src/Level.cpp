@@ -2,9 +2,9 @@
 #include "ResourceManager.h"
 #include "Map.h"
 #include "LevelState.h"
-Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):gameState(gamestate),
-player(startPositionforPlayer,playerData),
-map(mapNumber), 
+#include "SoundControoler.h"
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),gameState(gamestate),
+player(map.getStartPositionForMario(),playerData),
 interactiveTiles(map.getInteractiveTiles()),
 state(LevelState::LEVEL_STATE_PLAYING)
 {
@@ -16,11 +16,12 @@ state(LevelState::LEVEL_STATE_PLAYING)
             case 1:
                 background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_1");
                 backgroundColor = {0,96,184,255};
+
                 break;
-        //     case 2:
-        //         background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
-        //         backgroundColor = ResourceManager::getInstance().getColor("LEVEL_2_BACKGROUND_COLOR");
-        //         break;
+            case 2:
+                background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
+                backgroundColor = WHITE;
+                break;
         //     case 3:
         //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");
         //         backgroundColor = ResourceManager::getInstance().getColor("LEVEL_3_BACKGROUND_COLOR");
@@ -67,6 +68,32 @@ bool Level::IsCompleted()
 
 void Level::UpdateLevel()
 {
+        //Check collision when it is not in special state
+        if(player.getState()!=ENTITY_STATE_DYING&&player.getState()!=ENTITY_STATE_TO_BE_REMOVED&&player.getState()!=ENTITY_STATE_VICTORY_DANCE) // If player falls off the screen, reset the level
+        {
+                if(player.getPosition().y>=GetScreenHeight()-32) // If player falls below the screen, reset the level
+                {
+                        player.die();
+                        return;
+                }
+                for(auto const & tile : interactiveTiles)
+                {
+                        CollisionInfo playerCollision = player.CheckCollisionType(*tile);
+                        if(playerCollision)
+                        collisionMediator.HandleCollision(&player, tile);
+                        
+                        for(auto& fireball : *player.getFireballs())
+                        {
+                                CollisionInfo fireballCollision = fireball->CheckCollisionType(*tile);
+                                if(fireballCollision)
+                                {
+                                        collisionMediator.HandleCollision(fireball, tile);
+                                }
+
+                        }
+                };
+        
+        }
         if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
         {
                 if(player.getLives() >= 0) // If player has lives left, reset the level
@@ -86,22 +113,8 @@ void Level::UpdateLevel()
                 player.startVictoryDance();
                 return;
         } 
-        for(auto const & tile : interactiveTiles)
-                {
-                        CollisionInfo playerCollision = player.CheckCollisionType(*tile);
-                        if(playerCollision)
-                        collisionMediator.HandleCollision(&player, tile);
-                        
-                        for(auto& fireball : *player.getFireballs())
-                        {
-                                CollisionInfo fireballCollision = fireball->CheckCollisionType(*tile);
-                                if(fireballCollision)
-                                {
-                                        collisionMediator.HandleCollision(fireball, tile);
-                                }
 
-                        }
-                };
+
         player.updateStateAndPhysic();
 
 }

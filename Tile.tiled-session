@@ -21,16 +21,24 @@
             "scale": 0.5842499999999999,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 985.0235344458708,
+                "x": 872.9139922978178,
                 "y": 480.10269576379983
             }
         },
         "resources/Map/Map2.json": {
-            "scale": 0.14606249999999998,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3200.6846384253317,
-                "y": 482.6700898587935
+                "x": -21.333333333333314,
+                "y": 825.6666666666666
+            }
+        },
+        "resources/Map/Map3.json": {
+            "scale": 0.1245390625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3203.8140643623356,
+                "y": -3015.1182485414965
             }
         },
         "resources/Map/map0.json": {
@@ -53,8 +61,8 @@
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2983,
-                "y": 417
+                "x": 799,
+                "y": 479
             }
         }
     },
@@ -70,6 +78,7 @@
         "resources/Map/Map1.json"
     ],
     "project": "Tile.tiled-project",
+    "property.type": "int",
     "recentFiles": [
         "resources/Map/Map1.json",
         "resources/Map/Map2.json",

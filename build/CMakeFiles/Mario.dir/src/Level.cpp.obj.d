@@ -199,4 +199,5 @@ CMakeFiles/Mario.dir/src/Level.cpp.obj: D:\Project\Mario\src\Level.cpp \
  D:/Project/Mario/include/StateManager.h D:/Project/Mario/include/State.h \
  D:/Project/Mario/include/Button.h D:/Project/Mario/include/UIObject.h \
  D:/Project/Mario/include/HUD.h D:/Project/Mario/include/Observer.h \
- D:/Project/Mario/include/LevelState.h
+ D:/Project/Mario/include/LevelState.h \
+ D:/Project/Mario/include/SoundControoler.h

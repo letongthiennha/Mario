@@ -17,12 +17,11 @@ int main(){
     InitAudioDevice();
 
     SetTargetFPS(144);
-    PlayMusicStream(ResourceManager::getInstance().getMusics("Test"));
     bool isPaused = false;
-    StateManager stateManager;
     ResourceManager::getInstance().loadResource();
+
+    StateManager stateManager;
     while(!WindowShouldClose()){
-        UpdateMusicStream(ResourceManager::getInstance().getMusics("Test"));
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
         if(!isPaused){
             GameClock::getInstance().updateTimeAcum += GetFrameTime();
@@ -32,6 +31,7 @@ int main(){
 
                 // gw.UpdateWorld();
                 stateManager.update();
+                SoundController::getInstance().UpdateSoundStream();
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }

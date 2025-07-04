@@ -782,6 +782,7 @@ CMakeFiles/Mario.dir/src/GameState.cpp.obj: D:/Project/Mario/src/GameState.cpp \
   D:/Project/Mario/include/Observer.h \
   D:/Project/Mario/include/PlayerData.h \
   D:/Project/Mario/include/ResourceManager.h \
+  D:/Project/Mario/include/SoundControoler.h \
   D:/Project/Mario/include/State.h \
   D:/Project/Mario/include/StateManager.h \
   D:/Project/Mario/include/Subject.h \
@@ -1147,6 +1148,7 @@ CMakeFiles/Mario.dir/src/Level.cpp.obj: D:/Project/Mario/src/Level.cpp \
   D:/Project/Mario/include/Observer.h \
   D:/Project/Mario/include/PlayerData.h \
   D:/Project/Mario/include/ResourceManager.h \
+  D:/Project/Mario/include/SoundControoler.h \
   D:/Project/Mario/include/State.h \
   D:/Project/Mario/include/StateManager.h \
   D:/Project/Mario/include/Subject.h \
@@ -1900,6 +1902,7 @@ CMakeFiles/Mario.dir/src/MenuState.cpp.obj: D:/Project/Mario/src/MenuState.cpp \
   D:/Project/Mario/include/Observer.h \
   D:/Project/Mario/include/PlayerData.h \
   D:/Project/Mario/include/ResourceManager.h \
+  D:/Project/Mario/include/SoundControoler.h \
   D:/Project/Mario/include/State.h \
   D:/Project/Mario/include/StateManager.h \
   D:/Project/Mario/include/Subject.h \
@@ -3550,6 +3553,8 @@ C:/msys64/ucrt64/include/c++/14.2.0/bits/fs_path.h:
 
 D:/Project/Mario/include/Observer.h:
 
+D:/Project/Mario/include/SoundControoler.h:
+
 D:/Project/Mario/src/Hitbox.cpp:
 
 D:/Project/Mario/src/Level.cpp:
@@ -3661,8 +3666,6 @@ C:/msys64/ucrt64/include/string.h:
 D:/Project/Mario/include/json.hpp:
 
 D:/Project/Mario/src/Mario.cpp:
-
-D:/Project/Mario/include/SoundControoler.h:
 
 D:/Project/Mario/src/MenuState.cpp:
 

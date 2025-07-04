@@ -199,4 +199,5 @@ CMakeFiles/Mario.dir/src/GameState.cpp.obj: \
  D:/Project/Mario/include/CollisionMediator.h \
  D:/Project/Mario/include/LevelState.h D:/Project/Mario/include/Button.h \
  D:/Project/Mario/include/UIObject.h D:/Project/Mario/include/HUD.h \
- D:/Project/Mario/include/Observer.h D:/Project/Mario/include/MenuState.h
+ D:/Project/Mario/include/Observer.h D:/Project/Mario/include/MenuState.h \
+ D:/Project/Mario/include/SoundControoler.h

@@ -13,7 +13,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       normalSpeedX(500),
       accelerationX(600),
       jumpInitSpeed(sqrt(300 * Level::GRAVITY )),
-    coin(0), 
+    coin(0),
     isInvincible(false), invincibleFrameTime(0.03f), invincibleFrameAcum(0.0f), invincibleFrame(0), invincibleTime(3.0f)
     
 
@@ -314,12 +314,14 @@ void Mario::startTransformingSmallToFire()
 
 void Mario::die()
 {
+    if(state == ENTITY_STATE_DYING || state == ENTITY_STATE_TO_BE_REMOVED||state==ENTITY_STATE_VICTORY_DANCE) return; // Prevent multiple deaths
     state= ENTITY_STATE_DYING;
     velocity = {0, -1000};
     addLives(-1);
     addCoin(-coin); // Reset coins on death
     score = 0; // Reset score on death
-    SoundController::getInstance().PlayMusic("MARIO_DIE");
+    SoundController::getInstance().StopAllSounds(); // Stop all sounds
+    SoundController::getInstance().PlaySound("MARIO_DIE");
 }
 
 void Mario::startVictoryDance()
@@ -330,7 +332,8 @@ void Mario::startVictoryDance()
     frameTime = 0.0f; // Set frame time for the victory dance
     currFrame = 0; // Start from the first frame
     frameAcum = 0; // Reset frame accumulation
-    SoundController::getInstance().PlaySound("MARIO_VICTORY");
+    SoundController::getInstance().StopAllSounds(); // Stop all sounds
+    SoundController::getInstance().PlayMusic("VICTORY_MUSIC"); // Play victory music
 }
 
 void Mario::HandleInput()
@@ -380,7 +383,7 @@ void Mario::HandleInput()
     if(IsKeyPressed(KEY_KP_2)){
         startTransformingBigToFire();
     }
-    if(IsKeyPressed(KEY_KP_3)){
+    if(IsKeyPressed(KEY_KP_3) ){
         startTransformingSmallToFire();
     }
     if(IsKeyPressed(KEY_KP_4)){

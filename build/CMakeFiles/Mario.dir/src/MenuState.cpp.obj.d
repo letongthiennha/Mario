@@ -202,6 +202,7 @@ CMakeFiles/Mario.dir/src/MenuState.cpp.obj: \
  D:/Project/Mario/include/CollisionMediator.h \
  D:/Project/Mario/include/LevelState.h D:/Project/Mario/include/HUD.h \
  D:/Project/Mario/include/Observer.h \
+ D:/Project/Mario/include/SoundControoler.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc

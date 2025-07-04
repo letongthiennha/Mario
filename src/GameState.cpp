@@ -2,6 +2,8 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "LevelState.h"
+#include "SoundControoler.h"
+#include "StateManager.h"
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -21,6 +23,8 @@ GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
     menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("GAME_STATE_MENU_BUTTON"))
         .DisableBackground()
         .fitTexture();  
+    SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
+    SoundController::getInstance().PlayMusic("LEVEL_1_MUSIC"); // Start playing the game music
 }
 
 
@@ -76,13 +80,21 @@ void GameState::startTransition(TransitionState state)
     switch (state) {
         case TransitionState::TRANSITION_NEXT_LEVEL:
             transitionTime = 5.0f;  // Set transition time for next level
+            SoundController::getInstance().StopAllSounds();  // Stop all sounds when transitioning
             break;
         case
         TransitionState::TRANSITION_LEVEL_RESET:
             transitionTime = 5.0f;  // Set transition time for level reset
+            SoundController::getInstance().StopAllSounds();  // Stop all sounds when transitioning
             break;
         case TransitionState::TRANSITION_GAME_OVER:
             transitionTime = 5.0f;  // Set transition time for game over
+            SoundController::getInstance().StopAllSounds();  // Stop all sounds when transitioning
+            break;
+        case TransitionState::TRANSITION_NONE:
+            transitionTime = 0.0f;  // No transition time when not transitioning
+            SoundController::getInstance().StopAllSounds();  // Stop all sounds when not transitioning
+            SoundController::getInstance().PlayMusic("LEVEL_"+std::to_string(currentLevelID)+"_MUSIC");  // Restart the game music
             break;
     }
 }
@@ -122,22 +134,23 @@ void GameState::update()
         break;
     case LevelState::LEVEL_STATE_COMPLETED:
         if (IsKeyPressed(KEY_ENTER)) {
-            startTransition(TransitionState::TRANSITION_NEXT_LEVEL);  // Proceed to the next level when Enter is pressed
             nextLevel();  // Load the next level
+            startTransition(TransitionState::TRANSITION_NEXT_LEVEL);  // Proceed to the next level when Enter is pressed
         }
 
         break;
     case LevelState::LEVEL_STATE_NEED_RESET:
     if(IsKeyPressed(GetKeyPressed())) {
+        resetLevelWhenMarioDead();  // Reset the level
             startTransition(TransitionState::TRANSITION_LEVEL_RESET);  // Reset the level when Enter is pressed
-            resetLevelWhenMarioDead();  // Reset the level
         }
         break;
     case LevelState::LEVEL_STATE_GAME_OVER:
         
         if(IsKeyPressed(KEY_ENTER)) {
-            startTransition(TransitionState::TRANSITION_GAME_OVER);  // Start game over transition when Enter is pressed            resetwhenGameOver();  // Reset the game when Enter is pressed
             resetwhenGameOver();  // Reset the game when Enter is pressed
+
+            startTransition(TransitionState::TRANSITION_GAME_OVER);  // Start game over transition when Enter is pressed            resetwhenGameOver();  // Reset the game when Enter is pressed
         }
         break;
     default:
@@ -145,13 +158,13 @@ void GameState::update()
     }
 
 }
+
 void GameState::draw(){
 
     currentLevel->DrawLevel();
     if (currentLevel->IsCompleted()) {
         if(transitionState== TransitionState::TRANSITION_NONE) {
             drawLevelEndSummary();  // Draw level end summary
-
         }
     }
     
@@ -173,6 +186,15 @@ void GameState::draw(){
                         "Press Enter To Restart",
                         30,7).x/2,
                         (float)GetScreenHeight() / 2 +150}, 
+                       30, 7, Color{248,248,0,255});
+    }
+    if(currentLevel->getState() == LevelState::LEVEL_STATE_NEED_RESET && transitionState == TransitionState::TRANSITION_NONE){
+        DrawTextEx(*SuperMarioFont, "Press Any Key To Reset Level",
+                       Vector2{(float)GetScreenWidth() / 2 - MeasureTextEx(
+                        *SuperMarioFont,
+                        "Press Any Key To Reset Level",
+                        30,7).x/2,
+                        (float)GetScreenHeight() / 2 -200}, 
                        30, 7, Color{248,248,0,255});
     }
     switch(transitionState){
