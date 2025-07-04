@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "json.hpp"
+#include "ItemFactory.h"
 #include <iostream>
 #include <fstream>
 void Map::LoadFromJsonFile(const std::string& mapFileName)
@@ -11,6 +12,10 @@ std::vector<Tile *> &Map::getInteractiveTiles()
 {
     // TODO: insert return statement here
     return interactiveTiles;
+}
+
+std::vector<Item*>& Map::getItems() {
+    return items;
 }
 
 float Map::getMapWidth() const
@@ -37,6 +42,11 @@ Map::Map(int mapNumber)
             tile = nullptr;
     }
     interactiveTiles.clear();
+    for (auto& item : items) {
+        delete item;
+        item = nullptr;
+    }
+    items.clear();
 }
 
 void Map::LoadMap(int mapNumber)
@@ -85,7 +95,58 @@ void Map::LoadMap(int mapNumber)
             else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
 			}
 		}
-	}
+
+    for (const auto& layer : mapJson["layers"]) {
+        if (layer["type"] == "objectgroup" && layer["name"] == "Coin") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // Create a Coin at (x, y)
+                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, {32, 32}, WHITE, 0.1f, 4, IDLE));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, {32, 32}, WHITE, 0.1f, 2));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "Star") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("Star", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "UpMoon") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+            }
+        }
+    }
+}
 
 
 void Map::Draw() 
@@ -98,6 +159,9 @@ void Map::Draw()
     for (const auto& tile : nonInterativeTile)
     {
         tile->Draw();
+    }
+    for (const auto& item : items) {
+        item->Draw();
     }
 
 }

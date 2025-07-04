@@ -7,8 +7,8 @@
     "expandedProjectPaths": [
         "resources/Entity",
         "resources/Map",
-        ".",
-        "resources"
+        "resources",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -21,16 +21,16 @@
             "scale": 0.5842499999999999,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 872.9139922978178,
-                "y": 480.10269576379983
+                "x": 1599.4865211810015,
+                "y": 479.24689773213527
             }
         },
         "resources/Map/Map2.json": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -21.333333333333314,
-                "y": 825.6666666666666
+                "x": 480.3333333333333,
+                "y": 319.99999999999994
             }
         },
         "resources/Map/Map3.json": {
@@ -45,8 +45,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1162,
-                "y": 500.66666666666663
+                "x": 507.9999999999999,
+                "y": 501.99999999999994
             }
         },
         "resources/Map/map1.json": {
@@ -61,8 +61,8 @@
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 799,
-                "y": 479
+                "x": 479,
+                "y": 320
             }
         }
     },

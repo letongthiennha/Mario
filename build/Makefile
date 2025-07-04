@@ -246,6 +246,54 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\build.make raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+src/1UpMushroom.obj: src/1UpMushroom.cpp.obj
+.PHONY : src/1UpMushroom.obj
+
+# target to build an object file
+src/1UpMushroom.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/1UpMushroom.cpp.obj
+.PHONY : src/1UpMushroom.cpp.obj
+
+src/1UpMushroom.i: src/1UpMushroom.cpp.i
+.PHONY : src/1UpMushroom.i
+
+# target to preprocess a source file
+src/1UpMushroom.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/1UpMushroom.cpp.i
+.PHONY : src/1UpMushroom.cpp.i
+
+src/1UpMushroom.s: src/1UpMushroom.cpp.s
+.PHONY : src/1UpMushroom.s
+
+# target to generate assembly for a file
+src/1UpMushroom.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/1UpMushroom.cpp.s
+.PHONY : src/1UpMushroom.cpp.s
+
+src/3UpMoon.obj: src/3UpMoon.cpp.obj
+.PHONY : src/3UpMoon.obj
+
+# target to build an object file
+src/3UpMoon.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/3UpMoon.cpp.obj
+.PHONY : src/3UpMoon.cpp.obj
+
+src/3UpMoon.i: src/3UpMoon.cpp.i
+.PHONY : src/3UpMoon.i
+
+# target to preprocess a source file
+src/3UpMoon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/3UpMoon.cpp.i
+.PHONY : src/3UpMoon.cpp.i
+
+src/3UpMoon.s: src/3UpMoon.cpp.s
+.PHONY : src/3UpMoon.s
+
+# target to generate assembly for a file
+src/3UpMoon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/3UpMoon.cpp.s
+.PHONY : src/3UpMoon.cpp.s
+
 src/Button.obj: src/Button.cpp.obj
 .PHONY : src/Button.obj
 
@@ -269,6 +317,30 @@ src/Button.s: src/Button.cpp.s
 src/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Button.cpp.s
 .PHONY : src/Button.cpp.s
+
+src/Coin.obj: src/Coin.cpp.obj
+.PHONY : src/Coin.obj
+
+# target to build an object file
+src/Coin.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Coin.cpp.obj
+.PHONY : src/Coin.cpp.obj
+
+src/Coin.i: src/Coin.cpp.i
+.PHONY : src/Coin.i
+
+# target to preprocess a source file
+src/Coin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Coin.cpp.i
+.PHONY : src/Coin.cpp.i
+
+src/Coin.s: src/Coin.cpp.s
+.PHONY : src/Coin.s
+
+# target to generate assembly for a file
+src/Coin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Coin.cpp.s
+.PHONY : src/Coin.cpp.s
 
 src/CollisionMediator.obj: src/CollisionMediator.cpp.obj
 .PHONY : src/CollisionMediator.obj
@@ -318,6 +390,30 @@ src/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Entity.cpp.s
 .PHONY : src/Entity.cpp.s
 
+src/FireFlower.obj: src/FireFlower.cpp.obj
+.PHONY : src/FireFlower.obj
+
+# target to build an object file
+src/FireFlower.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FireFlower.cpp.obj
+.PHONY : src/FireFlower.cpp.obj
+
+src/FireFlower.i: src/FireFlower.cpp.i
+.PHONY : src/FireFlower.i
+
+# target to preprocess a source file
+src/FireFlower.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FireFlower.cpp.i
+.PHONY : src/FireFlower.cpp.i
+
+src/FireFlower.s: src/FireFlower.cpp.s
+.PHONY : src/FireFlower.s
+
+# target to generate assembly for a file
+src/FireFlower.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FireFlower.cpp.s
+.PHONY : src/FireFlower.cpp.s
+
 src/Fireball.obj: src/Fireball.cpp.obj
 .PHONY : src/Fireball.obj
 
@@ -341,6 +437,30 @@ src/Fireball.s: src/Fireball.cpp.s
 src/Fireball.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Fireball.cpp.s
 .PHONY : src/Fireball.cpp.s
+
+src/FloatingScore.obj: src/FloatingScore.cpp.obj
+.PHONY : src/FloatingScore.obj
+
+# target to build an object file
+src/FloatingScore.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FloatingScore.cpp.obj
+.PHONY : src/FloatingScore.cpp.obj
+
+src/FloatingScore.i: src/FloatingScore.cpp.i
+.PHONY : src/FloatingScore.i
+
+# target to preprocess a source file
+src/FloatingScore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FloatingScore.cpp.i
+.PHONY : src/FloatingScore.cpp.i
+
+src/FloatingScore.s: src/FloatingScore.cpp.s
+.PHONY : src/FloatingScore.s
+
+# target to generate assembly for a file
+src/FloatingScore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/FloatingScore.cpp.s
+.PHONY : src/FloatingScore.cpp.s
 
 src/GameClock.obj: src/GameClock.cpp.obj
 .PHONY : src/GameClock.obj
@@ -438,6 +558,54 @@ src/Hitbox.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Hitbox.cpp.s
 .PHONY : src/Hitbox.cpp.s
 
+src/Item.obj: src/Item.cpp.obj
+.PHONY : src/Item.obj
+
+# target to build an object file
+src/Item.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Item.cpp.obj
+.PHONY : src/Item.cpp.obj
+
+src/Item.i: src/Item.cpp.i
+.PHONY : src/Item.i
+
+# target to preprocess a source file
+src/Item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Item.cpp.i
+.PHONY : src/Item.cpp.i
+
+src/Item.s: src/Item.cpp.s
+.PHONY : src/Item.s
+
+# target to generate assembly for a file
+src/Item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Item.cpp.s
+.PHONY : src/Item.cpp.s
+
+src/ItemFactory.obj: src/ItemFactory.cpp.obj
+.PHONY : src/ItemFactory.obj
+
+# target to build an object file
+src/ItemFactory.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ItemFactory.cpp.obj
+.PHONY : src/ItemFactory.cpp.obj
+
+src/ItemFactory.i: src/ItemFactory.cpp.i
+.PHONY : src/ItemFactory.i
+
+# target to preprocess a source file
+src/ItemFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ItemFactory.cpp.i
+.PHONY : src/ItemFactory.cpp.i
+
+src/ItemFactory.s: src/ItemFactory.cpp.s
+.PHONY : src/ItemFactory.s
+
+# target to generate assembly for a file
+src/ItemFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/ItemFactory.cpp.s
+.PHONY : src/ItemFactory.cpp.s
+
 src/Level.obj: src/Level.cpp.obj
 .PHONY : src/Level.obj
 
@@ -534,6 +702,30 @@ src/MenuState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/MenuState.cpp.s
 .PHONY : src/MenuState.cpp.s
 
+src/Mushroom.obj: src/Mushroom.cpp.obj
+.PHONY : src/Mushroom.obj
+
+# target to build an object file
+src/Mushroom.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mushroom.cpp.obj
+.PHONY : src/Mushroom.cpp.obj
+
+src/Mushroom.i: src/Mushroom.cpp.i
+.PHONY : src/Mushroom.i
+
+# target to preprocess a source file
+src/Mushroom.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mushroom.cpp.i
+.PHONY : src/Mushroom.cpp.i
+
+src/Mushroom.s: src/Mushroom.cpp.s
+.PHONY : src/Mushroom.s
+
+# target to generate assembly for a file
+src/Mushroom.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Mushroom.cpp.s
+.PHONY : src/Mushroom.cpp.s
+
 src/PlayerData.obj: src/PlayerData.cpp.obj
 .PHONY : src/PlayerData.obj
 
@@ -605,6 +797,30 @@ src/SoundControoler.s: src/SoundControoler.cpp.s
 src/SoundControoler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/SoundControoler.cpp.s
 .PHONY : src/SoundControoler.cpp.s
+
+src/Star.obj: src/Star.cpp.obj
+.PHONY : src/Star.obj
+
+# target to build an object file
+src/Star.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Star.cpp.obj
+.PHONY : src/Star.cpp.obj
+
+src/Star.i: src/Star.cpp.i
+.PHONY : src/Star.i
+
+# target to preprocess a source file
+src/Star.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Star.cpp.i
+.PHONY : src/Star.cpp.i
+
+src/Star.s: src/Star.cpp.s
+.PHONY : src/Star.s
+
+# target to generate assembly for a file
+src/Star.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mario.dir\build.make CMakeFiles/Mario.dir/src/Star.cpp.s
+.PHONY : src/Star.cpp.s
 
 src/State.obj: src/State.cpp.obj
 .PHONY : src/State.obj
@@ -745,18 +961,33 @@ help:
 	@echo ... Mario
 	@echo ... glfw
 	@echo ... raylib
+	@echo ... src/1UpMushroom.obj
+	@echo ... src/1UpMushroom.i
+	@echo ... src/1UpMushroom.s
+	@echo ... src/3UpMoon.obj
+	@echo ... src/3UpMoon.i
+	@echo ... src/3UpMoon.s
 	@echo ... src/Button.obj
 	@echo ... src/Button.i
 	@echo ... src/Button.s
+	@echo ... src/Coin.obj
+	@echo ... src/Coin.i
+	@echo ... src/Coin.s
 	@echo ... src/CollisionMediator.obj
 	@echo ... src/CollisionMediator.i
 	@echo ... src/CollisionMediator.s
 	@echo ... src/Entity.obj
 	@echo ... src/Entity.i
 	@echo ... src/Entity.s
+	@echo ... src/FireFlower.obj
+	@echo ... src/FireFlower.i
+	@echo ... src/FireFlower.s
 	@echo ... src/Fireball.obj
 	@echo ... src/Fireball.i
 	@echo ... src/Fireball.s
+	@echo ... src/FloatingScore.obj
+	@echo ... src/FloatingScore.i
+	@echo ... src/FloatingScore.s
 	@echo ... src/GameClock.obj
 	@echo ... src/GameClock.i
 	@echo ... src/GameClock.s
@@ -769,6 +1000,12 @@ help:
 	@echo ... src/Hitbox.obj
 	@echo ... src/Hitbox.i
 	@echo ... src/Hitbox.s
+	@echo ... src/Item.obj
+	@echo ... src/Item.i
+	@echo ... src/Item.s
+	@echo ... src/ItemFactory.obj
+	@echo ... src/ItemFactory.i
+	@echo ... src/ItemFactory.s
 	@echo ... src/Level.obj
 	@echo ... src/Level.i
 	@echo ... src/Level.s
@@ -781,6 +1018,9 @@ help:
 	@echo ... src/MenuState.obj
 	@echo ... src/MenuState.i
 	@echo ... src/MenuState.s
+	@echo ... src/Mushroom.obj
+	@echo ... src/Mushroom.i
+	@echo ... src/Mushroom.s
 	@echo ... src/PlayerData.obj
 	@echo ... src/PlayerData.i
 	@echo ... src/PlayerData.s
@@ -790,6 +1030,9 @@ help:
 	@echo ... src/SoundControoler.obj
 	@echo ... src/SoundControoler.i
 	@echo ... src/SoundControoler.s
+	@echo ... src/Star.obj
+	@echo ... src/Star.i
+	@echo ... src/Star.s
 	@echo ... src/State.obj
 	@echo ... src/State.i
 	@echo ... src/State.s

@@ -193,7 +193,15 @@ CMakeFiles/Mario.dir/src/Map.cpp.obj: D:\Project\Mario\src\Map.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/list \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/list.tcc \
- D:/Project/Mario/include/json.hpp \
+ D:/Project/Mario/include/Coin.h D:/Project/Mario/include/Item.h \
+ D:/Project/Mario/include/FloatingScore.h \
+ D:/Project/Mario/include/GameClock.h \
+ D:/Project/Mario/include/ItemState.h \
+ D:/Project/Mario/include/SoundControoler.h \
+ D:/Project/Mario/include/Mushroom.h \
+ D:/Project/Mario/include/1UpMushroom.h \
+ D:/Project/Mario/include/FireFlower.h D:/Project/Mario/include/Star.h \
+ D:/Project/Mario/include/3UpMoon.h D:/Project/Mario/include/json.hpp \
  C:/msys64/ucrt64/include/c++/14.2.0/algorithm \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_algo.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/algorithmfwd.h \
@@ -277,6 +285,7 @@ CMakeFiles/Mario.dir/src/Map.cpp.obj: D:\Project\Mario\src\Map.cpp \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_numeric.h \
  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_numeric_defs.h \
  C:/msys64/ucrt64/include/c++/14.2.0/any \
+ D:/Project/Mario/include/ItemFactory.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/fstream \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
