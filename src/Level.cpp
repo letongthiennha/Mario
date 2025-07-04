@@ -119,6 +119,14 @@ void Level::UpdateLevel()
                     }
                 }
             }
+                if(player.getPosition().x<0)
+                {
+                        player.setPosition({0, player.getPosition().y}); // Prevent player from going off the left side of the screen
+                }
+                else if(player.getPosition().x>map.getMapWidth()-player.getSize().x)
+                {
+                        player.setPosition({map.getMapWidth()-player.getSize().x, player.getPosition().y}); // Prevent player from going off the right side of the screen
+                }
         }
         
 
