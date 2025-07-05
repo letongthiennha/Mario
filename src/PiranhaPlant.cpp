@@ -11,13 +11,16 @@ PiranhaPlant::PiranhaPlant(Vector2 pos, float speed)
 }
 
 void PiranhaPlant::updateSprite() {
-    if (!isActive) return;
+    if (!isActive || state == ENTITY_STATE_DYING) return;
     std::string key = "PIRANHA_" + std::to_string(currFrame);
     sprite = &ResourceManager::getTexture(key);
 }
 
 void PiranhaPlant::updateStateAndPhysic() {
-    if (!isActive) return;
+    if (!isActive || state == ENTITY_STATE_DYING) {
+        Monster::updateStateAndPhysic();
+        return;
+    }
     float delta = GameClock::GetUpdateDeltaTime();
     if (!waiting) {
         pos.y += animVel * delta;
@@ -53,7 +56,7 @@ void PiranhaPlant::handleCollision(const Tile& tile, CollisionInfo type) {
 }
 
 void PiranhaPlant::Draw() {
-    if (!isActive) return;
+    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) return;
     Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};

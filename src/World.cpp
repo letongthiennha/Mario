@@ -2,6 +2,7 @@
 #include "../include/ResourceManager.h"
 #include "../include/Monster.h"
 #include "../include/Fireball.h"
+#include <iostream>
 
 float World::GRAVITY = 0.0f;
 
@@ -16,32 +17,23 @@ World* World::getInstance() {
 
 World::World() : player() {
     instance = this;
-
-    // Ground layer: make it longer
     int groundStart = -20;
-    int groundEnd = 40; // Increased from 10 to 40 for a longer ground
-
+    int groundEnd = 40;
     interactiveTiles.push_back(new Tile(Vector2{(float)groundStart * 32, 700}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
     for (int i = groundStart + 1; i < groundEnd; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 700}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
     interactiveTiles.push_back(new Tile(Vector2{(float)groundEnd * 32, 700}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
-
-    // Elevated platform 1: longer
     int plat1Start = -10;
     int plat1End = 20;
     for (int i = plat1Start; i < plat1End; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 300}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
-
-    // Elevated platform 2: new, higher
     int plat2Start = 22;
     int plat2End = 50;
     for (int i = plat2Start; i < plat2End; i++) {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 200}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
-
-    // Middle platform: longer
     int midPlatStart = 11;
     int midPlatEnd = 60;
     interactiveTiles.push_back(new Tile(Vector2{(float)midPlatStart * 32, 500}, TileType::TILE_TYPE_RIGHT_EDGE, "MAP1_GRASS"));
@@ -49,12 +41,9 @@ World::World() : player() {
         interactiveTiles.push_back(new Tile(Vector2{(float)i * 32, 500}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     }
     interactiveTiles.push_back(new Tile(Vector2{(float)midPlatEnd * 32, 500}, TileType::TILE_TYPE_LEFT_EDGE, "MAP1_GRASS"));
-
-    // Add a few floating tiles for variety
     interactiveTiles.push_back(new Tile(Vector2{900, 400}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     interactiveTiles.push_back(new Tile(Vector2{1200, 350}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
     interactiveTiles.push_back(new Tile(Vector2{1500, 250}, TileType::TILE_TYPE_NORMAL, "MAP1_GRASS"));
-
     camera.offset = Vector2{(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
     camera.target = player.getPosition();
     camera.rotation = 0.0f;
@@ -84,11 +73,10 @@ std::vector<Monster*>& World::getMonsters() {
 
 void World::UpdateWorld() {
     camera.target = player.getPosition();
-
+    // Handle tile collisions
     for (auto const& tile : interactiveTiles) {
         CollisionInfo playerCollision = player.CheckCollisionType(*tile);
         player.HandleTileCollision(*tile, playerCollision);
-        
         for (auto& fireball : *player.getFireballs()) {
             CollisionInfo fireballCollision = fireball->CheckCollisionType(*tile);
             switch (fireballCollision) {
@@ -101,29 +89,56 @@ void World::UpdateWorld() {
             }
         }
     }
-
+    // Check collisions between Mario and monsters
+    for (auto& monster : monsters) {
+        if (!monster->getIsActive() || monster->getState() == ENTITY_STATE_DYING) continue;
+        CollisionInfo collision = player.CheckCollisionType(*monster);
+        if (collision != COLLISION_NONE) {
+            if (collision == COLLISION_SOUTH && player.getVelocity().y > 0) {
+                std::cout << "Monster die triggered by Mario jump at position (" 
+                          << monster->getPosition().x << ", " << monster->getPosition().y << ")!" << std::endl;
+                monster->die();
+                player.jump(); // Bounce effect
+            } else if (player.getState() != ENTITY_STATE_DYING) {
+                std::cout << "Mario die triggered!" << std::endl;
+            }
+        }
+    }
+    // Update player
     player.updateStateAndPhysic();
-
+    // Update monsters
     for (auto& monster : monsters) {
         if (!monster->getIsActive()) continue;
         monster->updateStateAndPhysic();
         for (auto const& tile : interactiveTiles) {
             CollisionInfo collision = monster->CheckCollisionType(*tile);
-            monster->handleCollision(*tile, collision); // Virtual method call
+            monster->handleCollision(*tile, collision);
+        }
+    }
+    // Clean up inactive monsters
+    for (auto it = monsters.begin(); it != monsters.end();) {
+        if (!(*it)->getIsActive()) {
+            std::cout << "Removing inactive monster at position (" 
+                      << (*it)->getPosition().x << ", " << (*it)->getPosition().y << ")!" << std::endl;
+            delete *it;
+            it = monsters.erase(it);
+        } else {
+            ++it;
         }
     }
 }
 
 void World::DrawWorld() {       
     BeginMode2D(camera);
-    // Draw player
     player.Draw();
-    // Draw interactive tiles
     for (auto& tile : interactiveTiles) {
         tile->Draw();
     }
-    // Draw monsters
     for (auto& monster : monsters) {
+        if (monster->getState() == ENTITY_STATE_DYING) {
+            std::cout << "Drawing monster in DYING state at position (" 
+                      << monster->getPosition().x << ", " << monster->getPosition().y << ")" << std::endl;
+        }
         monster->Draw();
     }
     EndMode2D();

@@ -91,7 +91,10 @@ void GameEngine::update() {
             if (startDelay <= 0) {
                 CollisionInfo playerCollision = player->CheckCollisionType(*monster);
                 if (playerCollision == COLLISION_SOUTH) {
-                    monster->setIsActive(false);
+                    if (monster->getState() != ENTITY_STATE_DYING) {
+                        monster->die();            // ✅ Properly trigger blinking
+                        player->jump();            // ✅ Bounce animation
+                    } 
                 } else if (playerCollision != COLLISION_NONE) {
                     player->changeToSmall();
                     if (player->getForm() == MARIO_STATE_SMALL) {

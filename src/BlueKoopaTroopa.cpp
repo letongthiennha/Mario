@@ -5,18 +5,19 @@
 
 BlueKoopaTroopa::BlueKoopaTroopa(Vector2 pos, float speed)
     : Monster(pos, Vector2{32, 48}, BLUE, speed) {
-    velocity.x = -speed; // Move left by default
+    velocity.x = -speed;
     sprite = &ResourceManager::getTexture("BLUE_KOOPA_0_LEFT");
 }
 
 void BlueKoopaTroopa::updateSprite() {
-    if (!isActive) return;
+    if (!isActive || state == ENTITY_STATE_DYING) return;
     std::string dir = (velocity.x >= 0) ? "RIGHT" : "LEFT";
     std::string key = "BLUE_KOOPA_" + std::to_string(currFrame) + "_" + dir;
     sprite = &ResourceManager::getTexture(key);
 }
 
 bool BlueKoopaTroopa::isTileBelowAhead(const std::vector<Tile*>& tiles) {
+    if (state == ENTITY_STATE_DYING) return false;
     Vector2 aheadPos = pos;
     aheadPos.x += (velocity.x > 0) ? size.x : -1;
     aheadPos.y += size.y + 1;
@@ -30,7 +31,10 @@ bool BlueKoopaTroopa::isTileBelowAhead(const std::vector<Tile*>& tiles) {
 }
 
 void BlueKoopaTroopa::updateStateAndPhysic() {
-    if (!isActive) return;
+    if (!isActive || state == ENTITY_STATE_DYING) {
+        Monster::updateStateAndPhysic();
+        return;
+    }
     float delta = GameClock::GetUpdateDeltaTime();
     if (!isTileBelowAhead(World::getInstance()->getInteractiveTiles())) {
         velocity.x = -velocity.x;
@@ -38,7 +42,7 @@ void BlueKoopaTroopa::updateStateAndPhysic() {
     pos.x += velocity.x * delta;
     pos.y += velocity.y * delta;
     velocity.y += World::GetGravity() * delta;
-    if (velocity.y > 0 && state != ENTITY_STATE_ON_GROUD) {
+    if (velocity.y > 0 && state != ENTITY_STATE_ON_GROUND) {
         state = ENTITY_STATE_FALLING;
     }
     frameAcum += delta;
@@ -53,12 +57,13 @@ void BlueKoopaTroopa::updateStateAndPhysic() {
 }
 
 void BlueKoopaTroopa::handleCollision(const Tile& tile, CollisionInfo type) {
+    if (state == ENTITY_STATE_DYING) return;
     if (type == COLLISION_NONE) return;
     switch (type) {
         case COLLISION_SOUTH:
             setPosition({pos.x, tile.getPosition().y - size.y});
             velocity.y = 0;
-            state = ENTITY_STATE_ON_GROUD;
+            state = ENTITY_STATE_ON_GROUND;
             break;
         case COLLISION_EAST:
             setPosition({tile.getPosition().x - size.x, pos.y});
@@ -74,7 +79,7 @@ void BlueKoopaTroopa::handleCollision(const Tile& tile, CollisionInfo type) {
 }
 
 void BlueKoopaTroopa::Draw() {
-    if (!isActive) return;
+    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) return;
     Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
