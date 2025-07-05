@@ -1,5 +1,5 @@
-#include "Hitbox.h"
-#include "Entity.h"
+#include "../include/Hitbox.h"
+#include "../include/Entity.h"
 
 Hitbox::Hitbox():
     position({0,0}),
