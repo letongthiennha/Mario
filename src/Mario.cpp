@@ -151,7 +151,7 @@ void Mario::HandleTileCollision(const Tile &tile, CollisionInfo type)
     {
     case COLLISION_SOUTH:
         setPosition({pos.x, tile.getPosition().y - size.y});
-        state = ENTITY_STATE_ON_GROUD;
+        state = ENTITY_STATE_ON_GROUND;
         velocity.y = 0;
         break;
     case COLLISION_NORTH:
@@ -178,7 +178,7 @@ void Mario::HandleInput()
     if (IsKeyDown(KEY_RIGHT)) moveRight();
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
     else moveNoWhere();
-    if(state==ENTITY_STATE_ON_GROUD){
+    if(state==ENTITY_STATE_ON_GROUND){
         if(IsKeyPressed(KEY_UP))
             jump();
         if(IsKeyDown(KEY_DOWN)&& form!=MARIO_STATE_SMALL){
@@ -207,7 +207,7 @@ void Mario::updateSprite(){
         case MARIO_STATE_SMALL:
             {
                 //On Ground
-                if(state==ENTITY_STATE_ON_GROUD){
+                if(state==ENTITY_STATE_ON_GROUND){
                     //Moving
                     if(velocity.x!=0&&!isDucking){
 
@@ -257,7 +257,7 @@ void Mario::updateSprite(){
         case MARIO_STATE_BIG:
         {   
             //On Ground
-            if(state==ENTITY_STATE_ON_GROUD){
+            if(state==ENTITY_STATE_ON_GROUND){
                 //Moving
                 if(velocity.x!=0&&!isDucking){
                 
@@ -318,7 +318,7 @@ void Mario::updateSprite(){
         case MARIO_STATE_FIRE:
         {
                         //On Ground
-                        if(state==ENTITY_STATE_ON_GROUD){
+                        if(state==ENTITY_STATE_ON_GROUND){
                             //Moving
                             if(velocity.x!=0&&!isDucking){
                                 if(facingDirection==DIRECTION_RIGHT) {
@@ -386,7 +386,7 @@ void Mario::updateStateAndPhysic(){
     {
     case MARIO_STATE_SMALL:
         {
-            if(state==ENTITY_STATE_ON_GROUD){
+            if(state==ENTITY_STATE_ON_GROUND){
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
                 frameAcum += deltaTime;
@@ -401,7 +401,7 @@ void Mario::updateStateAndPhysic(){
         break;
     }
     case MARIO_STATE_BIG:
-        {if(state==ENTITY_STATE_ON_GROUD){
+        {if(state==ENTITY_STATE_ON_GROUND){
             //Moving
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
@@ -417,7 +417,7 @@ void Mario::updateStateAndPhysic(){
         break;
     }
     case MARIO_STATE_FIRE:
-        {if(state==ENTITY_STATE_ON_GROUD){
+        {if(state==ENTITY_STATE_ON_GROUND){
             //Moving
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
@@ -442,7 +442,7 @@ void Mario::updateStateAndPhysic(){
     if(velocity.y>0){
         state= ENTITY_STATE_FALLING;
     }
-    if(state==ENTITY_STATE_ON_GROUD){
+    if(state==ENTITY_STATE_ON_GROUND){
         velocity.y = 0;
     }
     velocity.y += World::GetGravity() * deltaTime;
