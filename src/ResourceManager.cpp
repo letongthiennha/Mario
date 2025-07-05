@@ -101,11 +101,14 @@ void ResourceManager::loadTextures() {
     // ────────────────────────────────
     // GOOMBA
     // ────────────────────────────────
-    {
-        std::cout << "Loading: resources/Entity/Monsters/Goomba/Goomba_0.png" << std::endl;
-        textures["GOOMBA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_0.png");
-        textures["GOOMBA_0_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_0_RIGHT"]);
-    }
+{
+    std::cout << "Loading: resources/Entity/Monsters/Goomba/Goomba_0.png" << std::endl;
+    textures["GOOMBA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_0.png");
+    textures["GOOMBA_0_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_0_RIGHT"]);
+    std::cout << "Loading: resources/Entity/Monsters/Goomba/Goomba_1.png" << std::endl;
+    textures["GOOMBA_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_1.png");
+    textures["GOOMBA_1_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_1_RIGHT"]);
+}
     // ────────────────────────────────
     // FLYING GOOMBA
     // ────────────────────────────────
