@@ -25,6 +25,7 @@ void Monster::updateStateAndPhysic() {
 
     float delta = GameClock::GetUpdateDeltaTime();
 
+//Death animation________________________
     if (state == ENTITY_STATE_DYING) {
         deathAcum += delta;
         blinkAcum += delta;
@@ -46,6 +47,7 @@ void Monster::updateStateAndPhysic() {
         updateHitboxes();
         return;
     }
+//End of death animation_____________________
 
     // Normal behavior
     pos.x += velocity.x * delta;
