@@ -15,7 +15,7 @@ Goomba::Goomba(Vector2 pos, float speed)
 }
 
 void Goomba::updateSprite() {
-    if (!isActive || state == ENTITY_STATE_DYING) return;
+    if (!isActive && state == ENTITY_STATE_DYING) return;
     std::string dir = (velocity.x >= 0) ? "RIGHT" : "LEFT";
     std::string key = "GOOMBA_" + std::to_string(currFrame) + "_" + dir;
     sprite = &ResourceManager::getTexture(key);
@@ -36,7 +36,7 @@ bool Goomba::isTileBelowAhead(const std::vector<Tile*>& tiles) {
 }
 
 void Goomba::updateStateAndPhysic() {
-    if (!isActive || state == ENTITY_STATE_DYING) {
+    if (!isActive && state == ENTITY_STATE_DYING) {
         Monster::updateStateAndPhysic(); // Use base class for death animation
         return;
     }
@@ -87,7 +87,7 @@ void Goomba::handleCollision(const Tile& tile, CollisionInfo type) {
 }
 
 void Goomba::Draw() {
-    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
+    if (!isActive && (state == ENTITY_STATE_DYING && !isVisible)) return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) {
         std::cout << "Warning: Goomba sprite is null at position (" << pos.x << ", " << pos.y << ")" << std::endl;
