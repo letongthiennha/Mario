@@ -1,6 +1,0 @@
-.vs/
-out/build/
-Debug/
-Release/
-ipch/
-*.VC.db
