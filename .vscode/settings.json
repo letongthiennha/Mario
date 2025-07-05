@@ -125,6 +125,7 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "cinttypes": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "codecvt": "cpp"
   }
 }
