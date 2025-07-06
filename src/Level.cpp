@@ -3,11 +3,14 @@
 #include "Map.h"
 #include "LevelState.h"
 #include "SoundControoler.h"
-Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),items(map.getItems()),gameState(gamestate),
+#include "Monster.h"
+#include "raylib.h"
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),items(map.getItems()),gameState(gamestate),
 player(map.getStartPositionForMario(),playerData),
 interactiveTiles(map.getInteractiveTiles()),
 state(LevelState::LEVEL_STATE_PLAYING)
 {
+
         switch(mapNumber) {
             case 0:
                 background = ResourceManager::getInstance().getTexture("BACKGROUND_0");
@@ -54,6 +57,7 @@ bool Level::needReset() const
 }
 Level::~Level()
 {
+
 }
 
 std::unique_ptr<PlayerData> Level::getPlayerData()
@@ -69,6 +73,20 @@ bool Level::IsCompleted()
 void Level::UpdateLevel()
 {
         //Check collision when it is not in special state
+        const float activationWidth=GetScreenWidth()/2.0f+50; // Width within which monsters are activated
+
+   
+        for(auto &monster: monsters)
+        {
+                if(monster->getState() == ENTITY_STATE_DYING) continue; // Skip monsters that are dying
+                if(monster->getPosition().x<GetScreenWidth()&&monster->getIsActive()==false){
+                        monster->setIsActive(true); // Activate monster if it is within the screen
+                }
+                if(abs(player.getPosition().x - monster->getPosition().x) <activationWidth&&monster->getIsActive()==false )
+                {
+                        monster->setIsActive(true); // Activate monster if player is close enough
+                }
+        }
         if(player.getState()!=ENTITY_STATE_DYING&&player.getState()!=ENTITY_STATE_TO_BE_REMOVED&&player.getState()!=ENTITY_STATE_VICTORY_DANCE) // If player falls off the screen, reset the level
         {
                 if(player.getPosition().y>=GetScreenHeight()-32) // If player falls below the screen, reset the level
@@ -101,8 +119,52 @@ void Level::UpdateLevel()
                                 collisionMediator.HandleCollision(&player, item);
                         }
 		}
+                for (auto& monster : monsters) {
 
-            for (auto const& item : items) {
+
+                if(player.getPosition().x<0)
+                {
+                        player.setPosition({0, player.getPosition().y}); // Prevent player from going off the left side of the screen
+                }
+                else if(player.getPosition().x>map.getMapWidth()-player.getSize().x)
+                {
+                        player.setPosition({map.getMapWidth()-player.getSize().x, player.getPosition().y}); // Prevent player from going off the right side of the screen
+                }
+                
+
+                        if (!monster->getIsActive() || monster->getState() == ENTITY_STATE_DYING) continue;
+                        CollisionInfo playerCollision = player.CheckCollisionType(*monster);
+                        if (playerCollision)
+                        collisionMediator.HandleCollision(&player, monster);
+                }
+                            // Update monsters
+                for (auto& monster : monsters) {
+                if (monster->getState()==ENTITY_STATE_TO_BE_REMOVED||monster->getIsActive()==false) continue;
+                monster->updateStateAndPhysic();
+                for (auto const& tile : interactiveTiles) {
+                CollisionInfo collision = monster->CheckCollisionType(*tile);
+                if(collision)
+                collisionMediator.HandleCollision(monster, tile);      
+                }
+                for (auto &fireball : *player.getFireballs()) {
+                        CollisionInfo collision = monster->CheckCollisionType(*fireball);
+                        if (collision) {
+                                collisionMediator.HandleCollision(monster, fireball);
+                        }
+                }
+        }
+        // Update items        
+                for (auto const& item : items) {
+                                if(item->getState()==ItemState::IDLE)
+                                item->updateStateAndPhysic();
+                                if (item->getState() == ItemState::POP_UP)
+                                item->Activate();
+                        }
+                }
+                
+
+
+        for (auto const& item : items) {
                 // Check collision with each interactive tile
                 if (dynamic_cast<Coin*>(item) != nullptr) {
                     continue;
@@ -119,23 +181,6 @@ void Level::UpdateLevel()
                     }
                 }
             }
-                if(player.getPosition().x<0)
-                {
-                        player.setPosition({0, player.getPosition().y}); // Prevent player from going off the left side of the screen
-                }
-                else if(player.getPosition().x>map.getMapWidth()-player.getSize().x)
-                {
-                        player.setPosition({map.getMapWidth()-player.getSize().x, player.getPosition().y}); // Prevent player from going off the right side of the screen
-                }
-        }
-        
-
-        for (auto const& item : items) {
-            if(item->getState()==ItemState::IDLE)
-                item->updateStateAndPhysic();
-            if (item->getState() == ItemState::POP_UP)
-                item->Activate();
-        }
 
         if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
         {
@@ -150,14 +195,6 @@ void Level::UpdateLevel()
                 return;
         }
 
-        if(player.getPosition().x<=0) // If player is past the left edge of the screen, reset the level
-        {
-                player.setPosition(Vector2{0,player.getPosition().y});
-        }
-        else if(player.getPosition().x>=map.getMapWidth()-player.getSize().x) // If player is past the right edge of the screen, reset the level
-        {
-                player.setPosition(Vector2{map.getMapWidth()-player.getSize().x,player.getPosition().y});
-        }
         if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
         {
                 state= LevelState::LEVEL_STATE_COMPLETED;
@@ -165,6 +202,15 @@ void Level::UpdateLevel()
                 return;
         } 
 
+        // Clean up inactive monsters
+        for (auto it = monsters.begin(); it != monsters.end();) {
+                if ((*it)->getState() == ENTITY_STATE_TO_BE_REMOVED) {
+                delete *it;
+                it = monsters.erase(it);
+                } else {
+                ++it;
+                }
+        }
 
         player.updateStateAndPhysic();
 
@@ -201,6 +247,7 @@ void Level::DrawLevel()
         DrawTextureEx(background,Vector2{currBackgroundStarX,-200},0.0f,1.3f,WHITE);
         DrawTextureEx(background,Vector2{currBackgroundStarX+background.width*1.3f,-200},0.0f,1.3f,WHITE);
         map.Draw();
+
         player.Draw();
         EndMode2D();
 }
