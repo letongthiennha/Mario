@@ -71,15 +71,16 @@
          "name":"FireFlower",
          "objects":[
                 {
+                 "gid":105,
                  "height":32,
-                 "id":77,
+                 "id":81,
                  "name":"FireFlower",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.875,
-                 "x":384.125,
-                 "y":384
+                 "width":32,
+                 "x":384.181818181818,
+                 "y":415.818181818182
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -781,7 +782,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":81,
+ "nextobjectid":82,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -790,6 +791,10 @@
         {
          "firstgid":1,
          "source":"..\/Entity\/Tileset.tsx"
+        }, 
+        {
+         "firstgid":105,
+         "source":"..\/..\/..\/FireFlower.tsx"
         }],
  "tilewidth":32,
  "type":"map",
