@@ -1,6 +1,6 @@
 #include "raylib.h"
 #include "Entity.h"
-#include "Glass.h"
+#include "GlassBlock.h"
 
 GlassBlock::GlassBlock(Vector2 pos, Vector2 size, Color color) :
     GlassBlock(pos, size, color, 0, 1) {}
