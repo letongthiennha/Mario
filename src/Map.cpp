@@ -1,5 +1,7 @@
 #include "Map.h"
 #include "json.hpp"
+#include "ItemFactory.h"
+#include "MonsterFactory.h"
 #include <iostream>
 #include <fstream>
 void Map::LoadFromJsonFile(const std::string& mapFileName)
@@ -13,19 +15,34 @@ std::vector<Tile *> &Map::getInteractiveTiles()
     return interactiveTiles;
 }
 
+std::vector<Item*>& Map::getItems() {
+    return items;
+}
+
+std::vector<Monster *> &Map::getMonsters()
+{
+    return monsters;
+}
+
 float Map::getMapWidth() const
 {
     return width;
 }
 
-Map::Map()
-
-    
+Vector2 Map::getStartPositionForMario() const
 {
-    currBackgroundStarX = 0.0f;
-    background= ResourceManager::getInstance().getTexture("BACKGROUND_0");
+    return startPositionForMario;
 }
-Map::~Map()
+
+Map::Map(int mapNumber)
+{
+
+    currBackgroundStarX = 0.0f;
+    background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
+    
+    LoadMap(mapNumber);
+}
+    Map::~Map()
 {
     for(auto& tile : interactiveTiles)
     {
@@ -33,6 +50,22 @@ Map::~Map()
             tile = nullptr;
     }
     interactiveTiles.clear();
+    for (auto& item : items) {
+        delete item;
+        item = nullptr;
+    }
+    items.clear();
+    for (auto& tile : nonInterativeTile)
+    {
+        delete tile;
+        tile = nullptr;
+    }
+    nonInterativeTile.clear();
+    for (auto& monster : monsters) {
+        delete monster;
+        monster = nullptr;
+    }
+    monsters.clear();
 }
 
 void Map::LoadMap(int mapNumber)
@@ -53,6 +86,24 @@ void Map::LoadMap(int mapNumber)
 	int tilewidth = mapJson["tilewidth"];
 	std::vector<int> data = mapJson["layers"][0]["data"];
 
+    int startPosX = 0; // Default value in case it's not found
+    int startPosY = 0; // Default value in case it's not found
+        for (const auto& prop : mapJson["properties"]) {
+            // Check if the name is "startPosX"
+            if (prop["name"] == "startPosX") {
+                // Get the value
+                    startPosX = prop["value"];
+            }
+            // Check if the name is "startPosY"
+            if (prop["name"] == "startPosY")
+            {
+                // Get the value
+                    startPosY = prop["value"];
+            }
+        }
+
+    startPositionForMario = Vector2{(float)startPosX, (float)startPosY};
+
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
 			int tileId = data[y * width + x];
@@ -61,9 +112,78 @@ void Map::LoadMap(int mapNumber)
             else if(tileId==1)
 				nonInterativeTile.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
             else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
-			}
-		}
-	}
+                }
+            }
+
+    for (const auto& layer : mapJson["layers"]) {
+        if (layer["type"] == "objectgroup" && layer["name"] == "Coin") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // Create a Coin at (x, y)
+                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, {32, 32}, WHITE, 0.1f, 4, IDLE));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, {32, 32}, WHITE, 0.1f, 2));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "Star") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("Star", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "UpMoon") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                // You can customize direction or other params as needed
+                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+            }
+        }
+        if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                std::string type = obj["type"];
+                float speed = 100.0f; // Default speed
+                if (obj.contains("speed")) {
+                 speed = obj["speed"];
+                }
+                Monster* monster = MonsterFactory::createMonster(type, {x, y}, speed);
+                if(monster) {
+                    monsters.push_back(monster);
+                    monster->setIsActive(false);
+                } else {
+                    std::cerr << "Unknown monster type: " << type << std::endl;
+                }
+            }
+        }
+    }
+}
 
 
 void Map::Draw() 
@@ -76,6 +196,12 @@ void Map::Draw()
     for (const auto& tile : nonInterativeTile)
     {
         tile->Draw();
+    }
+    for (const auto& item : items) {
+        item->Draw();
+    }
+    for (const auto& monster : monsters) {
+        monster->Draw();
     }
 
 }

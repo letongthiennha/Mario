@@ -21,7 +21,7 @@ Button::Button(Vector2 position, Vector2 size)
     : pos(position), 
     size(size), 
     text(""),
-    idle_color(LIGHTGRAY),
+    idle_color(WHITE),
     idle_text_color(BLACK),
     hover_color(GRAY),
     hover_text_color(WHITE),

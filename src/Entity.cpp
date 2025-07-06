@@ -91,7 +91,7 @@ sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
-state(ENTITY_STATE_IDLE),
+state(ENTITY_STATE_ON_GROUND),
 color(color),
 frameTime(frameTime),
 frameAcum(0),
@@ -150,7 +150,7 @@ void Entity::updateHitboxes() {
     });
     SouthHb.SetPosition(Vector2{
         pos.x + size.x/2 - SouthHb.GetSize().x/2,
-        pos.y + size.y - SouthHb.GetSize().y+1
+        pos.y + size.y - SouthHb.GetSize().y
     });
     
     WestHb.SetPosition(Vector2{
