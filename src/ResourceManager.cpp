@@ -87,6 +87,16 @@ void ResourceManager::loadTextures()
     textures["Cloud_Block"] = LoadTexture("resources/Entity/Blocks/Cloud_0.png");
     textures["Wood_Block"] = LoadTexture("resources/Entity/Blocks/Wood_0.png");
     textures["Glass_Block"] = LoadTexture("resources/Entity/Blocks/Glass_0.png");
+    textures["Exclamation_Block"] = LoadTexture("resources/Entity/Blocks/Exclamation_0.png");
+    textures["Eyes_Closed_Block"] = LoadTexture("resources/Entity/Blocks/EyesClosed_0.png");
+    textures["Eyes_Opened_Block_0"] = LoadTexture("resources/Entity/Blocks/EyesOpened_0.png");
+    textures["Eyes_Opened_Block_1"] = LoadTexture("resources/Entity/Blocks/EyesOpened_1.png");
+    textures["Eyes_Opened_Block_2"] = LoadTexture("resources/Entity/Blocks/EyesOpened_2.png");
+    textures["Eyes_Opened_Block_3"] = LoadTexture("resources/Entity/Blocks/EyesOpened_3.png");
+    textures["Question_Block_0"] = LoadTexture("resources/Entity/Blocks/Question_0.png");
+    textures["Question_Block_1"] = LoadTexture("resources/Entity/Blocks/Question_1.png");
+    textures["Question_Block_2"] = LoadTexture("resources/Entity/Blocks/Question_2.png");
+    textures["Question_Block_3"] = LoadTexture("resources/Entity/Blocks/Question_3.png");
     }
     //TILE
     for (int i = 0;i<104;i++){
