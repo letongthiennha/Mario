@@ -1,13 +1,22 @@
-#include "../include/Monster.h"
-#include "../include/World.h"
-#include "../include/GameClock.h"
+#include "Monster.h"
+#include "Level.h"
+#include "GameClock.h"
+#include "FloatingScore.h"
 #include <iostream>
 
 Monster::Monster(Vector2 pos, Vector2 size, Color color, float speed) 
     : Entity(pos, size, color), speed(speed), isActive(true), 
-      blinkAcum(0.0f), blinkTime(0.15f), deathDuration(1.0f), isVisible(true), deathAcum(0.0f) {}
+      blinkAcum(0.0f), blinkTime(0.15f), deathDuration(1.0f), isVisible(true), deathAcum(0.0f),floatingScore(nullptr) {
 
-Monster::~Monster() {}
+      }
+
+Monster::~Monster() {
+    if (floatingScore != nullptr) {
+        delete floatingScore;
+        floatingScore = nullptr;
+    }
+
+}
 
 void Monster::die() {
     if (state != ENTITY_STATE_DYING) {
@@ -16,14 +25,21 @@ void Monster::die() {
         blinkAcum = 0.0f;
         deathAcum = 0.0f;
         isVisible = true;
-        std::cout << "Monster die called at position (" << pos.x << ", " << pos.y << ")" << std::endl;
+        floatingScore = new FloatingScore();
+        floatingScore->setPosition({pos.x + size.x / 2, pos.y - 20});
+        floatingScore->loadSprite("400_POINTS"); // Load the score sprite
     }
+
+
 }
 
 void Monster::updateStateAndPhysic() {
     if (!isActive && state != ENTITY_STATE_DYING) return;
+    if(floatingScore != nullptr) {
+        floatingScore->Update();
 
-    float delta = GameClock::GetUpdateDeltaTime();
+    }
+    float delta = GameClock::getInstance().DeltaTime;
 
 //Death animation________________________
     if (state == ENTITY_STATE_DYING) {
@@ -35,13 +51,9 @@ void Monster::updateStateAndPhysic() {
             blinkAcum = 0.0f;
         }
 
-        std::cout << "[DYING] deathAcum = " << deathAcum << ", blinkAcum = " << blinkAcum 
-                  << ", isVisible = " << isVisible << std::endl;
-
         if (deathAcum >= deathDuration) {
-            isActive = false;
-            std::cout << "[DEATH COMPLETE] Monster is now inactive at (" 
-                      << pos.x << ", " << pos.y << ")" << std::endl;
+            state = ENTITY_STATE_TO_BE_REMOVED; // Change state to be removed after death duration
+
         }
 
         updateHitboxes();
@@ -50,10 +62,9 @@ void Monster::updateStateAndPhysic() {
 //End of death animation_____________________
 
     // Normal behavior
-    pos.x += velocity.x * delta;
-    pos.y += velocity.y * delta;
-    velocity.y += World::GetGravity() * delta;
-    if (velocity.y > 0 && state != ENTITY_STATE_ON_GROUND) {
+    Entity::updateStateAndPhysic();
+    velocity.y += Level::GRAVITY * delta;
+    if (velocity.y > 0&& state != ENTITY_STATE_ON_GROUND) {
         state = ENTITY_STATE_FALLING;
     }
     updateHitboxes();
@@ -61,7 +72,11 @@ void Monster::updateStateAndPhysic() {
 
 
 void Monster::Draw() {
-    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
+    if (floatingScore != nullptr) {
+        floatingScore->Draw();
+    }
+    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) 
+    return;
     if (sprite != nullptr && sprite->id != 0) {
         Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
         Rectangle dest = {pos.x, pos.y, size.x, size.y};

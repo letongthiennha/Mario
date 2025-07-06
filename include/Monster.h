@@ -2,8 +2,10 @@
 #define MONSTER_H
 #include "Entity.h"
 #include "GameClock.h"
-#include "World.h"
-
+#include "Tile.h"
+#include "CollisionInfo.h"
+#include "FloatingScore.h"
+#include <vector>
 class Monster : public Entity {
 protected:
     float speed;
@@ -14,6 +16,8 @@ protected:
     float deathDuration;
     float deathAcum;  // Total time since die() was triggered
     bool isVisible;
+    FloatingScore* floatingScore;
+
 public:
     Monster(Vector2 pos, Vector2 size, Color color, float speed);
     virtual ~Monster();

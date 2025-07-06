@@ -1,19 +1,19 @@
-#include "../include/PiranhaPlant.h"
-#include "../include/ResourceManager.h"
-#include "../include/GameClock.h"
+#include "PiranhaPlant.h"
+#include "ResourceManager.h"
+#include "GameClock.h"
 
 PiranhaPlant::PiranhaPlant(Vector2 pos, float speed)
     : Monster(pos, Vector2{32, 48}, RED, speed),
       minY(pos.y - 48), maxY(pos.y), animVel(80.0f),
       waitAcum(0.0f), waitTime(2.0f), waiting(false) {
     velocity = {0.0f, 0.0f};
-    sprite = &ResourceManager::getTexture("PIRANHA_0");
+    sprite = &ResourceManager::getInstance().getTexture("PIRANHA_0");
 }
 
 void PiranhaPlant::updateSprite() {
     if (!isActive || state == ENTITY_STATE_DYING) return;
     std::string key = "PIRANHA_" + std::to_string(currFrame);
-    sprite = &ResourceManager::getTexture(key);
+    sprite = &ResourceManager::getInstance().getTexture(key);
 }
 
 void PiranhaPlant::updateStateAndPhysic() {
@@ -21,7 +21,7 @@ void PiranhaPlant::updateStateAndPhysic() {
         Monster::updateStateAndPhysic();
         return;
     }
-    float delta = GameClock::GetUpdateDeltaTime();
+    float delta = GameClock::getInstance().DeltaTime;
     if (!waiting) {
         pos.y += animVel * delta;
         if (pos.y < minY) {

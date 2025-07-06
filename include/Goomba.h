@@ -8,9 +8,10 @@ class Goomba : public Monster {
 public:
     Goomba(Vector2 pos, float speed);
     void updateStateAndPhysic();
-    void Draw();
-    void handleCollision(const Tile& tile, CollisionInfo type) override;
+    void Draw() override;
     bool isTileBelowAhead(const std::vector<Tile*>& tiles);
+    void handleCollision(const Tile &tile, CollisionInfo type) override {};
+
 private:
     void updateSprite();
 };

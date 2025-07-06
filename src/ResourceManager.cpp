@@ -164,6 +164,7 @@ void ResourceManager::loadTextures()
 	textures["STAR_DUST_3"] = LoadTexture("resources/Effects/StarDust_3.png");
 
 	textures["200_POINTS"] = LoadTexture("resources/Effects/guiHundredsPoints_200.png");
+    textures["400_POINTS"] = LoadTexture("resources/Effects/guiHundredsPoints_400.png");
     textures["1000_POINTS"] = LoadTexture("resources/Effects/guiThousandsPoints_1000.png");
     textures["1_UP"] = LoadTexture("resources/Effects/gui1Up.png");
     textures["3_UP"] = LoadTexture("resources/Effects/gui3Up.png");
@@ -197,6 +198,34 @@ void ResourceManager::loadTextures()
             textures["BLUE_KOOPA_0_LEFT"] = FlipTextureHorizontal(textures["BLUE_KOOPA_0_RIGHT"]);
             textures["BLUE_KOOPA_1_LEFT"] = FlipTextureHorizontal(textures["BLUE_KOOPA_1_RIGHT"]);
         }
+        // ────────────────────────────────
+        // GREEN KOOPA TROOPA
+        // ────────────────────────────────
+        {
+            textures["GREEN_KOOPA_0_RIGHT"] = LoadTexture("resources/Entity/Enemies/GreenKoopaTroopa_0.png");
+            textures["GREEN_KOOPA_1_RIGHT"] = LoadTexture("resources/Entity/Enemies/GreenKoopaTroopa_1.png");
+            textures["GREEN_KOOPA_0_LEFT"] = FlipTextureHorizontal(textures["GREEN_KOOPA_0_RIGHT"]);
+            textures["GREEN_KOOPA_1_LEFT"] = FlipTextureHorizontal(textures["GREEN_KOOPA_1_RIGHT"]);
+        }
+        // ────────────────────────────────
+        // RED KOOPA TROOPA
+        // ────────────────────────────────
+        {
+            textures["RED_KOOPA_0_RIGHT"] = LoadTexture("resources/Entity/Enemies/RedKoopaTroopa_0.png");
+            textures["RED_KOOPA_1_RIGHT"] = LoadTexture("resources/Entity/Enemies/RedKoopaTroopa_1.png");
+            textures["RED_KOOPA_0_LEFT"] = FlipTextureHorizontal(textures["RED_KOOPA_0_RIGHT"]);
+            textures["RED_KOOPA_1_LEFT"] = FlipTextureHorizontal(textures["RED_KOOPA_1_RIGHT"]);
+        }
+        // ────────────────────────────────
+        //YELLOW KOOPA TROOPA
+        // ────────────────────────────────
+        {
+            textures["YELLOW_KOOPA_0_RIGHT"] = LoadTexture("resources/Entity/Enemies/YellowKoopaTroopa_0.png");
+            textures["YELLOW_KOOPA_1_RIGHT"] = LoadTexture("resources/Entity/Enemies/YellowKoopaTroopa_1.png");
+            textures["YELLOW_KOOPA_0_LEFT"] = FlipTextureHorizontal(textures["YELLOW_KOOPA_0_RIGHT"]);
+            textures["YELLOW_KOOPA_1_LEFT"] = FlipTextureHorizontal(textures["YELLOW_KOOPA_1_RIGHT"]);
+        }
+
         // PIRANHA PLANT
         {
             textures["PIRANHA_0"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_0.png");
@@ -206,6 +235,7 @@ void ResourceManager::loadTextures()
 void ResourceManager::loadSounds(){
     sounds["MARIO_JUMP"] = LoadSound("resources/SFX/smw_jump.wav");
     sounds["MARIO_FIREBALL"] = LoadSound("resources/SFX/smw_fireball.wav");
+    sounds["MARIO_STOMP"] = LoadSound("resources/SFX/smw_stomp.wav");
     // Transform sounds
     {
     sounds["MARIO_POWERUP"] = LoadSound("resources/SFX/smw_power-up.wav");

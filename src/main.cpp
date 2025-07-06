@@ -29,7 +29,7 @@ int main(){
             while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().DeltaTime)
             {   
 
-                // gw.UpdateWorld();
+                // gw.UpdateLevel();
                 stateManager.update();
                 SoundController::getInstance().UpdateSoundStream();
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;

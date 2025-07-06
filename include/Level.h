@@ -10,7 +10,6 @@
 #include "LevelState.h"
 class GameState;
 //Physical level of the game, contains the gameplay
-
 class Level
 {   
 private:
@@ -24,11 +23,14 @@ private:
     std::vector<Tile *> &interactiveTiles;
     std::vector<Item*> &items;
 
+    std::vector<Monster*> &monsters;
+
     CollisionMediator collisionMediator;
 
     Camera2D camera;    
     GameState *gameState;
     LevelState state;
+    std::vector<Monster *> Testa;
 
 public:
     Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData);

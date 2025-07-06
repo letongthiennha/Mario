@@ -1,8 +1,8 @@
 #ifndef PIRANHA_PLANT_H
 #define PIRANHA_PLANT_H
 
-#include "../include/Monster.h"
-#include "../include/Tile.h"
+#include "Monster.h"
+#include "Tile.h"
 
 class PiranhaPlant : public Monster {
 private:

@@ -1,22 +1,60 @@
-#include "../include/BlueKoopaTroopa.h"
-#include "../include/ResourceManager.h"
-#include "../include/GameClock.h"
-#include "../include/World.h"
+#include "KoopaTroopa.h"
+#include "ResourceManager.h"
+#include "GameClock.h"
+#include "Level.h"
+#include "utils.h"
 
-BlueKoopaTroopa::BlueKoopaTroopa(Vector2 pos, float speed)
+KoopaTroopa::KoopaTroopa(Vector2 pos, float speed)
     : Monster(pos, Vector2{32, 48}, BLUE, speed) {
     velocity.x = -speed;
-    sprite = &ResourceManager::getTexture("BLUE_KOOPA_0_LEFT");
+
+    int randomColor =GetRandomValue(1,4); // Randomly choose blue or green
+    switch (randomColor)  // Assuming 1 is blue, 2 is green, and 3 is red)
+    {
+    case 1: // Blue Koopa
+        color = BLUE;
+        sprite = &ResourceManager::getInstance().getTexture("BLUE_KOOPA_0_LEFT");
+        break;
+    case 2: // Green Koopa
+        color = GREEN;
+        sprite = &ResourceManager::getInstance().getTexture("GREEN_KOOPA_0_LEFT");
+        break;
+    case 3: // Red Koopa
+        color = RED;
+        sprite = &ResourceManager::getInstance().getTexture("RED_KOOPA_0_LEFT");
+        break;
+        /* code */
+    case 4: // Yellow Koopa
+        color = YELLOW;
+        sprite = &ResourceManager::getInstance().getTexture("YELLOW_KOOPA_0_LEFT");
+        break;
+    }
+    NorthHb.SetSize({size.x - 20, 1});
+    SouthHb.SetSize({size.x-20, 1});
+    WestHb.SetSize({1, size.y - 16});
+    EastHb.SetSize({1, size.y - 16});
+    updateHitboxes();
 }
 
-void BlueKoopaTroopa::updateSprite() {
+void KoopaTroopa::updateSprite() {
     if (!isActive || state == ENTITY_STATE_DYING) return;
     std::string dir = (velocity.x >= 0) ? "RIGHT" : "LEFT";
-    std::string key = "BLUE_KOOPA_" + std::to_string(currFrame) + "_" + dir;
-    sprite = &ResourceManager::getTexture(key);
+    std::string key;
+    if( color == BLUE) {
+        key = "BLUE_" ;
+    } else if (color == GREEN) {
+        key = "GREEN_" ;
+    } else if (color == RED) {
+        key = "RED_" ;
+    }
+    else if (color == YELLOW) {
+        key = "YELLOW_" ;
+    }
+     key += "KOOPA_" + std::to_string(currFrame) + "_" + dir;
+    sprite = &ResourceManager::getInstance().getTexture(key);
 }
 
-bool BlueKoopaTroopa::isTileBelowAhead(const std::vector<Tile*>& tiles) {
+bool KoopaTroopa::isTileBelowAhead(const std::vector<Tile*>& tiles) {
     if (state == ENTITY_STATE_DYING) return false;
     Vector2 aheadPos = pos;
     aheadPos.x += (velocity.x > 0) ? size.x : -1;
@@ -30,18 +68,16 @@ bool BlueKoopaTroopa::isTileBelowAhead(const std::vector<Tile*>& tiles) {
     return false;
 }
 
-void BlueKoopaTroopa::updateStateAndPhysic() {
+void KoopaTroopa::updateStateAndPhysic() {
     if (!isActive || state == ENTITY_STATE_DYING) {
         Monster::updateStateAndPhysic();
         return;
     }
-    float delta = GameClock::GetUpdateDeltaTime();
-    if (!isTileBelowAhead(World::getInstance()->getInteractiveTiles())) {
-        velocity.x = -velocity.x;
-    }
+    float delta = GameClock::getInstance().DeltaTime;
+
     pos.x += velocity.x * delta;
     pos.y += velocity.y * delta;
-    velocity.y += World::GetGravity() * delta;
+    velocity.y += Level::GRAVITY * delta;
     if (velocity.y > 0 && state != ENTITY_STATE_ON_GROUND) {
         state = ENTITY_STATE_FALLING;
     }
@@ -56,7 +92,7 @@ void BlueKoopaTroopa::updateStateAndPhysic() {
     updateSprite();
 }
 
-void BlueKoopaTroopa::handleCollision(const Tile& tile, CollisionInfo type) {
+void KoopaTroopa::handleCollision(const Tile& tile, CollisionInfo type) {
     if (state == ENTITY_STATE_DYING) return;
     if (type == COLLISION_NONE) return;
     switch (type) {
@@ -78,7 +114,10 @@ void BlueKoopaTroopa::handleCollision(const Tile& tile, CollisionInfo type) {
     }
 }
 
-void BlueKoopaTroopa::Draw() {
+void KoopaTroopa::Draw() {
+    if (floatingScore != nullptr) {
+        floatingScore->Draw();
+    }
     if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) return;
@@ -86,4 +125,5 @@ void BlueKoopaTroopa::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+
 }

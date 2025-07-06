@@ -1,24 +1,29 @@
-#include "../include/Goomba.h"
-#include "../include/ResourceManager.h"
-#include "../include/GameClock.h"
-#include "../include/World.h"
+#include "Goomba.h"
+#include "ResourceManager.h"
+#include "GameClock.h"
+#include "Level.h"
 #include <iostream>
 
 Goomba::Goomba(Vector2 pos, float speed) 
     : Monster(pos, Vector2{32, 32}, BROWN, speed) {
-    velocity.x = -speed; // Move left by default
-    sprite = &ResourceManager::getTexture("GOOMBA_0_LEFT");
+    velocity.x = speed; // Move left by default
+    sprite = &ResourceManager::getInstance().getTexture("GOOMBA_0_RIGHT");
     frameTime = 0.15f; // Adjusted for walking animation
     maxFrame = 1; // 2 frames: 0 and 1
     currFrame = 0;
     frameAcum = 0.0f;
+    NorthHb.SetSize({size.x - 16, 1});
+    SouthHb.SetSize({size.x - 16, 1});
+    WestHb.SetSize({1, size.y - 16});
+    EastHb.SetSize({1, size.y - 16});
+    updateHitboxes();
 }
 
 void Goomba::updateSprite() {
     if (!isActive && state == ENTITY_STATE_DYING) return;
     std::string dir = (velocity.x >= 0) ? "RIGHT" : "LEFT";
     std::string key = "GOOMBA_" + std::to_string(currFrame) + "_" + dir;
-    sprite = &ResourceManager::getTexture(key);
+    sprite = &ResourceManager::getInstance().getTexture(key);
 }
 
 bool Goomba::isTileBelowAhead(const std::vector<Tile*>& tiles) {
@@ -40,61 +45,38 @@ void Goomba::updateStateAndPhysic() {
         Monster::updateStateAndPhysic(); // Use base class for death animation
         return;
     }
-    float delta = GameClock::GetUpdateDeltaTime();
-    // Reverse direction if no tile ahead
-    if (!isTileBelowAhead(World::getInstance()->getInteractiveTiles())) {
-        velocity.x = -velocity.x;
-    }
+    float delta = GameClock::getInstance().DeltaTime;
+    
     Monster::updateStateAndPhysic();
-    // Prevent sliding off the world
+    // Prevent sliding off the Level
     if (pos.x < 0) {
         pos.x = 0;
         velocity.x = speed;
     }
-    // Update animation only when on ground and moving
     if (state == ENTITY_STATE_ON_GROUND && velocity.x != 0) {
         frameAcum += delta;
         if (frameAcum >= frameTime) {
             currFrame = (currFrame + 1) % (maxFrame + 1);
-            frameAcum = 0.0f;
-            std::cout << "Goomba frame updated to " << currFrame << " at position (" 
-                      << pos.x << ", " << pos.y << ")" << std::endl;
+            frameAcum -=frameTime;
         }
     }
-    updateSprite();
 }
 
-void Goomba::handleCollision(const Tile& tile, CollisionInfo type) {
-    if (state == ENTITY_STATE_DYING) return;
-    if (type == COLLISION_NONE) return;
-    switch (type) {
-        case COLLISION_SOUTH:
-            setPosition({pos.x, tile.getPosition().y - size.y});
-            velocity.y = 0;
-            state = ENTITY_STATE_ON_GROUND;
-            break;
-        case COLLISION_EAST:
-            setPosition({tile.getPosition().x - size.x, pos.y});
-            velocity.x = -speed;
-            break;
-        case COLLISION_WEST:
-            setPosition({tile.getPosition().x + tile.getSize().x, pos.y});
-            velocity.x = speed;
-            break;
-        default:
-            break;
-    }
-}
+
 
 void Goomba::Draw() {
-    if (!isActive && (state == ENTITY_STATE_DYING && !isVisible)) return;
+    if (floatingScore != nullptr) {
+        floatingScore->Draw();
+    }
+    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible))
+     return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) {
-        std::cout << "Warning: Goomba sprite is null at position (" << pos.x << ", " << pos.y << ")" << std::endl;
         return;
     }
     Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+
 }

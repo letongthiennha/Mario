@@ -1,5 +1,5 @@
-#include "../include/Entity.h"
-#include "../include/GameClock.h"
+#include "Entity.h"
+#include "GameClock.h"
 void Entity::setPosition(Vector2 pos)
 {
     this->pos = pos;
@@ -91,7 +91,7 @@ sprite(nullptr),
 pos(pos),
 size(size),
 velocity(velocity),
-state(ENTITY_STATE_ON_GROUD),
+state(ENTITY_STATE_ON_GROUND),
 color(color),
 frameTime(frameTime),
 frameAcum(0),

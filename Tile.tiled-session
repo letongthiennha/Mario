@@ -1,126 +1,43 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
-    "activeFile": "resources/Map/Map3.json",
+    "activeFile": "resources/Map/map1.json",
     "expandedProjectPaths": [
-        ".",
-        "resources/Entity",
-        "resources/Map",
-<<<<<<< HEAD
-        "resources"
-=======
         "resources",
-        "."
->>>>>>> origin/MergeTestWithKhai
+        ".",
+        "resources/Map",
+        "resources/Entity"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "resources/Entity/Tileset.tsx": {
-            "dynamicWrapping": false,
-            "scaleInDock": 1.5,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "resources/Map/Enemies.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.5,
-            "scaleInEditor": 0.5
-        },
-        "resources/Map/Map1.json": {
-            "expandedObjectLayers": [
-                2
-            ],
-            "scale": 0.5,
-            "selectedLayer": 1,
-            "viewCenter": {
-<<<<<<< HEAD
-                "x": 2842,
-                "y": 359
-=======
-                "x": 1599.4865211810015,
-                "y": 479.24689773213527
->>>>>>> origin/MergeTestWithKhai
-            }
-        },
-        "resources/Map/Map2.json": {
-            "scale": 1.5,
-            "selectedLayer": 0,
-            "viewCenter": {
-<<<<<<< HEAD
-                "x": 821.6666666666666,
-                "y": 479.99999999999994
-=======
-                "x": 480.3333333333333,
-                "y": 319.99999999999994
->>>>>>> origin/MergeTestWithKhai
-            }
-        },
-        "resources/Map/Map3.json": {
-            "scale": 0.75,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 1508,
-                "y": 739.3333333333333
-            }
-        },
-        "resources/Map/Map3.json#Tileset": {
-            "dynamicWrapping": true,
-            "scaleInDock": 1
-        },
-        "resources/Map/map0.json": {
-            "scale": 0.75,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 507.9999999999999,
-                "y": 501.99999999999994
-            }
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "resources/Map/map1.json": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 561,
-                "y": 583.5
-            }
-        },
-        "resources/Map/map2.json": {
-            "scale": 0.5,
-            "selectedLayer": 0,
-            "viewCenter": {
-<<<<<<< HEAD
-                "x": 865,
-                "y": 480
-=======
-                "x": 479,
-                "y": 320
->>>>>>> origin/MergeTestWithKhai
+                "x": 2502.6666666666665,
+                "y": 649.9999999999999
             }
         }
     },
-    "last.imagePath": "D:/Project/Mario/resources/Entity/Enemies",
-    "map.height": 30,
-    "map.lastUsedFormat": "json",
-    "map.width": 200,
+    "last.externalTilesetPath": "D:/Project/Mario/resources/Map",
     "openFiles": [
-        "resources/Entity/Tileset.tsx",
-        "resources/Map/Map2.json",
-        "resources/Map/Map1.json",
-        "resources/Map/Map3.json",
-        "resources/Map/Enemies.tsx"
+        "resources/Map/map1.json",
+        "resources/Map/Enemies.tsx",
+        "resources/Entity/Tileset.tsx"
     ],
     "project": "Tile.tiled-project",
-    "property.type": "int",
+    "property.type": "float",
     "recentFiles": [
         "resources/Entity/Tileset.tsx",
-        "resources/Map/Map2.json",
-        "resources/Map/Map1.json",
         "resources/Map/Enemies.tsx",
-        "resources/Map/Map3.json",
-        "resources/Map/map2.json",
-        "resources/Map/map0.json",
         "resources/Map/map1.json"
     ],
-    "tileset.lastUsedFormat": "tsx",
-    "tileset.type": 1
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)"
 }

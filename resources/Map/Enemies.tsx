@@ -4,7 +4,7 @@
  <tile id="0">
   <image source="../Entity/Enemies/BanzaiBill_0.png" width="128" height="128"/>
  </tile>
- <tile id="1">
+ <tile id="1" type="KoopaTroopa">
   <image source="../Entity/Enemies/BlueKoopaTroopa_0.png" width="32" height="54"/>
  </tile>
  <tile id="2">
@@ -25,7 +25,7 @@
  <tile id="7">
   <image source="../Entity/Enemies/BuzzyBeetle_1.png" width="32" height="32"/>
  </tile>
- <tile id="8">
+ <tile id="8" type="Flying Goomba">
   <image source="../Entity/Enemies/FlyingGoomba_0.png" width="66" height="50"/>
  </tile>
  <tile id="9">
@@ -40,10 +40,10 @@
  <tile id="12">
   <image source="../Entity/Enemies/Goomba_0.png" width="32" height="32"/>
  </tile>
- <tile id="13">
+ <tile id="13" type="Goomba">
   <image source="../Entity/Enemies/Goomba_1.png" width="32" height="32"/>
  </tile>
- <tile id="14">
+ <tile id="14" type="KoopaTroopa">
   <image source="../Entity/Enemies/GreenKoopaTroopa_0.png" width="32" height="54"/>
  </tile>
  <tile id="15">
@@ -85,7 +85,7 @@
  <tile id="27">
   <image source="../Entity/Enemies/PiranhaPlant_1.png" width="32" height="66"/>
  </tile>
- <tile id="28">
+ <tile id="28" type="KoopaTroopa">
   <image source="../Entity/Enemies/RedKoopaTroopa_0.png" width="32" height="54"/>
  </tile>
  <tile id="29">
@@ -112,7 +112,7 @@
  <tile id="36">
   <image source="../Entity/Enemies/Swooper_2.png" width="32" height="34"/>
  </tile>
- <tile id="37">
+ <tile id="37" type="KoopaTroopa">
   <image source="../Entity/Enemies/YellowKoopaTroopa_0.png" width="32" height="54"/>
  </tile>
  <tile id="38">

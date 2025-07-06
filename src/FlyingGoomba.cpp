@@ -1,29 +1,34 @@
-#include "../include/FlyingGoomba.h"
-#include "../include/ResourceManager.h"
-#include "../include/GameClock.h"
-#include "../include/World.h"
-#include "../include/Tile.h"
+#include "FlyingGoomba.h"
+#include "ResourceManager.h"
+#include "GameClock.h"
+#include "Level.h"
+#include "Tile.h"
 
 FlyingGoomba::FlyingGoomba(Vector2 pos, float speed)
     : Monster(pos, Vector2{66, 50}, WHITE, speed),
       hoverRange(30), hoverSpeed(100), originalY(pos.y), hoverDirection(1) {
     velocity.x = speed;
-    sprite = &ResourceManager::getTexture("FLYING_GOOMBA_0_RIGHT");
+    sprite = &ResourceManager::getInstance().getTexture("FLYING_GOOMBA_0_RIGHT");
+    NorthHb.SetSize({size.x - 33, 1});
+    SouthHb.SetSize({size.x - 33, 1});
+    WestHb.SetSize({1, size.y - 25});
+    EastHb.SetSize({1, size.y - 25});
 }
 
 void FlyingGoomba::updateSprite() {
     if (!isActive || state == ENTITY_STATE_DYING) return;
     std::string dir = (velocity.x >= 0) ? "R" : "L";
     std::string key = "flyingGoomba" + std::to_string(currFrame) + dir;
-    sprite = &ResourceManager::getTexture(key);
+    sprite = &ResourceManager::getInstance().getTexture(key);
 }
 
 void FlyingGoomba::updateStateAndPhysic() {
+
     if (!isActive || state == ENTITY_STATE_DYING) {
         Monster::updateStateAndPhysic();
         return;
     }
-    float delta = GameClock::GetUpdateDeltaTime();
+    float delta = GameClock::getInstance().DeltaTime;
     pos.y += hoverDirection * hoverSpeed * delta;
     if (pos.y > originalY + hoverRange) {
         pos.y = originalY + hoverRange;
@@ -67,6 +72,9 @@ void FlyingGoomba::handleCollision(const Tile& tile, CollisionInfo type) {
 }
 
 void FlyingGoomba::Draw() {
+    if (floatingScore != nullptr) {
+        floatingScore->Draw();
+    }
     if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) return;
     updateSprite();
     if (sprite == nullptr || sprite->id == 0) return;
@@ -74,4 +82,8 @@ void FlyingGoomba::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+    NorthHb.Draw();
+    SouthHb.Draw();
+    WestHb.Draw();
+    EastHb.Draw();
 }
