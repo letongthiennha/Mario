@@ -97,6 +97,12 @@
 },
 {
   "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\QuestionBlock.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\QuestionBlock.cpp",
+  "file": "C:/Users/ADMIN/My-Mario/Mario/src/QuestionBlock.cpp",
+  "output": "CMakeFiles/Mario.dir/src/QuestionBlock.cpp.obj"
+},
+{
+  "directory": "C:/Users/ADMIN/My-Mario/Mario/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -DRAYLIB_STATIC @CMakeFiles/Mario.dir/includes_CXX.rsp  -static-libgcc -static-libstdc++ -g -std=gnu++20 -o CMakeFiles\\Mario.dir\\src\\ResourceManager.cpp.obj -c C:\\Users\\ADMIN\\My-Mario\\Mario\\src\\ResourceManager.cpp",
   "file": "C:/Users/ADMIN/My-Mario/Mario/src/ResourceManager.cpp",
   "output": "CMakeFiles/Mario.dir/src/ResourceManager.cpp.obj"

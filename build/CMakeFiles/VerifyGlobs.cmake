@@ -20,6 +20,7 @@ set(OLD_GLOB
   "C:/Users/ADMIN/My-Mario/Mario/src/Map.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/Mario.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/MenuState.cpp"
+  "C:/Users/ADMIN/My-Mario/Mario/src/QuestionBlock.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/ResourceManager.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/SoundControoler.cpp"
   "C:/Users/ADMIN/My-Mario/Mario/src/State.cpp"
