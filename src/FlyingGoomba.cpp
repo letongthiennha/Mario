@@ -82,8 +82,5 @@ void FlyingGoomba::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
-    NorthHb.Draw();
-    SouthHb.Draw();
-    WestHb.Draw();
-    EastHb.Draw();
+
 }
