@@ -4,9 +4,12 @@
 #include "Block.h"
 
 class WoodBlock : public Block {
+    private:
+        // No additional private members needed for now
+        WoodBlock(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
+
     public:
         WoodBlock(Vector2 pos, Vector2 size, Color color);
-        WoodBlock(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
         ~WoodBlock() override;
 
         void updateStateAndPhysic() override;
