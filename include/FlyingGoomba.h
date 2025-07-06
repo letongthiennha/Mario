@@ -6,6 +6,7 @@ private:
     float hoverRange;
     float hoverSpeed;
     float originalY;
+    float originalX;
     int hoverDirection; // 1: down, -1: up
 
 public:

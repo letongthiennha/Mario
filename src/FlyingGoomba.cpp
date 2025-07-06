@@ -6,13 +6,13 @@
 
 FlyingGoomba::FlyingGoomba(Vector2 pos, float speed)
     : Monster(pos, Vector2{66, 50}, WHITE, speed),
-      hoverRange(30), hoverSpeed(100), originalY(pos.y), hoverDirection(1) {
+      hoverRange(30), hoverSpeed(100), originalY(pos.y), originalX(pos.x), hoverDirection(1) {
     velocity.x = speed;
     sprite = &ResourceManager::getInstance().getTexture("FLYING_GOOMBA_0_RIGHT");
-    NorthHb.SetSize({size.x - 33, 1});
-    SouthHb.SetSize({size.x - 33, 1});
-    WestHb.SetSize({1, size.y - 25});
-    EastHb.SetSize({1, size.y - 25});
+    NorthHb.SetSize({size.x - 43, 1});
+    SouthHb.SetSize({size.x - 43, 1});
+    WestHb.SetSize({1, size.y });
+    EastHb.SetSize({1, size.y });
 }
 
 void FlyingGoomba::updateSprite() {
@@ -42,6 +42,10 @@ void FlyingGoomba::updateStateAndPhysic() {
     } else {
         velocity.x = (velocity.x >= 0) ? std::abs(speed) : -std::abs(speed);
     }
+    if(pos.x < originalX - 150 || pos.x > originalX + 150) {
+        velocity.x = (pos.x < originalX) ? std::abs(speed) : -std::abs(speed);
+    }
+    
     velocity.y = 0.0f;
     Monster::updateStateAndPhysic();
     frameAcum += delta;
