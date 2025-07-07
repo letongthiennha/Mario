@@ -139,13 +139,28 @@ void Map::LoadMap(int mapNumber)
                     // Create a coin item at the position of the tile
                     items.emplace_back(ItemFactory::createItem("Coin", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
                 }
+            }
         }
-    }
+        if (layer["type"] == "tilelayer" && layer["name"] == "ClearCourseToken") {
+
+            std::vector<int> data = layer["data"];
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int tileId = data[y * width + x];
+                    if (tileId == 0) continue; // Skip empty tiles
+                    // Create a coin item at the position of the tile
+                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                }
+            }
+        }
+
         if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
                 float y = obj["y"];
+                //std::cout << "Monster object: " << obj.dump() << std::endl;
                 std::string type = obj["type"];
+                //if (type.empty()) continue;
                 float speed = 100.0f; // Default speed
                 if (obj.contains("speed")) {
                  speed = obj["speed"];
@@ -164,6 +179,8 @@ void Map::LoadMap(int mapNumber)
             std::vector<int> data = layer["data"];
             for (int y = 0; y < height; ++y) {
                 for (int x = 0; x < width; ++x) {
+                        int rawId = data[y * width + x];
+                        if (rawId == 0) continue;
                         int tileId = data[y * width + x]-105;
                         Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
                         if (block) {
@@ -179,23 +196,22 @@ void Map::LoadMap(int mapNumber)
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
                 float y = obj["y"];
-                if(obj.contains("properties")&& !obj["properties"].empty()) {
+                if (obj.contains("properties") && !obj["properties"].empty()) {
                     // Assuming the first property is the item type
 
-                std::string itemType = obj["properties"][0]["value"];
-                Block* block =  BlockFactory::createBlock("QuestionBlock", {x, y-32},items, itemType);
-                if (block) 
-                {
-                    blocks.push_back(block);
-                } 
-                else 
-                {
-                    std::cerr << "Unknown block type: " << itemType << std::endl;
+                    std::string itemType = obj["properties"][0]["value"];
+                    Block* block = BlockFactory::createBlock("QuestionBlock", { x, y - 32 }, items, itemType);
+                    if (block)
+                    {
+                        blocks.push_back(block);
+                    }
+                    else
+                    {
+                        std::cerr << "Unknown block type: " << itemType << std::endl;
+                    }
                 }
             }
-            }
         }
-
     }
 }
 

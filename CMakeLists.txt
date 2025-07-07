@@ -36,7 +36,7 @@ add_subdirectory(${RAYLIB_DIR} raylib_build)
 
 # Create executable
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} "include/CourseClearToken.h" "src/CourseClearToken.cpp")
 target_compile_definitions(${PROJECT_NAME} PRIVATE RAYLIB_STATIC)
 
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})

@@ -140,8 +140,10 @@ void ResourceManager::loadTextures()
     textures["Question_Block_3"] = LoadTexture("resources/Entity/Blocks/Question_3.png");
     }
     //TILE
-    for (int i = 0;i<104;i++){
-        std::string tileName = "TILE_" + std::to_string(i);
+    for (int i = 0;i<108;i++){
+        int index = i;
+        if (index >= 104) index += 4;
+        std::string tileName = "TILE_" + std::to_string(index);
         std::string path= "resources/Entity/Tiles/tile_" + std::to_string(i) + ".png";
         textures[tileName] = LoadTexture(path.c_str());
     }
@@ -247,6 +249,11 @@ void ResourceManager::loadTextures()
         {
             textures["PIRANHA_0"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_0.png");
         }    
+
+        // COURSE CLEAR TOKEN
+		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");
+
+
 }   
 
 void ResourceManager::loadSounds(){

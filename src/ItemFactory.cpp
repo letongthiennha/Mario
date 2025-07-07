@@ -21,5 +21,8 @@ Item *ItemFactory::createItem(const std::string &type, Vector2 pos, Direction di
     else if (type == "UpMoon") {
         return new UpMoon(pos, {32,32}, WHITE, 0.1f, 2, DIRECTION_RIGHT);
     }
+    else if (type == "ClearToken") {
+		return new ClearToken(pos, { 64,32 }, WHITE, 0.1f, 2);
+    }
     return nullptr;
 }

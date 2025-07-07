@@ -5,6 +5,9 @@
 #include "SoundControoler.h"
 #include "Monster.h"
 #include "raylib.h"
+#include "QuestionBlock.h"
+#include "EyesOpenedBlock.h"
+
 Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),
 items(map.getItems()), blocks(map.getBlocks()),
 gameState(gamestate),
@@ -210,7 +213,9 @@ void Level::UpdateLevel()
                         }
         //Update Blocks
                 for (auto& block : blocks) {
+                    if (dynamic_cast<QuestionBlock*>(block) || dynamic_cast<EyesOpenedBlock*>(block)) {
                         block->updateStateAndPhysic();
+                    }
                 }
         }
 
