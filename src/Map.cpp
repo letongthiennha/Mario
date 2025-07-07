@@ -2,6 +2,7 @@
 #include "json.hpp"
 #include "ItemFactory.h"
 #include "MonsterFactory.h"
+#include "QuestionBlock.h"
 #include <iostream>
 #include <fstream>
 void Map::LoadFromJsonFile(const std::string& mapFileName)
@@ -24,6 +25,11 @@ std::vector<Monster *> &Map::getMonsters()
     return monsters;
 }
 
+std::vector<Block *> &Map::getBlocks()
+{
+    return blocks;
+}
+
 float Map::getMapWidth() const
 {
     return width;
@@ -36,7 +42,8 @@ Vector2 Map::getStartPositionForMario() const
 
 Map::Map(int mapNumber)
 {
-
+    blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
+    blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
     
@@ -66,6 +73,11 @@ Map::Map(int mapNumber)
         monster = nullptr;
     }
     monsters.clear();
+    for (auto& block : blocks) {
+        delete block;
+        block = nullptr;
+    }
+    blocks.clear();
 }
 
 void Map::LoadMap(int mapNumber)
@@ -121,7 +133,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // Create a Coin at (x, y)
-                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, {32, 32}, WHITE, 0.1f, 4, IDLE));
+                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {
@@ -129,7 +141,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
@@ -137,7 +149,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
@@ -145,7 +157,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, {32, 32}, WHITE, 0.1f, 2));
+                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Star") {
@@ -153,7 +165,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("Star", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("Star", {x, y}, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "UpMoon") {
@@ -161,7 +173,7 @@ void Map::LoadMap(int mapNumber)
                 float x = obj["x"];
                 float y = obj["y"];
                 // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
+                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, DIRECTION_RIGHT));
             }
         }
         if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
@@ -203,5 +215,7 @@ void Map::Draw()
     for (const auto& monster : monsters) {
         monster->Draw();
     }
-
+    for (const auto& block : blocks) {
+        block->Draw();
+    }
 }

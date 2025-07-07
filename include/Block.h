@@ -18,6 +18,5 @@ class Block : public Entity {
         void updateStateAndPhysic() override = 0;
         void Draw() override = 0;
         void updateSprite() override = 0;
-        virtual void doHit(Mario& mario, Map &map);
         void resetHit();
 };

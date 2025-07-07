@@ -2,15 +2,15 @@
 #include "Entity.h"
 #include "QuestionBlock.h"
 
-QuestionBlock::QuestionBlock(Vector2 pos, Vector2 size, Color color, QuestionBlockReward rewardType) :
-    QuestionBlock(pos, size, color, 0.1f, 3, rewardType)  {
+QuestionBlock::QuestionBlock(Vector2 pos, Vector2 size, Color color, std::string rewardType, std::vector<Item*> &itemsContainer) :
+    QuestionBlock(pos, size, color, 0.5f, 3, rewardType,itemsContainer)  {
         reward = rewardType;
         hit = false;
     }
 
 QuestionBlock::QuestionBlock(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, 
-    QuestionBlockReward rewardType) :
-    Block(pos, size, color, frameTime, maxFrame, 0) {
+    std::string rewardType, std::vector<Item*> &itemsContainer) :
+    Block(pos, size, color, frameTime, maxFrame, 0), itemsContainer(itemsContainer) {
         reward = rewardType;
         hit = false;
         currFrame = 0;
@@ -31,6 +31,11 @@ void QuestionBlock::updateStateAndPhysic() {
 }
 
 void QuestionBlock::updateSprite() {
+    if(hit) {
+        // If the block has been hit, use a different sprite
+        sprite = &ResourceManager::getInstance().getTexture("Eyes_Closed_Block");
+        return;
+    }
     std::string key = "Question_Block_" + std::to_string(currFrame);
     sprite = &ResourceManager::getInstance().getTexture(key);
 }
@@ -44,19 +49,12 @@ void QuestionBlock::Draw() {
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
 }
 
-void QuestionBlock::doHit(Mario& mario, Map& map) {
-    if (!hit) {
-        hit = true;
-        switch (reward) {
-            case REWARD_MUSHROOM:
-                // Create mushroom
-                break;
-            case REWARD_FIRE_FLOWER:
-                // Create fire flower
-                break;
-            case REWARD_1UP_FLOWER:
-                // Create 1 up flower
-                break;
-        }
+void QuestionBlock::ActiveReward() {
+    if (hit) {
+        return ; // If the block has already been hit, return nullptr
     }
+    Item* item = ItemFactory::createItem(reward, pos, DIRECTION_RIGHT);
+    item->setState(ItemState::POP_UP);
+    itemsContainer.push_back(item); // Add the item to the container
+    hit = true; // Mark the block as hit
 }

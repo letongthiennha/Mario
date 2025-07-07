@@ -21,7 +21,6 @@ int main(){
     ResourceManager::getInstance().loadResource();
 
     StateManager stateManager;
-    // QuestionBlock testBlock({200, 600}, {32, 32}, RED);
     while(!WindowShouldClose()){
         if(IsKeyPressed(KEY_Q)) {isPaused=!isPaused;}
         if(!isPaused){
@@ -29,19 +28,19 @@ int main(){
             //Update Loop
             while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().DeltaTime)
             {   
+                if(IsKeyPressed(KEY_A)){
+                }
 
-                // gw.UpdateLevel();
+
                 stateManager.update();
                 SoundController::getInstance().UpdateSoundStream();
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }
-            // testBlock.updateStateAndPhysic();
             ClearBackground(BLUE);
             BeginDrawing();
-            // ClearBackground(RAYWHITE);
+
             stateManager.draw();
-            // testBlock.Draw();
             EndDrawing();
     }
     // Unload resources

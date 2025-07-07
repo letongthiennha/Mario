@@ -2,23 +2,21 @@
 #include "raylib.h"
 #include "Entity.h"
 #include "Block.h"
+#include "ItemFactory.h"
 
-enum QuestionBlockReward {
-    REWARD_MUSHROOM,
-    REWARD_FIRE_FLOWER,
-    REWARD_1UP_FLOWER
-};
 
 class QuestionBlock : public Block {
+    private:
+    std::vector<Item*> &itemsContainer; // Container for items spawned by the block
     public:
-    QuestionBlockReward reward;
-    QuestionBlock(Vector2 pos, Vector2 size, Color color, QuestionBlockReward rewardType);
+    std::string reward;
+    QuestionBlock(Vector2 pos, Vector2 size, Color color, std::string rewardType,std::vector<Item*> &itemsContainer);
     QuestionBlock(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame,
-         QuestionBlockReward rewardTypes);
+         std::string rewardTypes, std::vector<Item*> &itemsContainer);
     ~QuestionBlock() override;
 
     void updateStateAndPhysic() override;
     void updateSprite() override;
     void Draw() override;
-    void doHit(Mario& mario, Map& map) override;
+    void ActiveReward();
 };

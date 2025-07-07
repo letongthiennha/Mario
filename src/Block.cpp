@@ -22,8 +22,7 @@ Block::~Block() = default;
 
 
 
-void Block::doHit(Mario& mario, Map &map) {
-}
+
 
 void Block::resetHit() {
     this->hit = false;

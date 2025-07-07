@@ -12,5 +12,4 @@ class EyesOpenedBlock : public Block {
     void updateStateAndPhysic() override;
     void updateSprite() override;
     void Draw() override;
-    void doHit(Mario& mario, Map &map) override;
 };

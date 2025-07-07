@@ -29,6 +29,7 @@ void Item::Activate() {
             state = IDLE; // Or another state
             playSoundPopUp();
         }
+        updateHitboxes();
     }
 }
 

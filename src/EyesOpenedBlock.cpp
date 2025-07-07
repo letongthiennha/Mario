@@ -40,15 +40,3 @@ void EyesOpenedBlock::Draw() {
     }
     DrawTexture(*sprite, pos.x, pos.y, WHITE);
 }
-
-void EyesOpenedBlock::doHit(Mario& mario, Map &map) {
-    if( !hit ){
-        hit = true;
-
-        //Set size hitbox to 0 to not collision
-        NorthHb.SetSize({0,0});
-        SouthHb.SetSize({0,0});
-        EastHb.SetSize({0,0});
-        WestHb.SetSize({0,0});
-    }
-}
