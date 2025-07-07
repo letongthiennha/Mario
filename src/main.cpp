@@ -1,4 +1,4 @@
-
+#include "QuestionBlock.h"
 
 #include "raylib.h"
 #include "ResourceManager.h"
@@ -28,17 +28,18 @@ int main(){
             //Update Loop
             while (GameClock::getInstance().updateTimeAcum >= GameClock::getInstance().DeltaTime)
             {   
+                if(IsKeyPressed(KEY_A)){
+                }
 
-                // gw.UpdateLevel();
+
                 stateManager.update();
                 SoundController::getInstance().UpdateSoundStream();
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }
-        // Draw Loop
-
+            ClearBackground(BLUE);
             BeginDrawing();
-            // ClearBackground(RAYWHITE);
+
             stateManager.draw();
             EndDrawing();
     }

@@ -33,6 +33,7 @@ protected:
     virtual void updateSprite()=0;
 
 
+
 public:
     //Setter
     //Properties

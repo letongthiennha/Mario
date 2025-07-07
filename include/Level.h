@@ -24,13 +24,13 @@ private:
     std::vector<Item*> &items;
 
     std::vector<Monster*> &monsters;
+    std::vector<Block*> &blocks;
 
     CollisionMediator collisionMediator;
 
     Camera2D camera;    
     GameState *gameState;
     LevelState state;
-    std::vector<Monster *> Testa;
 
 public:
     Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData);

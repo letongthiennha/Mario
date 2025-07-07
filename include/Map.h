@@ -9,7 +9,9 @@
 #include "Star.h"
 #include "3UpMoon.h"
 #include "Monster.h"
+#include "Block.h"
 #include <vector>
+class Block;
 class Monster;
 class Map: public DrawableObj {
 private:
@@ -26,12 +28,15 @@ private:
     std::vector<Tile*> nonInterativeTile;
     std::vector<Monster *> monsters;
     std::vector<Item*> items;
+    std::vector<Block*> blocks;
+
     void LoadFromJsonFile(const std::string& filename);
     void LoadMap(int mapNumber);    
 public:
     std::vector<Tile *> &getInteractiveTiles();
 	std::vector<Item*>& getItems();
     std::vector<Monster *> &getMonsters();
+    std::vector<Block *> &getBlocks();
     float getMapWidth() const;
 
     Vector2 getStartPositionForMario() const;
