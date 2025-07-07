@@ -1,92 +1,43 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
-    "activeFile": "resources/Map/map0.json",
+    "activeFile": "resources/Map/map1.json",
     "expandedProjectPaths": [
-        "resources/Entity",
-        "resources/Map",
         "resources",
-        "."
+        ".",
+        "resources/Map",
+        "resources/Entity"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "resources/Entity/Tileset.tsx": {
-            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
-        "resources/Map/Map1.json": {
-            "scale": 0.5842499999999999,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 1599.4865211810015,
-                "y": 479.24689773213527
-            }
-        },
-        "resources/Map/Map2.json": {
-            "scale": 1.5,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 480.3333333333333,
-                "y": 319.99999999999994
-            }
-        },
-        "resources/Map/Map3.json": {
-            "scale": 0.1245390625,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 3203.8140643623356,
-                "y": -3015.1182485414965
-            }
-        },
-        "resources/Map/map0.json": {
-            "scale": 0.75,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 507.9999999999999,
-                "y": 501.99999999999994
-            }
+        "resources/Map/Enemies.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "resources/Map/map1.json": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 561,
-                "y": 583.5
-            }
-        },
-        "resources/Map/map2.json": {
-            "scale": 0.5,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 479,
-                "y": 320
+                "x": 2502.6666666666665,
+                "y": 649.9999999999999
             }
         }
     },
-    "last.imagePath": "D:/Project/Mario/resources/Entity/Tiles",
-    "map.height": 30,
-    "map.lastUsedFormat": "json",
-    "map.width": 200,
+    "last.externalTilesetPath": "D:/Project/Mario/resources/Map",
     "openFiles": [
-        "resources/Map/map0.json",
-        "resources/Entity/Tileset.tsx",
-        "resources/Map/map2.json",
-        "resources/Map/Map2.json",
-        "resources/Map/Map1.json"
+        "resources/Map/map1.json",
+        "resources/Map/Enemies.tsx",
+        "resources/Entity/Tileset.tsx"
     ],
     "project": "Tile.tiled-project",
-    "property.type": "int",
+    "property.type": "float",
     "recentFiles": [
-        "resources/Map/Map1.json",
-        "resources/Map/Map2.json",
-        "resources/Map/map2.json",
         "resources/Entity/Tileset.tsx",
-        "resources/Map/map0.json",
+        "resources/Map/Enemies.tsx",
         "resources/Map/map1.json"
     ],
-    "tileset.lastUsedFormat": "tsx",
-    "tileset.type": 1
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)"
 }

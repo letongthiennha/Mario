@@ -1,0 +1,36 @@
+# Build directories
+build/
+out/build/
+
+# Visual Studio files
+.vs/
+Debug/
+Release/
+ipch/
+*.VC.db
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Executable files
+*.exe
+*.dll
+
+# Object files
+*.o
+*.obj
+
+# Temporary files
+*.tmp
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+*.vcxproj.user
+*.sln.docstates

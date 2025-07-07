@@ -39,8 +39,8 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
     {
         this->size = {32, 56};
     }
-    NorthHb.SetSize({size.x/2, 1});
-    SouthHb.SetSize({size.x/2, 1});
+    NorthHb.SetSize({size.x-4, 1});
+    SouthHb.SetSize({size.x-4, 1});
     WestHb.SetSize({1, size.y-5});
     EastHb.SetSize({1, size.y-5});
     updateHitboxes();
@@ -126,6 +126,7 @@ void Mario::ChangeFromSmallToBig()
     currFrame = 0;
     this->size = {32, 56};
     maxFrame = 2;
+    startInvincible();
 }
 
 void Mario::ChangeFromBigToFire()
@@ -137,6 +138,7 @@ void Mario::ChangeFromBigToFire()
 
     this->size = {32, 56};
     maxFrame = 2;
+    startInvincible();
 }
 
 void Mario::ChangeFromFireToBig()
@@ -148,6 +150,7 @@ void Mario::ChangeFromFireToBig()
 
    setSize( {32, 56});
     maxFrame = 2;
+    startInvincible();
 }
 
 void Mario::ChangeFromBigToSmall()
@@ -158,7 +161,7 @@ void Mario::ChangeFromBigToSmall()
     frameAcum = 0;
     setSize({32, 40});
     maxFrame = 1;
-    if(state==ENTITY_STATE_ON_GROUD) setPosition({pos.x, pos.y + 16}); // Adjust position when changing to small
+    if(state==ENTITY_STATE_ON_GROUND) setPosition({pos.x, pos.y + 16}); // Adjust position when changing to small
     startInvincible();
 }
 
@@ -170,7 +173,7 @@ void Mario::ChangeFromSmallToFire()
     frameAcum = 0;
     setSize({32, 56});
     maxFrame = 2;
-
+    startInvincible();
 }
 
 void Mario::startInvincible()
@@ -226,7 +229,7 @@ void Mario::moveNoWhere()
 
 void Mario::jump()
 {
-    if (state != ENTITY_STATE_ON_GROUD) return; // Cannot jump if not on the ground
+    if (state != ENTITY_STATE_ON_GROUND) return; // Cannot jump if not on the ground
     if (form != MARIO_STATE_SMALL && form != MARIO_STATE_BIG && form != MARIO_STATE_FIRE)
     {
         return; // Cannot jump if not in small, big, or fire state
@@ -353,7 +356,7 @@ void Mario::HandleInput()
     if (IsKeyDown(KEY_RIGHT)) moveRight();
     else if(IsKeyDown(KEY_LEFT)) moveLeft();
     else moveNoWhere();
-    if(state==ENTITY_STATE_ON_GROUD){
+    if(state==ENTITY_STATE_ON_GROUND){
         if(IsKeyPressed(KEY_UP)){
             jump();
 
@@ -409,11 +412,12 @@ void Mario::updateSprite(){
         sprite = nullptr; // Hide sprite when marked for removal
         return;
     }
+
     switch (form){
         case MARIO_STATE_SMALL:
             {
                 //On Ground
-                if(state==ENTITY_STATE_ON_GROUD){
+                if(state==ENTITY_STATE_ON_GROUND){
                     //Moving
                     if(velocity.x!=0&&!isDucking){
 
@@ -465,19 +469,13 @@ void Mario::updateSprite(){
                     sprite = &ResourceManager::getInstance().getTexture("SMALL_MARIO_VICTORY");
                 }
                 // Invincibility
-                if(isInvincible){
-                    if(!invincibleFrame)
-                        return;
-                    if(invincibleFrame==1){
-                        sprite = nullptr;// Hide sprite for invincibility frame
-                    }
-                }
+
                 break;
             }
         case MARIO_STATE_BIG:
         {   
             //On Ground
-            if(state==ENTITY_STATE_ON_GROUD){
+            if(state==ENTITY_STATE_ON_GROUND){
                 //Moving
                 if(velocity.x!=0&&!isDucking){
                 
@@ -544,7 +542,7 @@ void Mario::updateSprite(){
         case MARIO_STATE_FIRE:
         {
                         //On Ground
-                        if(state==ENTITY_STATE_ON_GROUD){
+                        if(state==ENTITY_STATE_ON_GROUND){
                             //Moving
                             if(velocity.x!=0&&!isDucking){
                                 if(facingDirection==DIRECTION_RIGHT) {
@@ -664,6 +662,13 @@ void Mario::updateSprite(){
             break;
         }      
     }
+    if(isInvincible){
+        if(!invincibleFrame)
+            return;
+        if(invincibleFrame==1){
+            sprite = nullptr;// Hide sprite for invincibility frame
+        }
+    }
 }
 
 void Mario::updateStateAndPhysic(){
@@ -686,11 +691,27 @@ void Mario::updateStateAndPhysic(){
 
         return; // Skip further updates when dying
     }
+    if(isInvincible){
+        invincibleFrameAcum += deltaTime;
+        invincibleAcum += deltaTime;
+        if(invincibleFrameAcum / invincibleFrameTime>1){
+            invincibleFrame++;
+            if(invincibleFrame > 1) invincibleFrame = 0;
+            invincibleFrameAcum -= invincibleFrameTime;
+            }
+
+        if(invincibleAcum>invincibleTime){
+            isInvincible = false;
+            invincibleAcum = 0.0f;
+            invincibleFrameAcum = 0.0f;
+            invincibleFrame = 0;
+        }
+    }
     switch (form)
     {
     case MARIO_STATE_SMALL:
         {
-            if(state==ENTITY_STATE_ON_GROUD){
+            if(state==ENTITY_STATE_ON_GROUND){
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
                 frameAcum += deltaTime;
@@ -702,27 +723,12 @@ void Mario::updateStateAndPhysic(){
                 }
             }
         }
-            if(isInvincible){
-                invincibleFrameAcum += deltaTime;
-                invincibleAcum += deltaTime;
-                if(invincibleFrameAcum / invincibleFrameTime>1){
-                    invincibleFrame++;
-                    if(invincibleFrame > 1) invincibleFrame = 0;
-                    invincibleFrameAcum -= invincibleFrameTime;
-                    }
 
-                if(invincibleAcum>invincibleTime){
-                    isInvincible = false;
-                    invincibleAcum = 0.0f;
-                    invincibleFrameAcum = 0.0f;
-                    invincibleFrame = 0;
-                }
-            }
 
             break;
     }
     case MARIO_STATE_BIG:
-        {if(state==ENTITY_STATE_ON_GROUD){
+        {if(state==ENTITY_STATE_ON_GROUND){
             //Moving
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
@@ -738,7 +744,7 @@ void Mario::updateStateAndPhysic(){
         break;
     }
     case MARIO_STATE_FIRE:
-        {if(state==ENTITY_STATE_ON_GROUD){
+        {if(state==ENTITY_STATE_ON_GROUND){
             //Moving
             if(velocity.x!=0&&!isDucking){
                 frameTime = 0.1;
@@ -830,7 +836,7 @@ void Mario::updateStateAndPhysic(){
         if(velocity.y>0){
             state= ENTITY_STATE_FALLING;
         }
-        // if(state==ENTITY_STATE_ON_GROUD){
+        // if(state==ENTITY_STATE_ON_GROUND){
         //     velocity.y = 0;
         // }
         velocity.y += Level::GRAVITY * deltaTime;
@@ -841,7 +847,7 @@ void Mario::updateStateAndPhysic(){
     for (auto i = fireballs.begin(); i != fireballs.end();)
     {
         Fireball* fireball = *i;
-        if(fireball->isOutOfDistance()){
+        if(fireball->isOutOfDistance()||fireball->getState()==ENTITY_STATE_TO_BE_REMOVED){
             delete fireball;
             fireball = nullptr;
             i = fireballs.erase(i);
@@ -874,6 +880,7 @@ void Mario::updateHitboxes(){
 
 void Mario::reactOnBeingHit()
 {
+    if(isInvincible) return; // Ignore if already invincible
     if(form == MARIO_STATE_SMALL){
         die(); // If Mario is small, he dies
         return;
