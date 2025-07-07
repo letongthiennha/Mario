@@ -6,16 +6,16 @@
 
 Goomba::Goomba(Vector2 pos, float speed) 
     : Monster(pos, Vector2{32, 32}, BROWN, speed) {
-    velocity.x = speed; // Move left by default
+    velocity.x = -speed; // Move left by default
     sprite = &ResourceManager::getInstance().getTexture("GOOMBA_0_RIGHT");
     frameTime = 0.15f; // Adjusted for walking animation
     maxFrame = 1; // 2 frames: 0 and 1
     currFrame = 0;
     frameAcum = 0.0f;
-    NorthHb.SetSize({size.x - 16, 1});
-    SouthHb.SetSize({size.x - 16, 1});
-    WestHb.SetSize({1, size.y - 16});
-    EastHb.SetSize({1, size.y - 16});
+    NorthHb.SetSize({size.x - 30, 1});
+    SouthHb.SetSize({size.x - 30, 1});
+    WestHb.SetSize({1, size.y - 20});
+    EastHb.SetSize({1, size.y - 20});
     updateHitboxes();
 }
 
@@ -78,5 +78,8 @@ void Goomba::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
-
+    NorthHb.Draw();
+    SouthHb.Draw();
+    WestHb.Draw();
+    EastHb.Draw();
 }

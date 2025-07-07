@@ -6,7 +6,7 @@
 
 KoopaTroopa::KoopaTroopa(Vector2 pos, float speed)
     : Monster(pos, Vector2{32, 48}, BLUE, speed) {
-    velocity.x = -speed;
+    velocity.x =- speed;
 
     int randomColor =GetRandomValue(1,4); // Randomly choose blue or green
     switch (randomColor)  // Assuming 1 is blue, 2 is green, and 3 is red)
@@ -29,10 +29,10 @@ KoopaTroopa::KoopaTroopa(Vector2 pos, float speed)
         sprite = &ResourceManager::getInstance().getTexture("YELLOW_KOOPA_0_LEFT");
         break;
     }
-    NorthHb.SetSize({size.x - 20, 1});
-    SouthHb.SetSize({size.x-20, 1});
-    WestHb.SetSize({1, size.y - 16});
-    EastHb.SetSize({1, size.y - 16});
+    NorthHb.SetSize({size.x - 30, 1});
+    SouthHb.SetSize({size.x-30, 1});
+    WestHb.SetSize({1, size.y - 20});
+    EastHb.SetSize({1, size.y - 20});
     updateHitboxes();
 }
 
@@ -125,5 +125,8 @@ void KoopaTroopa::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
-
+    NorthHb.Draw();
+    SouthHb.Draw();
+    WestHb.Draw();
+    EastHb.Draw();
 }

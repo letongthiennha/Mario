@@ -383,16 +383,12 @@ void CollisionMediator::HandleMonsterWithTile(Monster *&monster, Tile *&tile, Co
                     monster->setState(ENTITY_STATE_ON_GROUND);
                     break;
                 case COLLISION_EAST:
-                if(monster->getFacingDirection() == DIRECTION_LEFT) return;
                     monster->setPosition({tile->getPosition().x - monster->getSize().x, monster->getPosition().y});
                     monster->setVelocity({-100, monster->getVelocity().y}); // Reverse the x velocity
-                    monster->setFacingDirection(DIRECTION_LEFT);
                     break;
                 case COLLISION_WEST:
-                if(monster->getFacingDirection() == DIRECTION_RIGHT) return;
                     monster->setPosition({tile->getPosition().x + tile->getSize().x, monster->getPosition().y});
                     monster->setVelocity({100, monster->getVelocity().y}); // Reverse the x velocity
-                    monster->setFacingDirection(DIRECTION_RIGHT);
                     break;
                 case COLLISION_NORTH:
                     monster->setPosition({monster->getPosition().x, tile->getPosition().y + tile->getSize().y});

@@ -54,10 +54,10 @@ void Mushroom::Draw() {
 	if(state==ItemState::BEING_HIT) {
 		floatingScore.Draw();
 	}
-	SouthHb.Draw();
-	NorthHb.Draw();
-	EastHb.Draw();
-	WestHb.Draw();
+	// SouthHb.Draw();
+	// NorthHb.Draw();
+	// EastHb.Draw();
+	// WestHb.Draw();
 }
 
 void Mushroom::collect() {

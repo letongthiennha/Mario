@@ -230,12 +230,12 @@ void Level::UpdateLevel()
 
 
 
-        if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
-        {
-                state= LevelState::LEVEL_STATE_COMPLETED;
-                player.startVictoryDance();
-                return;
-        } 
+        // if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
+        // {
+        //         state= LevelState::LEVEL_STATE_COMPLETED;
+        //         player.startVictoryDance();
+        //         return;
+        // } 
 
         // Clean up inactive monsters adn items
         for (auto it = monsters.begin(); it != monsters.end();) {
