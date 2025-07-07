@@ -2,6 +2,8 @@
 #include "json.hpp"
 #include "ItemFactory.h"
 #include "MonsterFactory.h"
+#include "QuestionBlock.h"
+#include "BlockFactory.h"
 #include <iostream>
 #include <fstream>
 void Map::LoadFromJsonFile(const std::string& mapFileName)
@@ -24,6 +26,11 @@ std::vector<Monster *> &Map::getMonsters()
     return monsters;
 }
 
+std::vector<Block *> &Map::getBlocks()
+{
+    return blocks;
+}
+
 float Map::getMapWidth() const
 {
     return width;
@@ -36,7 +43,8 @@ Vector2 Map::getStartPositionForMario() const
 
 Map::Map(int mapNumber)
 {
-
+    blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
+    blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
     
@@ -66,6 +74,11 @@ Map::Map(int mapNumber)
         monster = nullptr;
     }
     monsters.clear();
+    for (auto& block : blocks) {
+        delete block;
+        block = nullptr;
+    }
+    blocks.clear();
 }
 
 void Map::LoadMap(int mapNumber)
@@ -116,54 +129,18 @@ void Map::LoadMap(int mapNumber)
             }
 
     for (const auto& layer : mapJson["layers"]) {
-        if (layer["type"] == "objectgroup" && layer["name"] == "Coin") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // Create a Coin at (x, y)
-                items.emplace_back(ItemFactory::createItem("Coin", { x, y }, {32, 32}, WHITE, 0.1f, 4, IDLE));
-            }
+        if (layer["type"] == "tilelayer" && layer["name"] == "Coin") {
+         
+            std::vector<int> data = layer["data"];
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int tileId = data[y * width + x];
+                    if (tileId == 0) continue; // Skip empty tiles
+                    // Create a coin item at the position of the tile
+                    items.emplace_back(ItemFactory::createItem("Coin", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                }
         }
-        if (layer["type"] == "objectgroup" && layer["name"] == "Mushroom") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("Mushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
-            }
-        }
-        if (layer["type"] == "objectgroup" && layer["name"] == "UpMushroom") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("UpMushroom", {x, y}, {32, 32}, WHITE, 0.1f, 4, DIRECTION_RIGHT));
-            }
-        }
-        if (layer["type"] == "objectgroup" && layer["name"] == "FireFlower") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("FireFlower", {x, y}, {32, 32}, WHITE, 0.1f, 2));
-            }
-        }
-        if (layer["type"] == "objectgroup" && layer["name"] == "Star") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("Star", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
-            }
-        }
-        if (layer["type"] == "objectgroup" && layer["name"] == "UpMoon") {
-            for (const auto& obj : layer["objects"]) {
-                float x = obj["x"];
-                float y = obj["y"];
-                // You can customize direction or other params as needed
-                items.emplace_back(ItemFactory::createItem("UpMoon", {x, y}, {32, 32}, WHITE, 0.1f, 2, DIRECTION_RIGHT));
-            }
-        }
+    }
         if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
@@ -182,6 +159,43 @@ void Map::LoadMap(int mapNumber)
                 }
             }
         }
+        
+        if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
+            std::vector<int> data = layer["data"];
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                        int tileId = data[y * width + x]-105;
+                        Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
+                        if (block) {
+                            blocks.push_back(block);
+                        } else {
+                            std::cerr << "Unknown block ID: " << tileId << std::endl;
+                        }
+                        
+                    }
+                }
+            }
+        if(layer["type"]=="objectgroup"&&layer["name"]=="QuestionBlock"){
+            for (const auto& obj : layer["objects"]) {
+                float x = obj["x"];
+                float y = obj["y"];
+                if(obj.contains("properties")&& !obj["properties"].empty()) {
+                    // Assuming the first property is the item type
+
+                std::string itemType = obj["properties"][0]["value"];
+                Block* block =  BlockFactory::createBlock("QuestionBlock", {x, y-32},items, itemType);
+                if (block) 
+                {
+                    blocks.push_back(block);
+                } 
+                else 
+                {
+                    std::cerr << "Unknown block type: " << itemType << std::endl;
+                }
+            }
+            }
+        }
+
     }
 }
 
@@ -203,5 +217,7 @@ void Map::Draw()
     for (const auto& monster : monsters) {
         monster->Draw();
     }
-
+    for (const auto& block : blocks) {
+        block->Draw();
+    }
 }

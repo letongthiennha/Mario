@@ -5,7 +5,9 @@
 #include "SoundControoler.h"
 #include "Monster.h"
 #include "raylib.h"
-Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),items(map.getItems()),gameState(gamestate),
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),
+items(map.getItems()), blocks(map.getBlocks()),
+gameState(gamestate),
 player(map.getStartPositionForMario(),playerData),
 interactiveTiles(map.getInteractiveTiles()),
 state(LevelState::LEVEL_STATE_PLAYING)
@@ -23,7 +25,7 @@ state(LevelState::LEVEL_STATE_PLAYING)
                 break;
             case 2:
                 background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
-                backgroundColor = WHITE;
+                backgroundColor = BLUE;
                 break;
         //     case 3:
         //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");
@@ -110,7 +112,33 @@ void Level::UpdateLevel()
 
                         }
                 };
-        
+                for(auto const&block : blocks)
+                {
+                        CollisionInfo playerCollision = player.CheckCollisionType(*block);
+                        if(playerCollision)
+                        collisionMediator.HandleCollision(&player, block);
+                        for (auto& fireball : *player.getFireballs())
+                        {
+                                CollisionInfo fireballCollision = fireball->CheckCollisionType(*block);
+                                if(fireballCollision)
+                                {
+                                        collisionMediator.HandleCollision(fireball, block);
+                                }
+                        }
+                        for(auto& monster : monsters)
+                        {
+                                CollisionInfo monsterCollision = monster->CheckCollisionType(*block);
+                                if(monsterCollision)
+                                collisionMediator.HandleCollision(monster, block);
+                        }
+                        for(auto const & item : items)
+                        {
+                                CollisionInfo itemCollision = item->CheckCollisionType(*block);
+                                if(itemCollision)
+                                collisionMediator.HandleCollision(item, block);
+                        }
+                }
+               
                 for (auto const & item : items)
                 {
                         CollisionInfo playerCollision = player.CheckCollisionType(*item);
@@ -118,6 +146,7 @@ void Level::UpdateLevel()
                         {
                                 collisionMediator.HandleCollision(&player, item);
                         }
+
 		}
                 for (auto& monster : monsters) {
 
@@ -137,7 +166,26 @@ void Level::UpdateLevel()
                         if (playerCollision)
                         collisionMediator.HandleCollision(&player, monster);
                 }
-                            // Update monsters
+                for (auto const& item : items) {
+                        // Check collision with each interactive tile
+                        if (dynamic_cast<Coin*>(item) != nullptr) {
+                            continue;
+                        }
+        
+                        item->setOnGround(false);
+        
+                        // Skip coins, as they are handled separately
+                        for (auto const& tile : interactiveTiles) {
+                            CollisionInfo itemCollision = item->CheckCollisionType(*tile);
+        
+                            if (itemCollision) {
+                                collisionMediator.HandleCollision(item, tile);
+                            }
+                        }
+                    }
+
+       
+        // Update monsters
                 for (auto& monster : monsters) {
                 if (monster->getState()==ENTITY_STATE_TO_BE_REMOVED||monster->getIsActive()==false) continue;
                 monster->updateStateAndPhysic();
@@ -160,49 +208,36 @@ void Level::UpdateLevel()
                                 if (item->getState() == ItemState::POP_UP)
                                 item->Activate();
                         }
+        //Update Blocks
+                for (auto& block : blocks) {
+                        block->updateStateAndPhysic();
                 }
-                
-
-
-        for (auto const& item : items) {
-                // Check collision with each interactive tile
-                if (dynamic_cast<Coin*>(item) != nullptr) {
-                    continue;
-                }
-
-                item->setOnGround(false);
-
-                // Skip coins, as they are handled separately
-                for (auto const& tile : interactiveTiles) {
-                    CollisionInfo itemCollision = item->CheckCollisionType(*tile);
-
-                    if (itemCollision) {
-                        collisionMediator.HandleCollision(item, tile);
-                    }
-                }
-            }
-
-        if(player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
-        {
-                if(player.getLives() > 0) // If player has lives left, reset the level
-                {
-                        state = LevelState::LEVEL_STATE_NEED_RESET;
-                }
-                else // If player has no lives left, game over
-                {
-                        state = LevelState::LEVEL_STATE_GAME_OVER;
-                }
-                return;
         }
 
-        if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
-        {
-                state= LevelState::LEVEL_STATE_COMPLETED;
-                player.startVictoryDance();
-                return;
-        } 
+        if (player.getState() == ENTITY_STATE_TO_BE_REMOVED) // If player is dead, reset the level
+            {
+                    if (player.getLives() > 0) // If player has lives left, reset the level
+                    {
+                            state = LevelState::LEVEL_STATE_NEED_RESET;
+                    }
+                    else // If player has no lives left, game over
+                    {
+                            state = LevelState::LEVEL_STATE_GAME_OVER;
+                    }
+                    return;
+            }
 
-        // Clean up inactive monsters
+
+
+
+        // if(player.getPosition().x>3000) // If player is past a certain point, switch to next level
+        // {
+        //         state= LevelState::LEVEL_STATE_COMPLETED;
+        //         player.startVictoryDance();
+        //         return;
+        // } 
+
+        // Clean up inactive monsters adn items
         for (auto it = monsters.begin(); it != monsters.end();) {
                 if ((*it)->getState() == ENTITY_STATE_TO_BE_REMOVED) {
                 delete *it;
@@ -211,6 +246,14 @@ void Level::UpdateLevel()
                 ++it;
                 }
         }
+        for (int i = 0;i<items.size();i++){
+                if(items[i]->getState()==ItemState::COLLECTED) {
+                        delete items[i];
+                        items[i] = nullptr; // Set to nullptr to avoid dangling pointer
+                        items.erase(items.begin() + i);
+                        i--; // Adjust index after erasing
+                }
+    }
 
         player.updateStateAndPhysic();
 
