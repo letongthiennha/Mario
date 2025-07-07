@@ -1,5 +1,6 @@
 #include "StateManager.h"
 #include "MenuState.h"
+#include "GameState.h"
 StateManager::StateManager() : currentState(new MenuState(this)) {
     // Initialize with a default state, e.g., MenuState
 }
@@ -30,10 +31,15 @@ void StateManager::update()
         currentState->update();  // Update the current state
     }
 }
-void StateManager::draw()
+ void StateManager::draw()
 {
-    if (currentState) {
-        currentState->draw();  // Draw the current state
+
+
+    if (currentState!=nullptr) {
+        if(dynamic_cast<MenuState*>(currentState)) {
+            ClearBackground(WHITE);  // Clear background for MenuState
+        }
+       currentState->draw();  // Draw the current state
     }
 }
 

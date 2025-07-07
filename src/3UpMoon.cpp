@@ -2,7 +2,7 @@
 #include "ResourceManager.h"
 #include "SoundControoler.h"
 #include "GameClock.h"
-#include "World.h"
+#include "Level.h"
 
 UpMoon::UpMoon(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, Direction initialDirection) :
 	Item(pos, size, color, frameTime, maxFrame), initialDirection(initialDirection) {
@@ -10,11 +10,11 @@ UpMoon::UpMoon(Vector2 pos, Vector2 size, Color color, float frameTime, int maxF
 	floatingScore.loadSprite("3_UP");
 	float speed = 150.0f;
 	if (initialDirection == DIRECTION_LEFT) {
-		setVelocity(Vector2(-speed, 0));
+		setVelocity(Vector2{-speed, 0});
 		initialSpeedX = -speed;
 	}
 	else {
-		setVelocity(Vector2(speed, 0));
+		setVelocity(Vector2{speed, 0});
 		initialSpeedX = speed;
 	}
 	NorthHb.SetSize({ size.x / 2, 2 });
@@ -34,7 +34,7 @@ void UpMoon::updateSprite() {
 	else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
 		setVelocity({ 0, 0 });
-		frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+		frameAcum +=GameClock::getInstance().DeltaTime;
 		if (frameAcum >= disappearTimer) {
 			frameAcum -= disappearTimer;
 			currFrame++;
@@ -70,6 +70,6 @@ void UpMoon::collect() {
 void UpMoon::updateStateAndPhysic() {
 	Entity::updateStateAndPhysic();
 	if (!onGround) {
-		velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
+		velocity.y += Level::GRAVITY *GameClock::getInstance().DeltaTime;
 	}
 }

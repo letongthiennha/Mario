@@ -26,7 +26,6 @@ class   ResourceManager{
 
     public:
         static ResourceManager &getInstance();
-
         // Load and unload
         void loadResource();
         void unloadResource();

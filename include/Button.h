@@ -13,15 +13,15 @@ class Button : public UIObject {
         int text_size = 20;
         std::string text;
         Vector2 text_pos;
-        const Color* text_color;
+        Color* text_color;
 
-        Texture2D *texture = nullptr;
+        Texture2D *texture ;
         Rectangle textureRect; 
 
-        const Color* buttonColor;
-        const Color idle_color,idle_text_color;
-        const Color hover_color, hover_text_color;
-        const Color active_color, active_text_color;
+        Color* buttonColor;
+        Color idle_color,idle_text_color;
+        Color hover_color, hover_text_color;
+        Color active_color, active_text_color;
 
         bool haveBackground = true;
         float clickAcum;
@@ -30,24 +30,28 @@ class Button : public UIObject {
         bool doneClick;
         const static float CLICK_TIME; // Time to consider a click valid
     public:
-        Button(Vector2 position, Vector2 size, std::string text = "", Texture2D *const &texture = nullptr, 
-            Color idleColor = WHITE, Color hoverColor = LIGHTGRAY, Color activeColor = GRAY,
-            Color idleTextColor = BLACK, Color hoverTextColor = WHITE, Color activeTextColor = WHITE);
+        Button(Vector2 position, Vector2 size);
         ~Button() override;
         bool isHover() const;
         bool isClicked() ;
+        Button& setIdleColor(Color color);
+        Button& setHoverColor(Color color);
+        Button& setActiveColor(Color color);
 
-        void setTextPosition(Vector2 pos);
-        void setTextSize(int size);
+        Button &setText(std::string text);
+        Button& setTextPosition(Vector2 pos);
+        Button& setTextSize(int size);
+        Button &setTextIdleColor(Color color);
+        Button& setTextHoverColor(Color color);
+        Button& setTextActiveColor(Color color);
 
+        Button& EnableBackground();
+        Button& DisableBackground();
 
-
-        void OnBackground();
-        void OffBackground();
-        
-        void setTexturePosition(Vector2 pos);
-        void setTextureSize(Vector2 size);
-        void fitTexture();
+        Button& setPrimaryTexture( Texture2D &texture);
+        Button& setTexturePosition(Vector2 pos);
+        Button& setTextureSize(Vector2 size);
+        Button& fitTexture();
 
         void update() override;
         virtual void Draw() override;

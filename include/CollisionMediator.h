@@ -9,19 +9,20 @@
 #include "FireFlower.h"
 #include "Star.h"
 #include "3UpMoon.h"
+#include "Monster.h"
 class HUD;
-
+class Monster;
 class CollisionMediator {
     private:
     void HandleMarioWithTile(Mario*& mario, Tile* &tile, CollisionInfo AtoB);
-    void HandleFireballWithTile(Fireball*& fireball, Tile*& tile, CollisionInfo AtoB);
-    void HandleMarioWithCoin(Mario*& mario, Coin*& coin, CollisionInfo AtoB);
-	void HandleMarioWithMushroom(Mario*& mario, Mushroom*& mushroom, CollisionInfo AtoB);
-	void HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB);
-    void HandleMarioWith1UpMushroom(Mario*& mario, UpMushroom*& mushroom, CollisionInfo AtoB);
+    void HandleMarioWithMonster(Mario*& mario, Monster*& monster, CollisionInfo AtoB);
     void HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB);
 
+    void HandleFireballWithTile(Fireball*& fireball, Tile*& tile, CollisionInfo AtoB);
+    void HandleFireballWithMonster(Fireball*& fireball, Monster*& monster, CollisionInfo AtoB);
+	void HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB);
+    void HandleMonsterWithTile(Monster*& monster, Tile*& tile, CollisionInfo AtoB);
     public:
     void HandleCollision(Entity* entityA, Entity* entityB);
-
+    
 };

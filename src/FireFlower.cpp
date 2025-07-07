@@ -2,7 +2,7 @@
 #include "GameClock.h"
 #include "ResourceManager.h"
 #include "SoundControoler.h"
-#include "World.h"
+#include "Level.h"
 #include <string>
 
 
@@ -18,7 +18,7 @@ FireFlower::FireFlower(Vector2 pos, Vector2 size, Color color, float frameTime, 
 
 void FireFlower::updateSprite() {
     if (state == ItemState::IDLE) {
-        frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+        frameAcum +=GameClock::getInstance().DeltaTime;
         if (frameAcum >= frameTime) {
             frameAcum -= frameTime;
             currFrame = (currFrame + 1) % maxFrame;
@@ -27,7 +27,7 @@ void FireFlower::updateSprite() {
     }
     else if (state == ItemState::BEING_HIT) {
         floatingScore.Update();
-        frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+        frameAcum +=GameClock::getInstance().DeltaTime;
         if (frameAcum >= disappearTimer) {
             frameAcum -= disappearTimer;
             currFrame++;
@@ -65,7 +65,7 @@ void FireFlower::collect() {
 void FireFlower::updateStateAndPhysic() {
     Entity::updateStateAndPhysic();
     if (!onGround) {
-        velocity.y += World::GetGravity() * GameClock::getInstance().FIXED_TIME_STEP;
+        velocity.y += Level::GRAVITY *GameClock::getInstance().DeltaTime;
     }
 }
 

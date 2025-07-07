@@ -4,8 +4,13 @@
 #include "Fireball.h"
 #include "ResourceManager.h"
 #include "Tile.h" 
+#include "Subject.h"
+#include "PlayerData.h"
+#include <memory>
 #include <list>
-class Mario: public Entity{
+class PlayerData;
+class Subject;
+class Mario: public Entity, public Subject {
     private:
     //Image
         // Properties
@@ -13,64 +18,92 @@ class Mario: public Entity{
         bool isDucking;
         MarioState form;
         std::list<Fireball*>fireballs;
+        int coin;
+        int score;
 
-    // Special effects
-    // Invincibility when hit
+         const int TRANSFORM_SMALL_TO_BIG_ORDER[11] = { 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2 };
+         const int TRANSFORM_BIG_TO_SMALL_ORDER[11] = { 2, 1, 2, 1, 2, 1, 0, 1, 0, 1, 0 };
+         const int TRANSFORM_BIG_TO_FIRE_ORDER[11] = { 0, 1, 0, 1, 0, 1, 0, 1,0,1,0 };
+         const int TRANSFORM_FIRE_TO_BIG_ORDER[11] = { 1,0,1,0,1,1,0,1,0,1,0 };
+        // Special effects
+        // Invincibility when hit
         // The player is invincible for a short time after being hit
-    //     bool isInvincible;
-    //     float invincibleFrameTime;
-    //     float invincibleAcum;
-    //     int invincibleFrame;
-    //     int invincibleMaxFrame;
-    // // Immortal when eating immortal star
-    //     // In this state it can kill any thing
-    //     bool isImmortal;
-    //     float immortalFrameTime;
-    //     float immortalAcum;
-    //     int immortalFrame;
-    //     int immortalMaxFrame;
-    //Timing Event
-        // Accelerating
-        int normalSpeedX;
-        int accelerationX;
-        // Jumping
-        float jumpInitSpeed;
-        void updateSprite() override;
+            bool isInvincible;
+            const float invincibleFrameTime;
+            float invincibleFrameAcum;
+            int invincibleFrame;
+            float invincibleAcum;
+           const float invincibleTime;
+            // // Immortal when eating immortal star
+            //     // In this state it can kill any thing
+            //     bool isImmortal;
+            //     float immortalFrameTime;
+            //     float immortalAcum;
+            //     int immortalFrame;
+            //     int immortalMaxFrame;
+            // Timing Event
+            // Accelerating
+            const int normalSpeedX;
+            const int accelerationX;
+            // Jumping
+            const float jumpInitSpeed;
+            void updateSprite() override;
 
-    public:
-        // Constructor
-        //Full constructor
-        Mario(Vector2 pos, int lives,
-              MarioState form);
-        Mario();
-        // Destructor
-        ~Mario() override;
+            void jump();
+            void moveLeft();
+            void moveRight();
+            void moveNoWhere();
 
-        // Setter
-        void setSprite(Texture2D sprite);
-        void setLives(int lives);
-        void setState(EntityState state);
-        
-        // Getter
-        int getLives() const;
-        bool getIsDucking() const;
-        std::list<Fireball*>* getFireballs() ;
-        // Methods
-        void jump();
-        void moveLeft();
-        void moveRight();
-        void moveNoWhere();
+            void Duck();
+            void fire();
 
-        void Duck();
-        void fire();
+            void ChangeFromSmallToBig();
+            void ChangeFromBigToFire();
+            void ChangeFromFireToBig();
+            void ChangeFromBigToSmall();
+            void ChangeFromSmallToFire();   
+            void startInvincible();
 
-        void changeToBig();
-        void changeToFire();
-        void changeToSmall();
+            void startTransformingFireToBig();
+            void startTransformingBigToSmall();
+            void startWatingForReset();
 
-        // Game loop
-        void HandleInput();
-        void updateStateAndPhysic() override;
-        void updateHitboxes() override;
-        void Draw() override;
+        public:
+            // Constructor
+            // Full constructor
+            Mario(Vector2 pos, int lives=3,
+                  MarioState form = MARIO_STATE_SMALL);
+            Mario(Vector2 pos, const PlayerData& playerData);
+            Mario();
+            // Destructor
+            ~Mario() override;
+
+            // Setter
+
+            void addLives(int lives);
+            void setState(EntityState state);
+            MarioState getForm() const;
+            void addCoin(int coin);
+            void addScore(int score);
+            // Getter
+            int getLives() const;
+            int getCoin() const;
+            std::list<Fireball *> *getFireballs();
+            // Methods
+
+            void startTransformingSmallToBig();
+            void startTransformingBigToFire();
+            void startTransformingSmallToFire();
+
+            void die();
+            void startVictoryDance(); 
+
+            void reactOnBeingHit();
+            // Game loop
+            void HandleInput();
+            void updateStateAndPhysic() override;
+            void updateHitboxes() override;
+            void Draw() override;
+
+            std::unique_ptr<PlayerData> createMemento() const;
 };

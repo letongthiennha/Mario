@@ -26,7 +26,7 @@ Coin::Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame
 
 void Coin::updateSprite() {
     if (state == ItemState::IDLE) {
-        frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+        frameAcum +=GameClock::getInstance().DeltaTime;
         if (frameAcum >= frameTime) {
             frameAcum -= frameTime;
             currFrame = (currFrame + 1) % maxFrame;
@@ -35,7 +35,7 @@ void Coin::updateSprite() {
     }
     else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
-        frameAcum += GameClock::getInstance().FIXED_TIME_STEP;
+        frameAcum +=GameClock::getInstance().DeltaTime;
         if (frameAcum >= disappearTimer) {
             frameAcum -= disappearTimer;
             currFrame++;
