@@ -43,8 +43,8 @@ Vector2 Map::getStartPositionForMario() const
 
 Map::Map(int mapNumber)
 {
-    blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
-    blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
+    //blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
+    //blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
     
@@ -180,8 +180,8 @@ void Map::LoadMap(int mapNumber)
             for (int y = 0; y < height; ++y) {
                 for (int x = 0; x < width; ++x) {
                         int rawId = data[y * width + x];
+                        int tileId = rawId - 105;
                         if (rawId == 0) continue;
-                        int tileId = data[y * width + x]-105;
                         Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
                         if (block) {
                             blocks.push_back(block);
