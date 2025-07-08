@@ -327,6 +327,10 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
             mario->addLives(3);
             mario->addScore(3000); // Add score for collecting a 3-Up moon
         }
+        else if (auto* clearToken = dynamic_cast<ClearToken*>(item)) {
+			clearToken->collect();
+            mario->changeWinState(true);
+        }
         else {
             // Handle other items if needed
             return;

@@ -68,6 +68,14 @@ Mario::~Mario(){
     Entity::~Entity();
 }
 
+void Mario::changeWinState(bool state) {
+    winState = state;
+}
+
+bool Mario::getWinState() const {
+    return winState;
+}
+
 void Mario::addLives(int lives)
 {
     this->lives += lives;

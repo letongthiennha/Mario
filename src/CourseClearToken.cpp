@@ -4,7 +4,7 @@ ClearToken::ClearToken(Vector2 pos, Vector2 size, Color color, float frameTime, 
 	Item(pos, size, color, frameTime, maxFrame, ItemState::IDLE){
 	sprite = &ResourceManager::getInstance().getTexture("COURSE_CLEAR_TOKEN");
 	startingPosY = pos.y;
-	endingPosY = pos.y - 8 * 32.0f;
+	endingPosY = pos.y - 7 * 32.0f;
 
 	NorthHb.SetSize({ size.x / 2, 2 });
 	SouthHb.SetSize({ size.x / 2, 2 });
@@ -15,6 +15,10 @@ ClearToken::ClearToken(Vector2 pos, Vector2 size, Color color, float frameTime, 
 ClearToken::ClearToken(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, ItemState s):
 	Item(pos, size, color, frameTime, maxFrame, s) {
 	sprite = &ResourceManager::getInstance().getTexture("COURSE_CLEAR_TOKEN");
+
+	startingPosY = pos.y;
+	endingPosY = pos.y - 7 * 32.0f;
+
 	NorthHb.SetSize({ size.x / 2, 2 });
 	SouthHb.SetSize({ size.x / 2, 2 });
 	WestHb.SetSize({ 2, size.y - 4 });
@@ -65,11 +69,13 @@ void ClearToken::updateStateAndPhysic() {
 	float dt = GameClock::getInstance().DeltaTime;
 	pos.y += direction * verticalVelocity * dt;
 
-	if(pos.y>startingPosY){
+	if(pos.y>=startingPosY){
 		pos.y = startingPosY;
 		direction = -1;
-	} else if (pos.y < endingPosY) {
+	} else if (pos.y <= endingPosY) {
 		pos.y = endingPosY;
 		direction = 1;
 	}
+
+	//printf("ClearToken y: %f, direction: %d, velocity: %f, dt: %f\n", pos.y, direction, verticalVelocity, dt);
 }

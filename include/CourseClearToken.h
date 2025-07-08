@@ -8,7 +8,7 @@ private:
 	float startingPosY;
     float endingPosY;
     float verticalVelocity = 100.0f;
-    int direction = 1;
+    int direction = -1;
 public:
     ClearToken(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame);
     ClearToken(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame, ItemState s);

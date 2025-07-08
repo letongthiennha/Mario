@@ -68,6 +68,7 @@ class Mario: public Entity, public Subject {
             void startTransformingBigToSmall();
             void startWatingForReset();
 
+            bool winState = false;
         public:
             // Constructor
             // Full constructor
@@ -104,6 +105,9 @@ class Mario: public Entity, public Subject {
             void updateStateAndPhysic() override;
             void updateHitboxes() override;
             void Draw() override;
+
+            void changeWinState(bool state);
+			bool getWinState() const;
 
             std::unique_ptr<PlayerData> createMemento() const;
 };

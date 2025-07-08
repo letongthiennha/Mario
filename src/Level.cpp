@@ -242,6 +242,13 @@ void Level::UpdateLevel()
         //         return;
         // } 
 
+        if (player.getWinState() == true) {
+            state = LevelState::LEVEL_STATE_COMPLETED;
+            player.startVictoryDance();
+            player.changeWinState(false);
+            return;
+        }
+
         // Clean up inactive monsters adn items
         for (auto it = monsters.begin(); it != monsters.end();) {
                 if ((*it)->getState() == ENTITY_STATE_TO_BE_REMOVED) {

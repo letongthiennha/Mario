@@ -122,7 +122,7 @@ void Map::LoadMap(int mapNumber)
 			int tileId = data[y * width + x];
 			if (tileId == 0)
                 continue;
-            else if(tileId==1)
+            else if(tileId==1 || (tileId >= 108 && tileId <= 111))
 				nonInterativeTile.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
             else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
                 }
