@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.2" name="Tileset" tilewidth="32" tileheight="32" tilecount="108" columns="0">
+<tileset version="1.10" tiledversion="1.11.2" name="Tileset" tilewidth="32" tileheight="32" tilecount="113" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="Tiles/tile_0.png" width="32" height="32"/>
@@ -324,5 +324,20 @@
  </tile>
  <tile id="111">
   <image source="Tiles/tile_107.png" width="32" height="32"/>
+ </tile>
+ <tile id="112">
+  <image source="Blocks/Cloud_0.png" width="32" height="32"/>
+ </tile>
+ <tile id="113">
+  <image source="Blocks/EyesClosed_0.png" width="32" height="32"/>
+ </tile>
+ <tile id="114">
+  <image source="Blocks/Glass_0.png" width="32" height="32"/>
+ </tile>
+ <tile id="115">
+  <image source="Blocks/Stone_0.png" width="32" height="32"/>
+ </tile>
+ <tile id="116">
+  <image source="Blocks/Wood_0.png" width="32" height="32"/>
  </tile>
 </tileset>

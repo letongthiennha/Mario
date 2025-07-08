@@ -175,12 +175,27 @@ void Map::LoadMap(int mapNumber)
             }
         }
         
+        int blockTilesetFirstGid = -1;
+        for (const auto& tileset : mapJson["tilesets"]) {
+            std::string name = tileset.contains("name") ? tileset["name"].get<std::string>() : "";
+            std::string source = tileset.contains("source") ? tileset["source"].get<std::string>() : "";
+            if (name == "Blocks" || source.find("Blocks.tsx") != std::string::npos) {
+                blockTilesetFirstGid = tileset["firstgid"];
+                break;
+            }
+        }
+
+        if (blockTilesetFirstGid == -1) {
+            std::cerr << "Block tileset not found!" << std::endl;
+            return;
+        }
+
         if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
             std::vector<int> data = layer["data"];
             for (int y = 0; y < height; ++y) {
                 for (int x = 0; x < width; ++x) {
                         int rawId = data[y * width + x];
-                        int tileId = rawId - 105;
+                        int tileId = rawId - blockTilesetFirstGid;
                         if (rawId == 0) continue;
                         Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
                         if (block) {

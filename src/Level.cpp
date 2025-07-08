@@ -27,8 +27,8 @@ state(LevelState::LEVEL_STATE_PLAYING)
 
                 break;
             case 2:
-                background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
-                backgroundColor = BLUE;
+                background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_2");
+                backgroundColor = DARKGREEN;
                 break;
         //     case 3:
         //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");

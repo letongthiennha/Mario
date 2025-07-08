@@ -120,6 +120,7 @@ void ResourceManager::loadTextures()
     {
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
+    textures["BACKGROUND_LEVEL_2"] = LoadTexture("resources/Background/background2.png");
 
     }
     //BLOCK
@@ -140,7 +141,7 @@ void ResourceManager::loadTextures()
     textures["Question_Block_3"] = LoadTexture("resources/Entity/Blocks/Question_3.png");
     }
     //TILE
-    for (int i = 0;i<108;i++){
+    for (int i = 0;i<113;i++){
         int index = i;
         if (index >= 104) index += 4;
         std::string tileName = "TILE_" + std::to_string(index);
