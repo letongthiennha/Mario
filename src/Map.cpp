@@ -149,7 +149,7 @@ void Map::LoadMap(int mapNumber)
                     int tileId = data[y * width + x];
                     if (tileId == 0) continue; // Skip empty tiles
                     // Create a coin item at the position of the tile
-                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32-64.0f, (float)y * 32 }, DIRECTION_RIGHT));
                 }
             }
         }

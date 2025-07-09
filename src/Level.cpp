@@ -136,6 +136,10 @@ void Level::UpdateLevel()
                         }
                         for(auto const & item : items)
                         {
+                                if (dynamic_cast<Coin*>(item) != nullptr) {
+                                    continue;
+                                }
+
                                 CollisionInfo itemCollision = item->CheckCollisionType(*block);
                                 if(itemCollision)
                                 collisionMediator.HandleCollision(item, block);
@@ -206,11 +210,16 @@ void Level::UpdateLevel()
         }
         // Update items        
                 for (auto const& item : items) {
+                    Coin* coin = dynamic_cast<Coin*>(item);
+                    if (coin != nullptr) {
+                        if (!coin->isItem) continue;
+                    }
+
                                 if(item->getState()==ItemState::IDLE)
                                 item->updateStateAndPhysic();
                                 if (item->getState() == ItemState::POP_UP)
                                 item->Activate();
-                        }
+                }
         //Update Blocks
                 for (auto& block : blocks) {
                     if (dynamic_cast<QuestionBlock*>(block) || dynamic_cast<EyesOpenedBlock*>(block)) {
