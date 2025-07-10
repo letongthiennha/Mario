@@ -88,7 +88,18 @@ void SettingMenuState::drawSFXSlider() {
 }
 
 void SettingMenuState::draw() {
-    ClearBackground(RAYWHITE);
+    //ClearBackground(RAYWHITE);
+    Texture2D& bg = ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
+    float screenWidth = static_cast<float>(GetScreenWidth());
+    float screenHeight = static_cast<float>(GetScreenHeight());
+    DrawTexturePro(
+        bg,
+        Rectangle{ 0, 0, static_cast<float>(bg.width), static_cast<float>(bg.height) },
+        Rectangle{ 0, 0, screenWidth, screenHeight },
+        Vector2{ 0, 0 },
+        0.0f,
+        WHITE
+    );
 
     // Title
     const char* title = "Settings";
@@ -197,6 +208,7 @@ void SettingMenuState::drawMusicButton() {
 }
 
 void SettingMenuState::updateSFXButton() {
+    if (musicButtonCooldown > 0.0f) return;
     Vector2 mouse = GetMousePosition();
     if (CheckCollisionPointRec(mouse, sfxRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         // Toggle music on/off
@@ -209,6 +221,7 @@ void SettingMenuState::updateSFXButton() {
             soundController.UnmuteSFX();
 			sfxSlider.setRatio(soundController.GetSFXVolume());
         }
+        musicButtonCooldown = buttonCooldownTime;
     }
 }
 

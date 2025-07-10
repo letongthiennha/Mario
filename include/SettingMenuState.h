@@ -37,5 +37,5 @@ private:
 
     float musicButtonCooldown = 0.0f;
 	float sfxButtonCooldown = 0.0f;
-	float buttonCooldownTime = 1.0f; // Cooldown time in seconds
+	float buttonCooldownTime = 0.5f; // Cooldown time in seconds
 };
