@@ -2,6 +2,7 @@
 #include "ResourceManager.h"
 #include "GameState.h"
 #include "SoundControoler.h"
+#include "SettingMenuState.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
@@ -44,7 +45,9 @@ void MenuState::update()
     optionsButton.update();
     if (optionsButton.isClicked()) {
         // Handle options button click
-        std::cout << "Options button clicked!" << std::endl;
+        stateManager->setState(new SettingMenuState(stateManager));
+        //std::cout << "Options button clicked!" << std::endl;
+        return;
     }
     exitButton.update();
     if (exitButton.isClicked()) {

@@ -3,6 +3,7 @@ void ResourceManager::loadFonts()
 {
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
     fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
+	fonts["SETTING_FONT"] = LoadFont("resources/Font/SuperMario256.ttf");
 }
 
 // Load
@@ -153,8 +154,16 @@ void ResourceManager::loadTextures()
     textures["MENU_STATE_START_BUTTON"] = LoadTexture("resources/Button/MenuStartButton.png");
     textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
+
+    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/homeButtonRelease.png");
+    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/homeButtonPress.png");
+	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/muteButtonRelease.png");
+	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/muteButtonPress.png");
+	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/unmuteButtonRelease.png");
+	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/unmuteButtonPress.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
+    
     //HUD
     textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
     textures["LEVEL_END_CONGRATULATIONS"] = LoadTexture("resources/UI/Congratulations.png");

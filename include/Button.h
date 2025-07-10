@@ -55,4 +55,7 @@ class Button : public UIObject {
 
         void update() override;
         virtual void Draw() override;
+
+        void setPosition(Vector2 position);
+        Rectangle getHitBox() const;
 };

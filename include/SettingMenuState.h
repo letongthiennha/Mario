@@ -1,0 +1,41 @@
+#pragma once
+
+#include "StateManager.h"
+#include "Slider.h"
+#include "raylib.h"
+#include "Button.h"
+#include <map>
+
+class SettingMenuState : public State {
+public:
+    SettingMenuState(StateManager* manager);
+
+    void update() override;
+    void draw() override;
+
+	void drawMusicSlider();
+	void drawSFXSlider();
+
+    void updateBackButton();
+    void drawBackButton();
+
+    void updateMusicButton();
+	void drawMusicButton();
+
+	void updateSFXButton();
+	void drawSFXButton();
+
+    ~SettingMenuState();
+private:
+
+    Slider musicSlider;
+    Slider sfxSlider;
+
+    Rectangle backButton;
+    Rectangle musicRect;
+    Rectangle sfxRect;
+
+    float musicButtonCooldown = 0.0f;
+	float sfxButtonCooldown = 0.0f;
+	float buttonCooldownTime = 1.0f; // Cooldown time in seconds
+};
