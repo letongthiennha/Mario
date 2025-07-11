@@ -3,6 +3,7 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "GameClock.h"
+#include "GameState.h"
 #include <iostream>
 
 SettingMenuState::SettingMenuState(StateManager* manager)
@@ -11,6 +12,7 @@ SettingMenuState::SettingMenuState(StateManager* manager)
     sfxSlider({ 600.0f, 460.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetSFXVolume())
 {
     backButton = Rectangle(20, 20, 64, 64);
+    goBackButton = Rectangle(20, 100, 64, 64);
     float rectX = 520.0f;
     float rectWidth = 64.0f;
     float rectHeight = 64.0f;
@@ -36,8 +38,14 @@ void SettingMenuState::update() {
     // Back button logic
     updateBackButton();
 
+	// Music and SFX buttons logic
 	updateMusicButton();
     updateSFXButton();
+
+	// Go back button logic
+    if (dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
+        updateGoBackButton();
+    }
 }
 
 void SettingMenuState::drawMusicSlider() {
@@ -118,8 +126,14 @@ void SettingMenuState::draw() {
     // Back button
     drawBackButton();
 
+	// Music and SFX buttons
 	drawMusicButton();
     drawSFXButton();
+
+	// Back to previous state button
+    if(dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
+        drawGoBackButton();
+	}
 }
 
 void SettingMenuState::updateBackButton() {
@@ -257,5 +271,34 @@ void SettingMenuState::drawSFXButton() {
     );
 }
 
+void SettingMenuState::updateGoBackButton() {
+    Vector2 mouse = GetMousePosition();
+    if (CheckCollisionPointRec(mouse, goBackButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        stateManager->goBack();
+	}
+}
+
+void SettingMenuState::drawGoBackButton() {
+    // Rectangle for the go back button
+    Rectangle goBackRect = goBackButton;
+    // Get mouse state
+    Vector2 mouse = GetMousePosition();
+    bool hovered = CheckCollisionPointRec(mouse, goBackRect);
+    bool pressed = hovered && IsMouseButtonDown(MOUSE_LEFT_BUTTON);
+    // Select the correct texture
+    const char* texKey = hovered ? "BACK_BUTTON_PRESS" : "BACK_BUTTON_RELEASE";
+    Texture2D& tex = ResourceManager::getInstance().getTexture(texKey);
+    // Draw the texture
+    DrawTexturePro(
+        tex,
+        Rectangle{ 0, 0, (float)tex.width, (float)tex.height },
+        goBackRect,
+        Vector2{ 0, 0 },
+        0.0f,
+        WHITE
+    );
+    // Optional: Draw a border/highlight
+	//DrawRectangleLinesEx(goBackRect, 2, hovered ? ORANGE : DARKGRAY);
+}
 SettingMenuState::~SettingMenuState() {
 }

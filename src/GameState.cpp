@@ -4,6 +4,7 @@
 #include "LevelState.h"
 #include "SoundControoler.h"
 #include "StateManager.h"
+#include "SettingMenuState.h"
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -14,7 +15,7 @@ void GameState::nextLevel()
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Create a new level with the updated player data
 }
-GameState::GameState(StateManager *manager) :currentLevelID(3), State(manager),
+GameState::GameState(StateManager *manager) :currentLevelID(2), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
                                                 transitionState(TransitionState::TRANSITION_NONE)
@@ -110,7 +111,7 @@ void GameState::update()
 {
         menuButton.update();
     if (menuButton.isClicked()) {
-        stateManager->setState(new MenuState(stateManager));  // Switch to MenuState
+        stateManager->setState(new SettingMenuState(stateManager));  // Switch to MenuState
     }
     switch (transitionState) {
     case TransitionState::TRANSITION_NEXT_LEVEL:

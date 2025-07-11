@@ -42,9 +42,32 @@
          "width":200,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":2,
+         "name":"Monsters",
+         "objects":[
+                {
+                 "gid":117,
+                 "height":32,
+                 "id":1,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Goomba",
+                 "visible":true,
+                 "width":32,
+                 "x":292,
+                 "y":828
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":2,
- "nextobjectid":1,
+ "nextlayerid":3,
+ "nextobjectid":2,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -701,6 +724,10 @@
                  "imagewidth":32
                 }],
          "tilewidth":32
+        }, 
+        {
+         "firstgid":105,
+         "source":"Enemies.tsx"
         }],
  "tilewidth":32,
  "type":"map",

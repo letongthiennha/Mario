@@ -25,6 +25,9 @@ public:
 	void updateSFXButton();
 	void drawSFXButton();
 
+	void updateGoBackButton();
+	void drawGoBackButton();
+
     ~SettingMenuState();
 private:
 
@@ -32,6 +35,7 @@ private:
     Slider sfxSlider;
 
     Rectangle backButton;
+    Rectangle goBackButton;
     Rectangle musicRect;
     Rectangle sfxRect;
 
