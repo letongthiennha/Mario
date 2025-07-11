@@ -28,6 +28,9 @@ public:
 	void updateGoBackButton();
 	void drawGoBackButton();
 
+    void updateBackGround();
+    void drawBackGround();
+
     ~SettingMenuState();
 private:
 
@@ -42,4 +45,7 @@ private:
     float musicButtonCooldown = 0.0f;
 	float sfxButtonCooldown = 0.0f;
 	float buttonCooldownTime = 0.5f; // Cooldown time in seconds
+
+    Texture2D* mapBg;
+    float mapBgScrollX = 0.0f;
 };

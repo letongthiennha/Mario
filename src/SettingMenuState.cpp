@@ -17,7 +17,8 @@ SettingMenuState::SettingMenuState(StateManager* manager)
     float rectWidth = 64.0f;
     float rectHeight = 64.0f;
     musicRect = Rectangle{ rectX, 330.0f - rectWidth/2.0f, rectWidth, rectHeight};
-    sfxRect = Rectangle{ rectX, 460.0f - rectWidth/2.0f, rectWidth, rectHeight};
+    sfxRect = Rectangle{ rectX, 460.0f - rectWidth/2.0f, rectWidth, rectHeight}; 
+    mapBg = &ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
 }
 
 void SettingMenuState::update() {
@@ -27,6 +28,7 @@ void SettingMenuState::update() {
     if (sfxButtonCooldown > 0.0f) sfxButtonCooldown -= deltaTime;
 	else sfxButtonCooldown = 0.0f;
 
+    updateBackGround();
 
     musicSlider.update();
     sfxSlider.update();
@@ -97,7 +99,7 @@ void SettingMenuState::drawSFXSlider() {
 
 void SettingMenuState::draw() {
     //ClearBackground(RAYWHITE);
-    Texture2D& bg = ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
+    /*Texture2D& bg = ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
     float screenWidth = static_cast<float>(GetScreenWidth());
     float screenHeight = static_cast<float>(GetScreenHeight());
     DrawTexturePro(
@@ -107,7 +109,11 @@ void SettingMenuState::draw() {
         Vector2{ 0, 0 },
         0.0f,
         WHITE
-    );
+    );*/
+
+    Color lightBlue = { 173, 216, 230, 255 };
+    ClearBackground(lightBlue);
+    drawBackGround();
 
     // Title
     const char* title = "Settings";
@@ -300,5 +306,41 @@ void SettingMenuState::drawGoBackButton() {
     // Optional: Draw a border/highlight
 	//DrawRectangleLinesEx(goBackRect, 2, hovered ? ORANGE : DARKGRAY);
 }
+
+void SettingMenuState::updateBackGround() {
+    mapBgScrollX += 100.0f * GameClock::getInstance().DeltaTime; // 100 px/sec, adjust as needed
+
+    // Optionally, loop the background
+    if (mapBgScrollX > mapBg->width) mapBgScrollX -= mapBg->width;
+}
+
+void SettingMenuState::drawBackGround() {
+    //Texture2D& mapBg = ResourceManager::getInstance().getTexture("BACKGROUND_0");
+    float screenWidth = static_cast<float>(GetScreenWidth());
+    float screenHeight = static_cast<float>(GetScreenHeight());
+
+    // Draw two textures to cover the screen when scrolling
+    DrawTexturePro(
+        *mapBg,
+        Rectangle{ mapBgScrollX, 0, screenWidth, screenHeight },
+        Rectangle{ 0, 0, screenWidth, screenHeight },
+        Vector2{ 0, 0 },
+        0.0f,
+        WHITE
+    );
+    // If the scroll offset is near the end, draw a second copy to fill the gap
+    if (mapBgScrollX + screenWidth > mapBg->width) {
+        float remaining = (mapBgScrollX + screenWidth) - mapBg->width;
+        DrawTexturePro(
+            *mapBg,
+            Rectangle{ 0, 0, remaining, screenHeight },
+            Rectangle{ mapBg->width - mapBgScrollX, 0, remaining, screenHeight },
+            Vector2{ 0, 0 },
+            0.0f,
+            WHITE
+        );
+    }
+}
+
 SettingMenuState::~SettingMenuState() {
 }
