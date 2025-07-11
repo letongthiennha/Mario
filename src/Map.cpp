@@ -187,7 +187,7 @@ void Map::LoadMap(int mapNumber)
 
         if (blockTilesetFirstGid == -1) {
             std::cerr << "Block tileset not found!" << std::endl;
-            return;
+            //return;
         }
 
         if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
