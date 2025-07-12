@@ -103,9 +103,9 @@ void SoundController::UnmuteSFX() {
 }
 
 bool SoundController::IsMusicMuted() const {
-    return musicMuted;
+    return musicMuted || musicVolume <= 0.0001f;
 }
 
 bool SoundController::IsSFXMuted() const {
-    return sfxMuted;
+    return sfxMuted || sfxVolume <= 0.0001f;
 }
