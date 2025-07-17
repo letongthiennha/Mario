@@ -117,6 +117,20 @@ void Map::LoadMap(int mapNumber)
 
     startPositionForMario = Vector2{(float)startPosX, (float)startPosY};
 
+    int blockTilesetFirstGid = -1;
+    for (const auto& tileset : mapJson["tilesets"]) {
+        std::string name = tileset.contains("name") ? tileset["name"].get<std::string>() : "";
+        std::string source = tileset.contains("source") ? tileset["source"].get<std::string>() : "";
+        if (name == "Blocks" || source.find("Blocks.tsx") != std::string::npos) {
+            blockTilesetFirstGid = tileset["firstgid"];
+            break;
+        }
+    }
+
+    if (blockTilesetFirstGid == -1) {
+        std::cerr << "Block tileset not found!" << std::endl;
+    }
+
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
 			int tileId = data[y * width + x];
@@ -148,8 +162,8 @@ void Map::LoadMap(int mapNumber)
                 for (int x = 0; x < width; ++x) {
                     int tileId = data[y * width + x];
                     if (tileId == 0) continue; // Skip empty tiles
-                    // Create a coin item at the position of the tile
-                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32-64.0f, (float)y * 32 }, DIRECTION_RIGHT));
+                    // Create a ClearToken item at the position of the tile
+                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
                 }
             }
         }
@@ -173,21 +187,6 @@ void Map::LoadMap(int mapNumber)
                     std::cerr << "Unknown monster type: " << type << std::endl;
                 }
             }
-        }
-        
-        int blockTilesetFirstGid = -1;
-        for (const auto& tileset : mapJson["tilesets"]) {
-            std::string name = tileset.contains("name") ? tileset["name"].get<std::string>() : "";
-            std::string source = tileset.contains("source") ? tileset["source"].get<std::string>() : "";
-            if (name == "Blocks" || source.find("Blocks.tsx") != std::string::npos) {
-                blockTilesetFirstGid = tileset["firstgid"];
-                break;
-            }
-        }
-
-        if (blockTilesetFirstGid == -1) {
-            std::cerr << "Block tileset not found!" << std::endl;
-            //return;
         }
 
         if(layer["type"]=="tilelayer" && layer["name"] == "Block") {

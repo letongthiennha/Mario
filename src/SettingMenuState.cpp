@@ -292,7 +292,7 @@ void SettingMenuState::drawGoBackButton() {
     bool hovered = CheckCollisionPointRec(mouse, goBackRect);
     bool pressed = hovered && IsMouseButtonDown(MOUSE_LEFT_BUTTON);
     // Select the correct texture
-    const char* texKey = hovered ? "BACK_BUTTON_PRESS" : "BACK_BUTTON_RELEASE";
+    const char* texKey = hovered ? "RESUME_BUTTON_PRESS" : "RESUME_BUTTON_RELEASE";
     Texture2D& tex = ResourceManager::getInstance().getTexture(texKey);
     // Draw the texture
     DrawTexturePro(

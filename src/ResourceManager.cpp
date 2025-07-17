@@ -164,6 +164,10 @@ void ResourceManager::loadTextures()
 	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/unmuteButtonPress.png");
 	textures["BACK_BUTTON_RELEASE"] = LoadTexture("resources/Button/backButtonRelease.png");
 	textures["BACK_BUTTON_PRESS"] = LoadTexture("resources/Button/backButtonPress.png");
+	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/resumeButtonPress.png");
+	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
+	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/menuButtonPress.png");
+	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/menuButtonRelease.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
     

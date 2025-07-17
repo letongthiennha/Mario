@@ -1,5 +1,6 @@
 #include "CollisionMediator.h"
 #include "SoundControoler.h"
+#include "CourseClearToken.h"
 #include "QUestionBlock.h"
 void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)
 {
@@ -441,7 +442,7 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
 
 void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB)
 {
-    if (AtoB == COLLISION_NONE)
+    if (AtoB == COLLISION_NONE || dynamic_cast<ClearToken*>(item) != nullptr)
         return;
 
     if (item->getState() == ItemState::POP_UP||item->getState() == ItemState::UNACTIVE)

@@ -15,13 +15,13 @@ void GameState::nextLevel()
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Create a new level with the updated player data
 }
-GameState::GameState(StateManager *manager) :currentLevelID(2), State(manager),
+GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
                                                 transitionState(TransitionState::TRANSITION_NONE)
 {
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Initialize the first level
-    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("GAME_STATE_MENU_BUTTON"))
+    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
         .DisableBackground()
         .fitTexture();  
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
