@@ -1,5 +1,5 @@
 #include "CollisionMediator.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "CourseClearToken.h"
 #include "QUestionBlock.h"
 void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)

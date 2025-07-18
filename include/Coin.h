@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 #include "ResourceManager.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 
 class Coin : public Item {
 public:

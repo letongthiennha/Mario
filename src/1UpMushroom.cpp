@@ -1,6 +1,6 @@
 #include "1UpMushroom.h"
 #include "ResourceManager.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "GameClock.h"
 #include "Level.h"
 

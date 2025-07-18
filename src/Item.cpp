@@ -1,7 +1,7 @@
 #include "Item.h"
 #include "GameClock.h"
 #include "Level.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 
 Item::Item(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame):
 	Entity(pos, size, color, frameTime, maxFrame), state(IDLE), disappearTimer(0.05f), initialPos(pos){ }

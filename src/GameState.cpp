@@ -2,7 +2,7 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "LevelState.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "StateManager.h"
 #include "SettingMenuState.h"
 void GameState::nextLevel()

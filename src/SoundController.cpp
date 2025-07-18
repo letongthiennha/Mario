@@ -1,4 +1,4 @@
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "ResourceManager.h"
 #include <algorithm>
 

@@ -2,7 +2,7 @@
 #include "ResourceManager.h"
 #include "Map.h"
 #include "LevelState.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "Monster.h"
 #include "raylib.h"
 #include "QuestionBlock.h"

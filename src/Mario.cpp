@@ -3,7 +3,7 @@
 #include "Level.h"
 #include <cmath>
 #include <iostream>
-#include "SoundControoler.h"
+#include "SoundController.h"
 //FUll constructor
 Mario::Mario(Vector2 pos, int lives, MarioState form)
     : Entity(pos, {32,40}, Vector2{0, 0}, WHITE, 0.1f, 2, DIRECTION_RIGHT),

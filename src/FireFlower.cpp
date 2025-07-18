@@ -1,7 +1,7 @@
 #include "FireFlower.h"
 #include "GameClock.h"
 #include "ResourceManager.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "Level.h"
 #include <string>
 

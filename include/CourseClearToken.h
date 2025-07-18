@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 #include "ResourceManager.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 
 class ClearToken : public Item {
 private:

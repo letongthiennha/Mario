@@ -1,7 +1,7 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "GameState.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "SettingMenuState.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),

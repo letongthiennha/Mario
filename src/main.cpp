@@ -8,7 +8,7 @@
 #include "Fireball.h"
 #include <iostream>
 #include "Tile.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "Button.h"
 #include "MenuState.h"
 #include "StateManager.h"

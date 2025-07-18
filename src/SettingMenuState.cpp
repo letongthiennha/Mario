@@ -1,5 +1,5 @@
 #include "SettingMenuState.h"
-#include "SoundControoler.h"
+#include "SoundController.h"
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "GameClock.h"
