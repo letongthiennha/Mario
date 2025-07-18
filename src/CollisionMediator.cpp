@@ -1,5 +1,6 @@
 #include "CollisionMediator.h"
 #include "SoundControoler.h"
+#include "CourseClearToken.h"
 #include "QUestionBlock.h"
 void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)
 {
@@ -318,6 +319,7 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
         }
         else if(auto* star= dynamic_cast<Star*>(item)) {
             star->collect();
+            mario->addScore(1000);
 			// change to invincible state
         }
         else if (auto* upMoon = dynamic_cast<UpMoon*>(item)) {
@@ -325,6 +327,10 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
 			// Increase Mario's life by 3
             mario->addLives(3);
             mario->addScore(3000); // Add score for collecting a 3-Up moon
+        }
+        else if (auto* clearToken = dynamic_cast<ClearToken*>(item)) {
+			clearToken->collect();
+            mario->changeWinState(true);
         }
         else {
             // Handle other items if needed
@@ -436,7 +442,7 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
 
 void CollisionMediator::HandleItemWithTile(Item*& item, Tile*& tile, CollisionInfo AtoB)
 {
-    if (AtoB == COLLISION_NONE)
+    if (AtoB == COLLISION_NONE || dynamic_cast<ClearToken*>(item) != nullptr)
         return;
 
     if (item->getState() == ItemState::POP_UP||item->getState() == ItemState::UNACTIVE)

@@ -3,6 +3,7 @@ void ResourceManager::loadFonts()
 {
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
     fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
+	fonts["SETTING_FONT"] = LoadFont("resources/Font/SuperMario256.ttf");
 }
 
 // Load
@@ -120,6 +121,8 @@ void ResourceManager::loadTextures()
     {
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
+    textures["BACKGROUND_LEVEL_2"] = LoadTexture("resources/Background/background2.png");
+	textures["SETTING_BACKGROUND"] = LoadTexture("resources/Background/setting_background.png");
 
     }
     //BLOCK
@@ -140,8 +143,10 @@ void ResourceManager::loadTextures()
     textures["Question_Block_3"] = LoadTexture("resources/Entity/Blocks/Question_3.png");
     }
     //TILE
-    for (int i = 0;i<104;i++){
-        std::string tileName = "TILE_" + std::to_string(i);
+    for (int i = 0;i<113;i++){
+        int index = i;
+        if (index >= 104) index += 4;
+        std::string tileName = "TILE_" + std::to_string(index);
         std::string path= "resources/Entity/Tiles/tile_" + std::to_string(i) + ".png";
         textures[tileName] = LoadTexture(path.c_str());
     }
@@ -150,8 +155,22 @@ void ResourceManager::loadTextures()
     textures["MENU_STATE_START_BUTTON"] = LoadTexture("resources/Button/MenuStartButton.png");
     textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
+
+    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/homeButtonRelease.png");
+    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/homeButtonPress.png");
+	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/muteButtonRelease.png");
+	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/muteButtonPress.png");
+	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/unmuteButtonRelease.png");
+	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/unmuteButtonPress.png");
+	textures["BACK_BUTTON_RELEASE"] = LoadTexture("resources/Button/backButtonRelease.png");
+	textures["BACK_BUTTON_PRESS"] = LoadTexture("resources/Button/backButtonPress.png");
+	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/resumeButtonPress.png");
+	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
+	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/menuButtonPress.png");
+	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/menuButtonRelease.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
+    
     //HUD
     textures["HUD_COINS"] = LoadTexture("resources/UI/hud_coin.png");
     textures["LEVEL_END_CONGRATULATIONS"] = LoadTexture("resources/UI/Congratulations.png");
@@ -247,6 +266,11 @@ void ResourceManager::loadTextures()
         {
             textures["PIRANHA_0"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_0.png");
         }    
+
+        // COURSE CLEAR TOKEN
+		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");
+
+
 }   
 
 void ResourceManager::loadSounds(){

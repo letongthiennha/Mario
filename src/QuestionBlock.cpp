@@ -21,12 +21,14 @@ QuestionBlock::QuestionBlock(Vector2 pos, Vector2 size, Color color, float frame
 QuestionBlock::~QuestionBlock() = default;   
 
 void QuestionBlock::updateStateAndPhysic() {
-    Entity::updateStateAndPhysic();
-    frameAcum += GetFrameTime();
-    if (frameAcum > frameTime) {
-        currFrame++;
-        if (currFrame > maxFrame) currFrame = 0;
-        frameAcum -= frameTime;
+    if (!hit) {
+        Entity::updateStateAndPhysic();
+        frameAcum += GameClock::getInstance().DeltaTime;
+        if (frameAcum > frameTime) {
+            currFrame++;
+            if (currFrame > maxFrame) currFrame = 0;
+            frameAcum -= frameTime;
+        }
     }
 }
 
@@ -55,6 +57,11 @@ void QuestionBlock::ActiveReward() {
     }
     Item* item = ItemFactory::createItem(reward, pos, DIRECTION_RIGHT);
     item->setState(ItemState::POP_UP);
+
+    if (auto coin = dynamic_cast<Coin*>(item)) {
+        coin->isItem = true;
+    }
+
     itemsContainer.push_back(item); // Add the item to the container
     hit = true; // Mark the block as hit
 }

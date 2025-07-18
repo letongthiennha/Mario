@@ -4,6 +4,7 @@ class State;
 class StateManager {
     private:
         State *currentState;
+        State* previousState;
     public:
         StateManager();
         ~StateManager();
@@ -13,4 +14,7 @@ class StateManager {
         void update();
 
         void draw();
+
+        State* getPreviousState() const;
+        void goBack();
 };

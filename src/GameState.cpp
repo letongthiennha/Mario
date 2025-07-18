@@ -4,6 +4,7 @@
 #include "LevelState.h"
 #include "SoundControoler.h"
 #include "StateManager.h"
+#include "SettingMenuState.h"
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -20,7 +21,7 @@ GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
                                                 transitionState(TransitionState::TRANSITION_NONE)
 {
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Initialize the first level
-    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("GAME_STATE_MENU_BUTTON"))
+    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
         .DisableBackground()
         .fitTexture();  
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
@@ -110,7 +111,7 @@ void GameState::update()
 {
         menuButton.update();
     if (menuButton.isClicked()) {
-        stateManager->setState(new MenuState(stateManager));  // Switch to MenuState
+        stateManager->setState(new SettingMenuState(stateManager));  // Switch to MenuState
     }
     switch (transitionState) {
     case TransitionState::TRANSITION_NEXT_LEVEL:

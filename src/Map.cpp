@@ -43,8 +43,8 @@ Vector2 Map::getStartPositionForMario() const
 
 Map::Map(int mapNumber)
 {
-    blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
-    blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
+    //blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
+    //blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
     
@@ -117,12 +117,26 @@ void Map::LoadMap(int mapNumber)
 
     startPositionForMario = Vector2{(float)startPosX, (float)startPosY};
 
+    int blockTilesetFirstGid = -1;
+    for (const auto& tileset : mapJson["tilesets"]) {
+        std::string name = tileset.contains("name") ? tileset["name"].get<std::string>() : "";
+        std::string source = tileset.contains("source") ? tileset["source"].get<std::string>() : "";
+        if (name == "Blocks" || source.find("Blocks.tsx") != std::string::npos) {
+            blockTilesetFirstGid = tileset["firstgid"];
+            break;
+        }
+    }
+
+    if (blockTilesetFirstGid == -1) {
+        std::cerr << "Block tileset not found!" << std::endl;
+    }
+
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
 			int tileId = data[y * width + x];
 			if (tileId == 0)
                 continue;
-            else if(tileId==1)
+            else if(tileId==1 || (tileId >= 108 && tileId <= 111))
 				nonInterativeTile.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
             else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
                 }
@@ -139,13 +153,28 @@ void Map::LoadMap(int mapNumber)
                     // Create a coin item at the position of the tile
                     items.emplace_back(ItemFactory::createItem("Coin", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
                 }
+            }
         }
-    }
+        if (layer["type"] == "tilelayer" && layer["name"] == "ClearCourseToken") {
+
+            std::vector<int> data = layer["data"];
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int tileId = data[y * width + x];
+                    if (tileId == 0) continue; // Skip empty tiles
+                    // Create a ClearToken item at the position of the tile
+                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                }
+            }
+        }
+
         if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
                 float y = obj["y"];
+                //std::cout << "Monster object: " << obj.dump() << std::endl;
                 std::string type = obj["type"];
+                //if (type.empty()) continue;
                 float speed = 100.0f; // Default speed
                 if (obj.contains("speed")) {
                  speed = obj["speed"];
@@ -159,12 +188,14 @@ void Map::LoadMap(int mapNumber)
                 }
             }
         }
-        
+
         if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
             std::vector<int> data = layer["data"];
             for (int y = 0; y < height; ++y) {
                 for (int x = 0; x < width; ++x) {
-                        int tileId = data[y * width + x]-105;
+                        int rawId = data[y * width + x];
+                        int tileId = rawId - blockTilesetFirstGid;
+                        if (rawId == 0) continue;
                         Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
                         if (block) {
                             blocks.push_back(block);
@@ -179,23 +210,22 @@ void Map::LoadMap(int mapNumber)
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
                 float y = obj["y"];
-                if(obj.contains("properties")&& !obj["properties"].empty()) {
+                if (obj.contains("properties") && !obj["properties"].empty()) {
                     // Assuming the first property is the item type
 
-                std::string itemType = obj["properties"][0]["value"];
-                Block* block =  BlockFactory::createBlock("QuestionBlock", {x, y-32},items, itemType);
-                if (block) 
-                {
-                    blocks.push_back(block);
-                } 
-                else 
-                {
-                    std::cerr << "Unknown block type: " << itemType << std::endl;
+                    std::string itemType = obj["properties"][0]["value"];
+                    Block* block = BlockFactory::createBlock("QuestionBlock", { x, y - 32 }, items, itemType);
+                    if (block)
+                    {
+                        blocks.push_back(block);
+                    }
+                    else
+                    {
+                        std::cerr << "Unknown block type: " << itemType << std::endl;
+                    }
                 }
             }
-            }
         }
-
     }
 }
 

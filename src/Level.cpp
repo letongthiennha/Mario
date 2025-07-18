@@ -5,6 +5,9 @@
 #include "SoundControoler.h"
 #include "Monster.h"
 #include "raylib.h"
+#include "QuestionBlock.h"
+#include "EyesOpenedBlock.h"
+
 Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),
 items(map.getItems()), blocks(map.getBlocks()),
 gameState(gamestate),
@@ -24,8 +27,8 @@ state(LevelState::LEVEL_STATE_PLAYING)
 
                 break;
             case 2:
-                background = ResourceManager::getInstance().getTexture("LEVEL_2_BACKGROUND");
-                backgroundColor = BLUE;
+                background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_2");
+                backgroundColor = DARKGREEN;
                 break;
         //     case 3:
         //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");
@@ -133,6 +136,10 @@ void Level::UpdateLevel()
                         }
                         for(auto const & item : items)
                         {
+                                if (dynamic_cast<Coin*>(item) != nullptr) {
+                                    continue;
+                                }
+
                                 CollisionInfo itemCollision = item->CheckCollisionType(*block);
                                 if(itemCollision)
                                 collisionMediator.HandleCollision(item, block);
@@ -203,14 +210,21 @@ void Level::UpdateLevel()
         }
         // Update items        
                 for (auto const& item : items) {
+                    Coin* coin = dynamic_cast<Coin*>(item);
+                    if (coin != nullptr) {
+                        if (!coin->isItem) continue;
+                    }
+
                                 if(item->getState()==ItemState::IDLE)
                                 item->updateStateAndPhysic();
                                 if (item->getState() == ItemState::POP_UP)
                                 item->Activate();
-                        }
+                }
         //Update Blocks
                 for (auto& block : blocks) {
+                    if (dynamic_cast<QuestionBlock*>(block) || dynamic_cast<EyesOpenedBlock*>(block)) {
                         block->updateStateAndPhysic();
+                    }
                 }
         }
 
@@ -236,6 +250,13 @@ void Level::UpdateLevel()
         //         player.startVictoryDance();
         //         return;
         // } 
+
+        if (player.getWinState() == true) {
+            state = LevelState::LEVEL_STATE_COMPLETED;
+            player.startVictoryDance();
+            player.changeWinState(false);
+            return;
+        }
 
         // Clean up inactive monsters adn items
         for (auto it = monsters.begin(); it != monsters.end();) {

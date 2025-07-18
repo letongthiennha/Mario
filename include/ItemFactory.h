@@ -8,6 +8,7 @@
 #include "FireFlower.h"
 #include "Star.h"
 #include "3UpMoon.h"
+#include "CourseClearToken.h"
 
 class ItemFactory {
 public:

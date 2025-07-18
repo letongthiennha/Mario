@@ -199,3 +199,13 @@ void Button::Draw() {
         DrawText(text.c_str(), (int)text_pos.x, (int)text_pos.y, text_size, *text_color);  // Draw text with specified color
     }
 }
+
+void Button::setPosition(Vector2 position) {
+    pos = position;
+    hitBox.x = position.x;
+    hitBox.y = position.y;
+}
+
+Rectangle Button::getHitBox() const {
+    return hitBox;
+}

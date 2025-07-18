@@ -15,6 +15,7 @@ void Item::collect() {
         state = ItemState::BEING_HIT;
         currFrame = 0;
         frameAcum = 0;
+        maxFrame = 0.02f;
         playSoundCollision();
         floatingScore.setPosition(pos);
     }

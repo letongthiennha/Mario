@@ -34,6 +34,27 @@ int main(){
 
                 stateManager.update();
                 SoundController::getInstance().UpdateSoundStream();
+
+				// Test SoundController functionality
+                if (IsKeyPressed(KEY_F2)) {
+                    float current = SoundController::getInstance().GetMusicVolume();
+                    SoundController::getInstance().SetMusicVolume(current - 0.02f);
+                }
+                if (IsKeyPressed(KEY_F3)) {
+                    float current = SoundController::getInstance().GetMusicVolume();
+                    SoundController::getInstance().SetMusicVolume(current + 0.02f);
+                }
+                if (IsKeyPressed(KEY_F4)) { // Mute/unmute music with M
+                    auto& sc = SoundController::getInstance();
+                    if (sc.IsMusicMuted()) sc.UnmuteMusic();
+                    else sc.MuteMusic();
+                }
+                if (IsKeyPressed(KEY_F5)) { // Mute/unmute SFX with N
+                    auto& sc = SoundController::getInstance();
+                    if (sc.IsSFXMuted()) sc.UnmuteSFX();
+                    else sc.MuteSFX();
+                }
+
                 GameClock::getInstance().updateTimeAcum -= GameClock::getInstance().DeltaTime;
             }    
         }

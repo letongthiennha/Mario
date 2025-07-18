@@ -4,7 +4,7 @@
 Item *ItemFactory::createItem(const std::string &type, Vector2 pos, Direction direction)
 {
     if (type == "Coin") {
-        return new Coin(pos, {32,32}, WHITE, 0.1f, 4, IDLE);
+        return new Coin(pos, {32,32}, WHITE, 0.04f, 4, IDLE);
     }
     else if (type == "Mushroom") {
         return new Mushroom(pos, {32,32}, WHITE, 0.1f, 4, DIRECTION_LEFT);
@@ -20,6 +20,9 @@ Item *ItemFactory::createItem(const std::string &type, Vector2 pos, Direction di
     }
     else if (type == "UpMoon") {
         return new UpMoon(pos, {32,32}, WHITE, 0.1f, 2, DIRECTION_RIGHT);
+    }
+    else if (type == "ClearToken") {
+		return new ClearToken(pos, { 64,32 }, WHITE, 0.1f, 2);
     }
     return nullptr;
 }
