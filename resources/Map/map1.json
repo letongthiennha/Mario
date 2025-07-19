@@ -142,18 +142,26 @@
                  "x":1136,
                  "y":775
                 }, 
-                {
-                 "gid":126,
-                 "height":54,
-                 "id":11,
-                 "name":"",
-                 "rotation":0,
-                 "type":"KoopaTroopa",
-                 "visible":true,
-                 "width":32,
-                 "x":1110.66666666667,
-                 "y":664.333333333333
-                }, 
+
+{
+  "gid": 139,
+  "height": 50,
+  "id": 1,
+  "name": "",
+  "rotation": 0,
+  "type": "BanzaiBill",
+  "visible": true,
+  "width": 96,
+  "x": 1200.33,
+  "y": 200,
+  "properties": [
+    {
+      "name": "speed",
+      "type": "float",
+      "value": 200
+    }
+  ]
+},
                 {
                  "gid":133,
                  "height":50,

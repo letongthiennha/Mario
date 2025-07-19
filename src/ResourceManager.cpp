@@ -210,6 +210,8 @@ void ResourceManager::loadTextures()
         textures["GOOMBA_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_1.png");
         textures["GOOMBA_1_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_1_RIGHT"]);
     }
+    //MONSTERS:
+
         // ────────────────────────────────
         // FLYING GOOMBA
         // ────────────────────────────────
@@ -265,7 +267,12 @@ void ResourceManager::loadTextures()
         // PIRANHA PLANT
         {
             textures["PIRANHA_0"] = LoadTexture("resources/Entity/Monsters/PiranhaPlant/PiranhaPlant_0.png");
-        }    
+        } 
+
+        // BANZABILL
+        {
+            textures["BANZABILL_0"] = LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png");
+        }   
 
         // COURSE CLEAR TOKEN
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");

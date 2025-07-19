@@ -2,6 +2,8 @@
 #include "Goomba.h"
 #include "KoopaTroopa.h"
 #include "FlyingGoomba.h"
+#include "BanzaiBill.h"
+#include "PiranhaPlant.h"
 #include <vector>
 #include "Monster.h"
 #include "raylib.h"

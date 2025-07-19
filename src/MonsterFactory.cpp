@@ -8,6 +8,10 @@ Monster *MonsterFactory::createMonster(const std::string &type, Vector2 pos, flo
         return new KoopaTroopa(pos, speed);
     } else if (type == "FlyingGoomba") {
         return new FlyingGoomba(pos, speed);
+    }else if (type == "BanzaiBill") {
+        return new BanzaiBill(pos, speed);
+    } else if (type == "PiranhaPlant") {
+        return new PiranhaPlant(pos, speed); // 👈 Add this
     }
     return nullptr; // Invalid type
 }
