@@ -271,7 +271,7 @@ void ResourceManager::loadTextures()
 
         // BANZABILL
         {
-            textures["BANZABILL_0"] = LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png");
+            textures["BANZAIBILL_0"] = LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png");
         }   
 
         // COURSE CLEAR TOKEN

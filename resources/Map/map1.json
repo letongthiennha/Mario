@@ -143,25 +143,7 @@
                  "y":775
                 }, 
 
-{
-  "gid": 139,
-  "height": 50,
-  "id": 1,
-  "name": "",
-  "rotation": 0,
-  "type": "BanzaiBill",
-  "visible": true,
-  "width": 96,
-  "x": 1200.33,
-  "y": 200,
-  "properties": [
-    {
-      "name": "speed",
-      "type": "float",
-      "value": 200
-    }
-  ]
-},
+
                 {
                  "gid":133,
                  "height":50,

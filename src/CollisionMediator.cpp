@@ -49,35 +49,41 @@ void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, Collis
     }
 }
 void CollisionMediator::HandleMarioWithMonster(Mario *&mario, Monster *&monster, CollisionInfo AtoB)
-{
-    if (mario->getState() == ENTITY_STATE_DYING || mario->getState() == ENTITY_STATE_TO_BE_REMOVED || mario->getState() == ENTITY_STATE_VICTORY_DANCE)
-        return;
-    if (AtoB == COLLISION_NONE)
-        return;
+{if (mario->getState() == ENTITY_STATE_DYING || 
+    mario->getState() == ENTITY_STATE_TO_BE_REMOVED || 
+    mario->getState() == ENTITY_STATE_VICTORY_DANCE)
+    return;
 
-    switch (AtoB)
+if (AtoB == COLLISION_NONE)
+    return;
+
+// ✅ BanzaiBill always kills Mario
+if (monster->isLethalToMario()) {
+    mario->reactOnBeingHit();
+    return;
+}
+
+switch (AtoB)
+{
+case COLLISION_SOUTH:
+    if (mario->getVelocity().y > 0) // Mario is jumping down
     {
-    case COLLISION_SOUTH:
-        if (mario->getVelocity().y > 0) // Mario is jumping down
-        {
-            mario->addScore(400); // Add score for defeating the monster
-            monster->die();
-            mario->setVelocity(Vector2{mario->getVelocity().x, -600}); // Bounce effect
-            SoundController::getInstance().PlaySound("MARIO_STOMP");
-        }
-        break;
-    case COLLISION_NORTH:
-        mario->setPosition(Vector2{mario->getPosition().x, monster->getPosition().y + monster->getSize().y});
-        break;
-    case COLLISION_EAST:
-        mario->reactOnBeingHit();
-        break;
-    case COLLISION_WEST:
-        mario->reactOnBeingHit();
-        break;
-    default:
-        break;
+        mario->addScore(400); // Add score for defeating the monster
+        monster->die();
+        mario->setVelocity(Vector2{mario->getVelocity().x, -600}); // Bounce effect
+        SoundController::getInstance().PlaySound("MARIO_STOMP");
     }
+    break;
+case COLLISION_NORTH:
+    mario->setPosition(Vector2{mario->getPosition().x, monster->getPosition().y + monster->getSize().y});
+    break;
+case COLLISION_EAST:
+case COLLISION_WEST:
+    mario->reactOnBeingHit();
+    break;
+default:
+    break;
+}
 }
 void CollisionMediator::HandleFireballWithTile(Fireball *&fireball, Tile *&tile, CollisionInfo AtoB)
 {

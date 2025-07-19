@@ -12,7 +12,7 @@ BanzaiBill::BanzaiBill(Vector2 pos, float speed)
     velocity.x = -speed;
     velocity.y = 0.0f;
 
-    sprite = &ResourceManager::getInstance().getTexture("BANZABILL_0");
+    sprite = &ResourceManager::getInstance().getTexture("BANZAIBILL_0");
 
     updateHitboxes();
 }
@@ -37,7 +37,7 @@ void BanzaiBill::updateStateAndPhysic() {
 void BanzaiBill::updateSprite() {
     if (!isActive || state == ENTITY_STATE_DYING) return;
 
-    sprite = &ResourceManager::getInstance().getTexture("BANZABILL_0");
+    sprite = &ResourceManager::getInstance().getTexture("BANZAIBILL_0");
 }
 
 void BanzaiBill::Draw() {
