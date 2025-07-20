@@ -134,7 +134,7 @@ void Mario::ChangeFromSmallToBig()
     currFrame = 0;
     this->size = {32, 56};
     maxFrame = 2;
-    //startInvincible();
+    startInvincible();
 }
 
 void Mario::ChangeFromBigToFire()
@@ -146,7 +146,7 @@ void Mario::ChangeFromBigToFire()
 
     this->size = {32, 56};
     maxFrame = 2;
-   // startInvincible();
+   startInvincible();
 }
 
 void Mario::ChangeFromFireToBig()
@@ -158,7 +158,7 @@ void Mario::ChangeFromFireToBig()
 
    setSize( {32, 56});
     maxFrame = 2;
-    //startInvincible();
+    startInvincible();
 }
 
 void Mario::ChangeFromBigToSmall()
@@ -170,7 +170,7 @@ void Mario::ChangeFromBigToSmall()
     setSize({32, 40});
     maxFrame = 1;
     if(state==ENTITY_STATE_ON_GROUND) setPosition({pos.x, pos.y + 16}); // Adjust position when changing to small
-   // startInvincible();
+   startInvincible();
 }
 
 void Mario::ChangeFromSmallToFire()
@@ -181,7 +181,7 @@ void Mario::ChangeFromSmallToFire()
     frameAcum = 0;
     setSize({32, 56});
     maxFrame = 2;
-   // startInvincible();
+   startInvincible();
 }
 
 void Mario::startInvincible()
