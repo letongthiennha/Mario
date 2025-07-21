@@ -48,6 +48,8 @@ Map::Map(int mapNumber)
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
     monsters.push_back( MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
+    monsters.push_back(MonsterFactory::createMonster("Rex", Vector2{1200, 700}, 100)); // Rex
+
     LoadMap(mapNumber);
 }
     Map::~Map()

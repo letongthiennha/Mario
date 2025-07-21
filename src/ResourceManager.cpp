@@ -210,13 +210,17 @@ void ResourceManager::loadTextures()
     textures["1000_POINTS"] = LoadTexture("resources/Effects/guiThousandsPoints_1000.png");
     textures["1_UP"] = LoadTexture("resources/Effects/gui1Up.png");
     textures["3_UP"] = LoadTexture("resources/Effects/gui3Up.png");
-    {
+        //MONSTERS:
+        // ────────────────────────────────
+        // GOOMBA
+        // ────────────────────────────────
+        {
         textures["GOOMBA_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_0.png");
         textures["GOOMBA_0_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_0_RIGHT"]);
         textures["GOOMBA_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/Goomba/Goomba_1.png");
         textures["GOOMBA_1_LEFT"] = FlipTextureHorizontal(textures["GOOMBA_1_RIGHT"]);
-    }
-    //MONSTERS:
+        }
+
 
         // ────────────────────────────────
         // FLYING GOOMBA
@@ -279,6 +283,18 @@ void ResourceManager::loadTextures()
         {
             textures["BANZAIBILL_0"] = FlipTextureHorizontal(LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png"));
         }   
+        // REX
+        {
+        textures["REX_2_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Rex/Rex_2_0.png");
+        textures["REX_2_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/Rex/Rex_2_1.png");
+        textures["REX_1_0_RIGHT"] = LoadTexture("resources/Entity/Monsters/Rex/Rex_1_0.png");
+        textures["REX_1_1_RIGHT"] = LoadTexture("resources/Entity/Monsters/Rex/Rex_1_1.png");
+
+        textures["REX_2_0_LEFT"] = FlipTextureHorizontal(textures["REX_2_0_RIGHT"]);
+        textures["REX_2_1_LEFT"] = FlipTextureHorizontal(textures["REX_2_1_RIGHT"]);
+        textures["REX_1_0_LEFT"] = FlipTextureHorizontal(textures["REX_1_0_RIGHT"]);
+        textures["REX_1_1_LEFT"] = FlipTextureHorizontal(textures["REX_1_1_RIGHT"]);
+        }
 
         // COURSE CLEAR TOKEN
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");

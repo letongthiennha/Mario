@@ -4,6 +4,7 @@
 #include "FlyingGoomba.h"
 #include "BanzaiBill.h"
 #include "PiranhaPlant.h"
+#include "Rex.h"
 #include <vector>
 #include "Monster.h"
 #include "raylib.h"
