@@ -144,18 +144,78 @@
                 }, 
 
 
+              {
+               "gid":133,
+               "height":50,
+               "id":12,
+               "name":"",
+               "rotation":0,
+               "type":"FlyingGoomba",
+               "visible":true,
+               "width":66,
+               "x":1128.33333333333,
+               "y":93
+              },
                 {
-                 "gid":133,
+                 "gid":140,
                  "height":50,
-                 "id":12,
+                 "id":51,
                  "name":"",
                  "rotation":0,
-                 "type":"FlyingGoomba",
+                 "type":"BanzaiBill",
                  "visible":true,
                  "width":66,
                  "x":1128.33333333333,
                  "y":93
-                }, 
+                },
+                {
+                 "gid":140,
+                 "height":50,
+                 "id":52,
+                 "name":"",
+                 "rotation":0,
+                 "type":"BanzaiBill",
+                 "visible":true,
+                 "width":66,
+                 "x":1200,
+                 "y":200
+                },
+                {
+                 "gid":140,
+                 "height":50,
+                 "id":53,
+                 "name":"",
+                 "rotation":0,
+                 "type":"BanzaiBill",
+                 "visible":true,
+                 "width":66,
+                 "x":1300,
+                 "y":400
+                },
+                {
+                 "gid":140,
+                 "height":50,
+                 "id":54,
+                 "name":"",
+                 "rotation":0,
+                 "type":"BanzaiBill",
+                 "visible":true,
+                 "width":66,
+                 "x":1400,
+                 "y":600
+                },
+                {
+                 "gid":140,
+                 "height":50,
+                 "id":55,
+                 "name":"",
+                 "rotation":0,
+                 "type":"BanzaiBill",
+                 "visible":true,
+                 "width":66,
+                 "x":1500,
+                 "y":800
+                },
                 {
                  "gid":133,
                  "height":50,
