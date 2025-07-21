@@ -58,11 +58,6 @@ void CollisionMediator::HandleMarioWithMonster(Mario *&mario, Monster *&monster,
 if (AtoB == COLLISION_NONE)
     return;
 
-// // ✅ BanzaiBill always kills Mario
-// if (monster->isLethalToMario()) {
-//     mario->reactOnBeingHit();
-//     return;
-// }
 
 switch (AtoB)
 {
@@ -416,7 +411,7 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
 {
     if (AtoB == COLLISION_NONE)
         return;
-    if(dynamic_cast<BanzaiBill*> (monster))
+    if(dynamic_cast<BanzaiBill*> (monster))//BanzaiBill does not respond to block collisions
         return;
     if (monster->getState() == ENTITY_STATE_DYING || monster->getState() == ENTITY_STATE_TO_BE_REMOVED)
         return;

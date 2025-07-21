@@ -26,7 +26,7 @@ void BanzaiBill::updateStateAndPhysic() {
     }
     if(state==ENTITY_STATE_DYING){
         velocity.x = -150.0f;
-        velocity.y = 300.0f;
+        velocity.y = 300.0f; // This makes BanzaiBill fly down
 
 
     }
