@@ -9,7 +9,6 @@ public:
     KoopaTroopa(Vector2 pos, float speed);
     virtual void updateStateAndPhysic() override;
     virtual void handleCollision(const Tile& tile, CollisionInfo type) override;
-    virtual void Draw() override;
     void updateSprite();
 
 private:

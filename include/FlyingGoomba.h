@@ -14,5 +14,4 @@ public:
     void updateSprite() override;
     void updateStateAndPhysic() override;
     void handleCollision(const Tile& tile, CollisionInfo type) override;
-    void Draw() override;
 };

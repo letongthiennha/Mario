@@ -20,35 +20,33 @@ BanzaiBill::BanzaiBill(Vector2 pos, float speed)
 
 void BanzaiBill::updateStateAndPhysic() {
     if (!isActive) return;
+                if(floatingScore != nullptr) {
+        floatingScore->Update();
 
-    float delta = GameClock::getInstance().DeltaTime;
+    }
+    if(state==ENTITY_STATE_DYING){
+        velocity.x = -150.0f;
+        velocity.y = 300.0f;
 
-    pos.x += velocity.x * delta;
-    pos.y += velocity.y * delta;
+
+    }
+
+    Entity::updateStateAndPhysic();
 
     // Remove when off the left edge of the screen
-    if (pos.x + size.x < 0) {
-        setIsActive(false);  // Mark for removal or hide
+    if (pos.x + size.x < 0||pos.y>=1000.0f) {
+        state = ENTITY_STATE_TO_BE_REMOVED;  // Mark for removal or hide
     }
 
     updateHitboxes();
 }
 
 void BanzaiBill::updateSprite() {
-    if (!isActive || state == ENTITY_STATE_DYING) return;
-
+    if (!isActive ) return;
     sprite = &ResourceManager::getInstance().getTexture("BANZAIBILL_0");
 }
 
-void BanzaiBill::Draw() {
-    if (!isActive || sprite == nullptr || sprite->id == 0) return;
 
-    Rectangle source = { 0.0f, 0.0f, (float)-sprite->width, (float)sprite->height };
-    Rectangle dest = { pos.x, pos.y, size.x, size.y };
-    Vector2 origin = { 0.0f, 0.0f };
-
-    DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
-}
 
 
 

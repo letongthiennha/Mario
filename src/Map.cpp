@@ -47,7 +47,7 @@ Map::Map(int mapNumber)
     //blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
-    
+    monsters.push_back( MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
     LoadMap(mapNumber);
 }
     Map::~Map()

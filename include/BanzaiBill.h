@@ -9,7 +9,6 @@ public:
     void updateStateAndPhysic() override;
     void updateSprite();
     void handleCollision(const Tile& tile, CollisionInfo type) override;
-    void Draw() override;
 
 private:
     float frameTime;

@@ -21,6 +21,8 @@ Monster::~Monster() {
 void Monster::die() {
     if (state != ENTITY_STATE_DYING) {
         state = ENTITY_STATE_DYING;
+        currFrame = 0;
+        frameTime= 0.15f; // Set frame time for death animation
         velocity = {0.0f, 0.0f}; // Stop movement
         blinkAcum = 0.0f;
         deathAcum = 0.0f;
@@ -44,11 +46,11 @@ void Monster::updateStateAndPhysic() {
 //Death animation________________________
     if (state == ENTITY_STATE_DYING) {
         deathAcum += delta;
-        blinkAcum += delta;
+        frameAcum += delta;
 
-        if (blinkAcum >= blinkTime) {
-            isVisible = !isVisible;
-            blinkAcum = 0.0f;
+        if (frameAcum >= frameTime) {
+            currFrame++;
+            frameAcum -= frameTime;
         }
 
         if (deathAcum >= deathDuration) {
@@ -56,7 +58,6 @@ void Monster::updateStateAndPhysic() {
 
         }
 
-        updateHitboxes();
         return;
     }
 //End of death animation_____________________
@@ -75,14 +76,16 @@ void Monster::Draw() {
     if (floatingScore != nullptr) {
         floatingScore->Draw();
     }
-    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible)) 
-    return;
-    if (sprite != nullptr && sprite->id != 0) {
-        Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
-        Rectangle dest = {pos.x, pos.y, size.x, size.y};
-        Vector2 origin = {0.0f, 0.0f};
-        DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible))
+     return;
+    updateSprite();
+    if (sprite == nullptr || sprite->id == 0) {
+        return;
     }
+    Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
+    Rectangle dest = {pos.x, pos.y, size.x, size.y};
+    Vector2 origin = {0.0f, 0.0f};
+    DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
 }
 
 bool Monster::getIsActive() const {

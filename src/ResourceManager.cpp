@@ -194,7 +194,13 @@ void ResourceManager::loadTextures()
 	textures["STAR"] = LoadTexture("resources/Entity/Items/Star.png");
 
     //EFFECTS
-	textures["STAR_DUST_0"] = LoadTexture("resources/Effects/StarDust_0.png");
+    textures["PUFT_0"] = LoadTexture("resources/Effects/Puft_0.png");
+    textures["PUFT_1"] = LoadTexture("resources/Effects/Puft_1.png");
+    textures["PUFT_2"] = LoadTexture("resources/Effects/Puft_2.png");
+    textures["PUFT_3"] = LoadTexture("resources/Effects/Puft_3.png");
+
+
+    textures["STAR_DUST_0"] = LoadTexture("resources/Effects/StarDust_0.png");
 	textures["STAR_DUST_1"] = LoadTexture("resources/Effects/StarDust_1.png");
 	textures["STAR_DUST_2"] = LoadTexture("resources/Effects/StarDust_2.png");
 	textures["STAR_DUST_3"] = LoadTexture("resources/Effects/StarDust_3.png");
@@ -271,7 +277,7 @@ void ResourceManager::loadTextures()
 
         // BANZABILL
         {
-            textures["BANZAIBILL_0"] = LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png");
+            textures["BANZAIBILL_0"] = FlipTextureHorizontal(LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png"));
         }   
 
         // COURSE CLEAR TOKEN

@@ -20,7 +20,12 @@ Goomba::Goomba(Vector2 pos, float speed)
 }
 
 void Goomba::updateSprite() {
-    if (!isActive && state == ENTITY_STATE_DYING) return;
+    if (!isActive) return;
+    if(state==ENTITY_STATE_DYING){
+    std::string key="PUFT_" + std::to_string(currFrame);
+    sprite = &ResourceManager::getInstance().getTexture(key);
+    return;
+    }
     std::string dir = (velocity.x >= 0) ? "RIGHT" : "LEFT";
     std::string key = "GOOMBA_" + std::to_string(currFrame) + "_" + dir;
     sprite = &ResourceManager::getInstance().getTexture(key);
@@ -64,22 +69,3 @@ void Goomba::updateStateAndPhysic() {
 
 
 
-void Goomba::Draw() {
-    if (floatingScore != nullptr) {
-        floatingScore->Draw();
-    }
-    if (!isActive || (state == ENTITY_STATE_DYING && !isVisible))
-     return;
-    updateSprite();
-    if (sprite == nullptr || sprite->id == 0) {
-        return;
-    }
-    Rectangle source = {0, 0, (float)sprite->width, (float)sprite->height};
-    Rectangle dest = {pos.x, pos.y, size.x, size.y};
-    Vector2 origin = {0.0f, 0.0f};
-    DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
-    NorthHb.Draw();
-    SouthHb.Draw();
-    WestHb.Draw();
-    EastHb.Draw();
-}

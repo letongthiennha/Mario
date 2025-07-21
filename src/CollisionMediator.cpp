@@ -2,6 +2,7 @@
 #include "SoundController.h"
 #include "CourseClearToken.h"
 #include "QUestionBlock.h"
+#include "BanzaiBill.h"
 void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)
 {
     if(mario->getState()==ENTITY_STATE_DYING||mario->getState()==ENTITY_STATE_TO_BE_REMOVED||mario->getState()==ENTITY_STATE_VICTORY_DANCE)
@@ -57,11 +58,11 @@ void CollisionMediator::HandleMarioWithMonster(Mario *&mario, Monster *&monster,
 if (AtoB == COLLISION_NONE)
     return;
 
-// ✅ BanzaiBill always kills Mario
-if (monster->isLethalToMario()) {
-    mario->reactOnBeingHit();
-    return;
-}
+// // ✅ BanzaiBill always kills Mario
+// if (monster->isLethalToMario()) {
+//     mario->reactOnBeingHit();
+//     return;
+// }
 
 switch (AtoB)
 {
@@ -415,7 +416,8 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
 {
     if (AtoB == COLLISION_NONE)
         return;
-
+    if(dynamic_cast<BanzaiBill*> (monster))
+        return;
     if (monster->getState() == ENTITY_STATE_DYING || monster->getState() == ENTITY_STATE_TO_BE_REMOVED)
         return;
 

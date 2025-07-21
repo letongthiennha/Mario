@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "resources/Map/Map1.json",
+    "activeFile": "resources/Map/Map2.json",
     "expandedProjectPaths": [
-        ".",
         "resources/Entity",
-        "resources",
-        "resources/Map"
+        "resources/Map",
+        ".",
+        "resources"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -20,25 +20,36 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "resources/Map/Coin.tsx": {
+            "scaleInDock": 1
+        },
         "resources/Map/Enemies.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "resources/Map/Map1.json": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 3325.333333333333,
-                "y": 569.9999999999999
+                "x": 3091,
+                "y": 515.5
+            }
+        },
+        "resources/Map/Map2.json": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1245.4545454545455,
+                "y": 759.090909090909
             }
         },
         "resources/Map/map1.json": {
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 306.66666666666663,
-                "y": 459.33333333333326
+                "x": 5648.484848484848,
+                "y": 849.9999999999999
             }
         }
     },
@@ -51,7 +62,9 @@
         "resources/Map/Enemies.tsx",
         "resources/Entity/Tileset.tsx",
         "resources/Map/Blocks.tsx",
-        "resources/Map/Map1.json"
+        "resources/Map/Map1.json",
+        "resources/Map/map1.json",
+        "resources/Map/Map2.json"
     ],
     "project": "Tile.tiled-project",
     "property.type": "int",
@@ -60,7 +73,8 @@
         "resources/Entity/Tileset.tsx",
         "resources/Map/Blocks.tsx",
         "resources/Map/Map1.json",
-        "resources/Map/map1.json"
+        "resources/Map/map1.json",
+        "resources/Map/Map2.json"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
