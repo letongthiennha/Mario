@@ -29,7 +29,7 @@ GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
 }
 
 
-void GameState::resetLevelWhenMarioDead()
+void GameState::resetLevelWhenPlayerDead()
 {
     playerMemento = std::make_unique<PlayerData>(playerMemento->getLives() - 1, 0,0); // Decrease lives by 1
     currentLevel = std::make_unique<Level>(currentLevelID, this, *playerMemento.get()); // Reset the level with the current player data
@@ -149,7 +149,7 @@ void GameState::update()
         break;
     case LevelState::LEVEL_STATE_NEED_RESET:
     if(IsKeyPressed(GetKeyPressed())) {
-        resetLevelWhenMarioDead();  // Reset the level
+        resetLevelWhenPlayerDead();  // Reset the level
             startTransition(TransitionState::TRANSITION_LEVEL_RESET);  // Reset the level when Enter is pressed
         }
         break;

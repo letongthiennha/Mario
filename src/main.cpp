@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 #include "ResourceManager.h"
-#include "Mario.h"
+#include "PlayableCharacter.h"
 #include "GameClock.h"
 #include "Level.h"
 #include "Fireball.h"

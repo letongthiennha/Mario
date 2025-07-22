@@ -29,7 +29,7 @@ public:
 
     bool getIsActive() const;
     void setIsActive(bool active);
-    virtual bool isLethalToMario() const { return false; }
+    virtual bool isLethalToPlayer() const { return false; }
 };
 
 #endif // MONSTER_H

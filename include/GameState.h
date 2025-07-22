@@ -34,7 +34,7 @@ public:
 
     HUD& getHUD() { return gameHUD; }
 
-    void resetLevelWhenMarioDead();
+    void resetLevelWhenPlayerDead();
     void drawLevelEndSummary();
     void resetwhenGameOver();
     void startTransition(TransitionState state);

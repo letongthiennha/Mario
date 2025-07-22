@@ -15,6 +15,6 @@ private:
     float frameAcum;
     int maxFrame;
     int currFrame;
-    bool isLethalToMario() const override { return true; }
+    bool isLethalToPlayer() const override { return true; }
 
 };

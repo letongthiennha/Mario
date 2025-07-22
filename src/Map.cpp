@@ -36,9 +36,9 @@ float Map::getMapWidth() const
     return width;
 }
 
-Vector2 Map::getStartPositionForMario() const
+Vector2 Map::getStartPositionForPlayer() const
 {
-    return startPositionForMario;
+    return startPositionForPlayer;
 }
 
 Map::Map(int mapNumber)
@@ -115,7 +115,7 @@ void Map::LoadMap(int mapNumber)
             }
         }
 
-    startPositionForMario = Vector2{(float)startPosX, (float)startPosY};
+    startPositionForPlayer = Vector2{(float)startPosX, (float)startPosY};
 
     int blockTilesetFirstGid = -1;
     for (const auto& tileset : mapJson["tilesets"]) {

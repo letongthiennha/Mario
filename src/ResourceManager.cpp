@@ -106,6 +106,106 @@ void ResourceManager::loadTextures()
     textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_RIGHT"] = textures["SUPER_MARIO_0_RIGHT"];
     textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_LEFT"] = FlipTextureHorizontal(textures["MARIO_TRANSFORM_FIRE_TO_BIG_1_RIGHT"]);
     }
+
+
+    //Luigi
+        //SMALL LUIGI
+    {
+        textures["SMALL_LUIGI_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SmallLuigi_0.png");
+        textures["SMALL_LUIGI_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/SmallLuigi_1.png");
+        textures["SMALL_LUIGI_0_LEFT"] = FlipTextureHorizontal(textures["SMALL_LUIGI_0_RIGHT"]);
+        textures["SMALL_LUIGI_1_LEFT"] = FlipTextureHorizontal(textures["SMALL_LUIGI_1_RIGHT"]);
+
+        textures["SMALL_LUIGI_FALLING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SmallLuigiFalling_0.png");
+        textures["SMALL_LUIGI_FALLING_0_LEFT"] = FlipTextureHorizontal(textures["SMALL_LUIGI_FALLING_0_RIGHT"]);
+
+        textures["SMALL_LUIGI_JUMPING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SmallLuigiJumping_0.png");
+        textures["SMALL_LUIGI_JUMPING_0_LEFT"] = FlipTextureHorizontal(textures["SMALL_LUIGI_JUMPING_0_RIGHT"]);
+
+    textures["SMALL_LUIGI_VICTORY"] = LoadTexture("resources/Entity/Luigi/SmallLuigiVictory_0.png");
+
+    textures["SMALL_LUIGI_DYING"]= LoadTexture("resources/Entity/Luigi/SmallLuigiDying_0.png");
+    };
+    //Transform small to big
+    {
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_0.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_0_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_BIG_0_RIGHT"]);
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_1.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_1_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_BIG_1_RIGHT"]);
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_2_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_2.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_BIG_2_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_BIG_2_RIGHT"]);
+    }
+    //Transform small to fire
+    {
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_0.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_0_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_0_RIGHT"]);
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningFireLuigi.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_1_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_1_RIGHT"]);
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_2_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningFireLuigi_2.png");
+    textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_2_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_SMALL_TO_FIRE_2_RIGHT"]);
+
+    }
+    //BIG LUIGI
+    {
+        textures["SUPER_LUIGI_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigi_0.png");
+        textures["SUPER_LUIGI_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigi_1.png");
+        textures["SUPER_LUIGI_2_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigi_2.png");
+        textures["SUPER_LUIGI_0_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_0_RIGHT"]);
+        textures["SUPER_LUIGI_1_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_1_RIGHT"]);
+        textures["SUPER_LUIGI_2_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_2_RIGHT"]);
+
+        textures["SUPER_LUIGI_JUMPING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigiJumping_0.png");
+        textures["SUPER_LUIGI_JUMPING_0_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_JUMPING_0_RIGHT"]);
+        textures["SUPER_LUIGI_FALLING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigiFalling_0.png");
+        textures["SUPER_LUIGI_FALLING_0_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_FALLING_0_RIGHT"]);
+
+        textures["SUPER_LUIGI_DUCKING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/SuperLuigiDucking_0.png");
+        textures["SUPER_LUIGI_DUCKING_0_LEFT"] = FlipTextureHorizontal(textures["SUPER_LUIGI_DUCKING_0_RIGHT"]);
+
+        textures["SUPER_LUIGI_VICTORY"] = LoadTexture("resources/Entity/Luigi/SuperLuigiVictory_0.png");
+
+        textures["TRANSITIONING_LUIGI_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_0.png");
+        textures["TRANSITIONING_LUIGI_0_LEFT"] = FlipTextureHorizontal(textures["TRANSITIONING_LUIGI_0_RIGHT"]);
+        textures["TRANSITIONING_LUIGI_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_1.png");
+        textures["TRANSITIONING_LUIGI_1_LEFT"] = FlipTextureHorizontal(textures["TRANSITIONING_LUIGI_1_RIGHT"]);
+        textures["TRANSITIONING_LUIGI_2_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningLuigi_2.png");
+        textures["TRANSITIONING_LUIGI_2_LEFT"] = FlipTextureHorizontal(textures["TRANSITIONING_LUIGI_2_RIGHT"]);
+    }
+
+    // ────────────────────────────────
+    // FIRE LUIGI
+    // ────────────────────────────────
+    {
+        textures["FIRE_LUIGI_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigi_0.png");
+        textures["FIRE_LUIGI_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigi_1.png");
+        textures["FIRE_LUIGI_2_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigi_2.png");
+        textures["FIRE_LUIGI_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_0_RIGHT"]);
+        textures["FIRE_LUIGI_1_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_1_RIGHT"]);
+        textures["FIRE_LUIGI_2_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_2_RIGHT"]);
+
+        textures["FIRE_LUIGI_JUMPING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigiJumping_0.png");
+        textures["FIRE_LUIGI_JUMPING_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_JUMPING_0_RIGHT"]);
+        textures["FIRE_LUIGI_FALLING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigiFalling_0.png");
+        textures["FIRE_LUIGI_FALLING_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_FALLING_0_RIGHT"]);
+
+    textures["FIRE_LUIGI_DUCKING_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/FireLuigiDucking_0.png");
+    textures["FIRE_LUIGI_DUCKING_0_LEFT"] = FlipTextureHorizontal(textures["FIRE_LUIGI_DUCKING_0_RIGHT"]);
+    textures["FIRE_LUIGI_VICTORY"] = LoadTexture("resources/Entity/Luigi/FireLuigiVictory.png");
+    };
+    //Transform big to fire
+    {
+    textures["LUIGI_TRANSFORM_BIG_TO_FIRE_0_RIGHT"] = textures["SUPER_LUIGI_0_RIGHT"];
+    textures["LUIGI_TRANSFORM_BIG_TO_FIRE_0_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_BIG_TO_FIRE_0_RIGHT"]);
+    textures["LUIGI_TRANSFORM_BIG_TO_FIRE_1_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningFireLuigi_2.png");
+    textures["LUIGI_TRANSFORM_BIG_TO_FIRE_1_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_BIG_TO_FIRE_1_RIGHT"]);
+    }
+    //Transform fire to big
+    {
+    textures["LUIGI_TRANSFORM_FIRE_TO_BIG_0_RIGHT"] = LoadTexture("resources/Entity/Luigi/TransitioningFireLuigi_2.png");
+    textures["LUIGI_TRANSFORM_FIRE_TO_BIG_0_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_FIRE_TO_BIG_0_RIGHT"]);
+    textures["LUIGI_TRANSFORM_FIRE_TO_BIG_1_RIGHT"] = textures["SUPER_LUIGI_0_RIGHT"];
+    textures["LUIGI_TRANSFORM_FIRE_TO_BIG_1_LEFT"] = FlipTextureHorizontal(textures["LUIGI_TRANSFORM_FIRE_TO_BIG_1_RIGHT"]);
+    }
     //FIRE BALL
     {
     textures["FIRE_BALL_0_RIGHT"] = LoadTexture("resources/Entity/Fireball/Fireball_0.png");

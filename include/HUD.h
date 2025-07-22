@@ -15,7 +15,7 @@ private:
 
     Vector2 scorePosition;
     Vector2 scoreSize;
-    Texture2D *MarioHUD;
+    Texture2D *PlayerHUD;
 
     Color textColor;
     Color backgroundColor;

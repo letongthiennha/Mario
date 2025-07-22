@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "Tile.h"
-#include "Mario.h"
+#include "PlayableCharacter.h"
 #include "Coin.h"
 #include "Mushroom.h"
 #include "1UpMushroom.h"
@@ -19,7 +19,7 @@ private:
     float width;
     const float height= 900.0f;
     
-    Vector2 startPositionForMario;
+    Vector2 startPositionForPlayer;
 
     float currBackgroundStarX;
     Texture2D background;
@@ -39,7 +39,7 @@ public:
     std::vector<Block *> &getBlocks();
     float getMapWidth() const;
 
-    Vector2 getStartPositionForMario() const;
+    Vector2 getStartPositionForPlayer() const;
 
     Map(int mapNumber);  
     ~Map();
