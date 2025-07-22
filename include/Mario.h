@@ -34,80 +34,83 @@ class Mario: public Entity, public Subject {
             int invincibleFrame;
             float invincibleAcum;
            const float invincibleTime;
-            // // Immortal when eating immortal star
-            //     // In this state it can kill any thing
-            //     bool isImmortal;
-            //     float immortalFrameTime;
-            //     float immortalAcum;
-            //     int immortalFrame;
-            //     int immortalMaxFrame;
-            // Timing Event
-            // Accelerating
-            const int normalSpeedX;
-            const int accelerationX;
-            // Jumping
-            const float jumpInitSpeed;
-            void updateSprite() override;
 
-            void jump();
-            void moveLeft();
-            void moveRight();
-            void moveNoWhere();
+           bool isFiring;
+           // // Immortal when eating immortal star
+           //     // In this state it can kill any thing
+           //     bool isImmortal;
+           //     float immortalFrameTime;
+           //     float immortalAcum;
+           //     int immortalFrame;
+           //     int immortalMaxFrame;
+           // Timing Event
+           // Accelerating
+           const int normalSpeedX;
+           const int accelerationX;
+           // Jumping
+           const float jumpInitSpeed;
+           void updateSprite() override;
 
-            void Duck();
-            void fire();
+           void jump();
+           void moveLeft();
+           void moveRight();
+           void moveNoWhere();
 
-            void ChangeFromSmallToBig();
-            void ChangeFromBigToFire();
-            void ChangeFromFireToBig();
-            void ChangeFromBigToSmall();
-            void ChangeFromSmallToFire();   
-            void startInvincible();
+           void Duck();
+           void fire();
 
-            void startTransformingFireToBig();
-            void startTransformingBigToSmall();
-            void startWatingForReset();
+           void ChangeFromSmallToBig();
+           void ChangeFromBigToFire();
+           void ChangeFromFireToBig();
+           void ChangeFromBigToSmall();
+           void ChangeFromSmallToFire();
+           void startInvincible();
 
-            bool winState = false;
-        public:
-            // Constructor
-            // Full constructor
-            Mario(Vector2 pos, int lives=3,
-                  MarioState form = MARIO_STATE_SMALL);
-            Mario(Vector2 pos, const PlayerData& playerData);
-            Mario();
-            // Destructor
-            ~Mario() override;
+           void startTransformingFireToBig();
+           void startTransformingBigToSmall();
+           void startWatingForReset();
 
-            // Setter
+           bool winState = false;
 
-            void addLives(int lives);
-            void setState(EntityState state);
-            MarioState getForm() const;
-            void addCoin(int coin);
-            void addScore(int score);
-            // Getter
-            int getLives() const;
-            int getCoin() const;
-            std::list<Fireball *> *getFireballs();
-            // Methods
+       public:
+           // Constructor
+           // Full constructor
+           Mario(Vector2 pos, int lives = 3,
+                 MarioState form = MARIO_STATE_SMALL);
+           Mario(Vector2 pos, const PlayerData &playerData);
+           Mario();
+           // Destructor
+           ~Mario() override;
 
-            void startTransformingSmallToBig();
-            void startTransformingBigToFire();
-            void startTransformingSmallToFire();
+           // Setter
 
-            void die();
-            void startVictoryDance(); 
+           void addLives(int lives);
+           void setState(EntityState state);
+           MarioState getForm() const;
+           void addCoin(int coin);
+           void addScore(int score);
+           // Getter
+           int getLives() const;
+           int getCoin() const;
+           std::list<Fireball *> *getFireballs();
+           // Methods
 
-            void reactOnBeingHit();
-            // Game loop
-            void HandleInput();
-            void updateStateAndPhysic() override;
-            void updateHitboxes() override;
-            void Draw() override;
+           void startTransformingSmallToBig();
+           void startTransformingBigToFire();
+           void startTransformingSmallToFire();
 
-            void changeWinState(bool state);
-			bool getWinState() const;
+           void die();
+           void startVictoryDance();
 
-            std::unique_ptr<PlayerData> createMemento() const;
+           void reactOnBeingHit();
+           // Game loop
+           void HandleInput();
+           void updateStateAndPhysic() override;
+           void updateHitboxes() override;
+           void Draw() override;
+
+           void changeWinState(bool state);
+           bool getWinState() const;
+
+           std::unique_ptr<PlayerData> createMemento() const;
 };

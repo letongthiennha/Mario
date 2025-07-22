@@ -13,7 +13,7 @@ Mario::Mario(Vector2 pos, int lives, MarioState form)
       normalSpeedX(500),
       accelerationX(600),
       jumpInitSpeed(sqrt(300 * Level::GRAVITY )),
-    coin(0),
+    coin(0), isFiring(false),
     isInvincible(false), invincibleFrameTime(0.03f), invincibleFrameAcum(0.0f), invincibleFrame(0), invincibleTime(3.0f)
     
 
@@ -378,21 +378,17 @@ void Mario::HandleInput()
     }
 
     if (form==MARIO_STATE_FIRE){
-        if (IsKeyPressed(KEY_Z)){
+        if (IsKeyPressed(KEY_Z)&&!isFiring&&fireballs.size() <=4) {
             fire();
+            isFiring = true; // Set firing state to true
+
+        }
+        if (IsKeyReleased(KEY_Z)) {
+            isFiring = false; // Reset firing state when the key is released
         }
     }
 
-    if(IsKeyPressed(KEY_SPACE)){
-        reactOnBeingHit();
-    }
 
-    if(IsKeyDown(KEY_M)) {
-        DrawText(std::to_string(lives).c_str(), 10, 10, 20, RED);
-        DrawText(std::to_string(coin).c_str(), 10, 30,
-        20, YELLOW);
-        DrawText(std::to_string(score).c_str(), 10, 50,20, BLUE);
-    }
     if(IsKeyPressed(KEY_KP_1)){
         startTransformingSmallToBig();
     }
@@ -402,16 +398,7 @@ void Mario::HandleInput()
     if(IsKeyPressed(KEY_KP_3) ){
         startTransformingSmallToFire();
     }
-    if(IsKeyPressed(KEY_KP_4)){
-        addCoin(1);
-    }
-    if(IsKeyPressed(KEY_KP_5)){
-        addScore(100);
-    }
-    if(IsKeyPressed(KEY_KP_6)){
-        addLives(1);
-    }
-    
+
 }
 
 void Mario::updateSprite(){
