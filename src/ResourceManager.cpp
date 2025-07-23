@@ -383,6 +383,18 @@ void ResourceManager::loadTextures()
         {
             textures["BANZAIBILL_0"] = FlipTextureHorizontal(LoadTexture("resources/Entity/Monsters/BanzaiBill/BanzaiBill_0.png"));
         }   
+        //TREX
+        {
+            textures["REX_0_0_RIGHT"]= LoadTexture("resources/Entity/Monsters/Rex_2_0.png");
+            textures["REX_0_0_LEFT"]= FlipTextureHorizontal(textures["REX_0_0_RIGHT"]);
+            textures["REX_0_1_RIGHT"]= LoadTexture("resources/Entity/Monsters/Rex_2_1.png");
+            textures["REX_0_1_LEFT"]= FlipTextureHorizontal(textures["REX_0_1_RIGHT"]);
+
+            textures["REX_1_0_RIGHT"]= LoadTexture("resources/Entity/Monsters/Rex_1_0.png");
+            textures["REX_1_0_LEFT"]= FlipTextureHorizontal(textures["REX_1_0_RIGHT"]);
+            textures["REX_1_1_RIGHT"]= LoadTexture("resources/Entity/Monsters/Rex_1_1.png");
+            textures["REX_1_1_LEFT"]= FlipTextureHorizontal(textures["REX_1_1_RIGHT"]);
+        }
 
         // COURSE CLEAR TOKEN
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");

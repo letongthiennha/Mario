@@ -49,7 +49,7 @@ class PlayableCharacter: public Entity, public Subject {
             int accelerationX;
            // Jumping
             float jumpInitSpeed;
-           void updateSprite() override;
+           void updateSprite() =0;
 
            void jump();
            void moveLeft();

@@ -3,6 +3,7 @@
 #include "CourseClearToken.h"
 #include "QUestionBlock.h"
 #include "BanzaiBill.h"
+#include "Rex.h"
 void CollisionMediator::HandlePlayerWithTile(PlayableCharacter *& Player, Tile * &tile, CollisionInfo AtoB)
 {
     if(Player->getState()==ENTITY_STATE_DYING||Player->getState()==ENTITY_STATE_TO_BE_REMOVED||Player->getState()==ENTITY_STATE_VICTORY_DANCE)
@@ -70,7 +71,9 @@ case COLLISION_SOUTH:
     if (Player->getVelocity().y > 0) // PlayableCharacter is jumping down
     {
         Player->addScore(400); // Add score for defeating the monster
-        monster->die();
+
+        
+        monster->onHit();
         Player->setVelocity(Vector2{Player->getVelocity().x, -600}); // Bounce effect
         SoundController::getInstance().PlaySound("MARIO_STOMP");
     }
@@ -131,7 +134,7 @@ void CollisionMediator::HandleFireballWithMonster(Fireball *&fireball, Monster *
         return;
     if (monster->getState() == ENTITY_STATE_DYING || monster->getState() == ENTITY_STATE_TO_BE_REMOVED||monster->getIsActive() == false)
         return;
-    monster->die(); // Monster dies when hit by a fireball
+    monster->onHit(); // Monster dies when hit by a fireball
     fireball->setState(ENTITY_STATE_TO_BE_REMOVED); // Fireball is removed after hitting a monster
     SoundController::getInstance().PlaySound("Player_STOMP");
 }
@@ -240,6 +243,7 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     {
         PlayableCharacter* Player = isAPlayer ? isAPlayer : isBPlayer;
         Monster* monster = isAmonster ? isAmonster : isBmonster;
+
         CollisionInfo AtoB = Player->CheckCollisionType(*monster);
         HandlePlayerWithMonster(Player, monster, AtoB);
     }
@@ -382,7 +386,8 @@ void CollisionMediator::HandleMonsterWithTile(Monster *&monster, Tile *&tile, Co
         return;
     if (AtoB == COLLISION_NONE)
         return;
-
+    if (dynamic_cast<BanzaiBill*>(monster))
+        return; // BanzaiBill does not collide with tiles in this way
     switch (AtoB) {
                 case COLLISION_SOUTH:
                     monster->setPosition({monster->getPosition().x, tile->getPosition().y - monster->getSize().y});

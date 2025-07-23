@@ -29,6 +29,8 @@ public:
 
     bool getIsActive() const;
     void setIsActive(bool active);
+
+    virtual void onHit();
     virtual bool isLethalToPlayer() const { return false; }
 };
 

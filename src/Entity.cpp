@@ -8,6 +8,8 @@ void Entity::setPosition(Vector2 pos)
 void Entity::setSize(Vector2 size)
 {
     this->size = size;
+    this->rect.width = size.x;
+    this->rect.height = size.y;
 }
 
 
