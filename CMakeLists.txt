@@ -36,7 +36,7 @@ add_subdirectory(${RAYLIB_DIR} raylib_build)
 
 # Create executable
 
-add_executable(${PROJECT_NAME} ${SOURCES} "include/CourseClearToken.h" "src/CourseClearToken.cpp" "include/Slider.h" "src/Slider.cpp" "include/SettingMenuState.h" "src/SettingMenuState.cpp" "src/TextBox.cpp" "include/TextBox.h")
+add_executable(${PROJECT_NAME} ${SOURCES} "include/CourseClearToken.h" "src/CourseClearToken.cpp" "include/Slider.h" "src/Slider.cpp" "include/SettingMenuState.h" "src/SettingMenuState.cpp" "src/TextBox.cpp" "include/TextBox.h" "include/ChatBot.h" "src/ChatBot.cpp")
 target_compile_definitions(${PROJECT_NAME} PRIVATE RAYLIB_STATIC)
 
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
