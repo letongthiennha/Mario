@@ -7,13 +7,15 @@
 #include "raylib.h"
 #include "QuestionBlock.h"
 #include "EyesOpenedBlock.h"
-
-Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData):map(mapNumber),monsters(map.getMonsters()),
+#include "CharacterFactory.h"
+Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData,CharacterType selectedCharacterType):map(mapNumber),monsters(map.getMonsters()),
 items(map.getItems()), blocks(map.getBlocks()),
 gameState(gamestate),
-player(new Luigi(map.getStartPositionForPlayer(),playerData)),
+
 interactiveTiles(map.getInteractiveTiles()),
-state(LevelState::LEVEL_STATE_PLAYING)
+state(LevelState::LEVEL_STATE_PLAYING),
+selectedCharacterType(selectedCharacterType),
+player(CharacterFactory::createCharacter(selectedCharacterType, map.getStartPositionForPlayer(), playerData))
 {
 
         switch(mapNumber) {

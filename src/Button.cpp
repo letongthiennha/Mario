@@ -51,6 +51,7 @@ bool Button::isHover() const {
     return CheckCollisionPointRec(mousePos, hitBox);
 }
 
+
 bool Button::isClicked()  {
     if (doneClick) {
         doneClick = false;  // Reset click state after handling

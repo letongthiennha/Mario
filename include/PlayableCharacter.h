@@ -45,10 +45,10 @@ class PlayableCharacter: public Entity, public Subject {
            //     int immortalMaxFrame;
            // Timing Event
            // Accelerating
-           const int normalSpeedX;
-           const int accelerationX;
+            int normalSpeedX;
+            int accelerationX;
            // Jumping
-           const float jumpInitSpeed;
+            float jumpInitSpeed;
            void updateSprite() override;
 
            void jump();

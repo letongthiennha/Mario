@@ -52,6 +52,7 @@ class Button : public UIObject {
         Button& setTexturePosition(Vector2 pos);
         Button& setTextureSize(Vector2 size);
         Button& fitTexture();
+        Button& setScale(float scale);
 
         void update() override;
         virtual void Draw() override;

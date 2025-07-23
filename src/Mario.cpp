@@ -1,7 +1,11 @@
 #include "Mario.h"
-
-Mario::Mario(Vector2 pos, int lives, PlayerState form)
-    : PlayableCharacter(pos, lives, form) {
+#include <cmath>
+#include "Level.h"
+Mario::Mario(Vector2 pos, const PlayerData &playerData)
+    : PlayableCharacter(pos, playerData)
+{
+    normalSpeedX = 500;
+    jumpInitSpeed = sqrt(300 * Level::GRAVITY);
 }
 
 void Mario::updateSprite() {

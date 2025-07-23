@@ -1,11 +1,11 @@
 #include "Luigi.h"
-
-Luigi::Luigi(Vector2 pos, int lives, PlayerState form): PlayableCharacter(pos, lives, form)
-{
-}
-
+#include "Level.h"
+#include <cmath>
 Luigi::Luigi(Vector2 pos, const PlayerData &playerData): PlayableCharacter(pos, playerData)
 {
+        normalSpeedX = 350;
+        accelerationX = 400;
+    jumpInitSpeed = sqrt(400 * Level::GRAVITY);
 }
 
 void Luigi::updateSprite()

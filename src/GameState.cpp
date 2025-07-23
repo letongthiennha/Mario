@@ -5,6 +5,7 @@
 #include "SoundController.h"
 #include "StateManager.h"
 #include "SettingMenuState.h"
+#include "CharacterType.h"
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -13,26 +14,36 @@ void GameState::nextLevel()
     }
     playerMemento = currentLevel->getPlayerData(); // Reset player data for the new level
 
-    currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Create a new level with the updated player data
+    currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Create a new level with the updated player data
 }
 GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
-                                                transitionState(TransitionState::TRANSITION_NONE)
+                                                transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO)
 {
-    currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get()); // Initialize the first level
     menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
         .DisableBackground()
         .fitTexture();  
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
     SoundController::getInstance().PlayMusic("LEVEL_1_MUSIC"); // Start playing the game music
 }
+GameState::~GameState()
+{
+    // Cleanup if necessary
+}
+GameState::GameState(StateManager *manager, CharacterType characterType)
+    : GameState(manager)
+{
+    gameHUD = HUD(characterType);
+    selectedCharacterType = characterType;
+    currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Initialize the first level
 
+}
 
 void GameState::resetLevelWhenPlayerDead()
 {
     playerMemento = std::make_unique<PlayerData>(playerMemento->getLives() - 1, 0,0); // Decrease lives by 1
-    currentLevel = std::make_unique<Level>(currentLevelID, this, *playerMemento.get()); // Reset the level with the current player data
+    currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Reset the level with the current player data
 }
 
 
@@ -78,7 +89,7 @@ void GameState::resetwhenGameOver()
 {
     currentLevelID = 1;  // Reset to the first level
     playerMemento = std::make_unique<PlayerData>(3, 0, 0); // Reset player data
-    currentLevel = std::make_unique<Level>(currentLevelID, this, *playerMemento.get()); // Create a new level with the reset player data
+    currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Create a new level with the reset player data
 }
 
 void GameState::startTransition(TransitionState state)
@@ -182,6 +193,7 @@ void GameState::draw(){
     static const Texture2D *GameOver= &ResourceManager::getInstance().getTexture("GAME_OVER");
     static const Font* SuperMarioFont = &ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT");
     static const Texture2D *SmallMario = &ResourceManager::getInstance().getTexture("SMALL_MARIO_0_RIGHT");
+    static const Texture2D *SmallLuigi = &ResourceManager::getInstance().getTexture("SMALL_LUIGI_0_RIGHT");
     if(currentLevel->getState() == LevelState::LEVEL_STATE_GAME_OVER&& transitionState == TransitionState::TRANSITION_NONE) {
         DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), BLACK);
         DrawTextureNPatch(*GameOver,
@@ -243,12 +255,17 @@ void GameState::draw(){
              20,7).x/2,
              (float)GetScreenHeight() / 2 -100}, 
             20, 7, WHITE);
-    
+            if(selectedCharacterType == CharacterType::MARIO) {
             DrawTextureNPatch(*SmallMario,
                            NPatchInfo{Rectangle{0, 0, (float)(*SmallMario).width,
                                                24}, 0, 0, 0, 0},
                            Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
-                           
+            } else if(selectedCharacterType == CharacterType::LUIGI) {
+            DrawTextureNPatch(*SmallLuigi,
+                           NPatchInfo{Rectangle{0, 0, (float)(*SmallLuigi).width,
+                                               24}, 0, 0, 0, 0},
+                           Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
+            }
             Vector2 size = MeasureTextEx(*SuperMarioFont,
                 ("X " + std::to_string(currentLevelID + 1)).c_str(), 20, 7);
     

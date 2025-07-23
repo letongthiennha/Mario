@@ -8,6 +8,7 @@
 #include "CollisionMediator.h"
 #include "GameState.h"
 #include "LevelState.h"
+#include "CharacterType.h"
 #include "Luigi.h"
 class GameState;
 //Physical level of the game, contains the gameplay
@@ -20,7 +21,7 @@ private:
     Map map;
 
     PlayableCharacter* player;
-
+    CharacterType selectedCharacterType;
     std::vector<Tile *> &interactiveTiles;
     std::vector<Item*> &items;
 
@@ -34,7 +35,7 @@ private:
     LevelState state;
 
 public:
-    Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData);
+    Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData, CharacterType selectedCharacterType);
     LevelState getState() const;
     bool needReset() const;
     ~Level();

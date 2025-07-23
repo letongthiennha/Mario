@@ -268,6 +268,9 @@ void ResourceManager::loadTextures()
 	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
 	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/menuButtonPress.png");
 	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/menuButtonRelease.png");
+
+    textures["MARIO_BUTTON"] = LoadTexture("resources/Button/marioButton.png");
+    textures["LUIGI_BUTTON"] = LoadTexture("resources/Button/luigiButton.png");
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
     
@@ -277,6 +280,7 @@ void ResourceManager::loadTextures()
     textures["LEVEL_END_ENTER"]= LoadTexture("resources/UI/PressEnter.png");
     textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
     textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
+    textures["HUD_LUIGI"] = LoadTexture("resources/UI/LuigiUI.png");
 
     //ITEMS
 	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin_0.png");
