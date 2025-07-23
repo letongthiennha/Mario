@@ -33,7 +33,7 @@ void Rex::die() {
     }
     floatingScore = new FloatingScore();
     floatingScore->setPosition({pos.x + size.x / 2, pos.y - 20});
-    floatingScore->loadSprite("400_POINTS");
+    floatingScore->loadSprite("200_POINTS");
     hitsToDie = 0; // Ensure no further hits
 }
 
