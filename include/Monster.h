@@ -17,9 +17,11 @@ protected:
     float deathAcum;  // Total time since die() was triggered
     bool isVisible;
     FloatingScore* floatingScore;
+    int hitsToDie; // Number of hits to die
 
 public:
     Monster(Vector2 pos, Vector2 size, Color color, float speed);
+    Monster(Vector2 pos, Vector2 size, Color color, float speed, int hitsToDie);
     virtual ~Monster();
     
     virtual void updateStateAndPhysic();

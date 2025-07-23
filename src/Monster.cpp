@@ -10,6 +10,12 @@ Monster::Monster(Vector2 pos, Vector2 size, Color color, float speed)
 
       }
 
+Monster::Monster(Vector2 pos, Vector2 size, Color color, float speed, int hitsToDie) 
+    : Entity(pos, size, color), speed(speed), isActive(true), 
+      blinkAcum(0.0f), blinkTime(0.15f), deathDuration(1.0f), isVisible(true), deathAcum(0.0f), hitsToDie(hitsToDie), floatingScore(nullptr) {
+
+      }
+      
 Monster::~Monster() {
     if (floatingScore != nullptr) {
         delete floatingScore;
