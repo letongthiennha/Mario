@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "HUD.h"
 #include "CharacterType.h"
+#include "ChatBotScreen.h"
 #include <memory>
 class Level;
 // GameState to manage levels and its transitions, with HUD and Buttons
@@ -29,6 +30,11 @@ private:
     float transitionTimeAcum;
     // void Exit() override;
     void nextLevel();
+
+    bool isChatBotOn = false;
+    ChatBotScreen chatBotScreen;
+    float chatToggleTimeAcum = 0.0f;
+    const float CHAT_TOGGLE_COOLDOWN = 0.3f;
 
 public:
     GameState(StateManager *manager);

@@ -1,10 +1,11 @@
 #include "TextBox.h"
+#include "ResourceManager.h"
 
-TextBox::TextBox(Rectangle bounds, int maxLength = 128, Color fill = WHITE, Color hover = LIGHTGRAY, Color select = RAYWHITE)
+TextBox::TextBox(Rectangle bounds, int maxLength, Color fill, Color hover, Color select)
         : bounds(bounds), maxLength(maxLength), fillColor(fill), hoverColor(hover), selectedColor(select) {
     }
 
-void TextBox::Update(float delta) {
+void TextBox::Update() {
         // Check if clicked inside the box
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             Vector2 mouse = GetMousePosition();
@@ -53,7 +54,17 @@ void TextBox::Update(float delta) {
         DrawRectangleRec(bounds, background);
         DrawRectangleLinesEx(bounds, 2, BLACK);
 
-        DrawText(displayText.c_str(), bounds.x + 5, bounds.y + 8, 20, BLACK);
+        // Adjust font size based on the height of the text box
+        float fontSize = bounds.height * 0.8f;
+
+        // Calculate text dimensions with the custom font
+        Vector2 textSize = MeasureTextEx(ResourceManager::getInstance().getFonts("USER_INPUT_FONT"), displayText.c_str(), fontSize, 1);
+
+        // Calculate text position to be centered vertically
+        float textY = bounds.y + (bounds.height / 2.0f) - (textSize.y / 2.0f);
+
+        // Use DrawTextEx to specify the font
+        DrawTextEx(ResourceManager::getInstance().getFonts("USER_INPUT_FONT"), displayText.c_str(), { bounds.x + 5, textY }, fontSize, 1, BLACK);
     }
 
     const std::string& TextBox::GetText() const {

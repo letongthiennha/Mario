@@ -4,6 +4,9 @@ void ResourceManager::loadFonts()
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
     fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
 	fonts["SETTING_FONT"] = LoadFont("resources/Font/SuperMario256.ttf");
+	fonts["CHAT_BOT_FONT"] = LoadFont("resources/Font/VT323-Regular.ttf");
+	fonts["CHAT_BOT_TITLE_FONT"] = LoadFont("resources/Font/Audiowide-Regular.ttf");
+	fonts["USER_INPUT_FONT"] = LoadFont("resources/Font/FiraCode-VariableFont_wght.ttf");
 }
 
 // Load
@@ -399,6 +402,8 @@ void ResourceManager::loadTextures()
         // COURSE CLEAR TOKEN
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");
 
+        // CHAT BOT
+		textures["CHAT_BOT_ICON"] = LoadTexture("resources/ChatBot/Penguin.png");
 
 }   
 

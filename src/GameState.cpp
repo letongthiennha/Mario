@@ -6,6 +6,11 @@
 #include "StateManager.h"
 #include "SettingMenuState.h"
 #include "CharacterType.h"
+
+Rectangle getScreenBounds() {
+    return { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() };
+}
+
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -19,7 +24,11 @@ void GameState::nextLevel()
 GameState::GameState(StateManager *manager) :currentLevelID(3), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
-                                                transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO)
+                                                transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
+    chatBotScreen(
+        { (getScreenBounds().width / 2) - 400, (getScreenBounds().height / 2) - 300, 800, 600 },
+        { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
+    )
 {
     menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
         .DisableBackground()
@@ -120,6 +129,18 @@ void GameState::startTransition(TransitionState state)
 
 void GameState::update()
 {
+    chatToggleTimeAcum += GameClock::getInstance().DeltaTime;
+    if (IsKeyPressed(KEY_TAB) && chatToggleTimeAcum >= CHAT_TOGGLE_COOLDOWN)
+    {
+        isChatBotOn = !isChatBotOn;
+		chatToggleTimeAcum = 0.0f; 
+    }
+    if (isChatBotOn)
+    {
+        chatBotScreen.update();
+        return;
+    }
+
         menuButton.update();
     if (menuButton.isClicked()) {
         stateManager->setState(new SettingMenuState(stateManager));  // Switch to MenuState
@@ -304,4 +325,9 @@ void GameState::draw(){
 }
     menuButton.Draw();
    
+    if (isChatBotOn)
+    {
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), { 0, 0, 0, 128 });
+        chatBotScreen.draw();
+    }
 }
