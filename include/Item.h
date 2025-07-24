@@ -23,7 +23,7 @@ public:
 
 protected:
     ItemState state;
-    float disappearTimer = 0.0f;
+    float disappearTimer = 1.0f;
     bool poppingUp = false;
     const float popUpDistance = 32.0f;
     const float popUpSpeed = 0.2f;
