@@ -78,3 +78,9 @@ void TextBox::Update() {
     void TextBox::SetText(const std::string& newText) {
         text = newText.substr(0, maxLength);
     }
+
+    void TextBox::setSelected(bool isSelected) {
+            selected = isSelected;
+		    showCursor = isSelected; // Show cursor if selected
+    }
+

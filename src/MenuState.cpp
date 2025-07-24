@@ -10,7 +10,8 @@ MenuState::MenuState(StateManager*manager): State(manager),
     optionsButton(Vector2{1050, 550}, Vector2{400, 150}),
     exitButton(Vector2{100, 750}, Vector2{100, 100}),
     creditsButton(Vector2{1350, 750}, Vector2{100, 100})
-    , backgroundTexture(&ResourceManager::getInstance().getTexture("MENU_STATE_BACKGROUND"))
+    , backgroundTexture(&ResourceManager::getInstance().getTexture("MENU_STATE_BACKGROUND")),
+	logoTexture(&ResourceManager::getInstance().getTexture("GROUP_LOGO"))
     {
         startButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_STATE_START_BUTTON"))
             .DisableBackground()
@@ -27,7 +28,8 @@ MenuState::MenuState(StateManager*manager): State(manager),
             .setTextSize(50)
             .setTextActiveColor(RED);
         SoundController::getInstance().StopAllSounds();  // Stop all sounds when entering the menu state
-        SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
+        //SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
+		SoundController::getInstance().PlayMusic("MENU_BACKGROUND_MUSIC");  // Test new music for the menu state
 }
 
 MenuState::~MenuState()
@@ -71,4 +73,10 @@ void MenuState::draw()
     optionsButton.Draw();  // Draw the options button
     exitButton.Draw();  // Draw the exit button
     creditsButton.Draw();  // Draw the credits button
+
+    // Group logo
+    float scale = 0.4f;
+    float logoX = 10.0f;
+    float logoY = 10.0f;
+    DrawTextureEx(*logoTexture, Vector2{ logoX, logoY }, 0.0f, scale, WHITE);
 }

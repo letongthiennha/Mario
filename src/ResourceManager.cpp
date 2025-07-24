@@ -274,6 +274,7 @@ void ResourceManager::loadTextures()
 
     textures["MARIO_BUTTON"] = LoadTexture("resources/Button/marioButton.png");
     textures["LUIGI_BUTTON"] = LoadTexture("resources/Button/luigiButton.png");
+
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
     
@@ -403,8 +404,11 @@ void ResourceManager::loadTextures()
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");
 
         // CHAT BOT
-		textures["CHAT_BOT_ICON"] = LoadTexture("resources/ChatBot/Penguin.png");
+		textures["CHAT_BOT_ICON"] = LoadTexture("resources/ChatBot/Robot.png");
+		textures["CHAT_BOT_TITLE"] = LoadTexture("resources/ChatBot/ChatBotTitle.png");
 
+        // LOGO
+		textures["GROUP_LOGO"] = LoadTexture("resources/UI/GroupLogo.png");
 }   
 
 void ResourceManager::loadSounds(){
@@ -428,7 +432,8 @@ void ResourceManager::loadSounds(){
 
 void ResourceManager::loadMusics(){
     musics["GAME_OVER"] = LoadMusicStream("resources/Music/gameOver.mp3");
-
+    
+	musics["MENU_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/menu.wav");
     musics["TITLE_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/title.mp3");
     musics["VICTORY_MUSIC"] = LoadMusicStream("resources/Music/courseClear.mp3");
     musics["LEVEL_1_MUSIC"]= LoadMusicStream("resources/Music/music1.mp3");

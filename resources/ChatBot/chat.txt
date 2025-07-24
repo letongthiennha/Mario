@@ -1,11 +1,11 @@
 hello|Hi there! Ready to save the princess?
 hi|Hi there! Ready to save the princess?
-how are you|I'm doing great, thanks for asking! Hope youre enjoying the game.
+how are you|I'm doing great, thanks for asking! Hope you're enjoying the game.
 whats up|Just here to help you out with the game!
 thank you|Youre welcome! Let me know if you need more help.
 thanks|Youre welcome! Happy to help.
 who are you|Im your in game assistant, here to guide you on your adventure!
-whats your name|You can call me your Adventure Guide!
+what's your name|You can call me your Adventure Guide!
 help|Sure! Ask me anything about the game, and Ill do my best to assist you.
 how to play|Use arrow keys to move and space to jump. Good luck!
 controls|Use arrow keys to move, space to jump, and SHIFT to sprint.

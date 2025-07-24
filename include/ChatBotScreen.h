@@ -17,5 +17,6 @@ private:
     Rectangle bounds;
     TextBox inputBox;
     Texture2D chatBotIcon;
+    Texture2D chatBotTitle;
 	std::string responseText;
 };

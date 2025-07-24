@@ -23,4 +23,5 @@ public:
     const std::string& GetText() const;
     void Clear();
     void SetText(const std::string& newText);
+	void setSelected(bool isSelected);
 };
