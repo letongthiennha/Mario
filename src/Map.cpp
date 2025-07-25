@@ -11,24 +11,35 @@ void Map::LoadFromJsonFile(const std::string& mapFileName)
 	
 }
 
-std::vector<Tile *> &Map::getInteractiveTiles()
+
+std::vector<std::vector<Tile *>> &Map::getInteractiveTilesSection()
 {
-    // TODO: insert return statement here
-    return interactiveTiles;
+    return interactiveTilesSection;
 }
 
-std::vector<Item*>& Map::getItems() {
-    return items;
+std::vector<std::vector<Tile *>> &Map::getNonInteractiveTilesSection()
+{
+    return nonInteractiveTilesSection;
 }
 
-std::vector<Monster *> &Map::getMonsters()
+std::vector<std::vector<Block *>> &Map::getBlocksSection()
 {
-    return monsters;
+    return blocksSection;
 }
 
-std::vector<Block *> &Map::getBlocks()
+std::vector<std::vector<Item *>> &Map::getItemsSection()
 {
-    return blocks;
+    return itemsSection;
+}
+
+std::vector<std::vector<Monster *>> &Map::getMonstersSection()
+{
+    return monstersSection;
+}
+
+int Map::getSectionWidth() const
+{
+    return sectionWidth;
 }
 
 float Map::getMapWidth() const
@@ -41,45 +52,60 @@ Vector2 Map::getStartPositionForPlayer() const
     return startPositionForPlayer;
 }
 
-Map::Map(int mapNumber)
+Map::Map(int mapNumber) :sectionWidth(GetScreenWidth()/2)
 {
     //blocks.push_back(new QuestionBlock({200, 600}, {32, 32}, WHITE, "Mushroom", items));
     //blocks.push_back(new QuestionBlock({168, 600}, {32, 32}, WHITE, "Coin", items));
     currBackgroundStarX = 0.0f;
     background= ResourceManager::getInstance().getTexture("BACKGROUND_"+std::to_string(mapNumber));
-    monsters.push_back( MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
-    monsters.push_back( MonsterFactory::createMonster("Rex", Vector2{500, 600}, -200));
+    // monsters.push_back( MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
+    // monsters.push_back( MonsterFactory::createMonster("Rex", Vector2{500, 600}, -200));
     LoadMap(mapNumber);
 }
     Map::~Map()
 {
-    for(auto& tile : interactiveTiles)
-    {
+
+    for (auto& section : interactiveTilesSection) {
+        for (auto& tile : section) {
             delete tile;
             tile = nullptr;
+        }
+        section.clear();
     }
-    interactiveTiles.clear();
-    for (auto& item : items) {
-        delete item;
-        item = nullptr;
+    interactiveTilesSection.clear();
+    for (auto& section : nonInteractiveTilesSection) {
+        for (auto& tile : section) {
+            delete tile;
+            tile = nullptr;
+        }
+        section.clear();
     }
-    items.clear();
-    for (auto& tile : nonInterativeTile)
-    {
-        delete tile;
-        tile = nullptr;
+    nonInteractiveTilesSection.clear();
+    for (auto& section : blocksSection) {
+        for (auto& block : section) {
+            delete block;
+            block = nullptr;
+        }
+        section.clear();
+    }   
+    blocksSection.clear();
+    for (auto& section : itemsSection) {
+        for (auto& item : section) {
+            delete item;
+            item = nullptr;
+        }
+        section.clear();
     }
-    nonInterativeTile.clear();
-    for (auto& monster : monsters) {
-        delete monster;
-        monster = nullptr;
-    }
-    monsters.clear();
-    for (auto& block : blocks) {
-        delete block;
-        block = nullptr;
-    }
-    blocks.clear();
+    itemsSection.clear();
+    for (auto& section : monstersSection) {
+        for (auto& monster : section) {
+            delete monster;
+            monster = nullptr;
+        }
+        section.clear();
+    }   
+    monstersSection.clear();
+
 }
 
 void Map::LoadMap(int mapNumber)
@@ -97,7 +123,18 @@ void Map::LoadMap(int mapNumber)
 	int width = mapJson["width"];
 	int height = mapJson["height"];
 	this->width = (float) width * 32.0f;
+
+    maxSection = getMapWidth() / sectionWidth;
+    interactiveTilesSection= std::vector<std::vector<Tile*>>(maxSection+1);
+    nonInteractiveTilesSection= std::vector<std::vector<Tile*>>(maxSection+1);
+    blocksSection= std::vector<std::vector<Block*>>(maxSection+1);
+    itemsSection= std::vector<std::vector<Item*>>(maxSection+1);
+    monstersSection= std::vector<std::vector<Monster*>>(maxSection+1);
+    monstersSection[2].push_back(MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
+    monstersSection[2].push_back(MonsterFactory::createMonster("Rex",   Vector2{500, 600}, -200));
 	int tilewidth = mapJson["tilewidth"];
+
+
 	std::vector<int> data = mapJson["layers"][0]["data"];
 
     int startPosX = 0; // Default value in case it's not found
@@ -131,19 +168,21 @@ void Map::LoadMap(int mapNumber)
     if (blockTilesetFirstGid == -1) {
         std::cerr << "Block tileset not found!" << std::endl;
     }
-
+//Tile
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
+			int belongSection = (int)(x * 32 / sectionWidth);
 			int tileId = data[y * width + x];
 			if (tileId == 0)
                 continue;
             else if(tileId==1 || (tileId >= 108 && tileId <= 111))
-				nonInterativeTile.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
-            else interactiveTiles.push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
+				nonInteractiveTilesSection[belongSection].push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
+            else interactiveTilesSection[belongSection].push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
                 }
             }
-
+//ITEM
     for (const auto& layer : mapJson["layers"]) {
+        //Load Coin
         if (layer["type"] == "tilelayer" && layer["name"] == "Coin") {
          
             std::vector<int> data = layer["data"];
@@ -152,10 +191,12 @@ void Map::LoadMap(int mapNumber)
                     int tileId = data[y * width + x];
                     if (tileId == 0) continue; // Skip empty tiles
                     // Create a coin item at the position of the tile
-                    items.emplace_back(ItemFactory::createItem("Coin", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                    int belongSection = (int)(x * 32 / sectionWidth);
+                    itemsSection[belongSection].emplace_back(ItemFactory::createItem("Coin", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
                 }
             }
         }
+        //Ending block
         if (layer["type"] == "tilelayer" && layer["name"] == "ClearCourseToken") {
 
             std::vector<int> data = layer["data"];
@@ -164,11 +205,12 @@ void Map::LoadMap(int mapNumber)
                     int tileId = data[y * width + x];
                     if (tileId == 0) continue; // Skip empty tiles
                     // Create a ClearToken item at the position of the tile
-                    items.emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
+                    int belongSection = (int)(x * 32 / sectionWidth);
+                    itemsSection[belongSection].emplace_back(ItemFactory::createItem("ClearToken", { (float)x * 32, (float)y * 32 }, DIRECTION_RIGHT));
                 }
             }
         }
-
+        //Monster
         if (layer["type"] == "objectgroup" && layer["name"] == "Monsters") {
             for (const auto& obj : layer["objects"]) {
                 float x = obj["x"];
@@ -180,16 +222,18 @@ void Map::LoadMap(int mapNumber)
                 if (obj.contains("speed")) {
                  speed = obj["speed"];
                 }
+
                 Monster* monster = MonsterFactory::createMonster(type, {x, y}, speed);
                 if(monster) {
-                    monsters.push_back(monster);
+                    int belongSection = (int)(x / sectionWidth);
+                    monstersSection[belongSection].push_back(monster);
                     monster->setIsActive(false);
                 } else {
                     std::cerr << "Unknown monster type: " << type << std::endl;
                 }
             }
         }
-
+        //Load Blocks
         if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
             std::vector<int> data = layer["data"];
             for (int y = 0; y < height; ++y) {
@@ -197,9 +241,11 @@ void Map::LoadMap(int mapNumber)
                         int rawId = data[y * width + x];
                         int tileId = rawId - blockTilesetFirstGid;
                         if (rawId == 0) continue;
-                        Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, items);
+                        int belongSection = (int)(x * 32 / sectionWidth);
+                        Block* block = BlockFactory::createBlockFromId(tileId, { (float)x * 32, (float)y * 32 }, itemsSection[belongSection]);
                         if (block) {
-                            blocks.push_back(block);
+                            int belongSection = (int)(x * 32 / sectionWidth);
+                            blocksSection[belongSection].push_back(block);
                         } else {
                             std::cerr << "Unknown block ID: " << tileId << std::endl;
                         }
@@ -213,12 +259,15 @@ void Map::LoadMap(int mapNumber)
                 float y = obj["y"];
                 if (obj.contains("properties") && !obj["properties"].empty()) {
                     // Assuming the first property is the item type
+                    
 
                     std::string itemType = obj["properties"][0]["value"];
-                    Block* block = BlockFactory::createBlock("QuestionBlock", { x, y - 32 }, items, itemType);
+                    int belongSection = (int)(x / sectionWidth);
+                    Block* block = BlockFactory::createBlock("QuestionBlock", { x, y - 32 }, itemsSection[belongSection], itemType);
                     if (block)
                     {
-                        blocks.push_back(block);
+                        int belongSection = (int)(x / sectionWidth);
+                        blocksSection[belongSection].push_back(block);
                     }
                     else
                     {
@@ -233,22 +282,4 @@ void Map::LoadMap(int mapNumber)
 
 void Map::Draw() 
 {
-
-    for (const auto& tile : interactiveTiles)
-    {
-        tile->Draw();
-    }
-    for (const auto& tile : nonInterativeTile)
-    {
-        tile->Draw();
-    }
-    for (const auto& item : items) {
-        item->Draw();
-    }
-    for (const auto& monster : monsters) {
-        monster->Draw();
-    }
-    for (const auto& block : blocks) {
-        block->Draw();
-    }
 }

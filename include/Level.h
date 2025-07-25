@@ -22,12 +22,14 @@ private:
 
     PlayableCharacter* player;
     CharacterType selectedCharacterType;
-    std::vector<Tile *> &interactiveTiles;
-    std::vector<Item*> &items;
 
-    std::vector<Monster*> &monsters;
-    std::vector<Block*> &blocks;
-
+    int currentPlayerSection;
+    std::vector<std::vector<Tile*>>& interactiveTilesSection;
+    std::vector<std::vector<Tile*>>& nonInteractiveTilesSection;
+    std::vector<std::vector<Block*>>& blocksSection;
+    std::vector<std::vector<Item*>>& itemsSection;
+    std::vector<std::vector<Monster*>>& monstersSection;
+    
     CollisionMediator collisionMediator;
 
     Camera2D camera;    

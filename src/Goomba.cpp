@@ -12,10 +12,10 @@ Goomba::Goomba(Vector2 pos, float speed)
     maxFrame = 1; // 2 frames: 0 and 1
     currFrame = 0;
     frameAcum = 0.0f;
-    NorthHb.SetSize({size.x - 30, 1});
-    SouthHb.SetSize({size.x - 30, 1});
-    WestHb.SetSize({1, size.y - 20});
-    EastHb.SetSize({1, size.y - 20});
+    NorthHb.SetSize({size.x - 10, 5});
+    SouthHb.SetSize({size.x - 10, 5});
+    WestHb.SetSize({5, size.y - 20});
+    EastHb.SetSize({5, size.y - 20});
     updateHitboxes();
 }
 
