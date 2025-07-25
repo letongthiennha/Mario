@@ -1,14 +1,15 @@
 hello|Hi there! Ready to save the princess?
 hi|Hi there! Ready to save the princess?
 how are you|I'm doing great, thanks for asking! Hope you're enjoying the game.
-whats up|Just here to help you out with the game!
-thank you|Youre welcome! Let me know if you need more help.
-thanks|Youre welcome! Happy to help.
-who are you|Im your in game assistant, here to guide you on your adventure!
-what's your name|You can call me your Adventure Guide!
-help|Sure! Ask me anything about the game, and Ill do my best to assist you.
+how is it going|I'm doing great, thanks for asking! Hope you're enjoying the game.
+what's up|Just here to help you out with the game!
+thank you|You're welcome! Let me know if you need more help.
+thanks|You're welcome! Happy to help.
+who are you|I'm your in game assistant, I'm here to guide you on your adventure!
+what's your name|You can call me Chario!
+help|Sure! Ask me anything about the game, and I'll do my best to assist you.
 how to play|Use arrow keys to move and space to jump. Good luck!
-controls|Use arrow keys to move, space to jump, and SHIFT to sprint.
+controls|Use arrow keys to move, space to jump. Good luck!
 where am i|You are in the Mushroom Kingdom, home to Mario and Luigi!
 what should i do|Your goal is to rescue Princess Peach and defeat Bowser!
 objective|Your goal is to rescue Princess Peach and defeat Bowser!
@@ -16,28 +17,23 @@ how to jump|Press the SPACE bar to jump over obstacles.
 how to attack|Jump on the enemies to defeat them, or use power ups like fireballs!
 how to defeat enemies|Jump on enemies or use fireballs if you have a flower power up!
 how to get power up|Collect mushrooms and flowers from ? blocks to get power ups.
-how to sprint|Hold down the SHIFT key while moving to sprint.
-run faster|Hold down the SHIFT key while moving to sprint.
 what are coins for|Collect 100 coins to get an extra life!
 coins|Collect 100 coins to get an extra life!
 extra life|Collect green 1 Up mushrooms or 100 coins to gain an extra life!
 how to save the princess|Reach the end of the castle and defeat Bowser to save Princess Peach.
-how to climb|Find ladders or platforms to climb. Jump when needed!
-how to swim|Use arrow keys to navigate underwater, but watch out for air pockets!
 how to use power ups|Use power ups like mushrooms, fire flowers, or stars by collecting them.
 princess|Reach the end of the castle and defeat Bowser to save Princess Peach.
 where is bowser|Bowser is at the end of the castle. Be prepared for a tough fight!
 who is bowser|Bowser is the main villain of this game, trying to stop you from saving the princess.
 who is mario|Mario is the hero of this story, setting out to save Princess Peach!
-who is luigi|Luigi is Marios brother and a fellow hero of the Mushroom Kingdom!
-what is this place|This is the Mushroom Kingdom, home to adventure and fun!
+who is luigi|Luigi is Mario's brother and a fellow hero of the Mushroom Kingdom!
+where is this place|This is the Mushroom Kingdom, home to adventure and fun!
 what is a goomba|Goombas are small enemies. Jump on them to defeat them.
 what is a koopa|Koopas are turtle like enemies. Jump on them to send their shells flying!
 game over|Dont worry! Restart the level and try again. You can do it!
 save progress|Your progress is saved automatically after completing a level.
-how to pause|Press the ESC key to pause the game.
 how to restart|Pause the game and select Restart to start over.
-stuck|If youre stuck, look for hidden blocks or try exploring different paths.
+stuck|If you're stuck, look for hidden blocks or try exploring different paths.
 where to go|Follow the path forward, and look for clues in the environment!
 how to beat bowser|Use fireballs or hit the axe behind Bowser to defeat him!
 how to avoid traps|Pay attention to the environment and time your movements carefully.
@@ -46,10 +42,10 @@ tell me a joke|Why did Mario break up with Princess Peach? Because she found him
 fun fact|Did you know? Mario was originally called Jumpman in his first game appearance!
 easter egg|Try jumping 10 times in one spot. Something fun might happen!
 what is a warp zone|Warp zones are secret areas that let you skip ahead in the game!
-i cant win|Dont give up! Every failure is a step closer to success!
-this is hard|Challenges make the game fun! Keep going, youre doing great.
-any tips|Stay calm and focus on timing. Youll get through this!
-i need help|Sure! Let me know whats troubling you in the game.
+i can't win|Dont give up! Every failure is a step closer to success!
+this is hard|Challenges make the game fun! Keep going, you're doing great.
+any tips|Stay calm and focus on timing. You'll get through this!
+i need help|Sure! Let me know what's troubling you in the game.
 study |If you want to study, you should start by making a study plan.
 plan |A study plan is a schedule that helps you organize your study time.
 die |You can die in the game if you fall into a pit or get hit by an enemy.
@@ -57,19 +53,10 @@ fall |Be careful not to fall into pits
 what are enemies |Enemies are creatures that try to stop you from reaching your goal.
 weather |The weather is sunny today.
 am i handsome |You are the most handsome person in the world.
-i cant win|Dont give up! Every failure is a step closer to success!
 this is hard|Challenges make the game fun! Keep going, youre doing great.
-any tips|Stay calm and focus on timing. Youll get through this!
-i need help|Sure! Let me know whats troubling you in the game.
-study|If you want to study, you should start by making a study plan.
-plan|A study plan is a schedule that helps you organize your study time.
-die|You can die in the game if you fall into a pit or get hit by an enemy.
-fall|Be careful not to fall into pits.
-what are enemies|Enemies are creatures that try to stop you from reaching your goal.
-what is the weather|The weather is sunny today.
-am i handsome|You are the most handsome person in the world.
+how is the weather|The weather is sunny today.
 am i smart|Of course, you are! Everyone has their own unique intelligence.
-where am i going|Youre on an adventure to save Princess Peach and defeat Bowser!
+where am i going|You're on an adventure to save Princess Peach and defeat Bowser!
 how to stay healthy|Eat well, exercise regularly, and get plenty of rest.
 how to make friends|Be kind, listen, and share your interests with others.
 what is love|Love is an incredible feeling of affection and care for someone special.

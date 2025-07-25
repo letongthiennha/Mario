@@ -4,6 +4,7 @@
 #include "SoundController.h"
 #include "SettingMenuState.h"
 #include "CharacterSelectionState.h"
+#include "GameModeSelectionState.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
@@ -41,7 +42,7 @@ void MenuState::update()
     startButton.update();
     if (startButton.isClicked()) {
 
-        stateManager->setState(new CharacterSelectionState(stateManager));  // Switch to GameState
+        stateManager->setState(new GameModeSelectionState(stateManager));  // Switch to GameState
         return;
     }
     // Update other buttons similarly

@@ -409,6 +409,10 @@ void ResourceManager::loadTextures()
 
         // LOGO
 		textures["GROUP_LOGO"] = LoadTexture("resources/UI/GroupLogo.png");
+
+        // TITLE
+		textures["SELECT_CHARACTER_TITLE"] = LoadTexture("resources/UI/CharacterSelectTitle.png");
+		textures["SELECT_GAME_MODE_TITLE"] = LoadTexture("resources/UI/GameModeSelectTitle.png");
 }   
 
 void ResourceManager::loadSounds(){

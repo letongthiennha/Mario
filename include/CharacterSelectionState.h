@@ -9,7 +9,7 @@ private:
     Button marioButton;
     Button luigiButton;
     Button home;
-
+    Texture2D titleTexture;
 
 public:
     CharacterSelectionState(StateManager *manager);
