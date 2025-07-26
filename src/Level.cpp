@@ -90,7 +90,7 @@ void Level::UpdateLevel()
         for (int i = -2; i <= 2; ++i) // Check sections around the player
         {
                         int currentSection = currentPlayerSection + i;
-                        if(currentSection<0 || currentSection > map.getMapWidth()/map.getSectionWidth()) continue; // Skip sections out of bounds
+                        if(currentSection<0 || currentSection >= map.getMapWidth()/map.getSectionWidth()) continue; // Skip sections out of bounds
                         std::vector<Tile*>& interactiveTiles = interactiveTilesSection[currentSection];
                         std::vector<Block*>& blocks = blocksSection[currentSection];
                         std::vector<Item*>& items = itemsSection[currentSection];
@@ -394,5 +394,4 @@ void Level::DrawLevel()
 }
 
 void Level::loadCoins() {
-       
     }
