@@ -210,6 +210,7 @@ void GameState::draw(){
     
     gameHUD.Draw();
 
+	DrawFPS(10, 10);  // Draw the FPS counter
 
     static const Texture2D *GameOver= &ResourceManager::getInstance().getTexture("GAME_OVER");
     static const Font* SuperMarioFont = &ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT");
