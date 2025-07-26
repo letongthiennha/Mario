@@ -375,14 +375,15 @@ void Level::DrawLevel()
                         {
                                 tile->Draw();
                         }
-                        for (auto const &block : blocks)
-                        {
-                                block->Draw();
-                        }
                         for (auto const &item : items)
                         {
                                 item->Draw();
                         }
+                        for (auto const &block : blocks)
+                        {
+                                block->Draw();
+                        }
+
                         for (auto const &monster : monsters)
                         {
                                 monster->Draw();
