@@ -4,6 +4,7 @@
 #include "SoundController.h"
 #include "SettingMenuState.h"
 #include "CharacterSelectionState.h"
+#include "CreditState.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
@@ -52,13 +53,10 @@ void MenuState::update()
     }
     exitButton.update();
     if (exitButton.isClicked()) {
-        // Handle exit button click
-        std::cout << "Exit button clicked!" << std::endl;
     }
     creditsButton.update();
     if (creditsButton.isClicked()) {
-        // Handle credits button click
-        std::cout << "Credits button clicked!" << std::endl;
+        stateManager->setState(new CreditState(stateManager));
     }
 
     

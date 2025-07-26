@@ -6,6 +6,7 @@
 #include "StateManager.h"
 #include "SettingMenuState.h"
 #include "CharacterType.h"
+#include "CreditState.h"
 void GameState::nextLevel()
 {
     currentLevelID++;
@@ -153,6 +154,10 @@ void GameState::update()
         break;
     case LevelState::LEVEL_STATE_COMPLETED:
         if (IsKeyPressed(KEY_ENTER)) {
+            if(currentLevelID >= 3) {
+                stateManager->setState(new CreditState(stateManager)); // Switch to CreditState when the last level is completed
+                return;
+            }
             nextLevel();  // Load the next level
             startTransition(TransitionState::TRANSITION_NEXT_LEVEL);  // Proceed to the next level when Enter is pressed
         }

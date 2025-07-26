@@ -429,7 +429,8 @@ void ResourceManager::loadMusics(){
     musics["LEVEL_1_MUSIC"]= LoadMusicStream("resources/Music/music1.mp3");
     musics["LEVEL_2_MUSIC"]= LoadMusicStream("resources/Music/music2.mp3");
     musics["LEVEL_3_MUSIC"]= LoadMusicStream("resources/Music/music3.mp3");
-}
+    musics["CREDITS_MUSIC"] = LoadMusicStream("resources/Music/Credits.mp3");
+    }
 
 void ResourceManager::loadResource(){
     loadFonts();
