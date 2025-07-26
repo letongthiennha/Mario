@@ -59,6 +59,6 @@ endif()
 
 if (WIN32)
     set_target_properties(Mario PROPERTIES
-        WIN32_EXECUTABLE OFF#TRUE
+        WIN32_EXECUTABLE TRUE
     )
 endif()
