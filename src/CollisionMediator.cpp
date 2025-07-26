@@ -16,6 +16,8 @@ void CollisionMediator::HandlePlayerWithTile(PlayableCharacter *& Player, Tile *
         
         case COLLISION_SOUTH:
         {
+            if(Player->getState()==ENTITY_STATE_JUMPING)
+                return;
             Player->setPosition(Vector2{Player->getPosition().x, tile->getPosition().y - Player->getSize().y});
             Player->setState(ENTITY_STATE_ON_GROUND);
             Player->setVelocity(Vector2{Player->getVelocity().x, 0});
@@ -136,7 +138,7 @@ void CollisionMediator::HandleFireballWithMonster(Fireball *&fireball, Monster *
         return;
     monster->onHit(); // Monster dies when hit by a fireball
     fireball->setState(ENTITY_STATE_TO_BE_REMOVED); // Fireball is removed after hitting a monster
-    SoundController::getInstance().PlaySound("Player_STOMP");
+    SoundController::getInstance().PlaySound("MARIO_STOMP");
 }
 
 void CollisionMediator::HandleFireballWithBlock(Fireball *&fireball, Block *&block, CollisionInfo AtoB)
@@ -355,6 +357,8 @@ void CollisionMediator::HandlePlayerWithBlock(PlayableCharacter *&Player, Block 
 
     switch (AtoB) {
         case COLLISION_SOUTH:
+            if(Player->getState()==ENTITY_STATE_JUMPING)
+                return;
             Player->setPosition({Player->getPosition().x, block->getPosition().y - Player->getSize().y});
             Player->setVelocity({Player->getVelocity().x, 0});
             Player->setState(ENTITY_STATE_ON_GROUND);
@@ -370,10 +374,12 @@ void CollisionMediator::HandlePlayerWithBlock(PlayableCharacter *&Player, Block 
         case COLLISION_EAST:
             if(Player->getFacingDirection()==DIRECTION_LEFT) return;
             Player->setPosition({block->getPosition().x - Player->getSize().x, Player->getPosition().y});
+            Player->setVelocity({0, Player->getVelocity().y});
             break;
         case COLLISION_WEST:
             if(Player->getFacingDirection()==DIRECTION_RIGHT) return;
             Player->setPosition({block->getPosition().x + block->getSize().x, Player->getPosition().y});
+            Player->setVelocity({0, Player->getVelocity().y});
             break;
         default:
             break;
@@ -396,11 +402,11 @@ void CollisionMediator::HandleMonsterWithTile(Monster *&monster, Tile *&tile, Co
                     break;
                 case COLLISION_EAST:
                     monster->setPosition({tile->getPosition().x - monster->getSize().x, monster->getPosition().y});
-                    monster->setVelocity({-100, monster->getVelocity().y}); // Reverse the x velocity
+                    if(monster->getVelocity().x > 0)  monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
                     break;
                 case COLLISION_WEST:
                     monster->setPosition({tile->getPosition().x + tile->getSize().x, monster->getPosition().y});
-                    monster->setVelocity({100, monster->getVelocity().y}); // Reverse the x velocity
+                    if(monster->getVelocity().x < 0)  monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
                     break;
                 case COLLISION_NORTH:
                     monster->setPosition({monster->getPosition().x, tile->getPosition().y + tile->getSize().y});
@@ -433,13 +439,13 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
         case COLLISION_EAST:
             if(monster->getFacingDirection() == DIRECTION_LEFT) return;
             monster->setPosition({block->getPosition().x - monster->getSize().x, monster->getPosition().y});
-            monster->setVelocity({-100, monster->getVelocity().y}); // Reverse the x velocity
+            monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
             monster->setFacingDirection(DIRECTION_LEFT);
             break;
         case COLLISION_WEST:
             if(monster->getFacingDirection() == DIRECTION_RIGHT) return;
             monster->setPosition({block->getPosition().x + block->getSize().x, monster->getPosition().y});
-            monster->setVelocity({100, monster->getVelocity().y}); // Reverse the x velocity
+            monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
             monster->setFacingDirection(DIRECTION_RIGHT);
             break;
         default:

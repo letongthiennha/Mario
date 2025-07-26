@@ -218,6 +218,7 @@ void GameState::draw(){
     static const Texture2D *SmallLuigi = &ResourceManager::getInstance().getTexture("SMALL_LUIGI_0_RIGHT");
     if(currentLevel->getState() == LevelState::LEVEL_STATE_GAME_OVER&& transitionState == TransitionState::TRANSITION_NONE) {
         DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), BLACK);
+        
         DrawTextureNPatch(*GameOver,
                     NPatchInfo{Rectangle{0, 0, (float)(*GameOver).width,
                                         (float)(*GameOver).height}, 0, 0, 0, 0},
@@ -251,12 +252,18 @@ void GameState::draw(){
          20,7).x/2,
          (float)GetScreenHeight() / 2 -100}, 
         20, 7, WHITE);
-
-        DrawTextureNPatch(*SmallMario,
+        if(selectedCharacterType == CharacterType::MARIO) {
+            DrawTextureNPatch(*SmallMario,
                        NPatchInfo{Rectangle{0, 0, (float)(*SmallMario).width,
                                            24}, 0, 0, 0, 0},
                        Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
-                       
+        } else if(selectedCharacterType == CharacterType::LUIGI) {
+            DrawTextureNPatch(*SmallLuigi,
+                       NPatchInfo{Rectangle{0, 0, (float)(*SmallLuigi).width,
+                                           24}, 0, 0, 0, 0},
+                       Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
+        }
+        
         Vector2 size = MeasureTextEx(*SuperMarioFont,
             ("X " + std::to_string(currentLevelID + 1)).c_str(), 20, 7);
 
@@ -309,11 +316,17 @@ void GameState::draw(){
              (float)GetScreenHeight() / 2 -100}, 
             20, 7, WHITE);
     
+            if(selectedCharacterType == CharacterType::MARIO) {
             DrawTextureNPatch(*SmallMario,
-                           NPatchInfo{Rectangle{0, 0, (float)(*SmallMario).width,
-                                               24}, 0, 0, 0, 0},
-                           Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
-                           
+                       NPatchInfo{Rectangle{0, 0, (float)(*SmallMario).width,
+                                           24}, 0, 0, 0, 0},
+                       Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
+        } else if(selectedCharacterType == CharacterType::LUIGI) {
+            DrawTextureNPatch(*SmallLuigi,
+                       NPatchInfo{Rectangle{0, 0, (float)(*SmallLuigi).width,
+                                           24}, 0, 0, 0, 0},
+                       Rectangle{(float)GetScreenWidth() / 2 -100, (float)GetScreenHeight() / 2-16, 43, 32}, Vector2{0, 0}, 0.0f, WHITE);
+        }               
             Vector2 size = MeasureTextEx(*SuperMarioFont,
                 ("X " + std::to_string(currentLevelID + 1)).c_str(), 20, 7);
     
