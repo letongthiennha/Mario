@@ -29,10 +29,10 @@ KoopaTroopa::KoopaTroopa(Vector2 pos, float speed)
         sprite = &ResourceManager::getInstance().getTexture("YELLOW_KOOPA_0_LEFT");
         break;
     }
-    NorthHb.SetSize({size.x - 30, 1});
-    SouthHb.SetSize({size.x-30, 1});
-    WestHb.SetSize({1, size.y - 20});
-    EastHb.SetSize({1, size.y - 20});
+    NorthHb.SetSize({size.x - 10, 5});
+    SouthHb.SetSize({size.x-10, 5});
+    WestHb.SetSize({5, size.y - 20});
+    EastHb.SetSize({5, size.y - 20});
     updateHitboxes();
 }
 
