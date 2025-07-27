@@ -95,7 +95,7 @@ void Level::UpdateLevel()
                         std::vector<Block*>& blocks = blocksSection[currentSection];
                         std::vector<Item*>& items = itemsSection[currentSection];
                         std::vector<Monster*>& monsters = monstersSection[currentSection];
-                if(i==2||i==1){
+                if(i >= -2 && i <= 2){
                         for(auto &monster: monsters)
                         {
                                 if(monster->getState() == ENTITY_STATE_DYING) continue; // Skip monsters that are dying
