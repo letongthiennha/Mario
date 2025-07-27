@@ -33,10 +33,10 @@ player(CharacterFactory::createCharacter(selectedCharacterType, map.getStartPosi
                 background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_2");
                 backgroundColor = DARKGREEN;
                 break;
-        //     case 3:
-        //         background = ResourceManager::getInstance().getTexture("LEVEL_3_BACKGROUND");
-        //         backgroundColor = ResourceManager::getInstance().getColor("LEVEL_3_BACKGROUND_COLOR");
-        //         break;
+             case 3:
+                 //background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_3");
+                 backgroundColor = LIGHTGRAY;
+                 break;
             default:
                 // background = ResourceManager::getInstance().getTexture("DEFAULT_BACKGROUND");
                 backgroundColor = WHITE;
@@ -95,7 +95,7 @@ void Level::UpdateLevel()
                         std::vector<Block*>& blocks = blocksSection[currentSection];
                         std::vector<Item*>& items = itemsSection[currentSection];
                         std::vector<Monster*>& monsters = monstersSection[currentSection];
-                if(i >= -2 && i <= 2){
+                if(i>=-1&&i<=1){
                         for(auto &monster: monsters)
                         {
                                 if(monster->getState() == ENTITY_STATE_DYING) continue; // Skip monsters that are dying
@@ -210,27 +210,6 @@ void Level::UpdateLevel()
                                         }
                                 }
 
-                                // Update monsters
-                                for (auto &monster : monsters)
-                                {
-                                        if (monster->getState() == ENTITY_STATE_TO_BE_REMOVED || monster->getIsActive() == false)
-                                                continue;
-                                        monster->updateStateAndPhysic();
-                                        for (auto const &tile : interactiveTiles)
-                                        {
-                                                CollisionInfo collision = monster->CheckCollisionType(*tile);
-                                                if (collision)
-                                                        collisionMediator.HandleCollision(monster, tile);
-                                        }
-                                        for (auto &fireball : *player->getFireballs())
-                                        {
-                                                CollisionInfo collision = monster->CheckCollisionType(*fireball);
-                                                if (collision)
-                                                {
-                                                        collisionMediator.HandleCollision(monster, fireball);
-                                                }
-                                        }
-                                }
                                 // Update items
                                 for (auto const &item : items)
                                 {
@@ -271,6 +250,33 @@ void Level::UpdateLevel()
                         i--; // Adjust index after erasing
                 }
         };
+        // Update monsters across all sections
+        for (auto& monster_section : monstersSection) {
+            for (auto& monster : monster_section) {
+                if (monster->getState() == ENTITY_STATE_TO_BE_REMOVED || !monster->getIsActive())
+                    continue;
+                monster->updateStateAndPhysic();
+
+                int monsterSectionIndex = monster->getPosition().x / map.getSectionWidth();
+                if (monsterSectionIndex < 0) monsterSectionIndex = 0;
+                if (monsterSectionIndex >= interactiveTilesSection.size()) monsterSectionIndex = interactiveTilesSection.size() - 1;
+                
+                // Check for collisions with tiles in the monster's current section
+                for (auto& tile : interactiveTilesSection[monsterSectionIndex]) {
+                    CollisionInfo collision = monster->CheckCollisionType(*tile);
+                    if (collision)
+                        collisionMediator.HandleCollision(monster, tile);
+                }
+
+                // Check for collisions with fireballs
+                for (auto& fireball : *player->getFireballs()) {
+                    CollisionInfo collision = monster->CheckCollisionType(*fireball);
+                    if (collision) {
+                        collisionMediator.HandleCollision(monster, fireball);
+                    }
+                }
+            }
+        }
 
         // if(player->getPosition().x>3000) // If player is past a certain point, switch to next level
         // {

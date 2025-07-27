@@ -225,6 +225,7 @@ void ResourceManager::loadTextures()
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_2"] = LoadTexture("resources/Background/background2.png");
+    textures["BACKGROUND_LEVEL_3"] = LoadTexture("resources/Background/background3.png");
 	textures["SETTING_BACKGROUND"] = LoadTexture("resources/Background/setting_background.png");
 
     }
