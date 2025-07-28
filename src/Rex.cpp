@@ -37,11 +37,7 @@ void Rex::updateStateAndPhysic() {
     float delta = GameClock::getInstance().DeltaTime;
     
     Monster::updateStateAndPhysic();
-    // Prevent sliding off the Level
-    if (pos.x < 0) {
-        pos.x = 0;
-        velocity.x = abs(velocity.x); // Reverse direction
-    }
+
     if (state == ENTITY_STATE_ON_GROUND && velocity.x != 0) {
         frameAcum += delta;
         if (frameAcum >= frameTime) {

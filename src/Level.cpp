@@ -8,6 +8,7 @@
 #include "QuestionBlock.h"
 #include "EyesOpenedBlock.h"
 #include "CharacterFactory.h"
+#include "BanzaiBill.h"
 Level::Level(int mapNumber,GameState* gamestate,const PlayerData& playerData,CharacterType selectedCharacterType):map(mapNumber),
 gameState(gamestate),
 monstersSection(map.getMonstersSection()),
@@ -216,6 +217,25 @@ void Level::UpdateLevel()
                                         if (monster->getState() == ENTITY_STATE_TO_BE_REMOVED || monster->getIsActive() == false)
                                                 continue;
                                         monster->updateStateAndPhysic();
+                                        if(dynamic_cast<BanzaiBill*>(monster))
+                                        {
+                                                continue;;
+                                        }
+                                        //Border collision handling
+                                        if(monster->getPosition().x < 0)
+                                        {
+                                                monster->setPosition({0, monster->getPosition().y}); // Prevent monster from going off the left side of the screen
+                                                monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Stop horizontal movement
+                                        }
+                                        else if (monster->getPosition().x > map.getMapWidth() - monster->getSize().x)
+                                        {
+                                                monster->setPosition({map.getMapWidth() - monster->getSize().x, monster->getPosition().y}); // Prevent monster from going off the right side of the screen
+                                                monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Stop horizontal movement
+                                        }
+                                        if(monster->getPosition().y> GetScreenHeight() + monster->getSize().y)
+                                        {
+                                                monster->die();
+                                        }
                                         for (auto const &tile : interactiveTiles)
                                         {
                                                 CollisionInfo collision = monster->CheckCollisionType(*tile);
@@ -240,7 +260,20 @@ void Level::UpdateLevel()
                                                 if (!coin->isItem)
                                                         continue;
                                         }
-
+                                        if(item->getPosition().x < 0)
+                                        {
+                                                item->setPosition({0, item->getPosition().y}); // Prevent item from going off the left side of the screen
+                                                item->setVelocity({-item->getVelocity().x, item->getVelocity().y}); // Stop horizontal movement
+                                        }
+                                        else if (item->getPosition().x > map.getMapWidth() - item->getSize().x)
+                                        {
+                                                item->setPosition({map.getMapWidth() - item->getSize().x, item->getPosition().y}); // Prevent item from going off the right side of the screen
+                                                item->setVelocity({-item->getVelocity().x, item->getVelocity().y}); // Stop horizontal movement
+                                        }
+                                        if(item->getPosition().y> GetScreenHeight() + item->getSize().y)
+                                        {
+                                                item->setState(ItemState::COLLECTED);
+                                        }
                                         if(item->getState()==ItemState::IDLE)
                                         item->updateStateAndPhysic();
                                         if (item->getState() == ItemState::POP_UP)

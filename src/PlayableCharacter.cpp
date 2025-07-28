@@ -376,6 +376,13 @@ void PlayableCharacter::HandleInput()
             isDucking = false;
         }
     }
+    if(state==ENTITY_STATE_JUMPING){
+        if(IsKeyReleased(KEY_UP)){
+            if(velocity.y<0){ // If the character is still going up
+                velocity.y += 100; // Stop upward movement
+            }
+        }
+    }
 
     if (form==PLAYER_STATE_FIRE){
         if (IsKeyPressed(KEY_Z)&&!isFiring&&fireballs.size() <=4) {
