@@ -414,6 +414,7 @@ void ResourceManager::loadTextures()
         // TITLE
 		textures["SELECT_CHARACTER_TITLE"] = LoadTexture("resources/UI/CharacterSelectTitle.png");
 		textures["SELECT_GAME_MODE_TITLE"] = LoadTexture("resources/UI/GameModeSelectTitle.png");
+		textures["CREDITS"] = LoadTexture("resources/UI/Credits.png");
 }   
 
 void ResourceManager::loadSounds(){

@@ -10,7 +10,7 @@ MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
     optionsButton(Vector2{1050, 550}, Vector2{400, 150}),
     exitButton(Vector2{100, 750}, Vector2{100, 100}),
-    creditsButton(Vector2{1350, 750}, Vector2{100, 100})
+    creditsButton(Vector2{1300, 750}, Vector2{250, 100})
     , backgroundTexture(&ResourceManager::getInstance().getTexture("MENU_STATE_BACKGROUND")),
 	logoTexture(&ResourceManager::getInstance().getTexture("GROUP_LOGO"))
     {
@@ -24,10 +24,8 @@ MenuState::MenuState(StateManager*manager): State(manager),
         exitButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_STATE_EXIT_BUTTON"))
             .DisableBackground()
             .fitTexture();
-        creditsButton.DisableBackground()
-            .setText("Credits")
-            .setTextSize(50)
-            .setTextActiveColor(RED);
+        creditsButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("CREDITS")).DisableBackground().fitTexture();
+            
         SoundController::getInstance().StopAllSounds();  // Stop all sounds when entering the menu state
         //SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
 		SoundController::getInstance().PlayMusic("MENU_BACKGROUND_MUSIC");  // Test new music for the menu state
