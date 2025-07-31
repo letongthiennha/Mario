@@ -6,6 +6,8 @@
 #include "StateManager.h"
 #include "SettingMenuState.h"
 #include "CharacterType.h"
+#include <filesystem>
+#include <iostream>
 
 Rectangle getScreenBounds() {
     return { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() };
@@ -13,11 +15,25 @@ Rectangle getScreenBounds() {
 
 void GameState::nextLevel()
 {
+    playerMemento = currentLevel->getPlayerData(); // Get the current player data from the level
+
     currentLevelID++;
     if (currentLevelID> 3) {  
         currentLevelID = 0;
     }
-    playerMemento = currentLevel->getPlayerData(); // Reset player data for the new level
+
+    std::cout << "Working directory: " << std::filesystem::current_path() << std::endl;
+    std::ofstream scoreFile("saves/scores.txt", std::ios_base::app);
+    if (scoreFile.is_open()) {
+        scoreFile<< playerMemento->getScore() << std::endl;
+		std::cout << "Score saved: " << playerMemento->getScore() << std::endl;
+        scoreFile.close();
+    }
+    else {
+		std::cerr << "Error opening score file for writing." << std::endl;
+    }
+
+    playerMemento = std::make_unique<PlayerData>(3, 0, 0);
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Create a new level with the updated player data
 }

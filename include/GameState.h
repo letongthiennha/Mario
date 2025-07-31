@@ -6,6 +6,7 @@
 #include "CharacterType.h"
 #include "ChatBotScreen.h"
 #include <memory>
+#include <fstream>
 class Level;
 // GameState to manage levels and its transitions, with HUD and Buttons
 enum class TransitionState {
