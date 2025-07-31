@@ -132,6 +132,7 @@ void Level::UpdateLevel()
                                 };
                                 for (auto const &block : blocks)
                                 {
+                                    if (std::abs(player->getPosition().x - block->getPosition().x) > activationWidth) continue;
                                         CollisionInfo playerCollision = player->CheckCollisionType(*block);
                                         if (playerCollision)
                                                 collisionMediator.HandleCollision(player, block);
@@ -145,7 +146,8 @@ void Level::UpdateLevel()
                                         }
                                         for (auto &monster : monsters)
                                         {
-                                                CollisionInfo monsterCollision = monster->CheckCollisionType(*block);
+                                            if (std::abs(player->getPosition().x - monster->getPosition().x) > activationWidth) continue;
+                                            CollisionInfo monsterCollision = monster->CheckCollisionType(*block);
                                                 if (monsterCollision)
                                                         collisionMediator.HandleCollision(monster, block);
                                         }
@@ -164,6 +166,7 @@ void Level::UpdateLevel()
 
                                 for (auto const &item : items)
                                 {
+                                    if (std::abs(player->getPosition().x - item->getPosition().x) > activationWidth) continue;
                                         CollisionInfo playerCollision = player->CheckCollisionType(*item);
                                         if (playerCollision)
                                         {
@@ -184,12 +187,14 @@ void Level::UpdateLevel()
 
                                         if (!monster->getIsActive() || monster->getState() == ENTITY_STATE_DYING)
                                                 continue;
+                                        if (std::abs(player->getPosition().x - monster->getPosition().x) > activationWidth) continue;
                                         CollisionInfo playerCollision = player->CheckCollisionType(*monster);
                                         if (playerCollision)
                                                 collisionMediator.HandleCollision(player, monster);
                                 }
                                 for (auto const &item : items)
                                 {
+                                    if (std::abs(player->getPosition().x - item->getPosition().x) > activationWidth) continue;
                                         // Check collision with each interactive tile
                                         if (dynamic_cast<Coin *>(item) != nullptr)
                                         {
@@ -213,6 +218,7 @@ void Level::UpdateLevel()
                                 // Update items
                                 for (auto const &item : items)
                                 {
+                                    if (std::abs(player->getPosition().x - item->getPosition().x) > activationWidth) continue;
                                         Coin *coin = dynamic_cast<Coin *>(item);
                                         if (coin != nullptr)
                                         {
@@ -227,6 +233,7 @@ void Level::UpdateLevel()
                         }
                 //Update Blocks
                         for (auto& block : blocks) {
+                            if (std::abs(player->getPosition().x - block->getPosition().x) > activationWidth) continue;
                         if (dynamic_cast<QuestionBlock*>(block) || dynamic_cast<EyesOpenedBlock*>(block)) {
                                 block->updateStateAndPhysic();
                         }
@@ -255,6 +262,7 @@ void Level::UpdateLevel()
             for (auto& monster : monster_section) {
                 if (monster->getState() == ENTITY_STATE_TO_BE_REMOVED || !monster->getIsActive())
                     continue;
+                if (std::abs(player->getPosition().x - monster->getPosition().x) >GetScreenWidth()) continue;
                 monster->updateStateAndPhysic();
 
                 int monsterSectionIndex = monster->getPosition().x / map.getSectionWidth();
