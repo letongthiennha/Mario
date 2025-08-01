@@ -3,7 +3,7 @@
 #include "StateManager.h"
 #include "Slider.h"
 #include "raylib.h"
-#include "Button.h"
+#include "Button2.h"
 #include <map>  
 
 class SettingMenuState : public State {
@@ -37,6 +37,8 @@ private:
     Slider musicSlider;
     Slider sfxSlider;
 
+    Button2 homeButton;
+    Button2 saveButton;
     Rectangle backButton;
     Rectangle goBackButton;
     Rectangle musicRect;

@@ -260,8 +260,8 @@ void ResourceManager::loadTextures()
     textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
 
-    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/homeButtonRelease.png");
-    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/homeButtonPress.png");
+    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Home (3).png");
+    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/Home (4).png");
 	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/muteButtonRelease.png");
 	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/muteButtonPress.png");
 	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/unmuteButtonRelease.png");
@@ -270,8 +270,11 @@ void ResourceManager::loadTextures()
 	textures["BACK_BUTTON_PRESS"] = LoadTexture("resources/Button/backButtonPress.png");
 	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/resumeButtonPress.png");
 	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
-	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/menuButtonPress.png");
-	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/menuButtonRelease.png");
+	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/Menu (4).png");
+	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/Menu (3).png");
+	textures["SAVE_BUTTON_PRESS"] = LoadTexture("resources/Button/Save (4).png");
+	textures["SAVE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Save (3).png");
+    
 
     textures["MARIO_BUTTON"] = LoadTexture("resources/Button/marioButton.png");
     textures["LUIGI_BUTTON"] = LoadTexture("resources/Button/luigiButton.png");
@@ -286,6 +289,18 @@ void ResourceManager::loadTextures()
     textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
     textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
     textures["HUD_LUIGI"] = LoadTexture("resources/UI/LuigiUI.png");
+
+	Image marioImage = LoadImage("resources/UI/mario.png");
+    ImageResize(&marioImage, 388, 449);
+    textures["MARIO_TEXTURE"] = LoadTextureFromImage(marioImage);
+    UnloadImage(marioImage);
+
+    Image luigiImage = LoadImage("resources/UI/luigi.png");
+    ImageResize(&luigiImage, 388, 449);
+    textures["LUIGI_TEXTURE"] = LoadTextureFromImage(luigiImage);
+    UnloadImage(luigiImage);
+
+    textures["MUSHROOM_TEXTURE"] = LoadTexture("resources/UI/mushroom.png");
 
     //ITEMS
 	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin_0.png");

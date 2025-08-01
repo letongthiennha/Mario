@@ -25,6 +25,7 @@ private:
     TransitionState transitionState;
     std::unique_ptr<Level> currentLevel;
     std::unique_ptr<PlayerData> playerMemento;
+    std::vector<std::unique_ptr<PlayerData>> levelMementos;
 
     int currentLevelID;
     float transitionTime;
@@ -48,6 +49,9 @@ public:
     void drawLevelEndSummary();
     void resetwhenGameOver();
     void startTransition(TransitionState state);
+    void saveFinalScores();
+
+    void saveProgress();
     
     void update() override;
     void draw() override;

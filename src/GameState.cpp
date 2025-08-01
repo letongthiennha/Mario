@@ -6,8 +6,13 @@
 #include "StateManager.h"
 #include "SettingMenuState.h"
 #include "CharacterType.h"
-#include <filesystem>
 #include <iostream>
+#include <fstream>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <numeric>
+#include <filesystem>
 
 Rectangle getScreenBounds() {
     return { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() };
@@ -15,28 +20,64 @@ Rectangle getScreenBounds() {
 
 void GameState::nextLevel()
 {
-    playerMemento = currentLevel->getPlayerData(); // Get the current player data from the level
+   levelMementos.push_back(currentLevel->getPlayerData()); // Get the current player data from the level
 
     currentLevelID++;
     if (currentLevelID> 3) {  
+        saveFinalScores();
         currentLevelID = 0;
-    }
-
-    std::cout << "Working directory: " << std::filesystem::current_path() << std::endl;
-    std::ofstream scoreFile("saves/scores.txt", std::ios_base::app);
-    if (scoreFile.is_open()) {
-        scoreFile<< playerMemento->getScore() << std::endl;
-		std::cout << "Score saved: " << playerMemento->getScore() << std::endl;
-        scoreFile.close();
-    }
-    else {
-		std::cerr << "Error opening score file for writing." << std::endl;
+        levelMementos.clear();
+        return;
     }
 
     playerMemento = std::make_unique<PlayerData>(3, 0, 0);
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Create a new level with the updated player data
 }
+
+void GameState::saveFinalScores() {
+    std::ofstream scoreFile("saves/scores.txt", std::ios_base::app);
+    if (scoreFile.is_open()) {
+        // Get current time
+        auto now = std::chrono::system_clock::now();
+        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+
+        // Write timestamp in a machine-readable format
+        scoreFile << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+
+        int totalScore = 0;
+        // Append scores for each level
+        for (const auto& memento : levelMementos) {
+            int levelScore = memento->getScore();
+            scoreFile << " " << levelScore;
+            totalScore += levelScore;
+        }
+
+        // Append the total score and a newline character
+        scoreFile << " " << totalScore << std::endl;
+
+        scoreFile.close();
+    }
+    else {
+        std::cerr << "Error: Unable to open scores.txt for writing." << std::endl;
+    }
+}
+
+void GameState::saveProgress() {
+    std::ofstream progressFile("saves/progress.txt", std::ios_base::trunc);
+    if(progressFile.is_open()) {
+        // Append the current level ID and player data
+        progressFile << currentLevelID << " ";
+        std::cerr << currentLevelID << '\n';
+        for (int i = 1; i < currentLevelID; i++) {
+            progressFile << levelMementos[i-1]->getScore() << " ";
+        }
+        progressFile.close();
+    } else {
+        std::cerr << "Error: Unable to open scores.txt for writing." << std::endl;
+	}
+}
+
 GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{50, 50}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),

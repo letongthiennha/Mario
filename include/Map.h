@@ -37,11 +37,11 @@ private:
     void LoadMap(int mapNumber);    
 public:
 
-    std::vector<std::vector<Tile *>> &getInteractiveTilesSection();
-    std::vector<std::vector<Tile *>> &getNonInteractiveTilesSection();
-    std::vector<std::vector<Block *>> &getBlocksSection();
-    std::vector<std::vector<Item *>> &getItemsSection();
-    std::vector<std::vector<Monster *>> &getMonstersSection();
+    std::vector<std::vector<Tile*>>& getInteractiveTilesSection();
+    std::vector<std::vector<Tile*>>& getNonInteractiveTilesSection();
+    std::vector<std::vector<Block*>>& getBlocksSection();
+    std::vector<std::vector<Item*>>& getItemsSection();
+    std::vector<std::vector<Monster*>>& getMonstersSection();
     int getSectionWidth() const;
     float getMapWidth() const;
 

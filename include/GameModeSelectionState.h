@@ -19,4 +19,8 @@ private:
     Button backButton;
     Button twoPlayerButton;
 	Texture2D titleTexture;
+
+    Texture2D mushroomTexture;
+	Texture2D marioTexture;
+	Texture2D luigiTexture;
 };

@@ -12,7 +12,7 @@ void Map::LoadFromJsonFile(const std::string& mapFileName)
 }
 
 
-std::vector<std::vector<Tile *>> &Map::getInteractiveTilesSection()
+ std::vector<std::vector<Tile *>> &Map::getInteractiveTilesSection()
 {
     return interactiveTilesSection;
 }

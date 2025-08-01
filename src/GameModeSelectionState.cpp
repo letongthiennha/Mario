@@ -13,6 +13,9 @@ twoPlayerButton(Vector2{ (float)GetScreenWidth() / 2 - 150, (float)GetScreenHeig
 backButton(Vector2{ 50, 50 }, Vector2{ 50, 50 })
 {
     titleTexture = ResourceManager::getInstance().getTexture("SELECT_GAME_MODE_TITLE");
+    marioTexture = ResourceManager::getInstance().getTexture("MARIO_TEXTURE");
+    luigiTexture = ResourceManager::getInstance().getTexture("LUIGI_TEXTURE");
+    mushroomTexture = ResourceManager::getInstance().getTexture("MUSHROOM_TEXTURE");
 
     newGameButton.setText("New Game");
     continueButton.setText("Continue");
@@ -57,6 +60,12 @@ void GameModeSelectionState::update() {
 void GameModeSelectionState::draw() {
     ClearBackground(Color{ 255, 210, 29, 255 });
     DrawTexture(titleTexture, GetScreenWidth() / 2 - titleTexture.width / 2, 0, WHITE);
+    float characterScale = 0.75f;
+    float mushroomScale = 0.25f;
+
+    DrawTextureEx(marioTexture, { 0, GetScreenHeight() - (marioTexture.height * characterScale) }, 0.0f, characterScale, WHITE);
+    DrawTextureEx(luigiTexture, { (float)GetScreenWidth() - (luigiTexture.width * characterScale), GetScreenHeight() - (luigiTexture.height * characterScale) }, 0.0f, characterScale, WHITE);
+    DrawTextureEx(mushroomTexture, { (float)GetScreenWidth() / 2 - (mushroomTexture.width * mushroomScale) / 2, (float)GetScreenHeight() / 2 - (mushroomTexture.height * mushroomScale) / 2 }, 0.0f, mushroomScale, WHITE);
 
     newGameButton.Draw();
     continueButton.Draw();

@@ -9,9 +9,18 @@
 SettingMenuState::SettingMenuState(StateManager* manager)
     : State(manager),
     musicSlider({ 600.0f, 330.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetMusicVolume()),
-    sfxSlider({ 600.0f, 460.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetSFXVolume())
+    sfxSlider({ 600.0f, 460.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetSFXVolume()),
+	homeButton({ 20, 20 }, { 64, 64 }), saveButton({ 20, 180 }, { 64, 64 })
 {
-    backButton = Rectangle(20, 20, 64, 64);
+    homeButton.setTextures(
+        ResourceManager::getInstance().getTexture("HOME_BUTTON_RELEASE"),
+        ResourceManager::getInstance().getTexture("HOME_BUTTON_PRESS")
+	);
+    saveButton.setTextures(
+        ResourceManager::getInstance().getTexture("SAVE_BUTTON_RELEASE"),
+        ResourceManager::getInstance().getTexture("SAVE_BUTTON_PRESS")
+	);
+    //backButton = Rectangle(20, 20, 64, 64);
     goBackButton = Rectangle(20, 100, 64, 64);
     float rectX = 520.0f;
     float rectWidth = 64.0f;
@@ -38,7 +47,11 @@ void SettingMenuState::update() {
     SoundController::getInstance().SetSFXVolume(sfxSlider.getRatio());
 
     // Back button logic
-    updateBackButton();
+    //updateBackButton();
+    homeButton.update();
+    if (homeButton.isClicked()) {
+		stateManager->setState(new MenuState(stateManager));
+    }
 
 	// Music and SFX buttons logic
 	updateMusicButton();
@@ -47,6 +60,16 @@ void SettingMenuState::update() {
 	// Go back button logic
     if (dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
         updateGoBackButton();
+		saveButton.update();
+        if(saveButton.isClicked()) {
+            // Save settings logic here
+			std::cerr << "Progress saved!" << std::endl;
+            GameState* prevState = dynamic_cast<GameState*>(stateManager->getPreviousState());
+            if (prevState != nullptr) {
+                // Save the progress of the previous state
+                prevState->saveProgress();
+            }
+		}
     }
 }
 
@@ -130,7 +153,8 @@ void SettingMenuState::draw() {
 	drawSFXSlider();
     
     // Back button
-    drawBackButton();
+   // drawBackButton();
+	homeButton.Draw();
 
 	// Music and SFX buttons
 	drawMusicButton();
@@ -139,6 +163,7 @@ void SettingMenuState::draw() {
 	// Back to previous state button
     if(dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
         drawGoBackButton();
+        saveButton.Draw();
 	}
 }
 
