@@ -41,6 +41,7 @@ private:
 public:
     GameState(StateManager *manager);
     GameState(StateManager *manager, CharacterType characterType);
+    GameState(StateManager* manager, std::string status);
     ~GameState();
 
     HUD& getHUD() { return gameHUD; }

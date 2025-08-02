@@ -93,6 +93,39 @@ GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
     SoundController::getInstance().PlayMusic("LEVEL_1_MUSIC"); // Start playing the game music
 }
+
+GameState::GameState(StateManager* manager, std::string status) : State(manager),
+menuButton(Vector2{ 50, 50 }, Vector2{ 50, 50 }),
+playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
+transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
+chatBotScreen(
+    { (getScreenBounds().width / 2) - 400, (getScreenBounds().height / 2) - 300, 800, 600 },
+    { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
+)
+{
+    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
+        .DisableBackground()
+        .fitTexture();
+    std::ifstream progressFile("saves/progress.txt");
+    if (progressFile.is_open()) {
+        progressFile >> currentLevelID; // Read the current level ID
+        std::cerr << currentLevelID << '\n';
+        int score;
+        while (progressFile >> score) { // Read scores for previous levels
+            levelMementos.push_back(std::make_unique<PlayerData>(3, 0, score)); // Create PlayerData with 3 lives and the read score
+        }
+		selectedCharacterType = CharacterType::MARIO; // Default character type, can be changed later
+		playerMemento = std::make_unique<PlayerData>(3, 0, 0); // Initialize player data with 3 lives, 0 score, and 0 coins
+		currentLevel = std::make_unique<Level>(currentLevelID, this, *this->playerMemento.get(), selectedCharacterType); // Initialize the first level with the read data
+        SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
+        SoundController::getInstance().PlayMusic("LEVEL_"+std::to_string(currentLevelID)+"_MUSIC"); // Start playing the game music
+        progressFile.close();
+    }
+    else {
+        std::cerr << "Error: Unable to open progress.txt for reading." << std::endl;
+    }
+}
+
 GameState::~GameState()
 {
     // Cleanup if necessary

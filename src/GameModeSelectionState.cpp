@@ -3,6 +3,8 @@
 #include "CharacterSelectionState.h"
 #include "MenuState.h"
 #include "ResourceManager.h"
+#include "GameState.h"
+#include <fstream>
 
 GameModeSelectionState::GameModeSelectionState(StateManager* manager) : State(manager),
 newGameButton(Vector2{ (float)GetScreenWidth() / 4 - 150, (float)GetScreenHeight() / 2 - 75 }, Vector2{ 300, 50 }),
@@ -42,6 +44,7 @@ void GameModeSelectionState::update() {
     }
     else if (continueButton.isClicked()) {
         // Placeholder: Add logic to continue a game
+        stateManager->setState(new GameState(stateManager, "LOAD_GAME"));
     }
     else if (designGameButton.isClicked()) {
         // Placeholder: Add logic for a map editor or design state
