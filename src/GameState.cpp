@@ -5,6 +5,7 @@
 #include "SoundController.h"
 #include "StateManager.h"
 #include "SettingMenuState.h"
+#include "GameModeSelectionState.h"
 #include "CharacterType.h"
 #include <iostream>
 #include <fstream>
@@ -25,8 +26,16 @@ void GameState::nextLevel()
     currentLevelID++;
     if (currentLevelID> 3) {  
         saveFinalScores();
+
+        std::ofstream progressFile("saves/progress.txt", std::ios_base::trunc);
+        if (progressFile.is_open()) {
+            progressFile << 1;
+            progressFile.close();
+        }
+
         currentLevelID = 0;
         levelMementos.clear();
+        stateManager ->setState( new GameModeSelectionState(stateManager));
         return;
     }
 
