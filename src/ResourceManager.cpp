@@ -261,18 +261,18 @@ void ResourceManager::loadTextures()
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
 
     textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Home (3).png");
-    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/Home (4).png");
-	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/muteButtonRelease.png");
-	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/muteButtonPress.png");
-	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/unmuteButtonRelease.png");
-	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/unmuteButtonPress.png");
+    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/Home (1).png");
+	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Sound (4).png");
+	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/Sound (1).png");
+	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Sound (3).png");
+	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/Sound (1).png");
 	textures["BACK_BUTTON_RELEASE"] = LoadTexture("resources/Button/backButtonRelease.png");
 	textures["BACK_BUTTON_PRESS"] = LoadTexture("resources/Button/backButtonPress.png");
-	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/resumeButtonPress.png");
-	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
-	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/Menu (4).png");
+	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/Next (1).png");
+	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Next (3).png");
+	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/Menu (1).png");
 	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/Menu (3).png");
-	textures["SAVE_BUTTON_PRESS"] = LoadTexture("resources/Button/Save (4).png");
+	textures["SAVE_BUTTON_PRESS"] = LoadTexture("resources/Button/Save (1).png");
 	textures["SAVE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Save (3).png");
     
 

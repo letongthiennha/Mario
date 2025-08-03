@@ -4,13 +4,18 @@
 #include "ResourceManager.h"
 #include "GameClock.h"
 #include "GameState.h"
+#include "GameModeSelectionState.h"
 #include <iostream>
 
 SettingMenuState::SettingMenuState(StateManager* manager)
     : State(manager),
     musicSlider({ 600.0f, 330.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetMusicVolume()),
     sfxSlider({ 600.0f, 460.0f }, 400.0f, 0.0f, 1.0f, SoundController::getInstance().GetSFXVolume()),
-	homeButton({ 20, 20 }, { 64, 64 }), saveButton({ 20, 180 }, { 64, 64 })
+	homeButton({ 20, 20 }, { 64, 64 }), saveButton({ 20, 180 }, { 64, 64 }),
+    resumeButton({ 20, 100 }, {64, 64 }),
+    yesButton({ (float)GetScreenWidth() / 2 - 125, (float)GetScreenHeight() / 2 + 50 }, { 100, 50 }),
+    noButton({ (float)GetScreenWidth() / 2 + 25, (float)GetScreenHeight() / 2 + 50 }, { 100, 50 }),
+    confirmationState(ConfirmationState::NONE)
 {
     homeButton.setTextures(
         ResourceManager::getInstance().getTexture("HOME_BUTTON_RELEASE"),
@@ -20,6 +25,19 @@ SettingMenuState::SettingMenuState(StateManager* manager)
         ResourceManager::getInstance().getTexture("SAVE_BUTTON_RELEASE"),
         ResourceManager::getInstance().getTexture("SAVE_BUTTON_PRESS")
 	);
+    resumeButton.setTextures(
+        ResourceManager::getInstance().getTexture("RESUME_BUTTON_RELEASE"),
+        ResourceManager::getInstance().getTexture("RESUME_BUTTON_PRESS")
+    );
+
+    yesButton.setText("Yes");
+    yesButton.setColors(GREEN, DARKGREEN, WHITE);
+	yesButton.setFont(&ResourceManager::getInstance().getFonts("CHAT_BOT_TITLE_FONT"));
+    noButton.setText("No");
+    noButton.setColors(RED, MAROON, WHITE);
+    noButton.setFont(&ResourceManager::getInstance().getFonts("CHAT_BOT_TITLE_FONT"));
+    isSaved = false;
+
     //backButton = Rectangle(20, 20, 64, 64);
     goBackButton = Rectangle(20, 100, 64, 64);
     float rectX = 520.0f;
@@ -30,14 +48,61 @@ SettingMenuState::SettingMenuState(StateManager* manager)
     mapBg = &ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
 }
 
+void SettingMenuState::DrawConfirmationBox() {
+    const char* text = "Leave without saving?";
+    Vector2 textSize = MeasureTextEx(ResourceManager::getInstance().getFonts("CHAT_BOT_TITLE_FONT"), text, 50, 2);
+    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), { 0, 0, 0, 128 });
+    //DrawText(text, GetScreenWidth() / 2 - textSize.x / 2, GetScreenHeight() / 2 - 50, 30, RAYWHITE);
+	DrawTextEx(ResourceManager::getInstance().getFonts("CHAT_BOT_TITLE_FONT"), text, { (float)(GetScreenWidth()  - textSize.x) / 2, (float)GetScreenHeight() / 2 - 80 }, 50, 2, RAYWHITE);
+    yesButton.Draw();
+    noButton.Draw();
+}
+
+void SettingMenuState::UpdateConfirmationBox() {
+    yesButton.update();
+    noButton.update();
+
+    if (yesButton.isClicked()) {
+        // This will transition to the main menu.
+        // If you want to exit the game completely, you might need a different mechanism.
+        stateManager->setState(new MenuState(stateManager));
+    }
+    if (noButton.isClicked()) {
+        confirmationState = ConfirmationState::NONE; // Hide confirmation dialog
+    }
+}
+
 void SettingMenuState::update() {
+    updateBackGround();
+
+    if (confirmationState == ConfirmationState::VISIBLE) {
+        UpdateConfirmationBox();
+        return;
+    }
+    homeButton.update();
+
+    if (homeButton.isClicked()) {
+        if(dynamic_cast<MenuState*>(stateManager->getPreviousState()) != nullptr) {
+            // If the previous state is not a MenuState, show confirmation dialog
+            stateManager->goBack();
+            return;
+		}
+
+        if (!isSaved) {
+            confirmationState = ConfirmationState::VISIBLE; // Show confirmation dialog
+            return;
+        }
+        else {
+            stateManager->setState(new MenuState(stateManager)); // Go to main menu directly
+            return;
+        }
+    }
+
     float deltaTime = GameClock::getInstance().DeltaTime; // raylib function, returns seconds since last frame
     if (musicButtonCooldown > 0.0f) musicButtonCooldown -= deltaTime;
 	else musicButtonCooldown = 0.0f;
     if (sfxButtonCooldown > 0.0f) sfxButtonCooldown -= deltaTime;
 	else sfxButtonCooldown = 0.0f;
-
-    updateBackGround();
 
     musicSlider.update();
     sfxSlider.update();
@@ -46,20 +111,20 @@ void SettingMenuState::update() {
     SoundController::getInstance().SetMusicVolume(musicSlider.getRatio());
     SoundController::getInstance().SetSFXVolume(sfxSlider.getRatio());
 
-    // Back button logic
-    //updateBackButton();
-    homeButton.update();
-    if (homeButton.isClicked()) {
-		stateManager->setState(new MenuState(stateManager));
-    }
-
 	// Music and SFX buttons logic
 	updateMusicButton();
     updateSFXButton();
 
 	// Go back button logic
     if (dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
-        updateGoBackButton();
+        
+        resumeButton.update();
+        if (resumeButton.isClicked()) {
+            stateManager->goBack(); // Go back to the previous game state
+            isSaved = false;
+            return;
+        }
+
 		saveButton.update();
         if(saveButton.isClicked()) {
             // Save settings logic here
@@ -69,6 +134,7 @@ void SettingMenuState::update() {
                 // Save the progress of the previous state
                 prevState->saveProgress();
             }
+            isSaved = true;
 		}
     }
 }
@@ -121,19 +187,6 @@ void SettingMenuState::drawSFXSlider() {
 }
 
 void SettingMenuState::draw() {
-    //ClearBackground(RAYWHITE);
-    /*Texture2D& bg = ResourceManager::getInstance().getTexture("SETTING_BACKGROUND");
-    float screenWidth = static_cast<float>(GetScreenWidth());
-    float screenHeight = static_cast<float>(GetScreenHeight());
-    DrawTexturePro(
-        bg,
-        Rectangle{ 0, 0, static_cast<float>(bg.width), static_cast<float>(bg.height) },
-        Rectangle{ 0, 0, screenWidth, screenHeight },
-        Vector2{ 0, 0 },
-        0.0f,
-        WHITE
-    );*/
-
     Color lightBlue = { 173, 216, 230, 255 };
     ClearBackground(lightBlue);
     drawBackGround();
@@ -162,44 +215,13 @@ void SettingMenuState::draw() {
 
 	// Back to previous state button
     if(dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
-        drawGoBackButton();
         saveButton.Draw();
+        resumeButton.Draw();
 	}
-}
 
-void SettingMenuState::updateBackButton() {
-    Vector2 mouse = GetMousePosition();
-    if (CheckCollisionPointRec(mouse, backButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        stateManager->setState(new MenuState(stateManager));
+    if (confirmationState == ConfirmationState::VISIBLE) {
+		DrawConfirmationBox();
     }
-}
-
-void SettingMenuState::drawBackButton() {
-    // Rectangle for the back button
-    Rectangle backRect = backButton;
-
-    // Get mouse state
-    Vector2 mouse = GetMousePosition();
-    bool hovered = CheckCollisionPointRec(mouse, backRect);
-    bool pressed = hovered && IsMouseButtonDown(MOUSE_LEFT_BUTTON);
-
-    // Select the correct texture
-    const char* texKey = hovered ? "HOME_BUTTON_PRESS" : "HOME_BUTTON_RELEASE";
-    Texture2D& tex = ResourceManager::getInstance().getTexture(texKey);
-
-    // Draw the texture
-        DrawTexturePro(
-            tex,
-            Rectangle{ 0, 0, (float)tex.width, (float)tex.height },
-            backRect,
-            Vector2{ 0, 0 },
-            0.0f,
-            WHITE
-        );
-
-     //std::cout << "Drawing " << texKey << ", id: " << tex.id << std::endl;
-    // Optional: Draw a border/highlight
-    //DrawRectangleLinesEx(backRect, 2, hovered ? ORANGE : DARKGRAY);
 }
 
 void SettingMenuState::updateMusicButton() {
@@ -302,35 +324,36 @@ void SettingMenuState::drawSFXButton() {
     );
 }
 
-void SettingMenuState::updateGoBackButton() {
-    Vector2 mouse = GetMousePosition();
-    if (CheckCollisionPointRec(mouse, goBackButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        stateManager->goBack();
-	}
-}
+//void SettingMenuState::updateGoBackButton() {
+//    Vector2 mouse = GetMousePosition();
+//    if (CheckCollisionPointRec(mouse, goBackButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+//        stateManager->goBack();
+//        isSaved = false;
+//	}
+//}
 
-void SettingMenuState::drawGoBackButton() {
-    // Rectangle for the go back button
-    Rectangle goBackRect = goBackButton;
-    // Get mouse state
-    Vector2 mouse = GetMousePosition();
-    bool hovered = CheckCollisionPointRec(mouse, goBackRect);
-    bool pressed = hovered && IsMouseButtonDown(MOUSE_LEFT_BUTTON);
-    // Select the correct texture
-    const char* texKey = hovered ? "RESUME_BUTTON_PRESS" : "RESUME_BUTTON_RELEASE";
-    Texture2D& tex = ResourceManager::getInstance().getTexture(texKey);
-    // Draw the texture
-    DrawTexturePro(
-        tex,
-        Rectangle{ 0, 0, (float)tex.width, (float)tex.height },
-        goBackRect,
-        Vector2{ 0, 0 },
-        0.0f,
-        WHITE
-    );
-    // Optional: Draw a border/highlight
-	//DrawRectangleLinesEx(goBackRect, 2, hovered ? ORANGE : DARKGRAY);
-}
+//void SettingMenuState::drawGoBackButton() {
+//    // Rectangle for the go back button
+//    Rectangle goBackRect = goBackButton;
+//    // Get mouse state
+//    Vector2 mouse = GetMousePosition();
+//    bool hovered = CheckCollisionPointRec(mouse, goBackRect);
+//    bool pressed = hovered && IsMouseButtonDown(MOUSE_LEFT_BUTTON);
+//    // Select the correct texture
+//    const char* texKey = hovered ? "RESUME_BUTTON_PRESS" : "RESUME_BUTTON_RELEASE";
+//    Texture2D& tex = ResourceManager::getInstance().getTexture(texKey);
+//    // Draw the texture
+//    DrawTexturePro(
+//        tex,
+//        Rectangle{ 0, 0, (float)tex.width, (float)tex.height },
+//        goBackRect,
+//        Vector2{ 0, 0 },
+//        0.0f,
+//        WHITE
+//    );
+//    // Optional: Draw a border/highlight
+//	//DrawRectangleLinesEx(goBackRect, 2, hovered ? ORANGE : DARKGRAY);
+//}
 
 void SettingMenuState::updateBackGround() {
     mapBgScrollX += 100.0f * GameClock::getInstance().DeltaTime; // 100 px/sec, adjust as needed

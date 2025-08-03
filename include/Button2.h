@@ -2,7 +2,6 @@
 
 #include "raylib.h"
 #include <string>
-#include <functional>
 
 enum class Button2State {
     NORMAL,
@@ -12,26 +11,38 @@ enum class Button2State {
 
 class Button2 {
 public:
-    Button2() = default;
     Button2(Vector2 position, Vector2 size);
 
     void update();
     void Draw();
 
-    // Setters for customization
-    void setTextures(Texture2D normal, Texture2D pressed);
- 
     bool isClicked() const;
+
+    // Methods for text-based button
+    void setText(const std::string& text);
+    void setColors(Color normal, Color pressed, Color textColor);
+
+    // Methods for texture-based button
+    void setTextures(Texture2D normal, Texture2D pressed);
+
+    void setFont(Font* font);
 
 private:
     Rectangle bounds;
-    Button2State state = Button2State::NORMAL;
-    bool clicked = false;
+    Button2State state;
+    bool clicked;
+    float cooldownTimer = 0.0f;
+    const float cooldownDuration = 0.2f;
+
+    // Text properties
+    std::string buttonText;
+    Color normalColor;
+    Color pressedColor;
+    Color textColor;
+    Font* font = nullptr;
 
     // Texture properties
-    Texture2D normalTexture;
-    Texture2D pressedTexture;
-
-    float cooldownDuration = 0.5f;
-    float cooldownTimer = 0.0f;
+    Texture2D normalTexture = { 0 };
+    Texture2D pressedTexture = { 0 };
+    bool useTextures = false;
 };
