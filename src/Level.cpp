@@ -34,8 +34,8 @@ player(CharacterFactory::createCharacter(selectedCharacterType, map.getStartPosi
                 backgroundColor = DARKGREEN;
                 break;
              case 3:
-                 //background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_3");
-                 backgroundColor = LIGHTGRAY;
+                 background = ResourceManager::getInstance().getTexture("BACKGROUND_LEVEL_3");
+                 backgroundColor = BLUE;
                  break;
             default:
                 // background = ResourceManager::getInstance().getTexture("DEFAULT_BACKGROUND");

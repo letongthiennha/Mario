@@ -150,7 +150,7 @@ GameState::GameState(StateManager *manager, CharacterType characterType)
 
 void GameState::resetLevelWhenPlayerDead()
 {
-    playerMemento = std::make_unique<PlayerData>(playerMemento->getLives() - 1, 0,0); // Decrease lives by 1
+    playerMemento = std::make_unique<PlayerData>(playerMemento->getLives()-1 , 0,0); // Decrease lives by 1
     currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Reset the level with the current player data
 }
 
