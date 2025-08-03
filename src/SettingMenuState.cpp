@@ -217,6 +217,10 @@ void SettingMenuState::draw() {
     if(dynamic_cast<GameState*>(stateManager->getPreviousState()) != nullptr) {
         saveButton.Draw();
         resumeButton.Draw();
+        if (isSaved) {
+            //DrawText("Progress saved!", 20 + 64 + 10, 180 + 20, 20, GREEN);
+			DrawTextEx(ResourceManager::getInstance().getFonts("CHAT_BOT_TITLE_FONT"), "Progress saved!", { 20 + 64 + 10, 180 + 20 }, 30, 1.0f, DARKGREEN);
+        }
 	}
 
     if (confirmationState == ConfirmationState::VISIBLE) {
