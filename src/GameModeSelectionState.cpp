@@ -4,6 +4,7 @@
 #include "MenuState.h"
 #include "ResourceManager.h"
 #include "GameState.h"
+#include "HighScoreScreenState.h"
 #include <fstream>
 
 GameModeSelectionState::GameModeSelectionState(StateManager* manager) : State(manager),
@@ -22,7 +23,7 @@ backButton(Vector2{ 50, 50 }, Vector2{ 50, 50 })
     newGameButton.setText("New Game");
     continueButton.setText("Continue");
     designGameButton.setText("Design Game");
-    leaderboardButton.setText("Leaderboard");
+    leaderboardButton.setText("Highscores");
     twoPlayerButton.setText("2 Player");
 
     backButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE")).DisableBackground().fitTexture();
@@ -51,6 +52,7 @@ void GameModeSelectionState::update() {
     }
     else if (leaderboardButton.isClicked()) {
         // Placeholder: Add logic for a leaderboard state
+        stateManager->setState(new HighScoreScreenState(stateManager));
     }
     else if (twoPlayerButton.isClicked()) {
         // Placeholder: Add logic for 2 player mode

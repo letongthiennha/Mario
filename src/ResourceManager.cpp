@@ -227,7 +227,11 @@ void ResourceManager::loadTextures()
     textures["BACKGROUND_LEVEL_2"] = LoadTexture("resources/Background/background2.png");
     textures["BACKGROUND_LEVEL_3"] = LoadTexture("resources/Background/background3.png");
 	textures["SETTING_BACKGROUND"] = LoadTexture("resources/Background/setting_background.png");
-
+	//HIGHSCORE BACKGROUND
+	textures["SB_BACKGROUND_1"] = LoadTexture("resources/Background/HighScore/1.png");
+	textures["SB_BACKGROUND_2"] = LoadTexture("resources/Background/HighScore/2.png");
+	textures["SB_BACKGROUND_3"] = LoadTexture("resources/Background/HighScore/3.png");
+	textures["SB_BACKGROUND_4"] = LoadTexture("resources/Background/HighScore/4.png");
     }
     //BLOCK
     {

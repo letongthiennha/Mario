@@ -198,6 +198,7 @@ void GameState::resetwhenGameOver()
     currentLevelID = 1;  // Reset to the first level
     playerMemento = std::make_unique<PlayerData>(3, 0, 0); // Reset player data
     currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Create a new level with the reset player data
+    levelMementos.clear(); // Clear previous level mementos
 }
 
 void GameState::startTransition(TransitionState state)
