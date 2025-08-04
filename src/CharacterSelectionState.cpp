@@ -7,15 +7,14 @@
 CharacterSelectionState::CharacterSelectionState(StateManager *manager): State(manager),
     marioButton( Vector2{2*(float)GetScreenWidth()/3-200, (float)GetScreenHeight()/2-300}, Vector2{300, 600} ),
     luigiButton( Vector2{(float)GetScreenWidth()/3-200, (float)GetScreenHeight()/2-300}, Vector2{600*428/725, 600}),
-    home( Vector2{50, 50}, Vector2{50, 50})
+    home( Vector2{50, 50}, Vector2{64, 64})
 {
     marioButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MARIO_BUTTON")).DisableBackground()
         .fitTexture()
     ;
     luigiButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("LUIGI_BUTTON")).DisableBackground()
         .fitTexture();
-    home.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE")).DisableBackground()
-        .fitTexture();
+    home.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
     titleTexture = ResourceManager::getInstance().getTexture("SELECT_CHARACTER_TITLE");
 }
 CharacterSelectionState::~CharacterSelectionState() {

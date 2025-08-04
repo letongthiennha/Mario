@@ -13,7 +13,7 @@ continueButton(Vector2{ (float)GetScreenWidth() / 4 - 150, (float)GetScreenHeigh
 designGameButton(Vector2{ (float)GetScreenWidth() * 3 / 4 - 150, (float)GetScreenHeight() / 2 - 75 }, Vector2{ 300, 50 }),
 leaderboardButton(Vector2{ (float)GetScreenWidth() * 3 / 4 - 150, (float)GetScreenHeight() / 2 + 25 }, Vector2{ 300, 50 }),
 twoPlayerButton(Vector2{ (float)GetScreenWidth() / 2 - 150, (float)GetScreenHeight() / 2 + 150 }, Vector2{ 300, 50 }),
-backButton(Vector2{ 50, 50 }, Vector2{ 50, 50 })
+backButton( {50, 50 }, { 64, 64 })
 {
     titleTexture = ResourceManager::getInstance().getTexture("SELECT_GAME_MODE_TITLE");
     marioTexture = ResourceManager::getInstance().getTexture("MARIO_TEXTURE");
@@ -26,7 +26,7 @@ backButton(Vector2{ 50, 50 }, Vector2{ 50, 50 })
     leaderboardButton.setText("Highscores");
     twoPlayerButton.setText("2 Player");
 
-    backButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE")).DisableBackground().fitTexture();
+	backButton.setTextures(ResourceManager::getInstance().getTexture("HOME_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("HOME_BUTTON_PRESS"));
 }
 
 GameModeSelectionState::~GameModeSelectionState() {

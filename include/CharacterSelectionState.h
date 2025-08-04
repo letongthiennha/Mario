@@ -4,11 +4,12 @@
 #include "CharacterFactory.h"
 #include "PlayableCharacter.h"
 #include "Button.h"
+#include "Button2.h"
 class CharacterSelectionState : public State {
 private:
     Button marioButton;
     Button luigiButton;
-    Button home;
+    Button2 home;
     Texture2D titleTexture;
 
 public:

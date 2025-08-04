@@ -3,38 +3,39 @@
 #include "GameClock.h"
 #include <iostream>
 
+const float Button2::CLICK_TIME = 0.2f;
+
 Button2::Button2(Vector2 position, Vector2 size)
     : bounds({ position.x, position.y, size.x, size.y }),
     state(Button2State::NORMAL),
-    clicked(false),
+    receiveClick(false),
+    doneClick(false),
     normalColor(LIGHTGRAY),
     pressedColor(DARKGRAY),
     textColor(BLACK) {
 }
 
 void Button2::update() {
-    clicked = false;
+    doneClick = false;
     Vector2 mousePoint = GetMousePosition();
 
-    if (cooldownTimer > 0) {
-        cooldownTimer -= GameClock::getInstance().DeltaTime;
-    }
-
     if (CheckCollisionPointRec(mousePoint, bounds)) {
-        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            receiveClick = true;
             state = Button2State::PRESSED;
         }
-        else {
+        else if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON) && receiveClick) {
+            doneClick = true;
+            receiveClick = false;
             state = Button2State::HOVERED;
         }
-
-        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON) && cooldownTimer <= 0.0f) {
-            clicked = true;
-            cooldownTimer = cooldownDuration;
+        else {
+            state = (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) ? Button2State::PRESSED : Button2State::HOVERED;
         }
     }
     else {
         state = Button2State::NORMAL;
+        receiveClick = false; // cancel click if mouse leaves
     }
 }
 
@@ -79,5 +80,5 @@ void Button2::setFont(Font* font) {
 }
 
 bool Button2::isClicked() const {
-    return clicked;
+    return doneClick;
 }

@@ -5,6 +5,7 @@
 #include "HUD.h"
 #include "CharacterType.h"
 #include "ChatBotScreen.h"
+#include "Button2.h"
 #include <memory>
 #include <fstream>
 class Level;
@@ -19,7 +20,7 @@ enum class TransitionState {
 class GameState : public State {
 private:
     HUD gameHUD;
-    Button menuButton;
+    Button2 menuButton;
     CharacterType selectedCharacterType;
 
     TransitionState transitionState;

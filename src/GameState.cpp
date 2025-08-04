@@ -88,7 +88,7 @@ void GameState::saveProgress() {
 }
 
 GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
-                                              menuButton(Vector2{50, 50}, Vector2{50, 50}),
+                                              menuButton(Vector2{50, 50}, Vector2{64, 64}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
                                                 transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
     chatBotScreen(
@@ -96,15 +96,14 @@ GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
         { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
     )
 {
-    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
-        .DisableBackground()
-        .fitTexture();  
+    menuButton.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
+     
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
     SoundController::getInstance().PlayMusic("LEVEL_1_MUSIC"); // Start playing the game music
 }
 
 GameState::GameState(StateManager* manager, std::string status) : State(manager),
-menuButton(Vector2{ 50, 50 }, Vector2{ 50, 50 }),
+menuButton(Vector2{ 50, 50 }, Vector2{ 64, 64 }),
 playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
 transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
 chatBotScreen(
@@ -112,9 +111,8 @@ chatBotScreen(
     { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
 )
 {
-    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
-        .DisableBackground()
-        .fitTexture();
+    menuButton.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
+
     std::ifstream progressFile("saves/progress.txt");
     if (progressFile.is_open()) {
         progressFile >> currentLevelID; // Read the current level ID

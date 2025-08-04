@@ -2,6 +2,7 @@
 #pragma once
 #include "State.h"
 #include "Button.h"
+#include "Button2.h"
 
 class GameModeSelectionState : public State {
 public:
@@ -16,7 +17,7 @@ private:
     Button continueButton;
     Button designGameButton;
     Button leaderboardButton;
-    Button backButton;
+    Button2 backButton;
     Button twoPlayerButton;
 	Texture2D titleTexture;
 

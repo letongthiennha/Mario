@@ -28,11 +28,13 @@ public:
     void setFont(Font* font);
 
 private:
+    const static float CLICK_TIME;
+
     Rectangle bounds;
     Button2State state;
-    bool clicked;
-    float cooldownTimer = 0.0f;
-    const float cooldownDuration = 0.2f;
+    bool receiveClick;
+    bool doneClick;
+    float acumTimer = 0.0f;
 
     // Text properties
     std::string buttonText;
@@ -45,4 +47,5 @@ private:
     Texture2D normalTexture = { 0 };
     Texture2D pressedTexture = { 0 };
     bool useTextures = false;
+
 };
