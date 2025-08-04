@@ -2,18 +2,20 @@
 #include "StateManager.h"
 #include "GameState.h"
 #include "MenuState.h"
+#include "GameModeSelectionState.h"
+
 CharacterSelectionState::CharacterSelectionState(StateManager *manager): State(manager),
     marioButton( Vector2{2*(float)GetScreenWidth()/3-200, (float)GetScreenHeight()/2-300}, Vector2{300, 600} ),
     luigiButton( Vector2{(float)GetScreenWidth()/3-200, (float)GetScreenHeight()/2-300}, Vector2{600*428/725, 600}),
-    home( Vector2{50, 50}, Vector2{50, 50})
+    home( Vector2{50, 50}, Vector2{64, 64})
 {
     marioButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MARIO_BUTTON")).DisableBackground()
         .fitTexture()
     ;
     luigiButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("LUIGI_BUTTON")).DisableBackground()
         .fitTexture();
-    home.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE")).DisableBackground()
-        .fitTexture();
+    home.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
+    titleTexture = ResourceManager::getInstance().getTexture("SELECT_CHARACTER_TITLE");
 }
 CharacterSelectionState::~CharacterSelectionState() {
     // Cleanup if necessary
@@ -29,13 +31,13 @@ void CharacterSelectionState::update() {
     } else if (luigiButton.isClicked()) {
         stateManager->setState(new GameState(stateManager, CharacterType::LUIGI));
     } else if (home.isClicked()) {
-        stateManager->setState(new MenuState(stateManager));
+        stateManager->setState(new GameModeSelectionState(stateManager));
     }
 }
 void CharacterSelectionState::draw() {
     // Draw buttons and any other UI elements
     ClearBackground(Color{255, 210, 29, 255}); // Clear background to white
-    DrawTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"), "Select Your Character", Vector2{(float)GetScreenWidth()/2 - MeasureTextEx(ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT"), "Select Your Character", 40, 1).x/2, 50}, 40, 1, WHITE);
+    DrawTexture(titleTexture, GetScreenWidth() / 2 - titleTexture.width / 2, 0, WHITE);
     marioButton.Draw();
     DrawTextureEx(ResourceManager::getInstance().getTexture("HUD_MARIO"),Vector2{2.0f*GetScreenWidth()/3-100,(float)GetScreenHeight()/2+350},0,2.0f,WHITE);
     DrawTextureEx(ResourceManager::getInstance().getTexture("HUD_LUIGI"),Vector2{(float)GetScreenWidth()/3-100,(float)GetScreenHeight()/2+350},0,1.0f,WHITE);

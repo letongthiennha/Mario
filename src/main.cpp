@@ -16,7 +16,7 @@ int main(){
     InitWindow(1600, 900, "Mario");
     InitAudioDevice();
 
-    SetTargetFPS(144);
+    SetTargetFPS(60);
     bool isPaused = false;
     ResourceManager::getInstance().loadResource();
 

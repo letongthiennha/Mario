@@ -3,7 +3,7 @@
 #include "StateManager.h"
 #include "Slider.h"
 #include "raylib.h"
-#include "Button.h"
+#include "Button2.h"
 #include <map>  
 
 class SettingMenuState : public State {
@@ -15,9 +15,6 @@ public:
 
 	void drawMusicSlider();
 	void drawSFXSlider();
-
-    void updateBackButton();
-    void drawBackButton();
 
     void updateMusicButton();
 	void drawMusicButton();
@@ -31,16 +28,30 @@ public:
     void updateBackGround();
     void drawBackGround();
 
+	void DrawConfirmationBox();
+	void UpdateConfirmationBox();
+
     ~SettingMenuState();
 private:
+    enum class ConfirmationState {
+        NONE,
+        VISIBLE
+    };
 
     Slider musicSlider;
     Slider sfxSlider;
 
-    Rectangle backButton;
+    Button2 homeButton;
+    Button2 saveButton;
+    Button2 resumeButton;
     Rectangle goBackButton;
     Rectangle musicRect;
     Rectangle sfxRect;
+
+    ConfirmationState confirmationState;
+    Button2 yesButton;
+	Button2 noButton;
+    bool isSaved = false;
 
     float musicButtonCooldown = 0.0f;
 	float sfxButtonCooldown = 0.0f;

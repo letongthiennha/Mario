@@ -5,13 +5,15 @@
 #include "SettingMenuState.h"
 #include "CharacterSelectionState.h"
 #include "CreditState.h"
+#include "GameModeSelectionState.h"
 #include <iostream>
 MenuState::MenuState(StateManager*manager): State(manager),
     startButton(Vector2{1050, 350}, Vector2{400, 150}),
     optionsButton(Vector2{1050, 550}, Vector2{400, 150}),
     exitButton(Vector2{100, 750}, Vector2{100, 100}),
-    creditsButton(Vector2{1350, 750}, Vector2{100, 100})
-    , backgroundTexture(&ResourceManager::getInstance().getTexture("MENU_STATE_BACKGROUND"))
+    creditsButton(Vector2{1300, 750}, Vector2{250, 100})
+    , backgroundTexture(&ResourceManager::getInstance().getTexture("MENU_STATE_BACKGROUND")),
+	logoTexture(&ResourceManager::getInstance().getTexture("GROUP_LOGO"))
     {
         startButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_STATE_START_BUTTON"))
             .DisableBackground()
@@ -23,12 +25,11 @@ MenuState::MenuState(StateManager*manager): State(manager),
         exitButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_STATE_EXIT_BUTTON"))
             .DisableBackground()
             .fitTexture();
-        creditsButton.DisableBackground()
-            .setText("Credits")
-            .setTextSize(50)
-            .setTextActiveColor(RED);
+        creditsButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("CREDITS")).DisableBackground().fitTexture();
+            
         SoundController::getInstance().StopAllSounds();  // Stop all sounds when entering the menu state
-        SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
+        //SoundController::getInstance().PlayMusic("TITLE_BACKGROUND_MUSIC");  // Play the
+		SoundController::getInstance().PlayMusic("MENU_BACKGROUND_MUSIC");  // Test new music for the menu state
 }
 
 MenuState::~MenuState()
@@ -40,7 +41,7 @@ void MenuState::update()
     startButton.update();
     if (startButton.isClicked()) {
 
-        stateManager->setState(new CharacterSelectionState(stateManager));  // Switch to GameState
+        stateManager->setState(new GameModeSelectionState(stateManager));  // Switch to GameState
         return;
     }
     // Update other buttons similarly
@@ -69,4 +70,10 @@ void MenuState::draw()
     optionsButton.Draw();  // Draw the options button
     exitButton.Draw();  // Draw the exit button
     creditsButton.Draw();  // Draw the credits button
+
+    // Group logo
+    float scale = 0.4f;
+    float logoX = 10.0f;
+    float logoY = 10.0f;
+    DrawTextureEx(*logoTexture, Vector2{ logoX, logoY }, 0.0f, scale, WHITE);
 }

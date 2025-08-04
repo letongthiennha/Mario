@@ -4,6 +4,9 @@ void ResourceManager::loadFonts()
     fonts["HUD_FONT"] = LoadFont("resources/Font/HudFont.otf");
     fonts["SUPER_MARIO_WORLD_FONT"] = LoadFont("resources/Font/SuperMarioWorld.ttf");
 	fonts["SETTING_FONT"] = LoadFont("resources/Font/SuperMario256.ttf");
+	fonts["CHAT_BOT_FONT"] = LoadFont("resources/Font/VT323-Regular.ttf");
+	fonts["CHAT_BOT_TITLE_FONT"] = LoadFont("resources/Font/Audiowide-Regular.ttf");
+	fonts["USER_INPUT_FONT"] = LoadFont("resources/Font/FiraCode-VariableFont_wght.ttf");
 }
 
 // Load
@@ -222,8 +225,13 @@ void ResourceManager::loadTextures()
     textures["BACKGROUND_0"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_1"] = LoadTexture("resources/Background/background1.png");
     textures["BACKGROUND_LEVEL_2"] = LoadTexture("resources/Background/background2.png");
+    textures["BACKGROUND_LEVEL_3"] = LoadTexture("resources/Background/background3.png");
 	textures["SETTING_BACKGROUND"] = LoadTexture("resources/Background/setting_background.png");
-
+	//HIGHSCORE BACKGROUND
+	textures["SB_BACKGROUND_1"] = LoadTexture("resources/Background/HighScore/1.png");
+	textures["SB_BACKGROUND_2"] = LoadTexture("resources/Background/HighScore/2.png");
+	textures["SB_BACKGROUND_3"] = LoadTexture("resources/Background/HighScore/3.png");
+	textures["SB_BACKGROUND_4"] = LoadTexture("resources/Background/HighScore/4.png");
     }
     //BLOCK
     {
@@ -256,21 +264,25 @@ void ResourceManager::loadTextures()
     textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
 
-    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/homeButtonRelease.png");
-    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/homeButtonPress.png");
-	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/muteButtonRelease.png");
-	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/muteButtonPress.png");
-	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/unmuteButtonRelease.png");
-	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/unmuteButtonPress.png");
+    textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Home (3).png");
+    textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/Home (1).png");
+	textures["MUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Sound (4).png");
+	textures["MUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/Sound (1).png");
+	textures["UNMUTE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Sound (3).png");
+	textures["UNMUTE_BUTTON_PRESS"] = LoadTexture("resources/Button/Sound (1).png");
 	textures["BACK_BUTTON_RELEASE"] = LoadTexture("resources/Button/backButtonRelease.png");
 	textures["BACK_BUTTON_PRESS"] = LoadTexture("resources/Button/backButtonPress.png");
-	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/resumeButtonPress.png");
-	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/resumeButtonRelease.png");
-	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/menuButtonPress.png");
-	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/menuButtonRelease.png");
+	textures["RESUME_BUTTON_PRESS"] = LoadTexture("resources/Button/Next (1).png");
+	textures["RESUME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Next (3).png");
+	textures["MENU_BUTTON_PRESS"] = LoadTexture("resources/Button/Menu (1).png");
+	textures["MENU_BUTTON_RELEASE"] = LoadTexture("resources/Button/Menu (3).png");
+	textures["SAVE_BUTTON_PRESS"] = LoadTexture("resources/Button/Save (1).png");
+	textures["SAVE_BUTTON_RELEASE"] = LoadTexture("resources/Button/Save (3).png");
+    
 
     textures["MARIO_BUTTON"] = LoadTexture("resources/Button/marioButton.png");
     textures["LUIGI_BUTTON"] = LoadTexture("resources/Button/luigiButton.png");
+
     //GAMESTATE
     textures["GAME_STATE_MENU_BUTTON"]= LoadTexture("resources/Button/GameStateMenuButton.png");
     
@@ -281,6 +293,18 @@ void ResourceManager::loadTextures()
     textures["GAME_OVER"] = LoadTexture("resources/UI/GameOver.png");
     textures["HUD_MARIO"] = LoadTexture("resources/UI/MarioUI.png");
     textures["HUD_LUIGI"] = LoadTexture("resources/UI/LuigiUI.png");
+
+	Image marioImage = LoadImage("resources/UI/mario.png");
+    ImageResize(&marioImage, 388, 449);
+    textures["MARIO_TEXTURE"] = LoadTextureFromImage(marioImage);
+    UnloadImage(marioImage);
+
+    Image luigiImage = LoadImage("resources/UI/luigi.png");
+    ImageResize(&luigiImage, 388, 449);
+    textures["LUIGI_TEXTURE"] = LoadTextureFromImage(luigiImage);
+    UnloadImage(luigiImage);
+
+    textures["MUSHROOM_TEXTURE"] = LoadTexture("resources/UI/mushroom.png");
 
     //ITEMS
 	textures["COIN_0"] = LoadTexture("resources/Entity/Items/Coin_0.png");
@@ -399,7 +423,17 @@ void ResourceManager::loadTextures()
         // COURSE CLEAR TOKEN
 		textures["COURSE_CLEAR_TOKEN"] = LoadTexture("resources/Entity/Items/CourseClearToken.png");
 
+        // CHAT BOT
+		textures["CHAT_BOT_ICON"] = LoadTexture("resources/ChatBot/Robot.png");
+		textures["CHAT_BOT_TITLE"] = LoadTexture("resources/ChatBot/ChatBotTitle.png");
 
+        // LOGO
+		textures["GROUP_LOGO"] = LoadTexture("resources/UI/GroupLogo.png");
+
+        // TITLE
+		textures["SELECT_CHARACTER_TITLE"] = LoadTexture("resources/UI/CharacterSelectTitle.png");
+		textures["SELECT_GAME_MODE_TITLE"] = LoadTexture("resources/UI/GameModeSelectTitle.png");
+		textures["CREDITS"] = LoadTexture("resources/UI/Credits.png");
 }   
 
 void ResourceManager::loadSounds(){
@@ -423,7 +457,8 @@ void ResourceManager::loadSounds(){
 
 void ResourceManager::loadMusics(){
     musics["GAME_OVER"] = LoadMusicStream("resources/Music/gameOver.mp3");
-
+    
+	musics["MENU_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/menu.wav");
     musics["TITLE_BACKGROUND_MUSIC"] = LoadMusicStream("resources/Music/title.mp3");
     musics["VICTORY_MUSIC"] = LoadMusicStream("resources/Music/courseClear.mp3");
     musics["LEVEL_1_MUSIC"]= LoadMusicStream("resources/Music/music1.mp3");

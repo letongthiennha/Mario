@@ -5,29 +5,135 @@
 #include "SoundController.h"
 #include "StateManager.h"
 #include "SettingMenuState.h"
+#include "GameModeSelectionState.h"
 #include "CharacterType.h"
 #include "CreditState.h"
+#include <iostream>
+#include <fstream>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <numeric>
+#include <filesystem>
+
+Rectangle getScreenBounds() {
+    return { 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() };
+}
+
 void GameState::nextLevel()
 {
+   levelMementos.push_back(currentLevel->getPlayerData()); // Get the current player data from the level
+
     currentLevelID++;
     if (currentLevelID> 3) {  
+        saveFinalScores();
+
+        std::ofstream progressFile("saves/progress.txt", std::ios_base::trunc);
+        if (progressFile.is_open()) {
+            progressFile << 1;
+            progressFile.close();
+        }
+
         currentLevelID = 0;
+        levelMementos.clear();
+        stateManager ->setState( new GameModeSelectionState(stateManager));
+        return;
     }
-    playerMemento = currentLevel->getPlayerData(); // Reset player data for the new level
+
+    playerMemento = std::make_unique<PlayerData>(3, 0, 0);
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Create a new level with the updated player data
 }
+
+void GameState::saveFinalScores() {
+    std::ofstream scoreFile("saves/scores.txt", std::ios_base::app);
+    if (scoreFile.is_open()) {
+        // Get current time
+        auto now = std::chrono::system_clock::now();
+        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+
+        // Write timestamp in a machine-readable format
+        scoreFile << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+
+        int totalScore = 0;
+        // Append scores for each level
+        for (const auto& memento : levelMementos) {
+            int levelScore = memento->getScore();
+            scoreFile << " " << levelScore;
+            totalScore += levelScore;
+        }
+
+        // Append the total score and a newline character
+        scoreFile << " " << totalScore << std::endl;
+
+        scoreFile.close();
+    }
+    else {
+        std::cerr << "Error: Unable to open scores.txt for writing." << std::endl;
+    }
+}
+
+void GameState::saveProgress() {
+    std::ofstream progressFile("saves/progress.txt", std::ios_base::trunc);
+    if(progressFile.is_open()) {
+        // Append the current level ID and player data
+        progressFile << currentLevelID << " ";
+        std::cerr << currentLevelID << '\n';
+        for (int i = 1; i < currentLevelID; i++) {
+            progressFile << levelMementos[i-1]->getScore() << " ";
+        }
+        progressFile.close();
+    } else {
+        std::cerr << "Error: Unable to open scores.txt for writing." << std::endl;
+	}
+}
+
 GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
-                                              menuButton(Vector2{50, 50}, Vector2{50, 50}),
+                                              menuButton(Vector2{50, 50}, Vector2{64, 64}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
-                                                transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO)
+                                                transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
+    chatBotScreen(
+        { (getScreenBounds().width / 2) - 400, (getScreenBounds().height / 2) - 300, 800, 600 },
+        { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
+    )
 {
-    menuButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"))
-        .DisableBackground()
-        .fitTexture();  
+    menuButton.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
+     
     SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
     SoundController::getInstance().PlayMusic("LEVEL_1_MUSIC"); // Start playing the game music
 }
+
+GameState::GameState(StateManager* manager, std::string status) : State(manager),
+menuButton(Vector2{ 50, 50 }, Vector2{ 64, 64 }),
+playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
+transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),
+chatBotScreen(
+    { (getScreenBounds().width / 2) - 400, (getScreenBounds().height / 2) - 300, 800, 600 },
+    { (getScreenBounds().width / 2) - 400 + 20, (getScreenBounds().height / 2) + 230, 760, 50 }
+)
+{
+    menuButton.setTextures(ResourceManager::getInstance().getTexture("MENU_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("MENU_BUTTON_PRESS"));
+
+    std::ifstream progressFile("saves/progress.txt");
+    if (progressFile.is_open()) {
+        progressFile >> currentLevelID; // Read the current level ID
+        std::cerr << currentLevelID << '\n';
+        int score;
+        while (progressFile >> score) { // Read scores for previous levels
+            levelMementos.push_back(std::make_unique<PlayerData>(3, 0, score)); // Create PlayerData with 3 lives and the read score
+        }
+		selectedCharacterType = CharacterType::MARIO; // Default character type, can be changed later
+		playerMemento = std::make_unique<PlayerData>(3, 0, 0); // Initialize player data with 3 lives, 0 score, and 0 coins
+		currentLevel = std::make_unique<Level>(currentLevelID, this, *this->playerMemento.get(), selectedCharacterType); // Initialize the first level with the read data
+        SoundController::getInstance().StopAllSounds(); // Stop all sounds before starting the game
+        SoundController::getInstance().PlayMusic("LEVEL_"+std::to_string(currentLevelID)+"_MUSIC"); // Start playing the game music
+        progressFile.close();
+    }
+    else {
+        std::cerr << "Error: Unable to open progress.txt for reading." << std::endl;
+    }
+}
+
 GameState::~GameState()
 {
     // Cleanup if necessary
@@ -43,7 +149,7 @@ GameState::GameState(StateManager *manager, CharacterType characterType)
 
 void GameState::resetLevelWhenPlayerDead()
 {
-    playerMemento = std::make_unique<PlayerData>(playerMemento->getLives() - 1, 0,0); // Decrease lives by 1
+    playerMemento = std::make_unique<PlayerData>(playerMemento->getLives()-1 , 0,0); // Decrease lives by 1
     currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Reset the level with the current player data
 }
 
@@ -91,6 +197,7 @@ void GameState::resetwhenGameOver()
     currentLevelID = 1;  // Reset to the first level
     playerMemento = std::make_unique<PlayerData>(3, 0, 0); // Reset player data
     currentLevel =  std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType);; // Create a new level with the reset player data
+    levelMementos.clear(); // Clear previous level mementos
 }
 
 void GameState::startTransition(TransitionState state)
@@ -121,6 +228,18 @@ void GameState::startTransition(TransitionState state)
 
 void GameState::update()
 {
+    chatToggleTimeAcum += GameClock::getInstance().DeltaTime;
+    if (IsKeyPressed(KEY_TAB) && chatToggleTimeAcum >= CHAT_TOGGLE_COOLDOWN)
+    {
+        isChatBotOn = !isChatBotOn;
+		chatToggleTimeAcum = 0.0f; 
+    }
+    if (isChatBotOn)
+    {
+        chatBotScreen.update();
+        return;
+    }
+
         menuButton.update();
     if (menuButton.isClicked()) {
         stateManager->setState(new SettingMenuState(stateManager));  // Switch to MenuState
@@ -194,6 +313,7 @@ void GameState::draw(){
     
     gameHUD.Draw();
 
+	DrawFPS(10, 10);  // Draw the FPS counter
 
     static const Texture2D *GameOver= &ResourceManager::getInstance().getTexture("GAME_OVER");
     static const Font* SuperMarioFont = &ResourceManager::getInstance().getFonts("SUPER_MARIO_WORLD_FONT");
@@ -322,4 +442,9 @@ void GameState::draw(){
 }
     menuButton.Draw();
    
+    if (isChatBotOn)
+    {
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), { 0, 0, 0, 128 });
+        chatBotScreen.draw();
+    }
 }

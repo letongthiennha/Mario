@@ -8,6 +8,7 @@ class MenuState : public State {
     Button exitButton;
     Button creditsButton;
     Texture2D* backgroundTexture;
+	Texture2D* logoTexture;
 public:
     MenuState(StateManager *Manager);
     ~MenuState();

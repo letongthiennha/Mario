@@ -4,7 +4,10 @@
 #include "Button.h"
 #include "HUD.h"
 #include "CharacterType.h"
+#include "ChatBotScreen.h"
+#include "Button2.h"
 #include <memory>
+#include <fstream>
 class Level;
 // GameState to manage levels and its transitions, with HUD and Buttons
 enum class TransitionState {
@@ -17,12 +20,13 @@ enum class TransitionState {
 class GameState : public State {
 private:
     HUD gameHUD;
-    Button menuButton;
+    Button2 menuButton;
     CharacterType selectedCharacterType;
 
     TransitionState transitionState;
     std::unique_ptr<Level> currentLevel;
     std::unique_ptr<PlayerData> playerMemento;
+    std::vector<std::unique_ptr<PlayerData>> levelMementos;
 
     int currentLevelID;
     float transitionTime;
@@ -30,9 +34,15 @@ private:
     // void Exit() override;
     void nextLevel();
 
+    bool isChatBotOn = false;
+    ChatBotScreen chatBotScreen;
+    float chatToggleTimeAcum = 0.0f;
+    const float CHAT_TOGGLE_COOLDOWN = 0.3f;
+
 public:
     GameState(StateManager *manager);
     GameState(StateManager *manager, CharacterType characterType);
+    GameState(StateManager* manager, std::string status);
     ~GameState();
 
     HUD& getHUD() { return gameHUD; }
@@ -41,6 +51,9 @@ public:
     void drawLevelEndSummary();
     void resetwhenGameOver();
     void startTransition(TransitionState state);
+    void saveFinalScores();
+
+    void saveProgress();
     
     void update() override;
     void draw() override;

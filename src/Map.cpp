@@ -12,7 +12,7 @@ void Map::LoadFromJsonFile(const std::string& mapFileName)
 }
 
 
-std::vector<std::vector<Tile *>> &Map::getInteractiveTilesSection()
+ std::vector<std::vector<Tile *>> &Map::getInteractiveTilesSection()
 {
     return interactiveTilesSection;
 }
@@ -130,8 +130,8 @@ void Map::LoadMap(int mapNumber)
     blocksSection= std::vector<std::vector<Block*>>(maxSection+1);
     itemsSection= std::vector<std::vector<Item*>>(maxSection+1);
     monstersSection= std::vector<std::vector<Monster*>>(maxSection+1);
-    monstersSection[2].push_back(MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
-    monstersSection[2].push_back(MonsterFactory::createMonster("Rex",   Vector2{500, 600}, -200));
+    //monstersSection[2].push_back(MonsterFactory::createMonster("BanzaiBill", Vector2{1000, 700}, 300));
+    //monstersSection[2].push_back(MonsterFactory::createMonster("Rex",   Vector2{500, 600}, -200));
 	int tilewidth = mapJson["tilewidth"];
 
 
@@ -155,33 +155,57 @@ void Map::LoadMap(int mapNumber)
 
     startPositionForPlayer = Vector2{(float)startPosX, (float)startPosY};
 
-    int blockTilesetFirstGid = -1;
+   int blockTilesetFirstGid = -1;
+    int mainTilesetFirstGid = -1;
     for (const auto& tileset : mapJson["tilesets"]) {
         std::string name = tileset.contains("name") ? tileset["name"].get<std::string>() : "";
         std::string source = tileset.contains("source") ? tileset["source"].get<std::string>() : "";
         if (name == "Blocks" || source.find("Blocks.tsx") != std::string::npos) {
             blockTilesetFirstGid = tileset["firstgid"];
-            break;
+        }
+        else if (source.find("Tileset.tsx") != std::string::npos) {
+            mainTilesetFirstGid = tileset["firstgid"];
         }
     }
 
-    if (blockTilesetFirstGid == -1) {
+   if (blockTilesetFirstGid == -1) {
         std::cerr << "Block tileset not found!" << std::endl;
     }
+
+    if (mainTilesetFirstGid == -1) {
+        std::cerr << "Main tileset not found!" << std::endl;
+    }
 //Tile
-	for (int y = 0; y < height; ++y) {
+	/*for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
 			int belongSection = (int)(x * 32 / sectionWidth);
-			int tileId = data[y * width + x];
-			if (tileId == 0)
+            int tileId = data[y * width + x];
+            if (tileId == 0)
                 continue;
-            else if(tileId==1 || (tileId >= 108 && tileId <= 111))
+            else if(tileId==1 || (tileId >= 104 && tileId <= 107))
 				nonInteractiveTilesSection[belongSection].push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
             else interactiveTilesSection[belongSection].push_back(new Tile(Vector2{(float) x * 32,(float) y * 32 },mapNumber,tileId-1));
                 }
-            }
+            }*/
 //ITEM
     for (const auto& layer : mapJson["layers"]) {
+        if (layer["type"] == "tilelayer" && layer["name"] == "Tile Layer 1") {
+            std::vector<int> data = layer["data"];
+            for (int y = 0; y < height; ++y) {
+                for (int x = 0; x < width; ++x) {
+                    int belongSection = (int)(x * 32 / sectionWidth);
+                    int rawTileId = data[y * width + x];
+                    if (rawTileId == 0)
+                        continue;
+
+                    int tileId = rawTileId - mainTilesetFirstGid;
+                    if (tileId == 0 || (tileId >= 108 && tileId <= 111))
+                        nonInteractiveTilesSection[belongSection].push_back(new Tile(Vector2{ (float)x * 32,(float)y * 32 }, mapNumber, tileId));
+                    else
+                        interactiveTilesSection[belongSection].push_back(new Tile(Vector2{ (float)x * 32,(float)y * 32 }, mapNumber, tileId));
+                }
+            }
+        }
         //Load Coin
         if (layer["type"] == "tilelayer" && layer["name"] == "Coin") {
          
@@ -234,7 +258,7 @@ void Map::LoadMap(int mapNumber)
             }
         }
         //Load Blocks
-        if(layer["type"]=="tilelayer" && layer["name"] == "Block") {
+        if (layer["type"] == "tilelayer" && layer["name"] == "Block") {
             std::vector<int> data = layer["data"];
             for (int y = 0; y < height; ++y) {
                 for (int x = 0; x < width; ++x) {
