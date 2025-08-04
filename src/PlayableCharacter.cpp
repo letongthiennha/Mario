@@ -14,7 +14,7 @@ PlayableCharacter::PlayableCharacter(Vector2 pos, int lives, PlayerState form)
       accelerationX(600),
       jumpInitSpeed(sqrt(300 * Level::GRAVITY )),
     coin(0), isFiring(false),
-    isInvincible(false), invincibleFrameTime(0.03f), invincibleFrameAcum(0.0f), invincibleFrame(0), invincibleTime(3.0f)
+    isInvincible(false), invincibleFrameTime(0.03f), invincibleFrameAcum(0.0f),invincibleAcum(0), invincibleFrame(0), invincibleTime(3.0f)
     
 
     //   invincibleFrameTime(0.1f),
