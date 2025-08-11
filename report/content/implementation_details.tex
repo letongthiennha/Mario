@@ -1,0 +1,52 @@
+
+\section{Implementation Details}
+\begin{flushleft}
+    
+
+This application was designed using a modular architecture, with each core data structure separated into its own logic, UI, and animation files. Each structure operates independently within a centralized controller.
+
+\subsection*{Main Control Flow (Nguyễn Đình Thiên Lộc, Phan Minh Khôi)}
+
+The file \texttt{main.cpp} manages the application loop, window lifecycle, and UI routing. User interaction is handled through states and screen enums, and each module draws on top of its own canvas.
+
+\subsection*{Singly Linked List (Nguyễn Đình Thiên Lộc)}
+
+\begin{itemize}
+    \item \texttt{linked\_list\_core.cpp} – Structure logic: insert, delete, undo
+    \item \texttt{linked\_list\_animation.cpp} – Transitions and head/tail animations
+    \item \texttt{linked\_list\_drawing.cpp} – Renders node graphics and pointer arrows
+    \item \texttt{ui\_linked\_list.cpp} – Processes input, handles buttons and interaction
+\end{itemize}
+
+\textbf{Flow Example:} When the user clicks “Insert Head,” \texttt{ui\_linked\_list.cpp} calls the logic in \texttt{linked\_list\_core.cpp}, pushes the new state to the undo stack, and then triggers visual changes via the animation file.
+
+\subsection*{AVL Tree (Phan Minh Khôi)}
+
+\begin{itemize}
+    \item \texttt{AVLtree.cpp} – AVL logic: rotations, height balance, insert/delete
+    \item \texttt{AVLtreeAnimation.cpp} – Click handling, animated placement
+    \item \texttt{initAVLProgram.cpp} – Entry point for AVL visualizer, button router
+\end{itemize}
+
+Each insertion triggers a height update, imbalance check, and the corresponding rotation. These are visualized step-by-step.
+\subsection*{Hash Table (Văn Tuấn Khải)}
+
+\begin{itemize}
+    \item \texttt{HashTable.cpp} – Insertion, deletion, probing, undo/redo stacks
+    \item \texttt{hashtable\_ui.cpp} – Button states, file input, user interface
+\end{itemize}
+
+Operations such as insertion are deferred until the search animation completes. States are stored before and after changes to enable full undo functionality.
+
+
+
+\subsection*{Graph – Kruskal’s Algorithm (Văn Tuấn Khải)}
+
+\begin{itemize}
+    \item \texttt{Graph.cpp} – Edge list, union-find, MST generator
+    \item \texttt{ui\_Graph.cpp} – Step-wise visualization and Kruskal interface
+    \item \texttt{InputBox.cpp} – Graph node/edge input from user
+\end{itemize}
+
+Kruskal’s steps are visualized in real-time. This module also includes dynamic source code highlighting to follow each logic branch.
+\end{flushleft}

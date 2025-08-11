@@ -1,0 +1,128 @@
+\clearpage
+\section{Code Snippets}
+
+This section presents representative code snippets for each data structure, aligned with the actual implementation logic from the source files.
+
+\subsection*{Singly Linked List – Search with Animation State}
+\begin{lstlisting}[language=C++, caption={SLL Search with Animation Setup}]
+bool LinkedList::Search(int value) {
+    if (!head) return false;
+
+    foundNode = nullptr;
+    cur = head;
+    curPos = head->position;
+    animState = AnimState::SEARCHING;
+    animProgress = 0.0f;
+    animNode = new Node(value, {0, 0});
+    searchAttempted = true;
+
+    return true;
+}
+\end{lstlisting}
+\subsection*{Hash Table – Insert with Undo Support}
+\begin{lstlisting}[language=C++, caption={Hash Table Insert with Chaining and Undo}]
+void HashTable::Insert(int val, bool isRandom) {
+    ResetColors();
+    int index = hashFunction(val);
+    Node* temp = table[index];
+
+    while (temp) {
+        if (temp->val == val) {
+            if (!isRandom) searchMessage = TextFormat("%d already exists.", val);
+            return;
+        }
+        temp = temp->next;
+    }
+
+    if (!isRandom) {
+        undoStack.push(CopyTable());
+        while (!redoStack.empty()) redoStack.pop();
+        showCalculation = true;
+        insertedNode = nullptr;
+    } else {
+        showCalculation = false;
+        insertedNode = nullptr;
+        highlightInsert = -1;
+    }
+    PerformInsertion(val, isRandom);
+}
+\end{lstlisting}
+\subsection*{AVL Tree – Deletion with Balance Checks}
+\begin{lstlisting}[language=C++, caption={AVL Delete with Rotation Cases}]
+void AVLTree::remove(AVLNode*& node, int value) {
+    if (!node) return;
+
+    if (value > node->data) {
+        remove(node->right, value);
+    } else if (value < node->data) {
+        remove(node->left, value);
+    } else {
+        if (!node->left) {
+            AVLNode* temp = node;
+            node = node->right;
+            delete temp;
+        } else if (!node->right) {
+            AVLNode* temp = node;
+            node = node->left;
+            delete temp;
+        } else {
+            AVLNode* curr = minValueNode(node->right);
+            node->data = curr->data;
+            remove(node->right, curr->data);
+        }
+    }
+
+    if (!node) return;
+
+    int bf = getBalanceFactor(node);
+
+    if (bf > 1 && getBalanceFactor(node->left) >= 0) {
+        rightRotate(node);
+    } else if (bf > 1 && getBalanceFactor(node->left) == -1) {
+        leftRotate(node->left);
+        rightRotate(node);
+    } else if (bf < -1 && getBalanceFactor(node->right) <= 0) {
+        leftRotate(node);
+    } else if (bf < -1 && getBalanceFactor(node->right) == 1) {
+        rightRotate(node->right);
+        leftRotate(node);
+    }
+}
+\end{lstlisting}
+
+
+\clearpage
+\subsection*{Graph – Kruskal Step Animation}
+\begin{lstlisting}[language=C++, caption={Step-by-Step Kruskal's MST Visualization}]
+void Graph::UpdateKruskalStep() {
+    if (isPaused) return;
+    frameCounter++;
+
+    if (stateOfCode == 1 && !initialDelayComplete) {
+        if (frameCounter < 2 * animationSpeed / 3) return;
+        dsu.Initialize(nodes.size());
+        std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
+            return a.w < b.w;
+        });
+        initialDelayComplete = true;
+        frameCounter = 0;
+    }
+
+    if (kruskalStep >= edges.size()) {
+        stateOfCode = 6;
+        message = "MST Complete";
+        mstFinished = true;
+        return;
+    }
+
+    Edge& currentEdge = edges[kruskalStep];
+    int rootA = dsu.find_set(currentEdge.a);
+    int rootB = dsu.find_set(currentEdge.b);
+    if (rootA != rootB) {
+        dsu.union_sets(rootA, rootB);
+        currentEdge.inMST = true;
+    }
+    kruskalStep++;
+    frameCounter = 0;
+}
+\end{lstlisting}

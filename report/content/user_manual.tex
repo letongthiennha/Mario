@@ -1,0 +1,49 @@
+\clearpage
+\section{User's Manual}
+\label{sec:manual}
+
+This section provides installation, setup, and usage instructions for the Data Structure Visualizer.
+
+\subsection{Installation Requirements}
+\begin{itemize}
+    \item Windows or Linux OS
+    \item C++17 compatible compiler (Visual Studio or g++)
+    \item raylib graphics library (\url{https://www.raylib.com/})
+    \item (Optional) vcpkg for Windows or Makefile/CMake for Linux builds
+\end{itemize}
+
+For detailed raylib + vcpkg setup on Windows, see the guide:  
+\url{https://www.youtube.com/watch?v=UiZGTIYld1M}.
+
+\subsection{Building the Application}
+\begin{itemize}
+    \item \textbf{Windows:} Clone the repo, open in Visual Studio, install raylib via vcpkg, then build/run.
+    \item \textbf{Linux:} Install raylib (\texttt{sudo apt install libraylib-dev}), run \texttt{make run} or use provided CMake files.
+\end{itemize}
+
+\subsection{Usage Instructions}
+\begin{enumerate}
+    \item Choose a data structure from the main menu.
+    \item Enter data manually or load from a `.txt` file by typing the file path.
+    \item Select visualization mode: step-by-step or run-at-once.
+    \item Use on-screen or keyboard controls to navigate steps or replay.
+    \item Observe the visual operation and, for Graph, code highlighting.
+\end{enumerate}
+
+\vspace{1em}
+  
+
+
+\subsection{Customization (Planned)}
+\begin{itemize}
+    \item Color themes are not yet implemented.
+\end{itemize}
+\begin{itemize}
+    \item Visualization speed can be changed in Graph module.
+\end{itemize}
+
+\subsection{File Format Example}
+Input file should look like:
+\begin{verbatim}
+10 3 8 15 7
+\end{verbatim}

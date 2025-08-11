@@ -1,0 +1,98 @@
+% ============ METADATA ============
+\newcommand{\coursename}{CS202 - Programming Systems}
+\newcommand{\reporttitle}{Super Mario OOP Project}
+
+\documentclass[12pt]{article}
+\usepackage{hcmus-report-template}
+
+% ================== CUSTOM PACKAGES ==================
+\usepackage{amsmath, amsfonts, float, graphicx, setspace}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=red]{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+
+% ================== CODE STYLING ==================
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=false,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{
+    style=mystyle,
+    literate={:}{{\texttt{:}}}1
+             {_}{{\texttt{\_}}}1
+}
+\vietnameselst  % Apply Vietnamese character support
+
+% ================== HEADER & FOOTER ==================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{CS202 - Programming Systems}
+\fancyhead[R]{HCMUS – Term 3}
+\fancyfoot[R]{Page \thepage}
+\setlength{\headheight}{29pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ========== ENGLISH LABELS (deferred override) ==========
+\AtBeginDocument{
+  \renewcommand{\contentsname}{Table of Contents}
+  \renewcommand{\listfigurename}{List of Figures}
+  \renewcommand{\listtablename}{List of Tables}
+  \renewcommand{\tablename}{Table}
+}
+
+
+% ================== DOCUMENT START ==================
+\begin{document}
+\raggedright  % <-- This makes main text left-aligned
+\pagenumbering{roman}
+\input{content/cover_page.tex}
+
+\clearpage              
+\tableofcontents
+\listoftables
+
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{content/report_body.tex}           % Abstract to Conclusion
+\input{content/implementation_details.tex}  % Should come earlier for logic flow
+\input{content/user_manual.tex}          % How to use it, after structure
+\input{content/tables.tex}               % Tables can follow logic or manual
+\input{content/code_snippets.tex}        % Code after context
+
+\input{content/figures.tex}              % Screenshots at the end (visual)
+
+\input{content/references.tex}
+%Conclusion
+\input{content/conclusion.tex}
+% Appendix – separate page
+\clearpage
+\appendix
+\input{appendix/appendix.tex}
+\end{flushleft}
+\end{document}
