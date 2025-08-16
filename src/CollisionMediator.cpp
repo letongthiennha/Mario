@@ -3,9 +3,10 @@
 #include "CourseClearToken.h"
 #include "QUestionBlock.h"
 #include "BanzaiBill.h"
-void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, CollisionInfo AtoB)
+#include "Rex.h"
+void CollisionMediator::HandlePlayerWithTile(PlayableCharacter *& Player, Tile * &tile, CollisionInfo AtoB)
 {
-    if(mario->getState()==ENTITY_STATE_DYING||mario->getState()==ENTITY_STATE_TO_BE_REMOVED||mario->getState()==ENTITY_STATE_VICTORY_DANCE)
+    if(Player->getState()==ENTITY_STATE_DYING||Player->getState()==ENTITY_STATE_TO_BE_REMOVED||Player->getState()==ENTITY_STATE_VICTORY_DANCE)
         return;
     if (AtoB == COLLISION_NONE)
         return;
@@ -15,69 +16,72 @@ void CollisionMediator::HandleMarioWithTile(Mario *& mario, Tile * &tile, Collis
         
         case COLLISION_SOUTH:
         {
-            mario->setPosition(Vector2{mario->getPosition().x, tile->getPosition().y - mario->getSize().y});
-            mario->setState(ENTITY_STATE_ON_GROUND);
-            mario->setVelocity(Vector2{mario->getVelocity().x, 0});
+            if(Player->getState()==ENTITY_STATE_JUMPING)
+                return;
+            Player->setPosition(Vector2{Player->getPosition().x, tile->getPosition().y - Player->getSize().y});
+            Player->setState(ENTITY_STATE_ON_GROUND);
+            Player->setVelocity(Vector2{Player->getVelocity().x, 0});
             break;
         }
         
         case COLLISION_NORTH:
         {
-            mario->setPosition(Vector2{mario->getPosition().x, tile->getPosition().y + tile->getSize().y});
-            mario->setVelocity(Vector2{mario->getVelocity().x, 0});
+            Player->setPosition(Vector2{Player->getPosition().x, tile->getPosition().y + tile->getSize().y});
+            Player->setVelocity(Vector2{Player->getVelocity().x, 0});
             break;
         }
 
         case COLLISION_EAST:
         {
-            if(mario->getFacingDirection()==DIRECTION_LEFT)
+            if(Player->getFacingDirection()==DIRECTION_LEFT)
                 return;
-            mario->setPosition(Vector2{tile->getPosition().x - mario->getSize().x, mario->getPosition().y});
-            mario->setVelocity(Vector2{0, mario->getVelocity().y}); // Reverse the x velocity
+            Player->setPosition(Vector2{tile->getPosition().x - Player->getSize().x, Player->getPosition().y});
+            Player->setVelocity(Vector2{0, Player->getVelocity().y}); // Reverse the x velocity
             break;
         }
         
         case COLLISION_WEST:
         {
-            if(mario->getFacingDirection()==DIRECTION_RIGHT)
+            if(Player->getFacingDirection()==DIRECTION_RIGHT)
                 return;
-            mario->setPosition(Vector2{tile->getPosition().x + tile->getSize().x, mario->getPosition().y});
-            mario->setVelocity(Vector2{0, mario->getVelocity().y}); // Reverse the x velocity
+            Player->setPosition(Vector2{tile->getPosition().x + tile->getSize().x, Player->getPosition().y});
+            Player->setVelocity(Vector2{0, Player->getVelocity().y}); // Reverse the x velocity
             break;
         }
         default:
             break;
     }
 }
-void CollisionMediator::HandleMarioWithMonster(Mario *&mario, Monster *&monster, CollisionInfo AtoB)
-{if (mario->getState() == ENTITY_STATE_DYING || 
-    mario->getState() == ENTITY_STATE_TO_BE_REMOVED || 
-    mario->getState() == ENTITY_STATE_VICTORY_DANCE)
+void CollisionMediator::HandlePlayerWithMonster(PlayableCharacter *&Player, Monster *&monster, CollisionInfo AtoB)
+{if (Player->getState() == ENTITY_STATE_DYING || 
+    Player->getState() == ENTITY_STATE_TO_BE_REMOVED || 
+    Player->getState() == ENTITY_STATE_VICTORY_DANCE)
     return;
 
 if (AtoB == COLLISION_NONE)
     return;
 
+// // ✅ BanzaiBill always kills PlayableCharacter
+// if (monster->isLethalToPlayer()) {
+//     Player->reactOnBeingHit();
+//     return;
+// }
 
 switch (AtoB)
 {
 case COLLISION_SOUTH:
-    if (mario->getVelocity().y > 0) // Mario is jumping down
+    if (Player->getVelocity().y > 0) // PlayableCharacter is jumping down
     {
-        mario->addScore(400); // Add score for defeating the monster
-        monster->die();
-        mario->setVelocity(Vector2{mario->getVelocity().x, -600}); // Bounce effect
+        Player->addScore(400); // Add score for defeating the monster
+
+        
+        monster->onHit();
+        Player->setVelocity(Vector2{Player->getVelocity().x, -600}); // Bounce effect
         SoundController::getInstance().PlaySound("MARIO_STOMP");
     }
     break;
-case COLLISION_NORTH:
-    mario->setPosition(Vector2{mario->getPosition().x, monster->getPosition().y + monster->getSize().y});
-    break;
-case COLLISION_EAST:
-case COLLISION_WEST:
-    mario->reactOnBeingHit();
-    break;
 default:
+        Player->reactOnBeingHit();
     break;
 }
 }
@@ -132,7 +136,7 @@ void CollisionMediator::HandleFireballWithMonster(Fireball *&fireball, Monster *
         return;
     if (monster->getState() == ENTITY_STATE_DYING || monster->getState() == ENTITY_STATE_TO_BE_REMOVED||monster->getIsActive() == false)
         return;
-    monster->die(); // Monster dies when hit by a fireball
+    monster->onHit(); // Monster dies when hit by a fireball
     fireball->setState(ENTITY_STATE_TO_BE_REMOVED); // Fireball is removed after hitting a monster
     SoundController::getInstance().PlaySound("MARIO_STOMP");
 }
@@ -187,8 +191,8 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
 
 {
 
-    Mario* isAmario = dynamic_cast<Mario*>(entityA);
-    Mario* isBmario = dynamic_cast<Mario*>(entityB);
+    PlayableCharacter* isAPlayer = dynamic_cast<PlayableCharacter*>(entityA);
+    PlayableCharacter* isBPlayer = dynamic_cast<PlayableCharacter*>(entityB);
     Fireball* isAfireball = dynamic_cast<Fireball*>(entityA);
     Fireball* isBfireball = dynamic_cast<Fireball*>(entityB);
     Tile* isAtile = dynamic_cast<Tile*>(entityA);
@@ -199,13 +203,13 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     Monster* isBmonster = dynamic_cast<Monster*>(entityB);
     Block* isAblock = dynamic_cast<Block*>(entityA);
     Block* isBblock = dynamic_cast<Block*>(entityB);
-    if (isAmario && isBtile|| isBmario&& isAtile)
+    if (isAPlayer && isBtile|| isBPlayer&& isAtile)
     {
-        CollisionInfo AtoB = isAmario ? isAmario->CheckCollisionType(*isBtile) : isBmario->CheckCollisionType(*isAtile);
-        if (isAmario)
-            HandleMarioWithTile(isAmario, isBtile, AtoB);
+        CollisionInfo AtoB = isAPlayer ? isAPlayer->CheckCollisionType(*isBtile) : isBPlayer->CheckCollisionType(*isAtile);
+        if (isAPlayer)
+            HandlePlayerWithTile(isAPlayer, isBtile, AtoB);
         else
-            HandleMarioWithTile(isBmario, isAtile, AtoB);
+            HandlePlayerWithTile(isBPlayer, isAtile, AtoB);
     }
     else if (isAfireball && isBtile || isBfireball && isAtile)
     {
@@ -215,12 +219,12 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         else
             HandleFireballWithTile(isBfireball, isAtile, AtoB);
     }
-    else if(isAmario && isBitem || isBmario && isAitem)
+    else if(isAPlayer && isBitem || isBPlayer && isAitem)
     {
-        Mario* mario = isAmario ? isAmario : isBmario;
+        PlayableCharacter* Player = isAPlayer ? isAPlayer : isBPlayer;
         Item* item = isAitem ? isAitem : isBitem;
-        CollisionInfo AtoB = mario->CheckCollisionType(*item);
-        HandleMarioWithItem(mario, item, AtoB);
+        CollisionInfo AtoB = Player->CheckCollisionType(*item);
+        HandlePlayerWithItem(Player, item, AtoB);
 	}
     else if (isAitem && isBtile || isBitem && isAtile)
     {
@@ -237,12 +241,13 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         HandleMonsterWithTile(monster, tile, AtoB);
     }
 
-    else if (isAmario && isBmonster || isBmario && isAmonster)
+    else if (isAPlayer && isBmonster || isBPlayer && isAmonster)
     {
-        Mario* mario = isAmario ? isAmario : isBmario;
+        PlayableCharacter* Player = isAPlayer ? isAPlayer : isBPlayer;
         Monster* monster = isAmonster ? isAmonster : isBmonster;
-        CollisionInfo AtoB = mario->CheckCollisionType(*monster);
-        HandleMarioWithMonster(mario, monster, AtoB);
+
+        CollisionInfo AtoB = Player->CheckCollisionType(*monster);
+        HandlePlayerWithMonster(Player, monster, AtoB);
     }
     
     else if (isAfireball && isBmonster || isBfireball && isAmonster)
@@ -252,12 +257,12 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
         CollisionInfo AtoB = fireball->CheckCollisionType(*monster);
         HandleFireballWithMonster(fireball, monster, AtoB);
     }
-    else if( isAmario && isBblock || isBmario && isAblock)
+    else if( isAPlayer && isBblock || isBPlayer && isAblock)
     {
-        Mario* mario = isAmario ? isAmario : isBmario;
+        PlayableCharacter* Player = isAPlayer ? isAPlayer : isBPlayer;
         Block* block = isAblock ? isAblock : isBblock;
-        CollisionInfo AtoB = mario->CheckCollisionType(*block);
-        HandleMarioWithBlock(mario, block, AtoB);
+        CollisionInfo AtoB = Player->CheckCollisionType(*block);
+        HandlePlayerWithBlock(Player, block, AtoB);
     }
     else if (isAmonster && isAblock || isBmonster && isBblock)
     {
@@ -282,7 +287,7 @@ void CollisionMediator::HandleCollision(Entity *entityA, Entity *entityB)
     }
 }
 
-void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
+void CollisionMediator::HandlePlayerWithItem(PlayableCharacter*& Player, Item*& item, CollisionInfo AtoB) {
     if (AtoB == COLLISION_NONE)
         return;
 
@@ -293,46 +298,46 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
     if (item&&item->getState() != ItemState::IDLE)
         return;
 
-    if (item&&CheckCollisionRecs(mario->getRect(), item->getRect())) {
+    if (item&&CheckCollisionRecs(Player->getRect(), item->getRect())) {
         if (auto* coin = dynamic_cast<Coin*>(item)) {
             coin->collect();
-            mario->addCoin(1);
-            mario->addScore(200); // Add score for collecting a coin
+            Player->addCoin(1);
+            Player->addScore(200); // Add score for collecting a coin
         }
         else if (auto* upMushroom = dynamic_cast<UpMushroom*>(item)) {
             upMushroom->collect();
-            // Increase Mario's life by 1
-            mario->addLives(1);
-            mario ->addScore(1000); // Add score for collecting a 1-Up mushroom
+            // Increase PlayableCharacter's life by 1
+            Player->addLives(1);
+            Player ->addScore(1000); // Add score for collecting a 1-Up mushroom
         }
         else if (auto* mushroom = dynamic_cast<Mushroom*>(item)) {
             mushroom->collect();
-            if(mario->getForm() == MARIO_STATE_SMALL)
-            mario->startTransformingSmallToBig();
-             mario->addScore(1000); // If Mario is already big or fire, just add score
+            if(Player->getForm() == PLAYER_STATE_SMALL)
+            Player->startTransformingSmallToBig();
+             Player->addScore(1000); // If PlayableCharacter is already big or fire, just add score
         }
         else if(auto* fireFlower= dynamic_cast<FireFlower*>(item)) {
             fireFlower->collect();
-            if(mario->getForm() == MARIO_STATE_BIG)
-            mario->startTransformingBigToFire();
-            else if(mario->getForm() == MARIO_STATE_SMALL)
-            mario->startTransformingSmallToFire();
-             mario->addScore(1000); // If Mario is already fire, just add score
+            if(Player->getForm() == PLAYER_STATE_BIG)
+            Player->startTransformingBigToFire();
+            else if(Player->getForm() == PLAYER_STATE_SMALL)
+            Player->startTransformingSmallToFire();
+             Player->addScore(1000); // If PlayableCharacter is already fire, just add score
         }
         else if(auto* star= dynamic_cast<Star*>(item)) {
             star->collect();
-            mario->addScore(1000);
+            Player->addScore(1000);
 			// change to invincible state
         }
         else if (auto* upMoon = dynamic_cast<UpMoon*>(item)) {
             upMoon->collect();
-			// Increase Mario's life by 3
-            mario->addLives(3);
-            mario->addScore(3000); // Add score for collecting a 3-Up moon
+			// Increase PlayableCharacter's life by 3
+            Player->addLives(3);
+            Player->addScore(3000); // Add score for collecting a 3-Up moon
         }
         else if (auto* clearToken = dynamic_cast<ClearToken*>(item)) {
 			clearToken->collect();
-            mario->changeWinState(true);
+            Player->changeWinState(true);
         }
         else {
             // Handle other items if needed
@@ -342,35 +347,39 @@ void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, Collisio
     }
 }
 
-void CollisionMediator::HandleMarioWithBlock(Mario *&mario, Block *&block, CollisionInfo AtoB)
+void CollisionMediator::HandlePlayerWithBlock(PlayableCharacter *&Player, Block *&block, CollisionInfo AtoB)
 {
     if (AtoB == COLLISION_NONE)
         return;
 
-    if (mario->getState() == ENTITY_STATE_DYING || mario->getState() == ENTITY_STATE_TO_BE_REMOVED || mario->getState() == ENTITY_STATE_VICTORY_DANCE)
+    if (Player->getState() == ENTITY_STATE_DYING || Player->getState() == ENTITY_STATE_TO_BE_REMOVED || Player->getState() == ENTITY_STATE_VICTORY_DANCE)
         return;
 
     switch (AtoB) {
         case COLLISION_SOUTH:
-            mario->setPosition({mario->getPosition().x, block->getPosition().y - mario->getSize().y});
-            mario->setVelocity({mario->getVelocity().x, 0});
-            mario->setState(ENTITY_STATE_ON_GROUND);
+            if(Player->getState()==ENTITY_STATE_JUMPING)
+                return;
+            Player->setPosition({Player->getPosition().x, block->getPosition().y - Player->getSize().y});
+            Player->setVelocity({Player->getVelocity().x, 0});
+            Player->setState(ENTITY_STATE_ON_GROUND);
             break;
         case COLLISION_NORTH:
-            mario->setPosition({mario->getPosition().x, block->getPosition().y + block->getSize().y});
-            mario->setVelocity({mario->getVelocity().x, 0});
+            Player->setPosition({Player->getPosition().x, block->getPosition().y + block->getSize().y});
+            Player->setVelocity({Player->getVelocity().x, 0});
             if(dynamic_cast<QuestionBlock*>(block)) {
                 QuestionBlock* questionBlock = dynamic_cast<QuestionBlock*>(block);
                 questionBlock->ActiveReward();
             }
             break;
         case COLLISION_EAST:
-            if(mario->getFacingDirection()==DIRECTION_LEFT) return;
-            mario->setPosition({block->getPosition().x - mario->getSize().x, mario->getPosition().y});
+            if(Player->getFacingDirection()==DIRECTION_LEFT) return;
+            Player->setPosition({block->getPosition().x - Player->getSize().x, Player->getPosition().y});
+            Player->setVelocity({0, Player->getVelocity().y});
             break;
         case COLLISION_WEST:
-            if(mario->getFacingDirection()==DIRECTION_RIGHT) return;
-            mario->setPosition({block->getPosition().x + block->getSize().x, mario->getPosition().y});
+            if(Player->getFacingDirection()==DIRECTION_RIGHT) return;
+            Player->setPosition({block->getPosition().x + block->getSize().x, Player->getPosition().y});
+            Player->setVelocity({0, Player->getVelocity().y});
             break;
         default:
             break;
@@ -383,7 +392,8 @@ void CollisionMediator::HandleMonsterWithTile(Monster *&monster, Tile *&tile, Co
         return;
     if (AtoB == COLLISION_NONE)
         return;
-
+    if (dynamic_cast<BanzaiBill*>(monster))
+        return; // BanzaiBill does not collide with tiles in this way
     switch (AtoB) {
                 case COLLISION_SOUTH:
                     monster->setPosition({monster->getPosition().x, tile->getPosition().y - monster->getSize().y});
@@ -392,11 +402,11 @@ void CollisionMediator::HandleMonsterWithTile(Monster *&monster, Tile *&tile, Co
                     break;
                 case COLLISION_EAST:
                     monster->setPosition({tile->getPosition().x - monster->getSize().x, monster->getPosition().y});
-                    monster->setVelocity({-100, monster->getVelocity().y}); // Reverse the x velocity
+                    if(monster->getVelocity().x > 0)  monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
                     break;
                 case COLLISION_WEST:
                     monster->setPosition({tile->getPosition().x + tile->getSize().x, monster->getPosition().y});
-                    monster->setVelocity({100, monster->getVelocity().y}); // Reverse the x velocity
+                    if(monster->getVelocity().x < 0)  monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
                     break;
                 case COLLISION_NORTH:
                     monster->setPosition({monster->getPosition().x, tile->getPosition().y + tile->getSize().y});
@@ -411,7 +421,7 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
 {
     if (AtoB == COLLISION_NONE)
         return;
-    if(dynamic_cast<BanzaiBill*> (monster))//BanzaiBill does not respond to block collisions
+    if(dynamic_cast<BanzaiBill*> (monster))
         return;
     if (monster->getState() == ENTITY_STATE_DYING || monster->getState() == ENTITY_STATE_TO_BE_REMOVED)
         return;
@@ -429,13 +439,13 @@ void CollisionMediator::HandleMonsterWithBlock(Monster *&monster, Block *&block,
         case COLLISION_EAST:
             if(monster->getFacingDirection() == DIRECTION_LEFT) return;
             monster->setPosition({block->getPosition().x - monster->getSize().x, monster->getPosition().y});
-            monster->setVelocity({-100, monster->getVelocity().y}); // Reverse the x velocity
+            monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
             monster->setFacingDirection(DIRECTION_LEFT);
             break;
         case COLLISION_WEST:
             if(monster->getFacingDirection() == DIRECTION_RIGHT) return;
             monster->setPosition({block->getPosition().x + block->getSize().x, monster->getPosition().y});
-            monster->setVelocity({100, monster->getVelocity().y}); // Reverse the x velocity
+            monster->setVelocity({-monster->getVelocity().x, monster->getVelocity().y}); // Reverse the x velocity
             monster->setFacingDirection(DIRECTION_RIGHT);
             break;
         default:

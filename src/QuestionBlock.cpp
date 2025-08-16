@@ -3,7 +3,7 @@
 #include "QuestionBlock.h"
 
 QuestionBlock::QuestionBlock(Vector2 pos, Vector2 size, Color color, std::string rewardType, std::vector<Item*> &itemsContainer) :
-    QuestionBlock(pos, size, color, 0.5f, 3, rewardType,itemsContainer)  {
+    QuestionBlock(pos, size, color, 0.2f, 3, rewardType,itemsContainer)  {
         reward = rewardType;
         hit = false;
     }

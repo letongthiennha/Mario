@@ -15,6 +15,6 @@ private:
     float frameAcum;
     int maxFrame;
     int currFrame;
-
+    bool isLethalToPlayer() const override { return true; }
 
 };

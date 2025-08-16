@@ -11,6 +11,6 @@ private:
 public:
     static  GameClock &getInstance();
     double updateTimeAcum;
-    const double DeltaTime=1/360.0;
+    const double DeltaTime=1/288.0f;
 
 };

@@ -1,6 +1,7 @@
 #include "StateManager.h"
 #include "MenuState.h"
 #include "GameState.h"
+#include "CharacterSelectionState.h"
 StateManager::StateManager() : currentState(new MenuState(this)), previousState(nullptr) {
     // Initialize with a default state, e.g., MenuState
 }

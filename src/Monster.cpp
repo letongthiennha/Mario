@@ -92,6 +92,7 @@ void Monster::Draw() {
     Rectangle dest = {pos.x, pos.y, size.x, size.y};
     Vector2 origin = {0.0f, 0.0f};
     DrawTexturePro(*sprite, source, dest, origin, 0.0f, WHITE);
+
 }
 
 bool Monster::getIsActive() const {
@@ -100,4 +101,10 @@ bool Monster::getIsActive() const {
 
 void Monster::setIsActive(bool active) {
     isActive = active;
+}
+void Monster::onHit() {
+    // Default behavior for when a monster is hit
+    // Can be overridden by derived classes
+        die();
+
 }

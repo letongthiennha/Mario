@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "Entity.h"
-#include "Mario.h"
+#include "PlayableCharacter.h"
 #include "Map.h"
 
 class Block : public Entity {

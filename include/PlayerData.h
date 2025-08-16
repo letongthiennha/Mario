@@ -1,5 +1,5 @@
 #pragma once
-#include "Mario.h"
+#include "PlayableCharacter.h"
 class PlayerData {
 private:
 int lives;
@@ -11,5 +11,5 @@ public:
     int getLives() const { return lives; }
     int getCoins() const { return coins; }
     int getScore() const { return score; }
-    friend class Mario; // Allow Mario to access private members
+    friend class PlayableCharacter; // Allow PlayableCharacter to access private members
 };

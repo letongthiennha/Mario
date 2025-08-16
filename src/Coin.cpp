@@ -25,8 +25,9 @@ Coin::Coin(Vector2 pos, Vector2 size, Color color, float frameTime, int maxFrame
 }
 
 void Coin::updateSprite() {
+    static const float DeltaTime = GetFrameTime();
     if (state == ItemState::IDLE) {
-        frameAcum +=GameClock::getInstance().DeltaTime;
+        frameAcum += DeltaTime;
         if (frameAcum >= frameTime) {
             frameAcum -= frameTime;
             currFrame = (currFrame + 1) % maxFrame;
@@ -35,7 +36,7 @@ void Coin::updateSprite() {
     }
     else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
-        frameAcum +=GameClock::getInstance().DeltaTime;
+        frameAcum += DeltaTime;
         if (frameAcum >= disappearTimer) {
             frameAcum -= disappearTimer;
             currFrame++;
@@ -51,13 +52,12 @@ void Coin::updateSprite() {
 
 void Coin::Draw() {
 	updateSprite();
-	if(state==ItemState::IDLE&& sprite) {
-		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+	if(state==ItemState::COLLECTED)
+		return;
+	DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { pos.x, pos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
+	if(state==ItemState::BEING_HIT) {
+		floatingScore.Draw();
 	}
-    else if (state == ItemState::BEING_HIT && sprite) {
-		DrawTexturePro(*sprite, { 0, 0, (float)sprite->width, (float)sprite->height }, { initialPos.x, initialPos.y, size.x, size.y }, { 0, 0 }, 0.0f, color);
-        floatingScore.Draw();
-    }
 }
 
 void Coin::playSoundCollision(){

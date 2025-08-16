@@ -28,13 +28,14 @@ void UpMushroom::playSoundCollision() {
 }
 
 void UpMushroom::updateSprite() {
+	static const float DeltaTime = GetFrameTime();
 	if (state == ItemState::IDLE) {
 		sprite = &ResourceManager::getInstance().getTexture("UP_MUSHROOM");
 	}
 	else if (state == ItemState::BEING_HIT) {
 		floatingScore.Update();
 		setVelocity({ 0, 0 });
-		frameAcum +=GameClock::getInstance().DeltaTime;
+		frameAcum +=DeltaTime;
 		if (frameAcum >= disappearTimer) {
 			frameAcum -= disappearTimer;
 			currFrame++;

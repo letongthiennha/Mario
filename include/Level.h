@@ -3,11 +3,13 @@
 #include "GameClock.h"
 #include "Tile.h"
 #include <vector>
-#include "Mario.h"
+#include "PlayableCharacter.h"
 #include"Map.h"     
 #include "CollisionMediator.h"
 #include "GameState.h"
 #include "LevelState.h"
+#include "CharacterType.h"
+#include "Luigi.h"
 class GameState;
 //Physical level of the game, contains the gameplay
 class Level
@@ -18,14 +20,16 @@ private:
     Color backgroundColor;
     Map map;
 
-    Mario player;
+    PlayableCharacter* player;
+    CharacterType selectedCharacterType;
 
-    std::vector<Tile *> &interactiveTiles;
-    std::vector<Item*> &items;
-
-    std::vector<Monster*> &monsters;
-    std::vector<Block*> &blocks;
-
+    int currentPlayerSection;
+    std::vector<std::vector<Tile*>>& interactiveTilesSection;
+    std::vector<std::vector<Tile*>>& nonInteractiveTilesSection;
+    std::vector<std::vector<Block*>>& blocksSection;
+    std::vector<std::vector<Item*>>& itemsSection;
+    std::vector<std::vector<Monster*>>& monstersSection;
+    
     CollisionMediator collisionMediator;
 
     Camera2D camera;    
@@ -33,7 +37,7 @@ private:
     LevelState state;
 
 public:
-    Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData);
+    Level(int mapNumber,GameState* gameState,const PlayerData& PlayerData, CharacterType selectedCharacterType);
     LevelState getState() const;
     bool needReset() const;
     ~Level();

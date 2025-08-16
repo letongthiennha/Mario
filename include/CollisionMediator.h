@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-#include "Mario.h"
+#include "PlayableCharacter.h"
 #include "CollisionInfo.h"
 #include "Tile.h"
 #include "Coin.h"
@@ -15,10 +15,10 @@ class HUD;
 class Monster;
 class CollisionMediator {
     private:
-    void HandleMarioWithTile(Mario*& mario, Tile* &tile, CollisionInfo AtoB);
-    void HandleMarioWithMonster(Mario*& mario, Monster*& monster, CollisionInfo AtoB);
-    void HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB);
-    void HandleMarioWithBlock(Mario*& mario, Block*& block, CollisionInfo AtoB);
+    void HandlePlayerWithTile(PlayableCharacter*& Player, Tile* &tile, CollisionInfo AtoB);
+    void HandlePlayerWithMonster(PlayableCharacter*& Player, Monster*& monster, CollisionInfo AtoB);
+    void HandlePlayerWithItem(PlayableCharacter*& Player, Item*& item, CollisionInfo AtoB);
+    void HandlePlayerWithBlock(PlayableCharacter*& Player, Block*& block, CollisionInfo AtoB);
 
 
     void HandleFireballWithTile(Fireball*& fireball, Tile*& tile, CollisionInfo AtoB);

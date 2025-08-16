@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "Button.h"
 #include "HUD.h"
+#include "CharacterType.h"
 #include <memory>
 class Level;
 // GameState to manage levels and its transitions, with HUD and Buttons
@@ -17,6 +18,7 @@ class GameState : public State {
 private:
     HUD gameHUD;
     Button menuButton;
+    CharacterType selectedCharacterType;
 
     TransitionState transitionState;
     std::unique_ptr<Level> currentLevel;
@@ -30,11 +32,12 @@ private:
 
 public:
     GameState(StateManager *manager);
+    GameState(StateManager *manager, CharacterType characterType);
     ~GameState();
 
     HUD& getHUD() { return gameHUD; }
 
-    void resetLevelWhenMarioDead();
+    void resetLevelWhenPlayerDead();
     void drawLevelEndSummary();
     void resetwhenGameOver();
     void startTransition(TransitionState state);
