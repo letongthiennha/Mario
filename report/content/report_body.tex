@@ -9,43 +9,48 @@ This project presents a desktop platformer game inspired by Super Mario, written
 Platformer games like Mario are iconic in computer science education and game development. This project aims to recreate the Mario experience, providing a hands-on opportunity to learn about game loops, collision detection, resource management, and real-time rendering in C++. The project demonstrates how classic gameplay can be implemented with modern programming practices.
 
 \section{Work Division and Implementation Notes}
-\begin{tabular}{ll}
-\toprule
-Class / Work & Assigned To \\
-\midrule
-Enemies (Koopa, Goomba, Koopa (Wing), Banzai Bill, Piranha Plant) & Lộc \\
-\midrule
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Class / Work} & \textbf{Assigned To} \\
+\hline
+Enemies (Koopa, Goomba, Banzai Bill, etc.) & Lộc \\
+\hline
 Blocks (Item Block, Stone, etc.) & Hữu \\
-\midrule
-Items (Fire Flower, Coin, Super Mushroom, 1Up Mushroom) & Khải \\
-\midrule
-Character (Mario, Luigi); World Builder; Collision Handling; Menu Control, Sound, Resource & Nhân \\
-\bottomrule
+\hline
+Items (Fire Flower, Coin, Super Mushroom, 1Up Mushroom, etc.) & Khải \\
+\hline
+Characters (Mario, Luigi), Core Systems (Sound, Logic, Map, etc.)  & Nhân \\
+\hline
 \end{tabular}
+\caption{Work Division by Module}
+\end{table}
 
-
+\vspace{1em}
 
 \textbf{Important Implementation Notes:}
 \begin{itemize}
     \item \textbf{About Inheritance:}
     \begin{itemize}
-        \item Every object class must inherit from \texttt{Entity}.
+        \item Every object class inherits from \texttt{Entity}.
     \end{itemize}
-    \item \textbf{About Implement:}
+    \item \textbf{About Implementation:}
     \begin{itemize}
-        \item Function \texttt{Draw} is called separately from function \texttt{updateStateAndPhysics}.
-        \item \texttt{updateStateAndPhysics} happens in \textbf{FIXED\_TIME\_STEP} (see Mario class for logic).
+        \item The \texttt{Draw} function is called separately from \texttt{updateStateAndPhysics}.
+        \item \texttt{updateStateAndPhysics} is called using a \textbf{DeltaTime} step (see Mario class for logic).
     \end{itemize}
-    \item \textbf{About Resource:}
+    \item \textbf{About Resources:}
     \begin{itemize}
-        \item Every texture and sound must load through \texttt{ResourceManager} (Singleton Pattern).
-        \item Every sound must play through \texttt{SoundController} (Singleton Pattern).
+        \item All textures and sounds are loaded through \texttt{ResourceManager} (Singleton Pattern).
+        \item All sounds are played through \texttt{SoundController} (Singleton Pattern).
     \end{itemize}
     \item \textbf{About File Structure:}
     \begin{itemize}
-        \item Header files in \texttt{include/}
-        \item Source (\texttt{.cpp}) files in \texttt{src/}
-        \item Resource files in \texttt{resources/}
+        \item Header files: \texttt{include/}
+        \item Source files: \texttt{src/}
+        \item Resource files: \texttt{resources/}
     \end{itemize}
 \end{itemize}
 

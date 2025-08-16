@@ -15,7 +15,6 @@ void PlayableCharacter::jump() {
         SoundController::getInstance().PlaySound("smw_jump.wav");
     }
 }
-
 void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
     if (AtoB == COLLISION_NONE)
         return;
@@ -41,9 +40,7 @@ void Goomba::updateStateAndPhysic() {
     if (!isActive) return;
     velocity.x = -speed;
     position.x += velocity.x * GameClock::getInstance().DeltaTime;
-    // Gravity and ground check omitted for brevity
 }
-
 void CollisionMediator::HandleMarioWithMonster(Mario*& mario, Monster*& monster, CollisionInfo AtoB) {
     if (AtoB == COLLISION_SOUTH && mario->getVelocity().y > 0) {
         mario->addScore(400);
@@ -65,13 +62,11 @@ void QuestionBlock::hit(Mario* mario) {
         SoundController::getInstance().PlaySound("smw_power-up_appears.wav");
     }
 }
-
 void QuestionBlock::spawnItem() {
     if (containsMushroom) {
         auto* mushroom = new Mushroom(position + Vector2{0, -size.y});
         Level::getInstance().addItem(mushroom);
     }
-    // Other item types omitted for brevity
 }
 \end{lstlisting}
 
@@ -102,7 +97,6 @@ Texture2D& ResourceManager::getTexture(const std::string& name) {
     }
     return textures[name];
 }
-
 void ResourceManager::unloadResource() {
     for (auto& pair : textures) {
         UnloadTexture(pair.second);
