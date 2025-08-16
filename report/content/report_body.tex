@@ -1,5 +1,4 @@
 
-
 \clearpage
 \begin{flushleft}
 \section*{Abstract}
@@ -9,12 +8,46 @@ This project presents a desktop platformer game inspired by Super Mario, written
 \section{Introduction}
 Platformer games like Mario are iconic in computer science education and game development. This project aims to recreate the Mario experience, providing a hands-on opportunity to learn about game loops, collision detection, resource management, and real-time rendering in C++. The project demonstrates how classic gameplay can be implemented with modern programming practices.
 
-\section{Group Information}
-Our team collaborated on all aspects of the project, from engine design to gameplay mechanics and testing. Below is our role breakdown.
+\section{Work Division and Implementation Notes}
+\begin{tabular}{ll}
+\toprule
+Class / Work & Assigned To \\
+\midrule
+Enemies (Koopa, Goomba, Koopa (Wing), Banzai Bill, Piranha Plant) & Lộc \\
+\midrule
+Blocks (Item Block, Stone, etc.) & Hữu \\
+\midrule
+Items (Fire Flower, Coin, Super Mushroom, 1Up Mushroom) & Khải \\
+\midrule
+Character (Mario, Luigi); World Builder; Collision Handling; Menu Control, Sound, Resource & Nhân \\
+\bottomrule
+\end{tabular}
 
-\begin{table}[H]
 
-\end{table}
+
+\textbf{Important Implementation Notes:}
+\begin{itemize}
+    \item \textbf{About Inheritance:}
+    \begin{itemize}
+        \item Every object class must inherit from \texttt{Entity}.
+    \end{itemize}
+    \item \textbf{About Implement:}
+    \begin{itemize}
+        \item Function \texttt{Draw} is called separately from function \texttt{updateStateAndPhysics}.
+        \item \texttt{updateStateAndPhysics} happens in \textbf{FIXED\_TIME\_STEP} (see Mario class for logic).
+    \end{itemize}
+    \item \textbf{About Resource:}
+    \begin{itemize}
+        \item Every texture and sound must load through \texttt{ResourceManager} (Singleton Pattern).
+        \item Every sound must play through \texttt{SoundController} (Singleton Pattern).
+    \end{itemize}
+    \item \textbf{About File Structure:}
+    \begin{itemize}
+        \item Header files in \texttt{include/}
+        \item Source (\texttt{.cpp}) files in \texttt{src/}
+        \item Resource files in \texttt{resources/}
+    \end{itemize}
+\end{itemize}
 
 \begin{flushleft}
 \section{Data Storage}
@@ -65,5 +98,5 @@ Game data such as levels, tiles, and enemy placements are stored in JSON files a
     \item Pause, settings, and credits menus.
     \item Modular codebase for easy extension (new levels, enemies, items).
 \end{itemize}
-
+\end{flushleft}
 \end{flushleft}

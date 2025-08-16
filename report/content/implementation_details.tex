@@ -1,52 +1,57 @@
-
 \section{Implementation Details}
 \begin{flushleft}
-    
 
-This application was designed using a modular architecture, with each core data structure separated into its own logic, UI, and animation files. Each structure operates independently within a centralized controller.
+This application is designed with a modular, object-oriented architecture. Each core game component (player, enemies, items, blocks, UI, etc.) is implemented as a separate class, with clear separation between logic, rendering, and resource management. The main control flow is managed by a centralized state manager and game loop.
 
-\subsection*{Main Control Flow (Nguyễn Đình Thiên Lộc, Phan Minh Khôi)}
+\subsection*{Main Control Flow }
 
-The file \texttt{main.cpp} manages the application loop, window lifecycle, and UI routing. User interaction is handled through states and screen enums, and each module draws on top of its own canvas.
+The file \texttt{\textcolor{blue}{main.cpp}} manages the game loop, window and audio lifecycle, and state routing. User input and game state transitions are handled through a \texttt{\textcolor{purple}{StateManager.cpp}}, which switches between menu, gameplay, settings, and credits. Each state is responsible for its own update and draw routines.
 
-\subsection*{Singly Linked List (Nguyễn Đình Thiên Lộc)}
-
-\begin{itemize}
-    \item \texttt{linked\_list\_core.cpp} – Structure logic: insert, delete, undo
-    \item \texttt{linked\_list\_animation.cpp} – Transitions and head/tail animations
-    \item \texttt{linked\_list\_drawing.cpp} – Renders node graphics and pointer arrows
-    \item \texttt{ui\_linked\_list.cpp} – Processes input, handles buttons and interaction
-\end{itemize}
-
-\textbf{Flow Example:} When the user clicks “Insert Head,” \texttt{ui\_linked\_list.cpp} calls the logic in \texttt{linked\_list\_core.cpp}, pushes the new state to the undo stack, and then triggers visual changes via the animation file.
-
-\subsection*{AVL Tree (Phan Minh Khôi)}
+\subsection*{Core Game Modules}
 
 \begin{itemize}
-    \item \texttt{AVLtree.cpp} – AVL logic: rotations, height balance, insert/delete
-    \item \texttt{AVLtreeAnimation.cpp} – Click handling, animated placement
-    \item \texttt{initAVLProgram.cpp} – Entry point for AVL visualizer, button router
+    \item \texttt{\textcolor{blue}{main.cpp}} – Initializes the window, audio, and resources; runs the main loop; delegates to the current state.
+    \item \texttt{\textcolor{purple}{StateManager.cpp}}, \texttt{\textcolor{purple}{MenuState.cpp}}, \texttt{\textcolor{purple}{GameState.cpp}} – Manage game states, menus, and transitions.
+    \item \texttt{\textcolor{teal}{Level.cpp}}, \texttt{\textcolor{teal}{Map.cpp}} – Load and manage level data, including tiles, objects, and entity placement.
+    \item \texttt{\textcolor{red}{PlayableCharacter.cpp}}, \texttt{\textcolor{red}{Mario.cpp}}, \texttt{\textcolor{red}{Luigi.cpp}} – Player logic, movement, power-ups, and actions.
+    \item \texttt{\textcolor{green!60!black}{Monster.cpp}}, \texttt{\textcolor{green!60!black}{Goomba.cpp}}, \texttt{\textcolor{green!60!black}{BanzaiBill.cpp}}, etc. – Enemy behaviors and interactions.
+    \item \texttt{\textcolor{orange}{Item.cpp}}, \texttt{\textcolor{orange}{Coin.cpp}}, \texttt{\textcolor{orange}{FireFlower.cpp}}, etc. – Collectibles and power-up logic.
+    \item \texttt{\textcolor{brown}{Block.cpp}}, \texttt{\textcolor{brown}{QuestionBlock.cpp}}, etc. – Interactive and static blocks.
+    \item \texttt{\textcolor{teal}{ResourceManager.cpp}} – Loads and manages textures, sounds, and music (singleton pattern).
+    \item \texttt{\textcolor{cyan!80!black}{SoundController.cpp}} – Plays sound effects and music (singleton pattern).
+    \item \texttt{\textcolor{magenta}{CollisionMediator.cpp}} – Handles all collision detection and resolution between entities.
 \end{itemize}
 
-Each insertion triggers a height update, imbalance check, and the corresponding rotation. These are visualized step-by-step.
-\subsection*{Hash Table (Văn Tuấn Khải)}
+\textbf{Flow Example:} When the player presses the jump key, \texttt{\textcolor{red}{PlayableCharacter.cpp}} updates the player’s velocity. The main loop in \texttt{\textcolor{blue}{main.cpp}} calls \texttt{\textcolor{purple}{stateManager.update()}}, which triggers \texttt{\textcolor{teal}{Level::UpdateLevel()}}. This updates all entities, applies physics, checks collisions via \texttt{\textcolor{magenta}{CollisionMediator.cpp}}, and then \texttt{\textcolor{purple}{stateManager.draw()}} renders the updated game state.
+
+\subsection*{Level and Entity Management}
 
 \begin{itemize}
-    \item \texttt{HashTable.cpp} – Insertion, deletion, probing, undo/redo stacks
-    \item \texttt{hashtable\_ui.cpp} – Button states, file input, user interface
+    \item \texttt{\textcolor{teal}{Level.cpp}} – Manages all entities in the level, including player, monsters, items, and blocks. Handles section-based updates for performance.
+    \item \texttt{\textcolor{teal}{Map.cpp}} – Loads level layout and object placement from JSON files.
+    \item \texttt{\textcolor{green!60!black}{MonsterFactory.cpp}}, \texttt{\textcolor{orange}{ItemFactory.cpp}}, \texttt{\textcolor{brown}{BlockFactory.cpp}} – Create entities based on map data.
 \end{itemize}
 
-Operations such as insertion are deferred until the search animation completes. States are stored before and after changes to enable full undo functionality.
+Entities are updated and drawn in a fixed time-step loop to ensure consistent physics and animation. Each entity class implements its own \texttt{updateStateAndPhysic()} and \texttt{Draw()} methods.
 
-
-
-\subsection*{Graph – Kruskal’s Algorithm (Văn Tuấn Khải)}
+\subsection*{Collision and Resource Management }
 
 \begin{itemize}
-    \item \texttt{Graph.cpp} – Edge list, union-find, MST generator
-    \item \texttt{ui\_Graph.cpp} – Step-wise visualization and Kruskal interface
-    \item \texttt{InputBox.cpp} – Graph node/edge input from user
+    \item \texttt{\textcolor{magenta}{CollisionMediator.cpp}} – Centralizes all collision logic, handling interactions between player, monsters, items, and blocks.
+    \item \texttt{\textcolor{teal}{ResourceManager.cpp}} – Ensures all textures, sounds, and music are loaded once and reused throughout the game.
+    \item \texttt{\textcolor{cyan!80!black}{SoundController.cpp}} – Handles all sound playback, ensuring no resource leaks and smooth audio transitions.
 \end{itemize}
 
-Kruskal’s steps are visualized in real-time. This module also includes dynamic source code highlighting to follow each logic branch.
+\subsection*{Menus, UI, and Sound }
+
+\begin{itemize}
+    \item \texttt{\textcolor{purple}{MenuState.cpp}}, \texttt{\textcolor{purple}{SettingMenuState.cpp}}, \texttt{\textcolor{purple}{CreditState.cpp}} – Implement the main menu, settings, and credits screens.
+    \item \texttt{\textcolor{purple}{HUD.cpp}} – Displays score, coins, lives, and other in-game information.
+    \item \texttt{\textcolor{purple}{Button.cpp}}, \texttt{\textcolor{purple}{Slider.cpp}} – UI components for interaction.
+    \item \texttt{\textcolor{cyan!80!black}{SoundController.cpp}} – Manages background music and sound effects for menus and gameplay.
+\end{itemize}
+
+\textbf{Summary:}  
+The Mario project is structured for clarity and extensibility, with each module responsible for a specific aspect of the game. The main loop coordinates updates and rendering, while resource and collision management ensure efficient and correct gameplay. This modular approach allows for easy addition of new features, levels, and entities.
+
 \end{flushleft}

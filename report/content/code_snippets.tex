@@ -1,128 +1,112 @@
 \clearpage
 \section{Code Snippets}
 
-This section presents representative code snippets for each data structure, aligned with the actual implementation logic from the source files.
+\begin{flushleft}
+  This section presents representative code snippets for core mechanics and systems in the Super Mario OOP Project, aligned with the actual implementation logic from the source files.  
+\end{flushleft}
 
-\subsection*{Singly Linked List – Search with Animation State}
-\begin{lstlisting}[language=C++, caption={SLL Search with Animation Setup}]
-bool LinkedList::Search(int value) {
-    if (!head) return false;
 
-    foundNode = nullptr;
-    cur = head;
-    curPos = head->position;
-    animState = AnimState::SEARCHING;
-    animProgress = 0.0f;
-    animNode = new Node(value, {0, 0});
-    searchAttempted = true;
-
-    return true;
-}
-\end{lstlisting}
-\subsection*{Hash Table – Insert with Undo Support}
-\begin{lstlisting}[language=C++, caption={Hash Table Insert with Chaining and Undo}]
-void HashTable::Insert(int val, bool isRandom) {
-    ResetColors();
-    int index = hashFunction(val);
-    Node* temp = table[index];
-
-    while (temp) {
-        if (temp->val == val) {
-            if (!isRandom) searchMessage = TextFormat("%d already exists.", val);
-            return;
-        }
-        temp = temp->next;
-    }
-
-    if (!isRandom) {
-        undoStack.push(CopyTable());
-        while (!redoStack.empty()) redoStack.pop();
-        showCalculation = true;
-        insertedNode = nullptr;
-    } else {
-        showCalculation = false;
-        insertedNode = nullptr;
-        highlightInsert = -1;
-    }
-    PerformInsertion(val, isRandom);
-}
-\end{lstlisting}
-\subsection*{AVL Tree – Deletion with Balance Checks}
-\begin{lstlisting}[language=C++, caption={AVL Delete with Rotation Cases}]
-void AVLTree::remove(AVLNode*& node, int value) {
-    if (!node) return;
-
-    if (value > node->data) {
-        remove(node->right, value);
-    } else if (value < node->data) {
-        remove(node->left, value);
-    } else {
-        if (!node->left) {
-            AVLNode* temp = node;
-            node = node->right;
-            delete temp;
-        } else if (!node->right) {
-            AVLNode* temp = node;
-            node = node->left;
-            delete temp;
-        } else {
-            AVLNode* curr = minValueNode(node->right);
-            node->data = curr->data;
-            remove(node->right, curr->data);
-        }
-    }
-
-    if (!node) return;
-
-    int bf = getBalanceFactor(node);
-
-    if (bf > 1 && getBalanceFactor(node->left) >= 0) {
-        rightRotate(node);
-    } else if (bf > 1 && getBalanceFactor(node->left) == -1) {
-        leftRotate(node->left);
-        rightRotate(node);
-    } else if (bf < -1 && getBalanceFactor(node->right) <= 0) {
-        leftRotate(node);
-    } else if (bf < -1 && getBalanceFactor(node->right) == 1) {
-        rightRotate(node->right);
-        leftRotate(node);
+\subsection*{Player Jump and Power-Up Collection}
+\begin{lstlisting}[language=C++, caption={Mario Jump and Power-Up Collection}]
+void PlayableCharacter::jump() {
+    if (onGround) {
+        velocity.y = -jumpPower;
+        onGround = false;
+        SoundController::getInstance().PlaySound("smw_jump.wav");
     }
 }
-\end{lstlisting}
 
-
-\clearpage
-\subsection*{Graph – Kruskal Step Animation}
-\begin{lstlisting}[language=C++, caption={Step-by-Step Kruskal's MST Visualization}]
-void Graph::UpdateKruskalStep() {
-    if (isPaused) return;
-    frameCounter++;
-
-    if (stateOfCode == 1 && !initialDelayComplete) {
-        if (frameCounter < 2 * animationSpeed / 3) return;
-        dsu.Initialize(nodes.size());
-        std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
-            return a.w < b.w;
-        });
-        initialDelayComplete = true;
-        frameCounter = 0;
-    }
-
-    if (kruskalStep >= edges.size()) {
-        stateOfCode = 6;
-        message = "MST Complete";
-        mstFinished = true;
+void CollisionMediator::HandleMarioWithItem(Mario*& mario, Item*& item, CollisionInfo AtoB) {
+    if (AtoB == COLLISION_NONE)
         return;
-    }
 
-    Edge& currentEdge = edges[kruskalStep];
-    int rootA = dsu.find_set(currentEdge.a);
-    int rootB = dsu.find_set(currentEdge.b);
-    if (rootA != rootB) {
-        dsu.union_sets(rootA, rootB);
-        currentEdge.inMST = true;
+    if (item && CheckCollisionRecs(mario->getRect(), item->getRect())) {
+        if (auto* mushroom = dynamic_cast<Mushroom*>(item)) {
+            mushroom->collect();
+            mario->setBig(true);
+            mario->addScore(1000);
+        }
+        else if (auto* fireFlower = dynamic_cast<FireFlower*>(item)) {
+            fireFlower->collect();
+            mario->setFire(true);
+            mario->addScore(1000);
+        }
     }
-    kruskalStep++;
-    frameCounter = 0;
+}
+\end{lstlisting}
+
+\subsection*{Monster Movement and Defeat}
+\begin{lstlisting}[language=C++, caption={Goomba Movement and Stomp Defeat}]
+void Goomba::updateStateAndPhysic() {
+    if (!isActive) return;
+    velocity.x = -speed;
+    position.x += velocity.x * GameClock::getInstance().DeltaTime;
+    // Gravity and ground check omitted for brevity
+}
+
+void CollisionMediator::HandleMarioWithMonster(Mario*& mario, Monster*& monster, CollisionInfo AtoB) {
+    if (AtoB == COLLISION_SOUTH && mario->getVelocity().y > 0) {
+        mario->addScore(400);
+        monster->die();
+        mario->setVelocity(Vector2{mario->getVelocity().x, -600}); // Bounce
+        SoundController::getInstance().PlaySound("smw_stomp.wav");
+    } else {
+        mario->reactOnBeingHit();
+    }
+}
+\end{lstlisting}
+
+\subsection*{Block Hit and Item Spawn}
+\begin{lstlisting}[language=C++, caption={Question Block Hit and Item Spawn}]
+void QuestionBlock::hit(Mario* mario) {
+    if (state == BlockState::UNUSED) {
+        state = BlockState::USED;
+        spawnItem();
+        SoundController::getInstance().PlaySound("smw_power-up_appears.wav");
+    }
+}
+
+void QuestionBlock::spawnItem() {
+    if (containsMushroom) {
+        auto* mushroom = new Mushroom(position + Vector2{0, -size.y});
+        Level::getInstance().addItem(mushroom);
+    }
+    // Other item types omitted for brevity
+}
+\end{lstlisting}
+
+\subsection*{Level Update Loop}
+\begin{lstlisting}[language=C++, caption={Level Update and Collision Handling}]
+void Level::UpdateLevel() {
+    player->updateStateAndPhysic();
+    for (auto& section : monstersSection)
+        for (auto* monster : section)
+            monster->updateStateAndPhysic();
+    for (auto& section : itemsSection)
+        for (auto* item : section)
+            item->updateStateAndPhysic();
+    for (auto& section : blocksSection)
+        for (auto* block : section)
+            block->updateStateAndPhysic();
+
+    // Collision checks
+    collisionMediator.handleCollisions(player, monstersSection, itemsSection, blocksSection);
+}
+\end{lstlisting}
+
+\subsection*{Resource Management (Singleton Pattern)}
+\begin{lstlisting}[language=C++, caption={ResourceManager Singleton Usage}]
+Texture2D& ResourceManager::getTexture(const std::string& name) {
+    if (textures.count(name) == 0) {
+        textures[name] = LoadTexture(("resources/Entity/" + name).c_str());
+    }
+    return textures[name];
+}
+
+void ResourceManager::unloadResource() {
+    for (auto& pair : textures) {
+        UnloadTexture(pair.second);
+    }
+    textures.clear();
 }
 \end{lstlisting}

@@ -2,7 +2,7 @@
 \section{User's Manual}
 \label{sec:manual}
 
-This section provides installation, setup, and usage instructions for the Data Structure Visualizer.
+This section provides installation, setup, and usage instructions for the Super Mario OOP Project.
 
 \subsection{Installation Requirements}
 \begin{itemize}
@@ -12,38 +12,72 @@ This section provides installation, setup, and usage instructions for the Data S
     \item (Optional) vcpkg for Windows or Makefile/CMake for Linux builds
 \end{itemize}
 
-For detailed raylib + vcpkg setup on Windows, see the guide:  
-\url{https://www.youtube.com/watch?v=UiZGTIYld1M}.
+For a detailed guide on setting up raylib with vcpkg on Windows, see:  
+\url{https://www.youtube.com/watch?v=UiZGTIYld1M}
 
 \subsection{Building the Application}
 \begin{itemize}
-    \item \textbf{Windows:} Clone the repo, open in Visual Studio, install raylib via vcpkg, then build/run.
-    \item \textbf{Linux:} Install raylib (\texttt{sudo apt install libraylib-dev}), run \texttt{make run} or use provided CMake files.
+    \item \textbf{Windows:} Clone the repository, open the folder in Visual Studio, install raylib via vcpkg, then build and run the project.
+    \item \textbf{Linux:} Install raylib (\texttt{sudo apt install libraylib-dev}), then run \texttt{make run} or use the provided CMake files.
 \end{itemize}
 
 \subsection{Usage Instructions}
 \begin{enumerate}
-    \item Choose a data structure from the main menu.
-    \item Enter data manually or load from a `.txt` file by typing the file path.
-    \item Select visualization mode: step-by-step or run-at-once.
-    \item Use on-screen or keyboard controls to navigate steps or replay.
-    \item Observe the visual operation and, for Graph, code highlighting.
+    \item Launch the application. The main menu will appear.
+    \item Use the arrow keys or mouse to navigate the menu.
+    \item Select "Start Game" to begin playing.
+    \item Choose your character (Mario or Luigi) if prompted.
+    \item Use the following controls during gameplay:
+    \begin{itemize}
+        \item \textbf{Arrow keys:} Move left/right, crouch, or climb.
+        \item \textbf{Spacebar:} Jump.
+        \item \textbf{Z:} Run or shoot fireball (if powered up).
+        \item \textbf{Esc:} Pause the game and access the pause menu.
+    \end{itemize}
+    \item Collect coins, power-ups, and defeat enemies to progress through the level.
+    \item Reach the end of the level to complete it and advance.
+    \item Use the pause menu to adjust settings, restart, or return to the main menu.
 \end{enumerate}
 
 \vspace{1em}
-  
 
-
-\subsection{Customization (Planned)}
+\subsection{Customization}
 \begin{itemize}
-    \item Color themes are not yet implemented.
-\end{itemize}
-\begin{itemize}
-    \item Visualization speed can be changed in Graph module.
+    \item Music and sound effect volumes can be adjusted in the settings menu.
+    \item Key bindings and color themes are not yet customizable in this version.
 \end{itemize}
 
-\subsection{File Format Example}
-Input file should look like:
+\subsection{File Structure}
+\begin{itemize}
+    \item \texttt{resources/Map/} contains level map files in JSON format.
+    \item \texttt{resources/Entity/} contains sprites for characters, enemies, and items.
+    \item \texttt{resources/SFX/} and \texttt{resources/Music/} contain sound effects and background music.
+\end{itemize}
+
+\subsection{Level Format Example}
+A level file (e.g., \texttt{map1.json}) contains tile and object layers. Example snippet:
 \begin{verbatim}
-10 3 8 15 7
+{
+  "layers": [
+    {
+      "type": "tilelayer",
+      "data": [ ... ]
+    },
+    {
+      "type": "objectgroup",
+      "name": "Monsters",
+      "objects": [
+        { "type": "Goomba", "x": 500, "y": 700 },
+        { "type": "BanzaiBill", "x": 1200, "y": 650 }
+      ]
+    }
+  ]
+}
 \end{verbatim}
+
+\subsection{Troubleshooting}
+\begin{itemize}
+    \item If the game does not launch, ensure raylib is installed and your compiler supports C++17.
+    \item For missing textures or sounds, verify the \texttt{resources/} folder is present and complete.
+    \item If controls do not respond, check your keyboard layout and focus on the game window.
+\end{itemize}

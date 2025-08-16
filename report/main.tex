@@ -14,6 +14,10 @@
 \usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{multirow, makecell, colortbl, array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X} % ragged-right X
+\renewcommand\arraystretch{1.15}                    % a bit taller rows (optional)
 
 % ================== CODE STYLING ==================
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -94,5 +98,5 @@
 \clearpage
 \appendix
 \input{appendix/appendix.tex}
-\end{flushleft}
+
 \end{document}
