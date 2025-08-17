@@ -22,7 +22,9 @@ Rectangle getScreenBounds() {
 
 void GameState::nextLevel()
 {
-   levelMementos.push_back(currentLevel->getPlayerData()); // Get the current player data from the level
+    std::unique_ptr<PlayerData> currentPlayerData = currentLevel->getPlayerData();
+
+    levelMementos.push_back(std::make_unique<PlayerData>(*currentPlayerData)); // Get the current player data from the level
 
     currentLevelID++;
     if (currentLevelID> 3) {  
@@ -40,7 +42,9 @@ void GameState::nextLevel()
         return;
     }
 
-    playerMemento = std::make_unique<PlayerData>(3, 0, 0);
+    playerMemento = std::make_unique<PlayerData>(currentPlayerData->getLives(),
+                                                  currentPlayerData->getCoins(),
+                                                  currentPlayerData->getScore());
 
     currentLevel = std::make_unique<Level>(currentLevelID,this,*this->playerMemento.get(), selectedCharacterType); // Create a new level with the updated player data
 }
@@ -262,6 +266,7 @@ void GameState::update()
         if (transitionTimeAcum >= transitionTime) {
             startTransition(TransitionState::TRANSITION_NONE);  // Reset transition state
         }
+        break;
     }
     if(transitionState != TransitionState::TRANSITION_NONE) {
         return;  // Skip updates if a transition is in progress

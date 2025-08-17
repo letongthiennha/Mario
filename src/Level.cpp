@@ -311,35 +311,6 @@ void Level::UpdateLevel()
                         i--; // Adjust index after erasing
                 }
         };
-        // Update monsters across all sections
-        for (auto& monster_section : monstersSection) {
-            for (auto& monster : monster_section) {
-                if (monster->getState() == ENTITY_STATE_TO_BE_REMOVED || !monster->getIsActive())
-                    continue;
-                if (std::abs(player->getPosition().x - monster->getPosition().x) >GetScreenWidth()) continue;
-                monster->updateStateAndPhysic();
-
-                int monsterSectionIndex = monster->getPosition().x / map.getSectionWidth();
-                if (monsterSectionIndex < 0) monsterSectionIndex = 0;
-                if (monsterSectionIndex >= interactiveTilesSection.size()) monsterSectionIndex = interactiveTilesSection.size() - 1;
-                
-                // Check for collisions with tiles in the monster's current section
-                for (auto& tile : interactiveTilesSection[monsterSectionIndex]) {
-                    CollisionInfo collision = monster->CheckCollisionType(*tile);
-                    if (collision)
-                        collisionMediator.HandleCollision(monster, tile);
-                }
-
-                // Check for collisions with fireballs
-                for (auto& fireball : *player->getFireballs()) {
-                    CollisionInfo collision = monster->CheckCollisionType(*fireball);
-                    if (collision) {
-                        collisionMediator.HandleCollision(monster, fireball);
-                    }
-                }
-            }
-        }
-
         // if(player->getPosition().x>3000) // If player is past a certain point, switch to next level
         // {
         //         state= LevelState::LEVEL_STATE_COMPLETED;
