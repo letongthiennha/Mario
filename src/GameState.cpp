@@ -87,7 +87,7 @@ void GameState::saveProgress() {
 	}
 }
 
-GameState::GameState(StateManager *manager) :currentLevelID(1), State(manager),
+GameState::GameState(StateManager *manager) :currentLevelID(3), State(manager),
                                               menuButton(Vector2{50, 50}, Vector2{64, 64}),
                                               playerMemento(std::make_unique<PlayerData>(3, 0, 0)),
                                                 transitionState(TransitionState::TRANSITION_NONE), gameHUD(CharacterType::MARIO),

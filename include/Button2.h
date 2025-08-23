@@ -28,8 +28,6 @@ public:
     void setFont(Font* font);
 
 private:
-    const static float CLICK_TIME;
-
     Rectangle bounds;
     Button2State state;
     bool receiveClick;

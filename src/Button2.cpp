@@ -3,8 +3,6 @@
 #include "GameClock.h"
 #include <iostream>
 
-const float Button2::CLICK_TIME = 0.2f;
-
 Button2::Button2(Vector2 position, Vector2 size)
     : bounds({ position.x, position.y, size.x, size.y }),
     state(Button2State::NORMAL),
