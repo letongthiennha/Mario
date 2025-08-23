@@ -24,7 +24,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
 
 
-# Path to RaylibÂ 
+# Path to Raylib 
 
 set(RAYLIB_DIR "C:/raylib/raylib")
 

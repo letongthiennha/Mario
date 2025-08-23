@@ -263,6 +263,9 @@ void ResourceManager::loadTextures()
     textures["MENU_STATE_START_BUTTON"] = LoadTexture("resources/Button/MenuStartButton.png");
     textures["MENU_STATE_OPTIONS_BUTTON"] = LoadTexture("resources/Button/MenuOptionsButton.png");
     textures["EXIT_BUTTON"] = LoadTexture("resources/Button/ExitButton.png");
+    textures["NEWGAME_BUTTON"] = LoadTexture("resources/Button/NewgameButton.png");
+    textures["CONTINUE_BUTTON"] = LoadTexture("resources/Button/ContinueButton.png");
+    textures["HIGHSCORES_BUTTON"] = LoadTexture("resources/Button/HighscoresButton.png");
 
     textures["HOME_BUTTON_RELEASE"] = LoadTexture("resources/Button/Home (3).png");
     textures["HOME_BUTTON_PRESS"] = LoadTexture("resources/Button/Home (1).png");

@@ -15,10 +15,8 @@ public:
 private:
     Button newGameButton;
     Button continueButton;
-    Button designGameButton;
     Button leaderboardButton;
     Button2 backButton;
-    Button twoPlayerButton;
 	Texture2D titleTexture;
 
     Texture2D mushroomTexture;

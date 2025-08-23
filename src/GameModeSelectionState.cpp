@@ -8,23 +8,19 @@
 #include <fstream>
 
 GameModeSelectionState::GameModeSelectionState(StateManager* manager) : State(manager),
-newGameButton(Vector2{ (float)GetScreenWidth() / 4 - 150, (float)GetScreenHeight() / 2 - 75 }, Vector2{ 300, 50 }),
-continueButton(Vector2{ (float)GetScreenWidth() / 4 - 150, (float)GetScreenHeight() / 2 + 25 }, Vector2{ 300, 50 }),
-designGameButton(Vector2{ (float)GetScreenWidth() * 3 / 4 - 150, (float)GetScreenHeight() / 2 - 75 }, Vector2{ 300, 50 }),
-leaderboardButton(Vector2{ (float)GetScreenWidth() * 3 / 4 - 150, (float)GetScreenHeight() / 2 + 25 }, Vector2{ 300, 50 }),
-twoPlayerButton(Vector2{ (float)GetScreenWidth() / 2 - 150, (float)GetScreenHeight() / 2 + 150 }, Vector2{ 300, 50 }),
-backButton( {50, 50 }, { 64, 64 })
+newGameButton(Vector2{ (float)GetScreenWidth() / 4 - 150, (float)GetScreenHeight() / 2 - 37.5f }, Vector2{ 300, 75 }),
+continueButton(Vector2{ (float)GetScreenWidth() * 3 / 4 - 150, (float)GetScreenHeight() / 2 - 37.5f }, Vector2{ 300, 75 }),
+leaderboardButton(Vector2{ (float)GetScreenWidth() / 2 - 150, (float)GetScreenHeight() / 2 + 150 }, Vector2{ 300, 75 }),
+backButton({ 50, 50 }, { 64, 64 })
 {
     titleTexture = ResourceManager::getInstance().getTexture("SELECT_GAME_MODE_TITLE");
     marioTexture = ResourceManager::getInstance().getTexture("MARIO_TEXTURE");
     luigiTexture = ResourceManager::getInstance().getTexture("LUIGI_TEXTURE");
     mushroomTexture = ResourceManager::getInstance().getTexture("MUSHROOM_TEXTURE");
 
-    newGameButton.setText("New Game");
-    continueButton.setText("Continue");
-    designGameButton.setText("Design Game");
-    leaderboardButton.setText("Highscores");
-    twoPlayerButton.setText("2 Player");
+    newGameButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("NEWGAME_BUTTON")).fitTexture().DisableBackground();
+    continueButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("CONTINUE_BUTTON")).fitTexture().DisableBackground();
+    leaderboardButton.setPrimaryTexture(ResourceManager::getInstance().getTexture("HIGHSCORES_BUTTON")).fitTexture().DisableBackground();
 
 	backButton.setTextures(ResourceManager::getInstance().getTexture("HOME_BUTTON_RELEASE"), ResourceManager::getInstance().getTexture("HOME_BUTTON_PRESS"));
 }
@@ -35,9 +31,9 @@ GameModeSelectionState::~GameModeSelectionState() {
 void GameModeSelectionState::update() {
     newGameButton.update();
     continueButton.update();
-    designGameButton.update();
+    //designGameButton.update();
     leaderboardButton.update();
-    twoPlayerButton.update();
+    //twoPlayerButton.update();
     backButton.update();
 
     if (newGameButton.isClicked()) {
@@ -47,16 +43,16 @@ void GameModeSelectionState::update() {
         // Placeholder: Add logic to continue a game
         stateManager->setState(new GameState(stateManager, "LOAD_GAME"));
     }
-    else if (designGameButton.isClicked()) {
-        // Placeholder: Add logic for a map editor or design state
-    }
+    //else if (designGameButton.isClicked()) {
+    //    // Placeholder: Add logic for a map editor or design state
+    //}
     else if (leaderboardButton.isClicked()) {
         // Placeholder: Add logic for a leaderboard state
         stateManager->setState(new HighScoreScreenState(stateManager));
     }
-    else if (twoPlayerButton.isClicked()) {
-        // Placeholder: Add logic for 2 player mode
-    }
+    //else if (twoPlayerButton.isClicked()) {
+    //    // Placeholder: Add logic for 2 player mode
+    //}
     else if (backButton.isClicked()) {
         stateManager->setState(new MenuState(stateManager));
     }
@@ -74,8 +70,8 @@ void GameModeSelectionState::draw() {
 
     newGameButton.Draw();
     continueButton.Draw();
-    designGameButton.Draw();
+    /*designGameButton.Draw();*/
     leaderboardButton.Draw();
-    twoPlayerButton.Draw();
+  /*  twoPlayerButton.Draw();*/
     backButton.Draw();
 }
